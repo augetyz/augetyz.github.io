@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>嵌入式学习简介</title>
+    <url>/2023/07/23/qian-ru-shi-xue-xi-jian-jie/</url>
+    <content><![CDATA[<h1 id="嵌入式学习方向介绍"><a href="#嵌入式学习方向介绍" class="headerlink" title="嵌入式学习方向介绍"></a>嵌入式学习方向介绍</h1><h2 id="视频简介"><a href="#视频简介" class="headerlink" title="视频简介"></a>视频简介</h2><iframe src="//player.bilibili.com/player.html?aid=378089584&amp;bvid=BV1Hf4y1w7BH&amp;cid=410341156&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
+
+<h2 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h2><p><strong>在我的两年学习经历中，嵌入式对我而言即是兴趣也是未来发展的方向。</strong></p>
+<p><strong>在我看来，嵌入式就是设计合适的能够完成目标任务需求的电子装置。在其中，我们会使用电气知识设计适用的电路板，在其中添加计算机控制单元——MCU，我们使用C语言（主要）或者其他编程语言对单片机进行编程，实现控制需求。</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/ART-Pi.jpg" alt="1.单片机图"></p>
+<p>比较正式的说法：<em><strong>嵌入式即嵌入式系统，IEEE（美国电气和电子工程师协会）对其定义是用于控制、监视或者辅助操作机器和设备的装置，是一种专用的计算机系统；国内普遍认同的嵌入式系统定义是以应用为中心，以计算机技术为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统；从应用对象上加以定义来说，嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</strong></em></p>
+<p>嵌入式同时设计软件和硬件，在实际开发中，会专精一个方向，另一个辅修——嵌入式硬件工程师和嵌入式软件工程师，像我的话，主要是偏向软件方向，但我也会了解使用电路知识，PCB设计工具；认识的一个在公司里的硬件工程师大佬，就主攻硬件电路，软件方面主要使用STM32实现控制，会部署一些中间件在其中方便实现控制功能；</p>
+<h2 id="科创中心嵌入式小组"><a href="#科创中心嵌入式小组" class="headerlink" title="科创中心嵌入式小组"></a>科创中心嵌入式小组</h2><p><strong>在大学生科创中心，开设有嵌入式学习小组，每年会招收新成员进入培训，指导学习STM32、PCB设计、运动控制、FreeRtos、物联网等技术知识，会有学长带领学员设计机器人、无人机、智能小车等嵌入式系统集成设备，在实践中学习，在学习中探索未来，提高工科生的自我认知。</strong></p>
+<p>在实践学习中，科创中心的嵌入式小组主要发展为多个方向：</p>
+<p><strong>无人机组</strong> ：</p>
+<p><strong>工程小车组</strong>：</p>
+<p><strong>物联网开发组</strong>：</p>
+<p><strong>Ros机器人组</strong> ：</p>
+<p><strong>有趣的作品分享</strong>:</p>
+<iframe src="//player.bilibili.com/player.html?aid=226936627&amp;bvid=BV1Uh41137Th&amp;cid=1078338627&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
+
+
+<iframe src="//player.bilibili.com/player.html?aid=420981979&amp;bvid=BV12341117rG&amp;cid=421416333&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>   
+
+
+<iframe src="//player.bilibili.com/player.html?aid=677612560&amp;bvid=BV1zm4y197Py&amp;cid=467867782&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/07/13/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>第一次写博客</title>
+    <url>/2023/07/14/di-yi-ci-xie-bo-ke/</url>
+    <content><![CDATA[<h1 id="你好"><a href="#你好" class="headerlink" title="你好"></a>你好</h1><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>段落格式<br>在文段结尾添加两个空格并回车，即可换行完成段落结束<br>就像这样</p>
+<p>当然也可以使用一个空行进行表示重新开始段落</p>
+<p><em>斜体文本</em></p>
+<p><em>斜体文本</em></p>
+<p><strong>粗体文本</strong></p>
+<p><strong>粗体文本</strong></p>
+<p><em><strong>粗斜体文本</strong></em></p>
+<p><em><strong>粗斜体文本</strong></em></p>
+<hr>
+<p>分割线</p>
+<hr>
+<p>删除线</p>
+<p><del>biubiu</del></p>
+<p>下划线</p>
+<p><u>biubiubiu</u></p>
+<p>创建文本补充说明 脚注<a href="%E4%BD%BF%E7%94%A8%E6%AD%A4%E7%AC%A6%E5%8F%B7">^RUNOOB</a>。  </p>
+<hr>
+<h1 id="列表书写格式"><a href="#列表书写格式" class="headerlink" title="列表书写格式"></a><strong>列表书写格式</strong></h1><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a><strong>无序列表</strong></h2><ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a><strong>有序列表</strong></h2><ol>
+<li>第一项<ul>
+<li>你好</li>
+<li>这里是</li>
+<li>列表嵌套</li>
+</ul>
+</li>
+<li>第二项<ul>
+<li>使用’-‘加空格就行</li>
+<li>biu</li>
+</ul>
+</li>
+<li>第三项<ul>
+<li>记得在’-‘前添加两个或四个空格</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>区块引用<br>是你吗<br>呼啦啦<br>biubiu</p>
+</blockquote>
+<blockquote>
+<p>刘大昌</p>
+</blockquote>
+<blockquote>
+<p>的个人博客</p>
+</blockquote>
+<hr>
+<p>仅练习记录</p>
+<hr>
+]]></content>
+      <categories>
+        <category>文书</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32F4驱动USB实现虚拟串口</title>
     <url>/2023/07/15/stm32f4-qu-dong-usb-shi-xian-xu-ni-chuan-kou/</url>
     <content><![CDATA[<h1 id="STM32F4驱动USB实现虚拟串口"><a href="#STM32F4驱动USB实现虚拟串口" class="headerlink" title="STM32F4驱动USB实现虚拟串口"></a>STM32F4驱动USB实现虚拟串口</h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a>实现目的</h2><p>使用Dap-link和stlink的时候，就发现这些仿真器上并没有USB转TTL芯片，就可以实现USB转串口，实现虚拟串口，非常方便。这里实测得出，使用USB虚拟串口，可以轻松达到921600波特率，接近1M/s，因为这个虚拟串口实际就是USB通讯，使用USB通讯，模拟COM类通讯端口协议，实现串口通讯。</p>
@@ -303,119 +416,6 @@
         <tag>F407</tag>
         <tag>USB</tag>
         <tag>虚拟串口</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/07/13/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>嵌入式学习简介</title>
-    <url>/2023/07/23/qian-ru-shi-xue-xi-jian-jie/</url>
-    <content><![CDATA[<h1 id="嵌入式学习方向介绍"><a href="#嵌入式学习方向介绍" class="headerlink" title="嵌入式学习方向介绍"></a>嵌入式学习方向介绍</h1><h2 id="视频简介"><a href="#视频简介" class="headerlink" title="视频简介"></a>视频简介</h2><iframe src="//player.bilibili.com/player.html?aid=378089584&amp;bvid=BV1Hf4y1w7BH&amp;cid=410341156&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-<h2 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h2><p><strong>在我的两年学习经历中，嵌入式对我而言即是兴趣也是未来发展的方向。</strong></p>
-<p><strong>在我看来，嵌入式就是设计合适的能够完成目标任务需求的电子装置。在其中，我们会使用电气知识设计适用的电路板，在其中添加计算机控制单元——MCU，我们使用C语言（主要）或者其他编程语言对单片机进行编程，实现控制需求。</strong></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/ART-Pi.jpg" alt="1.单片机图"></p>
-<p>比较正式的说法：<em><strong>嵌入式即嵌入式系统，IEEE（美国电气和电子工程师协会）对其定义是用于控制、监视或者辅助操作机器和设备的装置，是一种专用的计算机系统；国内普遍认同的嵌入式系统定义是以应用为中心，以计算机技术为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统；从应用对象上加以定义来说，嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</strong></em></p>
-<p>嵌入式同时设计软件和硬件，在实际开发中，会专精一个方向，另一个辅修——嵌入式硬件工程师和嵌入式软件工程师，像我的话，主要是偏向软件方向，但我也会了解使用电路知识，PCB设计工具；认识的一个在公司里的硬件工程师大佬，就主攻硬件电路，软件方面主要使用STM32实现控制，会部署一些中间件在其中方便实现控制功能；</p>
-<h2 id="科创中心嵌入式小组"><a href="#科创中心嵌入式小组" class="headerlink" title="科创中心嵌入式小组"></a>科创中心嵌入式小组</h2><p><strong>在大学生科创中心，开设有嵌入式学习小组，每年会招收新成员进入培训，指导学习STM32、PCB设计、运动控制、FreeRtos、物联网等技术知识，会有学长带领学员设计机器人、无人机、智能小车等嵌入式系统集成设备，在实践中学习，在学习中探索未来，提高工科生的自我认知。</strong></p>
-<p>在实践学习中，科创中心的嵌入式小组主要发展为多个方向：</p>
-<p><strong>无人机组</strong> ：</p>
-<p><strong>工程小车组</strong>：</p>
-<p><strong>物联网开发组</strong>：</p>
-<p><strong>Ros机器人组</strong> ：</p>
-<p><strong>有趣的作品分享</strong>:</p>
-<iframe src="//player.bilibili.com/player.html?aid=226936627&amp;bvid=BV1Uh41137Th&amp;cid=1078338627&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-
-<iframe src="//player.bilibili.com/player.html?aid=420981979&amp;bvid=BV12341117rG&amp;cid=421416333&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>   
-
-
-<iframe src="//player.bilibili.com/player.html?aid=677612560&amp;bvid=BV1zm4y197Py&amp;cid=467867782&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-
-]]></content>
-  </entry>
-  <entry>
-    <title>第一次写博客</title>
-    <url>/2023/07/14/di-yi-ci-xie-bo-ke/</url>
-    <content><![CDATA[<h1 id="你好"><a href="#你好" class="headerlink" title="你好"></a>你好</h1><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>段落格式<br>在文段结尾添加两个空格并回车，即可换行完成段落结束<br>就像这样</p>
-<p>当然也可以使用一个空行进行表示重新开始段落</p>
-<p><em>斜体文本</em></p>
-<p><em>斜体文本</em></p>
-<p><strong>粗体文本</strong></p>
-<p><strong>粗体文本</strong></p>
-<p><em><strong>粗斜体文本</strong></em></p>
-<p><em><strong>粗斜体文本</strong></em></p>
-<hr>
-<p>分割线</p>
-<hr>
-<p>删除线</p>
-<p><del>biubiu</del></p>
-<p>下划线</p>
-<p><u>biubiubiu</u></p>
-<p>创建文本补充说明 脚注<a href="%E4%BD%BF%E7%94%A8%E6%AD%A4%E7%AC%A6%E5%8F%B7">^RUNOOB</a>。  </p>
-<hr>
-<h1 id="列表书写格式"><a href="#列表书写格式" class="headerlink" title="列表书写格式"></a><strong>列表书写格式</strong></h1><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a><strong>无序列表</strong></h2><ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a><strong>有序列表</strong></h2><ol>
-<li>第一项<ul>
-<li>你好</li>
-<li>这里是</li>
-<li>列表嵌套</li>
-</ul>
-</li>
-<li>第二项<ul>
-<li>使用’-‘加空格就行</li>
-<li>biu</li>
-</ul>
-</li>
-<li>第三项<ul>
-<li>记得在’-‘前添加两个或四个空格</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>区块引用<br>是你吗<br>呼啦啦<br>biubiu</p>
-</blockquote>
-<blockquote>
-<p>刘大昌</p>
-</blockquote>
-<blockquote>
-<p>的个人博客</p>
-</blockquote>
-<hr>
-<p>仅练习记录</p>
-<hr>
-]]></content>
-      <categories>
-        <category>文书</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
       </tags>
   </entry>
 </search>
