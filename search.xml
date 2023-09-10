@@ -351,4 +351,96 @@
         <tag>虚拟串口</tag>
       </tags>
   </entry>
+  <entry>
+    <title>RK3588S-Rock5A开机玩耍记录</title>
+    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
+    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
+<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
+<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
+<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
+<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
+<p>扫描以太网共享的IP</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
+<p>俺的是192.168.137.219</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
+<p>用户名和密码都是 rock</p>
+<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
+<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>设置VNC登录密码</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
+Password:
+Verify:
+Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
+A view-only password is not used
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加配置文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment">#!/bin/sh</span>
+<span class="token comment"># Start kde Desktop </span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
+<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
+    *gnome*<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
+        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
+      <span class="token keyword">fi</span>
+      <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token keyword">esac</span>
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
+xsetroot <span class="token parameter variable">-solid</span> grey
+xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
+twm <span class="token operator">&amp;</span>
+startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>增加可执行权限：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>启动vnc服务：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>查看VNC服务</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
+
+TigerVNC server sessions:
+
+X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
+<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用VNC连接即可</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
+<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>RK3588s</tag>
+        <tag>Rock5A</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
