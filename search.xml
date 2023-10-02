@@ -1,49 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/07/13/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+    <title>RK3588S-Rock5A开机玩耍记录</title>
+    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
+    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
+<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
+<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
+<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
+<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
+<p>扫描以太网共享的IP</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
+<p>俺的是192.168.137.219</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
+<p>用户名和密码都是 rock</p>
+<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
+<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>设置VNC登录密码</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
+Password:
+Verify:
+Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
+A view-only password is not used
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>添加配置文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment">#!/bin/sh</span>
+<span class="token comment"># Start kde Desktop </span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
+<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
+    *gnome*<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
+        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
+      <span class="token keyword">fi</span>
+      <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token keyword">esac</span>
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
+xsetroot <span class="token parameter variable">-solid</span> grey
+xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
+twm <span class="token operator">&amp;</span>
+startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>增加可执行权限：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>启动vnc服务：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>查看VNC服务</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
+
+TigerVNC server sessions:
+
+X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
+<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用VNC连接即可</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
+<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
 ]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>RK3588s</tag>
+        <tag>Rock5A</tag>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
-    <title>嵌入式学习简介</title>
-    <url>/2023/07/23/qian-ru-shi-xue-xi-jian-jie/</url>
-    <content><![CDATA[<h1 id="嵌入式学习方向介绍"><a href="#嵌入式学习方向介绍" class="headerlink" title="嵌入式学习方向介绍"></a>嵌入式学习方向介绍</h1><h2 id="视频简介"><a href="#视频简介" class="headerlink" title="视频简介"></a>视频简介</h2><iframe src="//player.bilibili.com/player.html?aid=378089584&amp;bvid=BV1Hf4y1w7BH&amp;cid=410341156&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-<h2 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h2><p><strong>在我的两年学习经历中，嵌入式对我而言即是兴趣也是未来发展的方向。</strong></p>
-<p><strong>在我看来，嵌入式就是设计合适的能够完成目标任务需求的电子装置。在其中，我们会使用电气知识设计适用的电路板，在其中添加计算机控制单元——MCU，我们使用C语言（主要）或者其他编程语言对单片机进行编程，实现控制需求。</strong></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/ART-Pi.jpg" alt="1.单片机图"></p>
-<p>比较正式的说法：<em><strong>嵌入式即嵌入式系统，IEEE（美国电气和电子工程师协会）对其定义是用于控制、监视或者辅助操作机器和设备的装置，是一种专用的计算机系统；国内普遍认同的嵌入式系统定义是以应用为中心，以计算机技术为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统；从应用对象上加以定义来说，嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</strong></em></p>
-<p>嵌入式同时设计软件和硬件，在实际开发中，会专精一个方向，另一个辅修——嵌入式硬件工程师和嵌入式软件工程师，像我的话，主要是偏向软件方向，但我也会了解使用电路知识，PCB设计工具；认识的一个在公司里的硬件工程师大佬，就主攻硬件电路，软件方面主要使用STM32实现控制，会部署一些中间件在其中方便实现控制功能；</p>
-<h2 id="科创中心嵌入式小组"><a href="#科创中心嵌入式小组" class="headerlink" title="科创中心嵌入式小组"></a>科创中心嵌入式小组</h2><p><strong>在大学生科创中心，开设有嵌入式学习小组，每年会招收新成员进入培训，指导学习STM32、PCB设计、运动控制、FreeRtos、物联网等技术知识，会有学长带领学员设计机器人、无人机、智能小车等嵌入式系统集成设备，在实践中学习，在学习中探索未来，提高工科生的自我认知。</strong></p>
-<p>在实践学习中，科创中心的嵌入式小组主要发展为多个方向：</p>
-<p><strong>无人机组</strong> ：</p>
-<p><strong>工程小车组</strong>：</p>
-<p><strong>物联网开发组</strong>：</p>
-<p><strong>Ros机器人组</strong> ：</p>
-<p><strong>有趣的作品分享</strong>:</p>
-<iframe src="//player.bilibili.com/player.html?aid=226936627&amp;bvid=BV1Uh41137Th&amp;cid=1078338627&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-
-<iframe src="//player.bilibili.com/player.html?aid=420981979&amp;bvid=BV12341117rG&amp;cid=421416333&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>   
-
-
-<iframe src="//player.bilibili.com/player.html?aid=677612560&amp;bvid=BV1zm4y197Py&amp;cid=467867782&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-
+    <title>Rock5A-Rk3588s VNCserver开机自启</title>
+    <url>/2023/09/12/rock5a-rk3588s-vncserver-kai-ji-zi-qi/</url>
+    <content><![CDATA[<h1 id="Rock5A-Rk3588s-VNCserver开机自启"><a href="#Rock5A-Rk3588s-VNCserver开机自启" class="headerlink" title="Rock5A-Rk3588s VNCserver开机自启"></a>Rock5A-Rk3588s VNCserver开机自启</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>每次Rock5A开机后，使用VNCserver访问连接时都需要重新在终端里输入VNC开启命令，蛮不方便的，所以就需要将VNCserver开启命令添加到开机自启脚本里，实现开机即可无线访问。</p>
+<p>biubiubiubiu</p>
 ]]></content>
   </entry>
   <entry>
@@ -352,95 +405,49 @@
       </tags>
   </entry>
   <entry>
-    <title>RK3588S-Rock5A开机玩耍记录</title>
-    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
-    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
-<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
-<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
-<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
-<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
-<p>扫描以太网共享的IP</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
-<p>俺的是192.168.137.219</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
-<p>用户名和密码都是 rock</p>
-<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
-<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
-<span class="token function">sudo</span> <span class="token function">apt</span> update
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <title>嵌入式学习简介</title>
+    <url>/2023/07/23/qian-ru-shi-xue-xi-jian-jie/</url>
+    <content><![CDATA[<h1 id="嵌入式学习方向介绍"><a href="#嵌入式学习方向介绍" class="headerlink" title="嵌入式学习方向介绍"></a>嵌入式学习方向介绍</h1><h2 id="视频简介"><a href="#视频简介" class="headerlink" title="视频简介"></a>视频简介</h2><iframe src="//player.bilibili.com/player.html?aid=378089584&amp;bvid=BV1Hf4y1w7BH&amp;cid=410341156&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
 
-<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>设置VNC登录密码</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h2><p><strong>在我的两年学习经历中，嵌入式对我而言即是兴趣也是未来发展的方向。</strong></p>
+<p><strong>在我看来，嵌入式就是设计合适的能够完成目标任务需求的电子装置。在其中，我们会使用电气知识设计适用的电路板，在其中添加计算机控制单元——MCU，我们使用C语言（主要）或者其他编程语言对单片机进行编程，实现控制需求。</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/ART-Pi.jpg" alt="1.单片机图"></p>
+<p>比较正式的说法：<em><strong>嵌入式即嵌入式系统，IEEE（美国电气和电子工程师协会）对其定义是用于控制、监视或者辅助操作机器和设备的装置，是一种专用的计算机系统；国内普遍认同的嵌入式系统定义是以应用为中心，以计算机技术为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统；从应用对象上加以定义来说，嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</strong></em></p>
+<p>嵌入式同时设计软件和硬件，在实际开发中，会专精一个方向，另一个辅修——嵌入式硬件工程师和嵌入式软件工程师，像我的话，主要是偏向软件方向，但我也会了解使用电路知识，PCB设计工具；认识的一个在公司里的硬件工程师大佬，就主攻硬件电路，软件方面主要使用STM32实现控制，会部署一些中间件在其中方便实现控制功能；</p>
+<h2 id="科创中心嵌入式小组"><a href="#科创中心嵌入式小组" class="headerlink" title="科创中心嵌入式小组"></a>科创中心嵌入式小组</h2><p><strong>在大学生科创中心，开设有嵌入式学习小组，每年会招收新成员进入培训，指导学习STM32、PCB设计、运动控制、FreeRtos、物联网等技术知识，会有学长带领学员设计机器人、无人机、智能小车等嵌入式系统集成设备，在实践中学习，在学习中探索未来，提高工科生的自我认知。</strong></p>
+<p>在实践学习中，科创中心的嵌入式小组主要发展为多个方向：</p>
+<p><strong>无人机组</strong> ：</p>
+<p><strong>工程小车组</strong>：</p>
+<p><strong>物联网开发组</strong>：</p>
+<p><strong>Ros机器人组</strong> ：</p>
+<p><strong>有趣的作品分享</strong>:</p>
+<iframe src="//player.bilibili.com/player.html?aid=226936627&amp;bvid=BV1Uh41137Th&amp;cid=1078338627&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
-Password:
-Verify:
-Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
-A view-only password is not used
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>添加配置文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<iframe src="//player.bilibili.com/player.html?aid=420981979&amp;bvid=BV12341117rG&amp;cid=421416333&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>   
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-<span class="token comment">#!/bin/sh</span>
-<span class="token comment"># Start kde Desktop </span>
-<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
-<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
-<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
-    *gnome*<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
-        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
-      <span class="token keyword">fi</span>
-      <span class="token punctuation">;</span><span class="token punctuation">;</span>
-  <span class="token keyword">esac</span>
-<span class="token keyword">fi</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
-<span class="token keyword">fi</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
-<span class="token keyword">fi</span>
-<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
-xsetroot <span class="token parameter variable">-solid</span> grey
-xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
-twm <span class="token operator">&amp;</span>
-startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>增加可执行权限：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<iframe src="//player.bilibili.com/player.html?aid=677612560&amp;bvid=BV1zm4y197Py&amp;cid=467867782&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
 
-<p><strong>启动vnc服务：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>查看VNC服务</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
 
-TigerVNC server sessions:
-
-X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
-<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>使用VNC连接即可</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
-<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>RK3588s</tag>
-        <tag>Rock5A</tag>
-        <tag>Linux</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/07/13/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>
