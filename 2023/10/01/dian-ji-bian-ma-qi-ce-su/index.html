@@ -1,0 +1,1731 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="STM32编码器速度采集, 科创中心">
+    <meta name="description" content="电机编码器测速实验效果
+1.目的电机转动时，测出电机的实时转速，进而对电机进行控制。
+2.简介以光电式增量编码器为例：
+原理：•Encoder Interface 编码器接口
+•编码器接口可接收增量（正交）编码器的信号，根据编码器旋转产生的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>STM32编码器速度采集 | 科创中心</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">科创中心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-paper-plane" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>时轴</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tag" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>推荐链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>部门</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/chairman">
+          
+          <i class="fa-solid fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>主席团</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/office">
+          
+          <i class="fa-solid fa-print" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>办公室</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/competition">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>竞赛部</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/propagate">
+          
+          <i class="fa-solid fa-camera-retro" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>宣传部</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tissue">
+          
+          <i class="fa-solid fa-sliders" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>组织部</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/train">
+          
+          <i class="fa-solid fa-graduation-cap" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>培训部</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/members" class="waves-effect waves-light">
+      
+      <i class="fa-solid fa-user-group" style="zoom: 0.6;"></i>
+      
+      <span>历届成员</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">科创中心</div>
+        <div class="logo-desc">
+            
+            惟愿无事常相见
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-archive"></i>
+			
+			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paper-plane" style="position: absolute;left:50px" ></i>
+			      
+		          <span>时轴</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tag" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			推荐链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			部门
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/chairman " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>主席团</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/office " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-print" style="position: absolute;left:50px" ></i>
+			      
+		          <span>办公室</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/competition " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>竞赛部</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/propagate " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-camera-retro" style="position: absolute;left:50px" ></i>
+			      
+		          <span>宣传部</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tissue " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-sliders" style="position: absolute;left:50px" ></i>
+			      
+		          <span>组织部</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/train " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-graduation-cap" style="position: absolute;left:50px" ></i>
+			      
+		          <span>培训部</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/members" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa-solid fa-user-group"></i>
+			
+			历届成员
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780033135.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">STM32编码器速度采集</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/STM32/">
+                                    <span class="chip bg-color">
+                                        STM32
+                                    </span>
+                                </a>
+                                
+                                <a href="/tags/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/">
+                                    <span class="chip bg-color">
+                                        直流电机
+                                    </span>
+                                </a>
+                                
+                                <a href="/tags/%E7%BC%96%E7%A0%81%E5%99%A8/">
+                                    <span class="chip bg-color">
+                                        编码器
+                                    </span>
+                                </a>
+                                
+                        </div>
+                        
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
+                                    嵌入式
+                                </a>
+                                
+                        </div>
+                        
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                            2023-10-01
+                    </div>
+                    
+
+                        
+                            <div class="post-date info-break-policy">
+                                <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                                    2023-10-08
+                            </div>
+                            
+
+                                
+                                    <div class="info-break-policy">
+                                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                                            948
+                                    </div>
+                                    
+
+                                        
+                                            <div class="info-break-policy">
+                                                <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                                                    3
+                                                        分
+                                            </div>
+                                            
+
+                                                
+                                                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                                                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                                                            <span id="busuanzi_value_page_pv"></span>
+                                                    </div>
+                                                    
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/libs/prism/prism.min.css">
+            
+
+                
+
+                        <div class="card-content article-card-content">
+                            <div id="articleContent">
+                                <h1 id="电机编码器测速"><a href="#电机编码器测速" class="headerlink" title="电机编码器测速"></a>电机编码器测速</h1><h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><p><img src="https://postimg.cc/cgBfpzB4" alt="效果图"></p>
+<h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h3><p>电机转动时，测出电机的实时转速，进而对电机进行控制。</p>
+<h3 id="2-简介"><a href="#2-简介" class="headerlink" title="2.简介"></a>2.简介</h3><p>以光电式增量编码器为例：</p>
+<h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><p>•Encoder Interface 编码器接口</p>
+<p>•编码器接口可接收增量（正交）编码器的信号，根据编码器旋转产生的正交信号脉冲，自动控制CNT自增或自减，从而指示编码器的位置、旋转方向和旋转速度</p>
+<p>•每个高级定时器和通用定时器都拥有1个编码器接口</p>
+<p>•两个输入引脚借用了输入捕获的通道1和通道2</p>
+<p>图片中有一个圆盘，右边是个小红外灯（发光元件），一直照向左边的光敏元件。这个圆盘上有一圈齿，光线正好可以透过小齿的空隙照到光敏元件，随着圆盘 的转动，小齿转走了，又马上挡住光，紧接着下一个小齿…     按照上面的说法，圆盘一直转，光敏元件就能得到一个如下图 A 相那样的波， 通过统计波形所有高电平的数量我们就能算出来这个盘一共转了多少刻度。并 且 也 能 推 算 出 盘 转 到 了 什 么 位 置 。 并且，通过实时计算波的频率，我们就可以测速了。 但是这样有个问题，不知道盘转的方向，正转反转都是这样一个波。 解决方法就是在小齿的内圈再刻上一圈与外圈错开 90°的小齿！就可以得到下 图 B 相的波形，这样就可分辨方向了。</p>
+<p><img src="https://postimg.cc/vgXw4QvR" alt="image"></p>
+<p>A 和 B 两组脉冲相位差 90º，可以判断出旋转方向和旋转速度。</p>
+<p><img src="https://postimg.cc/CzB9gC9p" alt="image"></p>
+<p>通过观察上面 AB 相的波我们发现，圆盘向某个方向一直旋转，AB 两相就是这四个状态周而复始。</p>
+<p><img src="https://postimg.cc/QV5pZHSn" alt="image"></p>
+<p>其次我们看一下编码器的线数：</p>
+<p>我们使用的电机后面带的霍尔编码器就是 13ppr，也就是 13 线。也就是电机每转一圈 A 或 B 相的脉冲数。 也就是电机转一圈 A 相和 B 相就分别有 13 个脉冲。</p>
+<ul>
+<li>GMR编码器  500ppr</li>
+<li>霍尔编码器   13ppr</li>
+</ul>
+<p>如果我们购买的电机为减速电机的话，那么他会有一个减速比；</p>
+<p>一圈脉冲总数=13*减速比（减速比：电机输出转速/电机输入转速）</p>
+<p>例：减速比为1：50，则一圈脉冲总数=13*50=650。</p>
+<p>通过上述分析，用 STM32 的正交解码库函数就能搞定编码器。</p>
+<p><img src="https://postimg.cc/dDgMxSDK" alt="image"></p>
+<p>TIM_EncoderMode_TI1 代表仅 TI1 计数；</p>
+<p> TIM_EncoderMode_TI2 代表仅 TI2 计数； </p>
+<p>TIM_EncoderMode_TI12 代表 TI1 TI2 都计数。</p>
+<p> TI1 就是输入通道 1，就是编码器 A 相，TI2 同理。</p>
+<p><img src="https://postimg.cc/rDSfgfRg" alt="image"></p>
+<p><img src="https://postimg.cc/WD8Xctnk" alt="image"></p>
+<p><img src="https://postimg.cc/xc98cCyC" alt="image"></p>
+<h3 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h3><p>流程图：</p>
+<p><img src="https://postimg.cc/w3CPVybq" alt="image"></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">Encoder_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//开启时钟</span>
+	<span class="token function">RCC_APB1PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB1Periph_TIM3<span class="token punctuation">,</span>ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//TIM3  CH1、CH2</span>
+	GPIO_InitTypeDef GPIO_InitStructure<span class="token punctuation">;</span>
+	GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IPU<span class="token punctuation">;</span>
+	GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_6 <span class="token operator">|</span> GPIO_Pin_7<span class="token punctuation">;</span>
+	GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//定时器配置</span>
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure<span class="token punctuation">;</span>
+	TIM_TimeBaseInitStructure<span class="token punctuation">.</span>TIM_ClockDivision <span class="token operator">=</span> TIM_CKD_DIV1<span class="token punctuation">;</span>
+	TIM_TimeBaseInitStructure<span class="token punctuation">.</span>TIM_CounterMode <span class="token operator">=</span> TIM_CounterMode_Up<span class="token punctuation">;</span>
+	TIM_TimeBaseInitStructure<span class="token punctuation">.</span>TIM_Period <span class="token operator">=</span> <span class="token number">65536</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>		<span class="token comment">//ARR</span>
+	TIM_TimeBaseInitStructure<span class="token punctuation">.</span>TIM_Prescaler <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>		<span class="token comment">//PSC</span>
+	TIM_TimeBaseInitStructure<span class="token punctuation">.</span>TIM_RepetitionCounter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">TIM_TimeBaseInit</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">,</span> <span class="token operator">&amp;</span>TIM_TimeBaseInitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//输入捕获</span>
+	TIM_ICInitTypeDef TIM_ICInitStructure<span class="token punctuation">;</span>
+	<span class="token function">TIM_ICStructInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>TIM_ICInitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//给结构体附上初值</span>
+	TIM_ICInitStructure<span class="token punctuation">.</span>TIM_Channel <span class="token operator">=</span> TIM_Channel_1<span class="token punctuation">;</span>   <span class="token comment">//通道一</span>
+	TIM_ICInitStructure<span class="token punctuation">.</span>TIM_ICFilter <span class="token operator">=</span> <span class="token number">0xF</span><span class="token punctuation">;</span>    <span class="token comment">//滤波抗噪音（0-0xf值越大效果越好）</span>
+	<span class="token function">TIM_ICInit</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">,</span> <span class="token operator">&amp;</span>TIM_ICInitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//写入结构体</span>
+	TIM_ICInitStructure<span class="token punctuation">.</span>TIM_Channel <span class="token operator">=</span> TIM_Channel_2<span class="token punctuation">;</span>
+	TIM_ICInitStructure<span class="token punctuation">.</span>TIM_ICFilter <span class="token operator">=</span> <span class="token number">0xF</span><span class="token punctuation">;</span>
+	<span class="token function">TIM_ICInit</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">,</span> <span class="token operator">&amp;</span>TIM_ICInitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token function">TIM_EncoderInterfaceConfig</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">,</span>TIM_EncoderMode_TI12<span class="token punctuation">,</span> TIM_ICPolarity_Rising<span class="token punctuation">,</span> TIM_ICPolarity_Rising<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//TI12极性配置</span>
+	
+	<span class="token function">TIM_Cmd</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//得到CNT当前值</span>
+<span class="token class-name">int16_t</span> <span class="token function">Encoder_Get</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">int16_t</span> Temp<span class="token punctuation">;</span>
+	Temp <span class="token operator">=</span> <span class="token function">TIM_GetCounter</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">TIM_SetCounter</span><span class="token punctuation">(</span>TIM3<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> Temp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">//main</span>
+
+<span class="token class-name">int16_t</span> Speed<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token function">OLED_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">Timer_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">Encoder_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token function">OLED_ShowString</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Speed:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">OLED_ShowSignedNum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> Speed<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//TIM定时器可以有效给speed赋值，有两种选择：1.进中断次数多不溢出，且速度延迟低（当前）   2.溢出</span>
+<span class="token keyword">void</span> <span class="token function">TIM2_IRQHandler</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">TIM_GetITStatus</span><span class="token punctuation">(</span>TIM2<span class="token punctuation">,</span> TIM_IT_Update<span class="token punctuation">)</span> <span class="token operator">==</span> SET<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		Speed <span class="token operator">=</span> <span class="token function">Encoder_Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">TIM_ClearITPendingBit</span><span class="token punctuation">(</span>TIM2<span class="token punctuation">,</span> TIM_IT_Update<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这样就可以对电机进行速度测量了。</p>
+
+                                    
+                            </div>
+                            <hr />
+
+                            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">机电22级宋科成</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://ustic.top/2023/10/01/dian-ji-bian-ma-qi-ce-su/">http://ustic.top/2023/10/01/dian-ji-bian-ma-qi-ce-su/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">机电22级宋科成</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+                                <div class="tag_share" style="display: block;">
+                                    <div class="post-meta__tag-list" style="display: inline-block;">
+                                        
+                                            <div class="article-tag">
+                                                
+                                                    <a href="/tags/STM32/">
+                                                        <span class="chip bg-color">
+                                                            STM32
+                                                        </span>
+                                                    </a>
+                                                    
+                                                    <a href="/tags/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/">
+                                                        <span class="chip bg-color">
+                                                            直流电机
+                                                        </span>
+                                                    </a>
+                                                    
+                                                    <a href="/tags/%E7%BC%96%E7%A0%81%E5%99%A8/">
+                                                        <span class="chip bg-color">
+                                                            编码器
+                                                        </span>
+                                                    </a>
+                                                    
+                                            </div>
+                                            
+                                    </div>
+                                    <div class="post_share"
+                                        style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                                        <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                                    </div>
+                                </div>
+                                
+                                    <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+                                        
+                        </div>
+    </div>
+
+    
+
+                
+
+                            
+
+                                        
+
+                                                    
+                                                        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'TDZUmZerX6VqnfJv5E9xOQv1-gzGzoHsz',
+        appKey: '9yLFi7oVqiKPjIXNMPqnmi57',
+        notify: '' === 'true',
+        verify: '' === 'true',
+        visitor: '' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '昵称填写qq可以显示qq头像和昵称哦~',
+        enableQQ: true,
+        emojiCDN: '//i0.hdslb.com/bfs/emote/',
+        // 表情title和图片映射
+        emojiMaps: {
+            "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+            "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+            "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+            "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+            "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+            "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+            "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+            "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+            "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+            "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+            "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+            "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+            "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+            "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+            "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+            "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+            "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+            "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+            "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+            "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+            "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
+            "tv_打脸": "56ab10b624063e966bfcb76ea5dc4794d87dfd47.png",
+            "tv_抓狂": "fe31c08edad661d63762b04e17b8d5ae3c71a757.png",
+            "tv_抠鼻": "c666f55e88d471e51bbd9fab9bb308110824a6eb.png",
+            "tv_斜眼笑": "911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png",
+            "tv_无奈": "ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png",
+            "tv_晕": "5443c22b4d07fb1907ccc610c8e6db254f2461b7.png",
+            "tv_流汗": "cead1c351ab8d79e9f369605beb90148db0fbed3.png",
+            "tv_流泪": "7e71cde7858f0cd50d74b0264aa26db612a8a167.png",
+            "tv_流鼻血": "c32d39db2737f89b904ca32700d140a9241b0767.png",
+            "tv_点赞": "f85c354995bd99e28fc76c869bfe42ba6438eff4.png",
+            "tv_生气": "26702dcafdab5e8225b43ffd23c94ac1ff932654.png",
+            "tv_生病": "8b0ec90e6b86771092a498c54f09fc94621c1900.png",
+            "tv_疑问": "0793d949b18d7be716078349c202c15ff166f314.png",
+            "tv_白眼": "c1d59f439e379ee50eef488bcb5e5378e5044ea4.png",
+            "tv_皱眉": "72ccad6679fea0d14cce648b4d818e09b8ffea2d.png",
+            "tv_目瞪口呆": "0b8cb81a68de5d5365212c99375e7ace3e7891b7.png",
+            "tv_睡着": "8b196675b53af58264f383c50ad0945048290b33.png",
+            "tv_笑哭": "1abc628f6d4f4caf9d0e7800878f4697abbc8273.png",
+            "tv_腼腆": "89712c0d4af73e67f89e35cbc518420380a7f6f4.png",
+            "tv_色": "61822c7e9aae5da76475e7892534545336b23a6f.png",
+            "tv_调侃": "4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png",
+            "tv_调皮": "b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png",
+            "tv_鄙视": "6e72339f346a692a495b123174b49e4e8e781303.png",
+            "tv_闭嘴": "c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png",
+            "tv_难过": "87f46748d3f142ebc6586ff58860d0e2fc8263ba.png",
+            "tv_馋": "fc7e829b845c43c623c8b490ee3602b7f0e76a31.png",
+            "tv_鬼脸": "0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png",
+            "tv_黑人问号": "45821a01f51bc867da9edbaa2e070410819a95b2.png",
+            "tv_鼓掌": "1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png"
+            // ... 更多表情
+        },
+        requiredFields: ['nick', 'mail'], //设置必填项
+    });
+</script>
+
+<!--酷Q推送-->
+
+                                                            
+
+                                                                
+
+                                                                            
+
+                                                                                        
+
+                                                                                                    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/10/01/chuan-kou-xue-xi/">
+                    <div class="card-image">
+                        
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696779797519.png" class="responsive-img" alt="STM32串口学习">
+                        
+                        <span class="card-title">STM32串口学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
+                                    嵌入式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%B2%E5%8F%A3/">
+                        <span class="chip bg-color">串口</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/10/01/dma-xue-xi/">
+                    <div class="card-image">
+                        
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780878281.png" class="responsive-img" alt="STM32DMA学习">
+                        
+                        <span class="card-title">STM32DMA学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
+                                    嵌入式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
+                    </a>
+                    
+                    <a href="/tags/DMA/">
+                        <span class="chip bg-color">DMA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+        <!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <a href="/about" target="_blank">大学生科创中心</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/augetyz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2061477607@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2061477607" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2061477607" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
