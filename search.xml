@@ -433,24 +433,6 @@ X <span class="token environment constant">DISPLAY</span> <span class="token com
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/07/13/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>一键超频</title>
     <url>/2023/09/29/a-chao-pin/</url>
     <content><![CDATA[<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776023223.png" alt="引入.png"></p>
@@ -1321,11 +1303,11 @@ ps .USART1-&gt;USART3    */</span>
   <entry>
     <title>STM32 I2C教程</title>
     <url>/2023/10/08/i2c-jiao-cheng/</url>
-    <content><![CDATA[<h1 id="STM32-I2C"><a href="#STM32-I2C" class="headerlink" title="STM32 I2C"></a>STM32 I2C</h1><h2 id="I2C简介"><a href="#I2C简介" class="headerlink" title="I2C简介"></a>I2C简介</h2><p>I^2^C(Inter－Integrated Circuit，集成电路总线)是一种通用的<a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF/108823">总线</a>协议。由Philips公司（2006年迁移到NXP）在1980年代初开发的一种简单、双线双向的同步串行总线，它利用一根时钟线和一根数据线在连接总线的两个器件之间进行信息的传递，为设备之间数据交换提供了一种简单高效的方法。++每个连接到总线上的器件都有唯一的地址，任何器件既可以作为主机也可以作为从机，但同一时刻只允许有一个主机。++</p>
-<h2 id="I2C详解"><a href="#I2C详解" class="headerlink" title="I2C详解"></a>I2C详解</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780147440.png" alt="IIC 总线挂载多个器件"></p>
+    <content><![CDATA[<h1 id="STM32-I2C"><a href="#STM32-I2C" class="headerlink" title="STM32 I2C"></a>STM32 I2C</h1><h2 id="I2C简介"><a href="#I2C简介" class="headerlink" title="I2C简介"></a>I2C简介</h2><p>I2C(Inter－Integrated Circuit，集成电路总线)是一种通用的<a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF/108823">总线</a>协议。由Philips公司（2006年迁移到NXP）在1980年代初开发的一种简单、双线双向的同步串行总线，它利用一根时钟线和一根数据线在连接总线的两个器件之间进行信息的传递，为设备之间数据交换提供了一种简单高效的方法。++每个连接到总线上的器件都有唯一的地址，任何器件既可以作为主机也可以作为从机，但同一时刻只允许有一个主机。++</p>
+<h2 id="I2C详解"><a href="#I2C详解" class="headerlink" title="I2C详解"></a>I2C详解</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831376373.png" alt="IIC 总线挂载多个器件"></p>
 <p><strong>SCL:</strong> 串行时钟线，用于通信双方时钟的同步。<br><strong>SDA:</strong> 串行数据线，用于收发数据。</p>
 <ul>
-<li>I^2^C的特点：<ul>
+<li>I2C的特点：<ul>
 <li>只需要两条总线；</li>
 <li>没有严格的波特率要求，例如使用RS232，主设备生成总线时钟；</li>
 <li>所有组件之间都存在简单的主/从关系，连接到总线的每个设备均可通过唯一地址进行软件寻址；</li>
@@ -1341,7 +1323,7 @@ ps .USART1-&gt;USART3    */</span>
 </ul>
 </li>
 </ul>
-<h3 id="协议层"><a href="#协议层" class="headerlink" title="协议层"></a>协议层</h3><p>I^2^C的协议定义了通讯的起始和停止信号、数据有效性、响应、仲裁、时钟同步和地址广播等环节。</p>
+<h3 id="协议层"><a href="#协议层" class="headerlink" title="协议层"></a>协议层</h3><p>I2C的协议定义了通讯的起始和停止信号、数据有效性、响应、仲裁、时钟同步和地址广播等环节。</p>
 <ul>
 <li><p>I2C 数据在消息中传输，消息被分解为数据帧。</p>
 </li>
@@ -1366,7 +1348,7 @@ ps .USART1-&gt;USART3    */</span>
 </ol>
 </li>
 </ul>
-<h4 id="开始和停止条件："><a href="#开始和停止条件：" class="headerlink" title="开始和停止条件："></a>开始和停止条件：</h4><p> <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780165208.png" alt="开始与停止条件"></p>
+<h4 id="开始和停止条件："><a href="#开始和停止条件：" class="headerlink" title="开始和停止条件："></a>开始和停止条件：</h4><p> <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831429408.png" alt="开始与停止条件"></p>
 <ul>
 <li><p>开始条件：</p>
 <ul>
@@ -1381,7 +1363,7 @@ ps .USART1-&gt;USART3    */</span>
 <li>==SCL线先从低电平切换到高电平，然后SDA线从低电平切换到高电平 #EE3F4D==</li>
 <li>在正常数据写入操作期间，++当 SCL 为高电平时，SDA 上的值不应更改++，因为这可能会导致错误停止情况。</li>
 </ul>
-<p>当两个起始信号之间没有停止信号时，即产生了重复起始信号。主机采用这种方法与另一个从机或相同的从机以不同传输方向进行通信（例如：从写入设备到从设备读出）而不释放总线。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780176770.png" alt="重复起始信号"></p>
+<p>当两个起始信号之间没有停止信号时，即产生了重复起始信号。主机采用这种方法与另一个从机或相同的从机以不同传输方向进行通信（例如：从写入设备到从设备读出）而不释放总线。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831466261.png" alt="重复起始信号"></p>
 </li>
 </ul>
 <h4 id="地址传送："><a href="#地址传送：" class="headerlink" title="地址传送："></a>地址传送：</h4><ul>
@@ -1395,29 +1377,29 @@ ps .USART1-&gt;USART3    */</span>
 <li>第一个字节的前五个最高有效位用于标识 10 位地址，约定为“11110”。</li>
 </ul>
 </li>
-<li><p>7 位寻址模式：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780187718.png" alt="7 位寻址"></p>
+<li><p>7 位寻址模式：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831479079.png" alt="7 位寻址"></p>
 <ul>
 <li>地址帧（++8bit++）的==高 7 位为从机地址 #EE3F4D==，地址帧==第 8 位来决定数据帧传送的方向 #EE3F4D==：++7 位从机地址 + 1位 读/写位++，读/写位控制从机的数据传输方向（++0：写   1：读++）</li>
 </ul>
 </li>
-<li><p>10 位寻址模式：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780197990.png" alt="10位寻址"></p>
+<li><p>10 位寻址模式：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831489064.png" alt="10位寻址"></p>
 <ul>
 <li>地址帧有两字节（两帧），第一帧发送头序列（11110XX0，其中 XX 表示 10 位地址的高两位），然后第二帧发送低八位从机地址。</li>
 </ul>
 </li>
 </ul>
-<h4 id="数据传送："><a href="#数据传送：" class="headerlink" title="数据传送："></a>数据传送：</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780210452.png" alt="数据传送"></p>
+<h4 id="数据传送："><a href="#数据传送：" class="headerlink" title="数据传送："></a>数据传送：</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831497559.png" alt="数据传送"></p>
 <ul>
 <li>发送地址帧并且主设备从从设备接收到 ACK 位后，将开始传输 8 位长的数据。</li>
 <li>当主设备定期生成时钟脉冲时，数据由主设备或从设备根据读/写位在 SDA 上发送。</li>
 <li>每个数据帧后面都有一个 ACK/NACK 位，以表明数据是否已成功接收。在发送下一个数据帧之前，主机或从机必须接收到 ACK 位</li>
 <li>此过程完成后，主设备将向从设备发送停止条件，从而结束传输。</li>
 </ul>
-<h4 id="数据有效性"><a href="#数据有效性" class="headerlink" title="数据有效性"></a>数据有效性</h4><p>I2C 使用 SDA 信号线来传输数据，使用 SCL 信号线进行数据同步。见图数据有效性。SDA 数据线在 SCL 的每个时钟周期传输一位数据。传输时，SCL 为高电平的时候 SDA 表示的数据有效，即此时的 SDA 为高电平时表示数据“1”，为低电平时表示数据“0”。当 SCL 为低电平时，SDA的数据无效，一般在这个时候 SDA 进行电平切换，为下一次表示数据做好准备。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780219724.png" alt="数据有效性"><br>每次数据传输都以字节为单位，每次传输的字节数不受限制。</p>
-<h3 id="综合如下：-EE3F4D"><a href="#综合如下：-EE3F4D" class="headerlink" title="==综合如下： #EE3F4D=="></a>==<strong>综合如下：</strong> #EE3F4D==</h3><h4 id="读数据"><a href="#读数据" class="headerlink" title="读数据"></a>读数据</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780228539.png" alt="读数据"><br>若配置的方向传输位为“读数据”方向，广播完地址，接收到应答信号后，从机开始向主机返回数据，数据包大小也为 8 位，从机每发送完一个数据，都会等待主机的应答信号，重复这个过程，可以返回 N 个数据，这个 N 也没有大小限制。当主机希望停止接收数据时，就向从机返回一个非应答信号，则从机自动停止数据传输。</p>
-<h4 id="写数据"><a href="#写数据" class="headerlink" title="写数据"></a>写数据</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780247419.png" alt="写数据"><br>若配置的方向传输位为“写数据”方向，广播完地址，接收到应答信号后，主机开始正式向从机传输数据 ，数据包的大小为 8 位，主机每发送完一个字节数据，都要等待从机的应答信号，重复这个过程，可以向从机传输 N 个数据，这个 N 没有大小限制。当数据传输结束时，主机向从机发送一个停止传输信号，表示不再传输数据。</p>
-<h4 id="读写数据"><a href="#读写数据" class="headerlink" title="读写数据"></a>读写数据</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780237661.png" alt="读写数据"><br>除了基本的读写，I2C 通讯更常用的是复合格式，该传输过程有两次起始信号 (S)。一般在第一次传输中，主机通过 SLAVE_ADDRESS 寻找到从设备后，发送一段“数据”，这段数据通常用于表示从设备内部的寄存器或存储器地址 (注意区分它与 SLAVE_ADDRESS 的区别)；在第二次的传输中，对该地址的内容进行读或写。也就是说，第一次通讯是告诉从机读写地址，第二次则是读写的实际内容。</p>
-<h3 id="STM32的I2C外设"><a href="#STM32的I2C外设" class="headerlink" title="STM32的I2C外设"></a>STM32的I2C外设</h3><p><strong>==本节内容来自CSDN博主iiCube的一篇<a href="https://blog.csdn.net/yli001/article/details/129491477?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E6%A8%A1%E6%8B%9FI2C&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-129491477.142%5Ev94%5Einsert_down1&amp;spm=1018.2226.3001.4187">文章</a>，写的十分详细 #EE3F4D==</strong></p>
+<h4 id="数据有效性"><a href="#数据有效性" class="headerlink" title="数据有效性"></a>数据有效性</h4><p>I2C 使用 SDA 信号线来传输数据，使用 SCL 信号线进行数据同步。见图数据有效性。SDA 数据线在 SCL 的每个时钟周期传输一位数据。传输时，SCL 为高电平的时候 SDA 表示的数据有效，即此时的 SDA 为高电平时表示数据“1”，为低电平时表示数据“0”。当 SCL 为低电平时，SDA的数据无效，一般在这个时候 SDA 进行电平切换，为下一次表示数据做好准备。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831506322.png" alt="数据有效性"><br>每次数据传输都以字节为单位，每次传输的字节数不受限制。</p>
+<h3 id="综合如下："><a href="#综合如下：" class="headerlink" title="综合如下："></a>综合如下：</h3><h4 id="读数据"><a href="#读数据" class="headerlink" title="读数据"></a>读数据</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831515342.png" alt="读数据"><br>若配置的方向传输位为“读数据”方向，广播完地址，接收到应答信号后，从机开始向主机返回数据，数据包大小也为 8 位，从机每发送完一个数据，都会等待主机的应答信号，重复这个过程，可以返回 N 个数据，这个 N 也没有大小限制。当主机希望停止接收数据时，就向从机返回一个非应答信号，则从机自动停止数据传输。</p>
+<h4 id="写数据"><a href="#写数据" class="headerlink" title="写数据"></a>写数据</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831527781.png" alt="写数据"><br>若配置的方向传输位为“写数据”方向，广播完地址，接收到应答信号后，主机开始正式向从机传输数据 ，数据包的大小为 8 位，主机每发送完一个字节数据，都要等待从机的应答信号，重复这个过程，可以向从机传输 N 个数据，这个 N 没有大小限制。当数据传输结束时，主机向从机发送一个停止传输信号，表示不再传输数据。</p>
+<h4 id="读写数据"><a href="#读写数据" class="headerlink" title="读写数据"></a>读写数据</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831538709.png" alt="读写数据"><br>除了基本的读写，I2C 通讯更常用的是复合格式，该传输过程有两次起始信号 (S)。一般在第一次传输中，主机通过 SLAVE_ADDRESS 寻找到从设备后，发送一段“数据”，这段数据通常用于表示从设备内部的寄存器或存储器地址 (注意区分它与 SLAVE_ADDRESS 的区别)；在第二次的传输中，对该地址的内容进行读或写。也就是说，第一次通讯是告诉从机读写地址，第二次则是读写的实际内容。</p>
+<h3 id="STM32的I2C外设"><a href="#STM32的I2C外设" class="headerlink" title="STM32的I2C外设"></a>STM32的I2C外设</h3><p><strong>本节内容来自CSDN博主iiCube的一篇<a href="https://blog.csdn.net/yli001/article/details/129491477?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E6%A8%A1%E6%8B%9FI2C&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-129491477.142%5Ev94%5Einsert_down1&amp;spm=1018.2226.3001.4187">文章</a>，写的十分详细</strong></p>
 <p><strong>在讲硬件I2C之前不得不吐槽一下这个硬件I2C外设，有时候就突然会卡在某个事件的检测，需要关闭电源重新启动才有用，不过虽然可能硬件I2C可能会有问题，可能以后不一定用的到但是我们主要是学习如何用硬件实现I2C协议，对我们以后学别的协议肯定会有帮助。</strong></p>
 <ul>
 <li><p><strong>硬件 I2C：是指直接<code>利用 STM32 芯片中的硬件 I2C 外设</code>，该硬件 I2C 外设跟 USART串口外设类似，只要配置好对应的寄存器，外设就会产生标准串口协议的时序。<code>使用它的I2C 外设则可以方便地通过外设寄存器来控制硬件I2C外设产生 I2C 协议方式的通讯，而不需要内核直接控制引脚的电平</code>。</strong></p>
@@ -1426,12 +1408,12 @@ ps .USART1-&gt;USART3    */</span>
 </li>
 </ul>
 <p><strong>硬件 I2C 直接使用外设来控制引脚，可以减轻 CPU 的负担。不过使用硬件I2C 时必须使用某些固定的引脚作为 SCL 和 SDA，软件模拟 I2C 则可以使用任意 GPIO 引脚，相对比较灵活。</strong></p>
-<h4 id="I2C外设功能框图（重点）"><a href="#I2C外设功能框图（重点）" class="headerlink" title="I2C外设功能框图（重点）"></a>I2C外设功能框图（重点）</h4><p><img src="https://img-blog.csdnimg.cn/e1bb1cfc30da475ab76de10b2e5008a0.png"></p>
+<h4 id="I2C外设功能框图（重点）"><a href="#I2C外设功能框图（重点）" class="headerlink" title="I2C外设功能框图（重点）"></a>I2C外设功能框图（重点）</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831561758.png" alt="I2C功能框图"></p>
 <h4 id="1-通信引脚"><a href="#1-通信引脚" class="headerlink" title="1.通信引脚"></a>1.通信引脚</h4><p><strong>STM32中有两个I2C外设，硬件I2C必须要使用这些引脚，因为这些引脚才连接到I2C引脚，就比如说PB6与PB7引脚就连接到芯片内部的I2C1外设（正点原子STM32Mini板）</strong>。</p>
-<p><img src="https://img-blog.csdnimg.cn/5d95e31e1c5b4d688a2ca319e186769f.png" alt="通信引脚">  </p>
-<h4 id="2-时钟控制逻辑"><a href="#2-时钟控制逻辑" class="headerlink" title="2.时钟控制逻辑"></a>2.时钟控制逻辑</h4><p><img src="https://img-blog.csdnimg.cn/eec31b80c28440cca4250761ea535070.png" alt="时钟控制逻辑"><br><strong>时钟控制寄存器</strong><br><img src="https://img-blog.csdnimg.cn/3ab1eaaed7ef4fd59b78a026bbfd9793.png" alt="时钟控制寄存器"><br><img src="https://img-blog.csdnimg.cn/f31b540d04414e40a9064d93657fe3d5.png" alt="时钟控制寄存器"><br><img src="https://img-blog.csdnimg.cn/7e5c550b79214ca696ae6712245b716a.png" alt="时钟控制寄存器"><br><strong>这里解释一下为什么是用Tpclk1,因为I2C1外设是挂载在APB1总线上的</strong><br><img src="https://img-blog.csdnimg.cn/be0bf13f252e407e822372a17c287858.png" alt="时钟控制寄存器"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831572512.png" alt="引脚图"></p>
+<h4 id="2-时钟控制逻辑"><a href="#2-时钟控制逻辑" class="headerlink" title="2.时钟控制逻辑"></a>2.时钟控制逻辑</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831582657.png"><br><strong>时钟控制寄存器</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831597278.png" alt="时钟控制寄存器"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831607308.jpg"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831616280.png"><br><strong>这里解释一下为什么是用Tpclk1,因为I2C1外设是挂载在APB1总线上的</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831624243.png"></p>
 <p><strong>这里只是演示一下这么计算寄存器写入的值，用库函数我们只要配置好相应寄存器的参数，库函数会帮我计算自动写入的，不要慌。</strong></p>
-<h4 id="3-数据控制逻辑"><a href="#3-数据控制逻辑" class="headerlink" title="3.数据控制逻辑"></a>3.数据控制逻辑</h4><p><img src="https://img-blog.csdnimg.cn/2f59d9ec38cf463cb8b65258eca0301d.png" alt="数据控制逻辑"></p>
+<h4 id="3-数据控制逻辑"><a href="#3-数据控制逻辑" class="headerlink" title="3.数据控制逻辑"></a>3.数据控制逻辑</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831634487.png"></p>
 <ul>
 <li><p><strong>当向外发送数据的时候，数据移位寄存器以“数据寄存器”为数据源，把数据一位一位地通过SDA信号线发送出去；</strong></p>
 </li>
@@ -1439,27 +1421,26 @@ ps .USART1-&gt;USART3    */</span>
 </li>
 </ul>
 <p><strong>然后通过CPU或DMA向数据寄存器写入或者读出数据(一般保存在一个数组当中)。</strong></p>
-<p><strong>数据寄存器DR</strong><br><img src="https://img-blog.csdnimg.cn/408caa0a0066439e949f6b2b85e3d6df.png" alt="1"><br><strong>自身地址寄存器1</strong><br><img src="https://img-blog.csdnimg.cn/cb4d461109484e6c82262b9466391814.png" alt="2"><br><img src="https://img-blog.csdnimg.cn/c05fa38e53d84ba3bbf3e72b28c187df.png" alt="3"></p>
-<h4 id="4-整体控制逻辑"><a href="#4-整体控制逻辑" class="headerlink" title="4.整体控制逻辑"></a>4.整体控制逻辑</h4><p><strong>这里挑一些重点的寄存器位，我们只需配置好寄存器就可以让I2C外设硬件逻辑自动控制SDA，SCL总线去产生I2C协议的时序如：起始信号、应答信号、停止信号等等</strong><br><img src="https://img-blog.csdnimg.cn/5671e11c99b14724bb2a62fdfa3d6766.png" alt="4"></p>
-<p><img src="https://img-blog.csdnimg.cn/62ca29fa195b4198ba56d99858387e2e.png" alt="5"><br><img src="https://img-blog.csdnimg.cn/770a94dfd86c4d319b3788d4f7b349fc.png" alt="6"><br><img src="https://img-blog.csdnimg.cn/bc723d11346d4465a31f4c9545f77f8d.png" alt="7"><br><strong>接下来就是了解的知识：</strong></p>
+<p><strong>数据寄存器DR</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831643563.png"><br><strong>自身地址寄存器1</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831652073.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831660226.png"></p>
+<h4 id="4-整体控制逻辑"><a href="#4-整体控制逻辑" class="headerlink" title="4.整体控制逻辑"></a>4.整体控制逻辑</h4><p><strong>这里挑一些重点的寄存器位，我们只需配置好寄存器就可以让I2C外设硬件逻辑自动控制SDA，SCL总线去产生I2C协议的时序如：起始信号、应答信号、停止信号等等</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831667832.png"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831674397.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831680923.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831688290.png"><br><strong>接下来就是了解的知识：</strong></p>
 <ul>
 <li><strong>总线错误(BERR)</strong></li>
 </ul>
 <p><strong>在一个地址或数据字节传输期间，当I2C接口检测到一个外部的停止或起始条件则产生总线错误。此时：</strong></p>
-<p><strong>● BERR位被置位为’1’；如果设置了ITERREN位，则产生一个中断；<br>● 在从模式情况下，数据被丢弃，硬件释放总线：<br>─ 如果是<code>错误的开始条件</code>，从设备认为是一个重启动，并等待地址或停止条件。<br>─ 如果是<code>错误的停止条件</code>，从设备按正常的停止条件操作，同时硬件释放总线。<br>● 在主模式情况下，硬件不释放总线，同时不影响当前的传输状态。此时由软件决定是否要中止当前的传输</strong><br><img src="https://img-blog.csdnimg.cn/61c4e87dfeb249a19df62c5a88a0aad6.png" alt="8"><br>主机模式与从机模式<br><img src="https://img-blog.csdnimg.cn/d16ae72bf49c43b3994cd9481bc29624.png" alt="9"></p>
+<p><strong>● BERR位被置位为’1’；如果设置了ITERREN位，则产生一个中断；<br>● 在从模式情况下，数据被丢弃，硬件释放总线：<br>─ 如果是<code>错误的开始条件</code>，从设备认为是一个重启动，并等待地址或停止条件。<br>─ 如果是<code>错误的停止条件</code>，从设备按正常的停止条件操作，同时硬件释放总线。<br>● 在主模式情况下，硬件不释放总线，同时不影响当前的传输状态。此时由软件决定是否要中止当前的传输</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831697644.png"><br>主机模式与从机模式<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831705313.png"></p>
 <ul>
 <li><strong>应答错误(AF)</strong></li>
 </ul>
 <p><strong>当STM32检测到一个无应答位时，产生应答错误。此时：</strong></p>
-<p><strong>● AF位被置位，如果设置了ITERREN位，则产生一个中断；<br>● 当发送器接收到一个NACK时，必须复位通讯：<br>─ 如果是处于从模式，硬件释放总线。<br>─ 如果是处于<code>主模式，软件必须生成一个停止条件</code>。</strong><br><img src="https://img-blog.csdnimg.cn/1e2fc2952cc446bfa3d7100651593293.png" alt="11"></p>
+<p><strong>● AF位被置位，如果设置了ITERREN位，则产生一个中断；<br>● 当发送器接收到一个NACK时，必须复位通讯：<br>─ 如果是处于从模式，硬件释放总线。<br>─ 如果是处于<code>主模式，软件必须生成一个停止条件</code>。</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831715371.png"></p>
 <ul>
 <li><strong>过载/欠载错误(OVR)</strong></li>
 </ul>
 <p><strong>在从模式下，如果禁止时钟延长，I2C接口正在接收数据时，当它已经接收到一个字节(RxNE=1)，但在DR寄存器中前一个字节数据还没有被读出，则发生过载错误。此时：</strong><br><strong>● 最后接收的数据被丢弃；<br>● 在过载错误时，软件应清除RxNE位，发送器应该重新发送最后一次发送的字节。</strong></p>
 <p><strong>在从模式下，如果禁止时钟延长，I2C接口正在发送数据时，在下一个字节的时钟到达之前，新的数据还未写入DR寄存器(TxE=1)，则发生欠载错误。此时：<br>● 在DR寄存器中的前一个字节将被重复发出；<br>● 用户应该确定在发生欠载错时，接收端应丢弃重复接收到的数据。发送端应按I2C总线标准在规定的时间更新DR寄存器。<br>在发送第一个字节时，必须在清除ADDR之后并且第一个SCL上升沿之前写入DR寄存器；如果不能做到这点，则接收方应该丢弃第一个数据</strong></p>
 <p><strong>STM32做为从机时写入数据和读出数据时应该连续，取个例子主机要10个字节的数据而你只发5个字节此时就发生欠载错误：在下一个字节的时钟到达之前，新的数据还未写入DR寄存器</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/ada43bb70b7946f9a883246e8b2416a0.png" alt="12"><br><img src="https://img-blog.csdnimg.cn/4e1ae77bb67644669045bb7e6f19d9f0.png" alt="13"></p>
-<p><img src="https://img-blog.csdnimg.cn/8d3af6d3da904f32bb0c271df75a4af7.png" alt="14"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831727020.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831735681.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831745661.png"></p>
 <h4 id="5-STM32的I2C外设通信过程（超级重要）"><a href="#5-STM32的I2C外设通信过程（超级重要）" class="headerlink" title="5.STM32的I2C外设通信过程（超级重要）"></a>5.<a href="https://so.csdn.net/so/search?q=STM32&amp;spm=1001.2101.3001.7020">STM32</a>的I2C外设通信过程（超级重要）</h4><p><strong>I2C模式选择：</strong><br><strong>接口可以下述4种模式中的一种运行：<br>● 从发送器模式<br>● 从接收器模式<br>● 主发送器模式<br>● 主接收器模式</strong><br><strong>该模块默认地工作于从模式。接口在<code>生成起始条件后自动地从从模式切换到主模式</code>；当仲裁丢失或产生停止信号时，则从主模式切换到从模式。允许多主机功能。</strong></p>
 <ul>
 <li><strong>主模式：STM32作为主机通信(发送器与接收器)</strong></li>
@@ -1468,73 +1449,73 @@ ps .USART1-&gt;USART3    */</span>
 <p><strong><code>这里我主要将STM32做为主机通信</code></strong></p>
 <p>I2C主模式：<br><strong>默认情况下，I2C接口总是工作在从模式。从从模式切换到主模式，需要产生一个起始条件。</strong></p>
 <p><strong>在主模式时，I2C接口<code>启动数据传输并产生时钟信号</code>。串行数据传输总是以起始条件开始并以停止条件结束。当<code>通过START位在总线上产生了起始条件，设备就进入了主模式</code>。</strong></p>
-<h5 id="主发送器"><a href="#主发送器" class="headerlink" title="主发送器"></a>主发送器</h5><p><img src="https://img-blog.csdnimg.cn/e6426596aaa44535b5a0d70a3f07fe4c.png" alt="15"></p>
+<h5 id="主发送器"><a href="#主发送器" class="headerlink" title="主发送器"></a>主发送器</h5><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831755417.png"></p>
 <ul>
-<li><strong>EV5事件</strong><br><img src="https://img-blog.csdnimg.cn/d3b3dbe6df394d648776c49538630516.png"></li>
+<li><strong>EV5事件</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831762880.png"></li>
 </ul>
-<p><strong>起始条件当BUSY=0时，设置START=1，I2C接口将产生一个开始条件并切换至主模式(M/SL位置位)</strong><br><img src="https://img-blog.csdnimg.cn/c8abc3f550434f37966cde4581f45550.png" alt="16"><br><strong>一旦发出开始条件，我们需要检测SB是否置1，判断是否成功发送起始信号</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/633af13e198d432f87f5879f8cf4cceb.png" alt="17"><br><strong>● SB位被硬件置位，如果设置了ITEVFEN位，则会产生一个中断。<br>然后主设备等待读SR1寄存器，紧跟着将从地址写入DR寄存器</strong></p>
+<p><strong>起始条件当BUSY=0时，设置START=1，I2C接口将产生一个开始条件并切换至主模式(M/SL位置位)</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831769651.png"><br><strong>一旦发出开始条件，我们需要检测SB是否置1，判断是否成功发送起始信号</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831776548.png"><br><strong>● SB位被硬件置位，如果设置了ITEVFEN位，则会产生一个中断。<br>然后主设备等待读SR1寄存器，紧跟着将从地址写入DR寄存器</strong></p>
 <ul>
-<li><strong>EV6事件</strong><br><img src="https://img-blog.csdnimg.cn/706a8b79397f45849daf17a16a27e195.png" alt="18"></li>
+<li><strong>EV6事件</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831786622.png"></li>
 </ul>
 <p><strong>从机地址的发送</strong></p>
 <p><strong>● 在7位地址模式时，只需送出一个地址字节。<br>一旦该地址字节被送出，<br>─ ADDR位被硬件置位，如果设置了ITEVFEN位，则产生一个中断。<br>随后主设备等待一次读SR1寄存器，跟着读SR2寄存器。</strong></p>
-<p><strong><code>根据送出从地址的最低位，主设备决定进入发送器模式还是进入接收器模式</code></strong><br><strong>● 在7位地址模式时，<br>─ 要进入发送器模式，主设备发送从地址时置最低位为’0’。<br>─ 要进入接收器模式，主设备发送从地址时置最低位为’1’</strong><br><img src="https://img-blog.csdnimg.cn/b0b9efeb49ba476e9f11327c29e908d3.png" alt="19"><br><strong>从机地址发送完成从机应答之后检测EV6事件：</strong><br><img src="https://img-blog.csdnimg.cn/a2b74a3a9fda496383087ed93fdee5ab.png" alt="20"><br><strong>确保从机应答，之后才传输下一个数据，如果你不检测万一地址发送失败或者从机无应答，直接就开始传输数据那传给谁？？</strong></p>
+<p><strong><code>根据送出从地址的最低位，主设备决定进入发送器模式还是进入接收器模式</code></strong><br><strong>● 在7位地址模式时，<br>─ 要进入发送器模式，主设备发送从地址时置最低位为’0’。<br>─ 要进入接收器模式，主设备发送从地址时置最低位为’1’</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831796547.png"><br><strong>从机地址发送完成从机应答之后检测EV6事件：</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831804575.png"><br><strong>确保从机应答，之后才传输下一个数据，如果你不检测万一地址发送失败或者从机无应答，直接就开始传输数据那传给谁？？</strong></p>
 <ul>
-<li><p><strong>EV8_1事件:</strong><br><img src="https://img-blog.csdnimg.cn/2c97a5b6e50c46dc9415ce2f04570425.png" alt="21"><br><strong>这个检测是地址发送完之后进行检测，其实我们只要检测EV6事件就可以了，因为EV6事件成功之后就已经代表地址（数据）发送出去，而且从机还应答了，地址已经发送完成那肯定数据寄存器，与移位寄存器肯定为空呐，所以不检测也可以。</strong></p>
+<li><p><strong>EV8_1事件:</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831812809.png"><br><strong>这个检测是地址发送完之后进行检测，其实我们只要检测EV6事件就可以了，因为EV6事件成功之后就已经代表地址（数据）发送出去，而且从机还应答了，地址已经发送完成那肯定数据寄存器，与移位寄存器肯定为空呐，所以不检测也可以。</strong></p>
 </li>
-<li><p><strong>EV8事件</strong><br><img src="https://img-blog.csdnimg.cn/92284da09ee54be7a370928e784de64b.png" alt="22"><br><img src="https://img-blog.csdnimg.cn/f45b25ce2eee4ef4a68a4f0a0c500fde.png" alt="23"><br><strong>我们在发送完一个数据之后必须判断数据寄存器是否为空，数据寄存器为空（TXE），才能向数据寄存器写入新的数据，不然上一个数据们还没有转移到移位寄存器，CPU又写入一个数据则会覆盖上一个数据。</strong></p>
+<li><p><strong>EV8事件</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831819112.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831826529.png"><br><strong>我们在发送完一个数据之后必须判断数据寄存器是否为空，数据寄存器为空（TXE），才能向数据寄存器写入新的数据，不然上一个数据们还没有转移到移位寄存器，CPU又写入一个数据则会覆盖上一个数据。</strong></p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/198f52464d74456497e8ee03ebf6eb88.png" alt="24"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831836439.png"></p>
 <ul>
-<li><p><strong>EV8_2事件</strong><br><img src="https://img-blog.csdnimg.cn/69d69ffd999d40ad82d41ac8d46600e8.png" alt="25"><br><strong>在我们发送完最后一个字节之后我们应该检测EV8_2事件，主要检测BTF位。</strong><br><img src="https://img-blog.csdnimg.cn/81c6dece784049a0bc48cf7b0b373036.png" alt="26"><br><strong>为什么呢，主要是检测数据移位寄存器的数据全部发送完成，则才算最后一个字节全部发送完毕</strong>。</p>
+<li><p><strong>EV8_2事件</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831847153.png"><br><strong>在我们发送完最后一个字节之后我们应该检测EV8_2事件，主要检测BTF位。</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831854049.png"><br><strong>为什么呢，主要是检测数据移位寄存器的数据全部发送完成，则才算最后一个字节全部发送完毕</strong>。</p>
 </li>
 <li><p><strong>关闭通信</strong></p>
 </li>
 </ul>
 <p><strong>在DR寄存器中写入最后一个字节后，通过设置STOP位产生一个停止条件，然后I2C接口将自动回到从模式(M/S位清除)。</strong></p>
-<h5 id="主接收器"><a href="#主接收器" class="headerlink" title="主接收器"></a>主接收器</h5><p><img src="https://img-blog.csdnimg.cn/23f00c3322054133b71dc43c3d2bb11a.png" alt="27"><br><strong>因为虽然STM32做为接收器，但是STM32是主机，起始信号与发送从机地址都是必须由主机干的活，所以前面EV5，EV6，EV6_1事件与主接收器是一模一样</strong></p>
+<h5 id="主接收器"><a href="#主接收器" class="headerlink" title="主接收器"></a>主接收器</h5><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831873860.png"><br><strong>因为虽然STM32做为接收器，但是STM32是主机，起始信号与发送从机地址都是必须由主机干的活，所以前面EV5，EV6，EV6_1事件与主接收器是一模一样</strong></p>
 <ul>
-<li><strong>EV7事件</strong><br><img src="https://img-blog.csdnimg.cn/390ab9e03be748b3bb3c3bf25e07d58c.png" alt="28"><br><strong>主机使能ACK位就可以自动接收完数据产生应答信号。</strong></li>
+<li><strong>EV7事件</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831883312.png"><br><strong>主机使能ACK位就可以自动接收完数据产生应答信号。</strong></li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/b9999e953eef40b88da87a503adc5c3e.png" alt="29"><br>接收数据之前，判断数据寄存器是否有数据，也就数据寄存器非空(RNXE)，CPU就可以读取数据寄存器中的数据啦。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831890500.png"><br>接收数据之前，判断数据寄存器是否有数据，也就数据寄存器非空(RNXE)，CPU就可以读取数据寄存器中的数据啦。</p>
 <ul>
 <li><strong>EV7_1事件</strong><br><strong>关闭通信</strong><br><code>主设备在从设备接收到最后一个字节后发送一个NACK</code>。接收到NACK后，从设备释放对SCL和SDA线的控制；主设备就可以发送一个停止/重起始条件。<br><strong>● 为了在收到最后一个字节后产生一个NACK脉冲，在读倒数第二个数据字节之后(在倒数第二个RxNE事件之后)必须清除ACK位。<br>● 为了产生一个停止/重起始条件，软件必须在读倒数第二个数据字节之后(在倒数第二个RxNE事件之后)设置STOP/START位。</strong><br><strong>● 只接收一个字节时，刚好在EV6之后(EV6_1时，清除ADDR之后)要关闭应答和停止条件的产生位。在产生了停止条件后，I2C接口自动回到从模式(M/SL位被清除)</strong></li>
 </ul>
-<p><strong>这里产生一个NACK其实就是清除ACK位，将ACK位置0，后面接收的一个字节不在产生应答就是非应答咯</strong><br><img src="https://img-blog.csdnimg.cn/2199c05764c543a293db5d59e244eb82.png" alt="30"><br><strong>然后主机产生停止信号</strong><br><img src="https://img-blog.csdnimg.cn/4755e273eb394ab794991c5152a630ee.png" alt="31"><br><strong>然后通过判断EV7事件，CPU向数据寄存器读取最后一个字节数据</strong></p>
+<p><strong>这里产生一个NACK其实就是清除ACK位，将ACK位置0，后面接收的一个字节不在产生应答就是非应答咯</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831897909.png"><br><strong>然后主机产生停止信号</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831903972.png"><br><strong>然后通过判断EV7事件，CPU向数据寄存器读取最后一个字节数据</strong></p>
 <p>硬件I2C写代码必须熟练掌握和理解主发送器和主接收器的过程，只要你理解了写代码还不是信手拈来，简简单单，然后写代码你会发送就是上面的过程一模一样</p>
-<h4 id="6-I2C初始化结构体"><a href="#6-I2C初始化结构体" class="headerlink" title="6.I2C初始化结构体"></a>6.I2C初始化结构体</h4><p><img src="https://img-blog.csdnimg.cn/cde70e66ed984a66bfd2800a50a25e88.png" alt="32"></p>
+<h4 id="6-I2C初始化结构体"><a href="#6-I2C初始化结构体" class="headerlink" title="6.I2C初始化结构体"></a>6.I2C初始化结构体</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831910694.png"></p>
 <ul>
 <li><strong>I2C_ClockSpeed</strong></li>
 </ul>
 <p><strong>设置I2C的传输速率，我们写入的这个参数值不得高于400KHz。<br>在调用初始化函数时，函数会根据我们输入的数值，以及后面输入的占空比参数，经过运算后把时钟因子写入到I2C的时钟控制寄存器CCR。</strong></p>
 <p><strong>CCR寄存器不能写入小数类型的时钟因子，影响到SCL的实际频率可能会低于本成员设置的参数值，这时除了通讯稍慢一点以外，不会对I2C的标准通讯造成其它影响。</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/d43a4da244fc49e4a64c2717ca7aa1d8.png" alt="在这里插入图片描述"><br><strong>初始化函数</strong><br><img src="https://img-blog.csdnimg.cn/745b9c3b00444f8683f6389e1e4f5984.png" alt="在这里插入图片描述"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831916893.png"><br><strong>初始化函数</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831923057.png" alt="初始化函数解析"></p>
 <ul>
 <li><strong>I2C_Mode</strong></li>
 </ul>
-<p><strong>选择I2C的使用方式，有I2C模式(I2C_Mode_I2C )和SMBus主、从模式(I2C_Mode_SMBusHost、 I2C_Mode_SMBusDevice ) 。</strong><br><img src="https://img-blog.csdnimg.cn/ac7960f252814fb28965d41101d58972.png" alt="在这里插入图片描述"></p>
+<p><strong>选择I2C的使用方式，有I2C模式(I2C_Mode_I2C )和SMBus主、从模式(I2C_Mode_SMBusHost、 I2C_Mode_SMBusDevice ) 。</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831931671.png" alt="在这里插入图片描述"></p>
 <ul>
 <li><strong>I2C_DutyCycle</strong></li>
 </ul>
-<p><strong>设置I 2 C的SCL线时钟的占空比。该配置有两个选择，分别为低电平时间比高电平时间为2：1 ( I2C_DutyCycle_2)和16：9(I2C_DutyCycle_16_9)。</strong><br><strong>这个模式随便选反正区别不大。</strong><br><img src="https://img-blog.csdnimg.cn/d4f1c665c735408f91b959109a78d462.png" alt="33"></p>
+<p><strong>设置I 2 C的SCL线时钟的占空比。该配置有两个选择，分别为低电平时间比高电平时间为2：1 ( I2C_DutyCycle_2)和16：9(I2C_DutyCycle_16_9)。</strong><br><strong>这个模式随便选反正区别不大。</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831939005.png"></p>
 <ul>
 <li><strong>I2C_OwnAddress1</strong></li>
 </ul>
 <p><strong>配置STM32的I2C设备自己的地址，每个连接到I2C总线上的设备都要有一个自己的地址，作为主机也不例外。</strong></p>
 <p><strong>地址可设置为7位或10位，只要该地址是I2C总线上<code>唯一</code>的即可。</strong><br><strong>其实可以有两个地址，这里是设置的第一个地址。</strong></p>
-<p><strong>第二个地址要另外用库函数设置而且只能是7位</strong><br><img src="https://img-blog.csdnimg.cn/4ca3988797c84baab4697ea572d8fb9e.png" alt="34"></p>
+<p><strong>第二个地址要另外用库函数设置而且只能是7位</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831946565.png"></p>
 <ul>
 <li><strong>I2C_Ack_Enable</strong></li>
 </ul>
-<p><strong>配置I 2 C应答是否使能，设置为使能则可以发送响应信号。一般配置为允许应答(I2C_Ack_Enable）若STM32接收一个字节数据自动产生应答，必须要使能</strong><br><img src="https://img-blog.csdnimg.cn/343020c4a28946459cac20dc492080e1.png" alt="35"></p>
+<p><strong>配置I 2 C应答是否使能，设置为使能则可以发送响应信号。一般配置为允许应答(I2C_Ack_Enable）若STM32接收一个字节数据自动产生应答，必须要使能</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831955299.png"></p>
 <ul>
 <li><strong>I2C_AcknowledgeAddress</strong></li>
 </ul>
-<p><strong>选择I2C的寻址模式是7位还是10位地址。这需要根据实际连接到I2C总线上设备的地址进行选择，这个成员的配置也影响到I2C_OwnAddress1成员，只有这里设置成10位模式时，I2C_OwnAddress1才支持10位地址。</strong><br><img src="https://img-blog.csdnimg.cn/2bda08ad13cf48d3901f738c4fe5630f.png" alt="3"><br><strong>配置完成之后调用一下I2C初始化函数就搞定</strong></p>
-<p><strong>记得使能I2C外设</strong><br><img src="https://img-blog.csdnimg.cn/ef2faa0bb9714d038917aaeaf9e31839.png" alt="3"><br><img src="https://img-blog.csdnimg.cn/3f42cdf4c70042c496eb2926ebe4426e.png" alt="3"></p>
-<h3 id="标准库I-2-C"><a href="#标准库I-2-C" class="headerlink" title="标准库I^2^C"></a>标准库I^2^C</h3><h4 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h4><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*初始化结构体*/</span>
+<p><strong>选择I2C的寻址模式是7位还是10位地址。这需要根据实际连接到I2C总线上设备的地址进行选择，这个成员的配置也影响到I2C_OwnAddress1成员，只有这里设置成10位模式时，I2C_OwnAddress1才支持10位地址。</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831961703.png"><br><strong>配置完成之后调用一下I2C初始化函数就搞定</strong></p>
+<p><strong>记得使能I2C外设</strong><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831967667.png"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696831974957.png"></p>
+<h3 id="标准库I2C"><a href="#标准库I2C" class="headerlink" title="标准库I2C"></a>标准库I2C</h3><h4 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h4><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*初始化结构体*/</span>
 <span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
 	<span class="token class-name">uint32_t</span> I2C_ClockSpeed<span class="token punctuation">;</span> <span class="token comment">/*!&lt; 设置 SCL 时钟频率，此值要低于 400000*/</span>
 	<span class="token class-name">uint16_t</span> I2C_Mode<span class="token punctuation">;</span> <span class="token comment">/*!&lt; 指定工作模式，可选 I2C 模式及 SMBUS 模式 */</span>
@@ -1606,7 +1587,7 @@ I2C应答设置，收到一个字节后是否给从机应答
 */</span>        
 <span class="token keyword">void</span> <span class="token function">I2C_CheckEvent</span><span class="token punctuation">(</span>I2C_TypeDef<span class="token operator">*</span> I2Cx<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> I2C_EVENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="模拟I-2-C"><a href="#模拟I-2-C" class="headerlink" title="模拟I^2^C"></a>模拟I^2^C</h3><p>由于I^2^C占用引脚少，协议相对简单，所以可以++用两个IO口来模拟一个I2C++外设</p>
+<h3 id="模拟I2C"><a href="#模拟I2C" class="headerlink" title="模拟I2C"></a>模拟I2C</h3><p>由于I^2^C占用引脚少，协议相对简单，所以可以++用两个IO口来模拟一个I2C++外设</p>
 <p>一、基本接口定义</p>
 <p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;为了提高代码的可移植性和使用方便性，定义了一些宏和结构体，下面介绍一下这些宏和结构体。</p>
 <p>1、结构体</p>
