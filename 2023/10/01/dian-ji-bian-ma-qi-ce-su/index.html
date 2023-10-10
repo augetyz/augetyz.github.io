@@ -541,7 +541,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2023-10-08
+                                    2023-10-10
                             </div>
                             
 
@@ -579,7 +579,7 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="电机编码器测速"><a href="#电机编码器测速" class="headerlink" title="电机编码器测速"></a>电机编码器测速</h1><h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><p><img src="https://postimg.cc/cgBfpzB4" alt="效果图"></p>
+                                <h1 id="电机编码器测速"><a href="#电机编码器测速" class="headerlink" title="电机编码器测速"></a>电机编码器测速</h1><h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923381345.png" alt="效果图"></p>
 <h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h3><p>电机转动时，测出电机的实时转速，进而对电机进行控制。</p>
 <h3 id="2-简介"><a href="#2-简介" class="headerlink" title="2.简介"></a>2.简介</h3><p>以光电式增量编码器为例：</p>
 <h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><p>•Encoder Interface 编码器接口</p>
@@ -587,11 +587,11 @@
 <p>•每个高级定时器和通用定时器都拥有1个编码器接口</p>
 <p>•两个输入引脚借用了输入捕获的通道1和通道2</p>
 <p>图片中有一个圆盘，右边是个小红外灯（发光元件），一直照向左边的光敏元件。这个圆盘上有一圈齿，光线正好可以透过小齿的空隙照到光敏元件，随着圆盘 的转动，小齿转走了，又马上挡住光，紧接着下一个小齿…     按照上面的说法，圆盘一直转，光敏元件就能得到一个如下图 A 相那样的波， 通过统计波形所有高电平的数量我们就能算出来这个盘一共转了多少刻度。并 且 也 能 推 算 出 盘 转 到 了 什 么 位 置 。 并且，通过实时计算波的频率，我们就可以测速了。 但是这样有个问题，不知道盘转的方向，正转反转都是这样一个波。 解决方法就是在小齿的内圈再刻上一圈与外圈错开 90°的小齿！就可以得到下 图 B 相的波形，这样就可分辨方向了。</p>
-<p><img src="https://postimg.cc/vgXw4QvR" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923393976.png" alt="image"></p>
 <p>A 和 B 两组脉冲相位差 90º，可以判断出旋转方向和旋转速度。</p>
-<p><img src="https://postimg.cc/CzB9gC9p" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923403055.png" alt="image"></p>
 <p>通过观察上面 AB 相的波我们发现，圆盘向某个方向一直旋转，AB 两相就是这四个状态周而复始。</p>
-<p><img src="https://postimg.cc/QV5pZHSn" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923410954.png" alt="image"></p>
 <p>其次我们看一下编码器的线数：</p>
 <p>我们使用的电机后面带的霍尔编码器就是 13ppr，也就是 13 线。也就是电机每转一圈 A 或 B 相的脉冲数。 也就是电机转一圈 A 相和 B 相就分别有 13 个脉冲。</p>
 <ul>
@@ -602,16 +602,16 @@
 <p>一圈脉冲总数=13*减速比（减速比：电机输出转速/电机输入转速）</p>
 <p>例：减速比为1：50，则一圈脉冲总数=13*50=650。</p>
 <p>通过上述分析，用 STM32 的正交解码库函数就能搞定编码器。</p>
-<p><img src="https://postimg.cc/dDgMxSDK" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923418590.png" alt="image"></p>
 <p>TIM_EncoderMode_TI1 代表仅 TI1 计数；</p>
 <p> TIM_EncoderMode_TI2 代表仅 TI2 计数； </p>
 <p>TIM_EncoderMode_TI12 代表 TI1 TI2 都计数。</p>
 <p> TI1 就是输入通道 1，就是编码器 A 相，TI2 同理。</p>
-<p><img src="https://postimg.cc/rDSfgfRg" alt="image"></p>
-<p><img src="https://postimg.cc/WD8Xctnk" alt="image"></p>
-<p><img src="https://postimg.cc/xc98cCyC" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923425986.png" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923432204.png" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923439695.png" alt="image"></p>
 <h3 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h3><p>流程图：</p>
-<p><img src="https://postimg.cc/w3CPVybq" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923448216.png" alt="image"></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">Encoder_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token comment">//开启时钟</span>
