@@ -165,24 +165,40 @@
       <li>
         <a href="/musics">
           
-          <i class="fa-solid fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>音乐</span>
         </a>
       </li>
       
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>阅读</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/images">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/members" class="waves-effect waves-light">
-      
-      <i class="fa-solid fa-user-group" style="zoom: 0.6;"></i>
-      
-      <span>历届成员</span>
-    </a>
     
   </li>
   
@@ -319,24 +335,43 @@
 
                   <a href="/musics " style="margin-left:75px">
 				  
-				   <i class="fa fa-solid fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
 			      
 		          <span>音乐</span>
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>阅读</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/images " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/members" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fa-solid fa-user-group"></i>
-			
-			历届成员
-		</a>
           
         </li>
         
@@ -1154,12 +1189,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/10/01/an-zhuang-ji-huo-keil5/">
+                <a href="/2023/10/01/dian-ji-bian-ma-qi-ce-su/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700828541984.png" class="responsive-img" alt="安装激活keil5">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696780033135.png" class="responsive-img" alt="STM32编码器速度采集">
                         
-                        <span class="card-title">安装激活keil5</span>
+                        <span class="card-title">STM32编码器速度采集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1191,12 +1226,12 @@
                         <span class="chip bg-color">STM32</span>
                     </a>
                     
-                    <a href="/tags/KEIL5/">
-                        <span class="chip bg-color">KEIL5</span>
+                    <a href="/tags/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/">
+                        <span class="chip bg-color">直流电机</span>
                     </a>
                     
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
+                    <a href="/tags/%E7%BC%96%E7%A0%81%E5%99%A8/">
+                        <span class="chip bg-color">编码器</span>
                     </a>
                     
                 </div>
@@ -1323,6 +1358,60 @@
 
 
     <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
     
 
     <div class="container row center-align"

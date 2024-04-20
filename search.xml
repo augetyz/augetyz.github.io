@@ -1,110 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Keil5的魔法棒选项简介</title>
-    <url>/2023/10/01/c-keil5-de-mo-fa-bang-jian-jie/</url>
-    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778413765.png" alt="魔法棒引入"></h2><h1 id="Keil5的魔法棒选项简介"><a href="#Keil5的魔法棒选项简介" class="headerlink" title="Keil5的魔法棒选项简介"></a>Keil5的魔法棒选项简介</h1><h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778460206.png" alt="Device"></p>
-<p>这个页面功能较为简单，左上方分别显示供应商、芯片类型、工具集，右上方pack为当前使用的芯片包的版本号，URL为arm芯片包的下载地址（魔法上网访问）。中间带有一个搜索框可供检索。下方左侧是目前支持的芯片列表，右侧为该系列芯片资源的英文简介。</p>
-<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778479212.png" alt="Target"></p>
-<p>在这个界面中有很多配置信息。<br>Xtal:为当前工程使用的晶振频率</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778525728.png" alt="代码生成区"><br>ARM Compiler:编译器版本<br>下方两个选项分别为：</p>
-<ul>
-<li>是否使用跨模块优化</li>
-<li>是否使用MicroLIB</li>
-</ul>
-<hr>
-<p><strong>tips：</strong><br>MicroLib是一个针对用C编写的基于ARM的嵌入式应用程序的高度优化的库。与包含在ARM编译器工具链中的标准C库相比，MicroLib提供了许多嵌入式系统所需的代码大小的显著优势。</p>
-<p>MicroLib和标准C库之间的主要区别是:</p>
-<p>1、MicroLib是专为深度嵌入式应用程序而设计的。</p>
-<p>2、MicroLib经过优化，比使用ARM标准库使用更少的代码和数据内存。</p>
-<p>3、MicroLib被设计成在没有操作系统的情况下工作，但是这并不妨碍它与任何操作系统或RTOS一起使用，如Keil RTX。</p>
-<p>4、MicroLib不包含文件I/O或宽字符支持。</p>
-<p>5、由于MicroLib已经优化到最小化代码大小，一些函数将比ARM编译工具中可用的标准C库例程执行得更慢。</p>
-<p>6、MicroLib和ARM标准库都包含在Keil MDK-ARM中。</p>
-<hr>
-<p> MicroLIB是一个c语言标准库，它编译出来的固件相比标准C库的固件更小一点，当然性能相对差一些，如果是程序存储空间比较紧张的情况下可以将这个选项打勾。</p>
-<p> PS：</p>
-<hr>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778676996.png" alt="内存读写区"><br> 左侧通俗点讲是程序指令和只读数据存储区的配置，startup代表程序入口地址所在的区域，左边一般配置为Flash、OTP等存储器挂载在总线上的地址区域，当然我们的程序也可以执行在RAM中，所以左边也可以配置为RAM所在的总线地址区间。右边通俗讲是可读写数据存储的区域，例如栈和堆以及程序中的可读写全局变量，这一块的配置一般在RAM上所以一般配置为RAM所在总线的地址区间。另外，如果我们有多块存储器挂载在总线上时也可以配置多块。</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778695180.png" alt="OUTPUT"></p>
-<p>输出界面。</p>
-<p>包括生成的可执行文件的名称，存储路径(均可修改)。</p>
-<h2 id="以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件"><a href="#以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件" class="headerlink" title="以及：- 是否生成调试信息- 是否生成hex文件- 是否生成浏览信息- 是否生成批处理文件- 是否创建库文件"></a>以及：<br>- 是否生成调试信息<br>- 是否生成hex文件<br>- 是否生成浏览信息<br>- 是否生成批处理文件<br>- 是否创建库文件</h2><ul>
-<li>Creat HEX ile:</li>
-</ul>
-<p>可执行文件（用于下载到芯片的程序文件），.hex文件一般用于在无法进行仿真器烧录代码的时候使用，通过串口在Boot模式下将代码烧录至芯片。</p>
-<ul>
-<li>Browse Information:</li>
-</ul>
-<p>勾选后会生成.crf文件，便于调试，但会使工程编译速度变慢</p>
-<p>.crf：浏览信息文件，使用Go to Definition Of(F12) 功能，就需要有这类文件。</p>
-<h2 id="Listing"><a href="#Listing" class="headerlink" title="Listing"></a>Listing</h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778724401.png" alt="Listing"></h2><p>第一个选项，可以选择生成链接文件的文件夹。<br>其余配置一般默认。</p>
-<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778760780.png" alt="C-C++"></h2><ul>
-<li><p>Preprocessor Symbols:<br>预处理符号，在这里进行的Define/Undefine具有全局属性。</p>
-</li>
-<li><p>Language/Code Generation：</p>
-<p>   <strong>Optimization:</strong> 代码优化，有不同等级可选，配置合适的优化等级将高效的利用编译器的功能对程序进行优化，可以大大提高程序的效率以及对存储的优化。有时优化会带来程序的bug，有时候优化后不是实际想要的结果，这需要在使用的过程中积累经验。</p>
-<p>   <strong>C99 Mode：</strong></p>
-<p>   <strong>在C99中包括的特性有：</strong></p>
-<p>   增加了对编译器的限制，比如源程序每行要求至少支持到 4095 字节，变量名函数名的要求支持到 63 字节（extern 要求支持到 31）。</p>
-<p>   增强了预处理功能。例如：<br>   宏支持取可变参数 #define Macro(…) <strong>VA_ARGS</strong><br>   使用宏的时候，允许省略参数，被省略的参数会被扩展成空串。</p>
-<p>   支持 // 开头的单行注释（这个特性实际上在C89的很多编译器上已经被支持了）<br>   增加了新关键字 restrict, inline, _Complex, _Imaginary, _Bool<br>   支持 long long, long double _Complex, float _Complex 等类型</p>
-<p>   支持不定长的数组，即数组长度可以在运行时决定，比如利用变量作为数组长度。声明时使用 int a[var] 的形式。不过考虑到效率和实现，不定长数组不能用在全局，或 struct 与 union 里。</p>
-<p>   变量声明不必放在语句块的开头，for 语句提倡写成 for(int i=0;i&lt;100;++i) 的形式，即i 只在 for 语句块内部有效。</p>
-</li>
-</ul>
-<p>使用 C99 Mode 时需要考虑兼容性和可移植性问题。</p>
-<ul>
-<li><p>Include Paths:</p>
-<p>   在这里需要添加工程中包含的头文件路径。</p>
-</li>
-</ul>
-<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778787505.png" alt="Debug"></h2><p>这个页面主要跟调试有关，这部分的功能在我们日常工作中经常会使用。如果可以灵活使用这部分的功能在工作中可以达到事半功倍的效果。左边是软件仿真调试配置，右边是硬件仿真调试配置。</p>
-<p>两个复选use选项，二选一。我一般使用DAP_link仿真器（便宜），性能一般，支持的断点数目较少。</p>
-<ul>
-<li><p>仿真器选型<br>下拉选项，可以根据需要选择不同的仿真器。</p>
-</li>
-<li><p>Load Application at Startup是指跳转到启动文件开始执行。</p>
-</li>
-<li><p>Run to main()是指开始调试时程序的指针位置main()函数的第一条指令处。</p>
-</li>
-<li><p>Initialization File:用户自定义地址,能够使开始调试时程序的指针跳转到指定位置</p>
-<p><a href="https://blog.csdn.net/u014783785/article/details/92581102">详细内容参考此博客</a></p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>setting</li>
-</ul>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778826246.png" alt="Setting"><br>在这个界面主要进行下载模式的选择（Port: SW/JTAG）以及最大时钟频率的配置（Max Clock）</p>
-<p>如果成功识别到仿真器，SWDIO处会显示该设备的序列号</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778867435.png" alt="FlashDown"></p>
-<p><em>Download unction</em></p>
-<pre><code> Erase Full Chip：下载程序时对芯片flash进行全片擦除；
-
- Erase Sectors：下载程序时对芯片flash用到的扇区进行擦除；
-
- Do not Erase：下载程序时不对flash进行擦除；
-</code></pre>
-<p>右面是对过程的控制：编程、校验、对芯片复位和运行；</p>
-<p>正常情况下建议选择部分擦除，，当遇到芯片锁死的情况建议使用全擦除。</p>
-<p><em>RAM Algorithm</em></p>
-<p>配置RAM的起始地址和大小。</p>
-<p><em>Programming Algorithm</em></p>
-<p>flash下载引导算法，这个算法的作用就是可以将数据写到芯片内部或者外部的flash中,选择与芯片flash大小一致的即可。</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>keil5的魔法棒有很多功能，用好这些会让开发变得更加简单。这里仅对常用功能作大致介绍，余下部分可以自行探索。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778886935.png" alt="C结束"></p>
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-      </categories>
-      <tags>
-        <tag>STM32</tag>
-        <tag>魔法棒</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一键超频</title>
     <url>/2023/09/29/a-chao-pin/</url>
     <content><![CDATA[<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776023223.png" alt="引入.png"></p>
@@ -478,6 +374,110 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
       </tags>
   </entry>
   <entry>
+    <title>Keil5的魔法棒选项简介</title>
+    <url>/2023/10/01/c-keil5-de-mo-fa-bang-jian-jie/</url>
+    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778413765.png" alt="魔法棒引入"></h2><h1 id="Keil5的魔法棒选项简介"><a href="#Keil5的魔法棒选项简介" class="headerlink" title="Keil5的魔法棒选项简介"></a>Keil5的魔法棒选项简介</h1><h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778460206.png" alt="Device"></p>
+<p>这个页面功能较为简单，左上方分别显示供应商、芯片类型、工具集，右上方pack为当前使用的芯片包的版本号，URL为arm芯片包的下载地址（魔法上网访问）。中间带有一个搜索框可供检索。下方左侧是目前支持的芯片列表，右侧为该系列芯片资源的英文简介。</p>
+<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778479212.png" alt="Target"></p>
+<p>在这个界面中有很多配置信息。<br>Xtal:为当前工程使用的晶振频率</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778525728.png" alt="代码生成区"><br>ARM Compiler:编译器版本<br>下方两个选项分别为：</p>
+<ul>
+<li>是否使用跨模块优化</li>
+<li>是否使用MicroLIB</li>
+</ul>
+<hr>
+<p><strong>tips：</strong><br>MicroLib是一个针对用C编写的基于ARM的嵌入式应用程序的高度优化的库。与包含在ARM编译器工具链中的标准C库相比，MicroLib提供了许多嵌入式系统所需的代码大小的显著优势。</p>
+<p>MicroLib和标准C库之间的主要区别是:</p>
+<p>1、MicroLib是专为深度嵌入式应用程序而设计的。</p>
+<p>2、MicroLib经过优化，比使用ARM标准库使用更少的代码和数据内存。</p>
+<p>3、MicroLib被设计成在没有操作系统的情况下工作，但是这并不妨碍它与任何操作系统或RTOS一起使用，如Keil RTX。</p>
+<p>4、MicroLib不包含文件I/O或宽字符支持。</p>
+<p>5、由于MicroLib已经优化到最小化代码大小，一些函数将比ARM编译工具中可用的标准C库例程执行得更慢。</p>
+<p>6、MicroLib和ARM标准库都包含在Keil MDK-ARM中。</p>
+<hr>
+<p> MicroLIB是一个c语言标准库，它编译出来的固件相比标准C库的固件更小一点，当然性能相对差一些，如果是程序存储空间比较紧张的情况下可以将这个选项打勾。</p>
+<p> PS：</p>
+<hr>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778676996.png" alt="内存读写区"><br> 左侧通俗点讲是程序指令和只读数据存储区的配置，startup代表程序入口地址所在的区域，左边一般配置为Flash、OTP等存储器挂载在总线上的地址区域，当然我们的程序也可以执行在RAM中，所以左边也可以配置为RAM所在的总线地址区间。右边通俗讲是可读写数据存储的区域，例如栈和堆以及程序中的可读写全局变量，这一块的配置一般在RAM上所以一般配置为RAM所在总线的地址区间。另外，如果我们有多块存储器挂载在总线上时也可以配置多块。</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778695180.png" alt="OUTPUT"></p>
+<p>输出界面。</p>
+<p>包括生成的可执行文件的名称，存储路径(均可修改)。</p>
+<h2 id="以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件"><a href="#以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件" class="headerlink" title="以及：- 是否生成调试信息- 是否生成hex文件- 是否生成浏览信息- 是否生成批处理文件- 是否创建库文件"></a>以及：<br>- 是否生成调试信息<br>- 是否生成hex文件<br>- 是否生成浏览信息<br>- 是否生成批处理文件<br>- 是否创建库文件</h2><ul>
+<li>Creat HEX ile:</li>
+</ul>
+<p>可执行文件（用于下载到芯片的程序文件），.hex文件一般用于在无法进行仿真器烧录代码的时候使用，通过串口在Boot模式下将代码烧录至芯片。</p>
+<ul>
+<li>Browse Information:</li>
+</ul>
+<p>勾选后会生成.crf文件，便于调试，但会使工程编译速度变慢</p>
+<p>.crf：浏览信息文件，使用Go to Definition Of(F12) 功能，就需要有这类文件。</p>
+<h2 id="Listing"><a href="#Listing" class="headerlink" title="Listing"></a>Listing</h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778724401.png" alt="Listing"></h2><p>第一个选项，可以选择生成链接文件的文件夹。<br>其余配置一般默认。</p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778760780.png" alt="C-C++"></h2><ul>
+<li><p>Preprocessor Symbols:<br>预处理符号，在这里进行的Define/Undefine具有全局属性。</p>
+</li>
+<li><p>Language/Code Generation：</p>
+<p>   <strong>Optimization:</strong> 代码优化，有不同等级可选，配置合适的优化等级将高效的利用编译器的功能对程序进行优化，可以大大提高程序的效率以及对存储的优化。有时优化会带来程序的bug，有时候优化后不是实际想要的结果，这需要在使用的过程中积累经验。</p>
+<p>   <strong>C99 Mode：</strong></p>
+<p>   <strong>在C99中包括的特性有：</strong></p>
+<p>   增加了对编译器的限制，比如源程序每行要求至少支持到 4095 字节，变量名函数名的要求支持到 63 字节（extern 要求支持到 31）。</p>
+<p>   增强了预处理功能。例如：<br>   宏支持取可变参数 #define Macro(…) <strong>VA_ARGS</strong><br>   使用宏的时候，允许省略参数，被省略的参数会被扩展成空串。</p>
+<p>   支持 // 开头的单行注释（这个特性实际上在C89的很多编译器上已经被支持了）<br>   增加了新关键字 restrict, inline, _Complex, _Imaginary, _Bool<br>   支持 long long, long double _Complex, float _Complex 等类型</p>
+<p>   支持不定长的数组，即数组长度可以在运行时决定，比如利用变量作为数组长度。声明时使用 int a[var] 的形式。不过考虑到效率和实现，不定长数组不能用在全局，或 struct 与 union 里。</p>
+<p>   变量声明不必放在语句块的开头，for 语句提倡写成 for(int i=0;i&lt;100;++i) 的形式，即i 只在 for 语句块内部有效。</p>
+</li>
+</ul>
+<p>使用 C99 Mode 时需要考虑兼容性和可移植性问题。</p>
+<ul>
+<li><p>Include Paths:</p>
+<p>   在这里需要添加工程中包含的头文件路径。</p>
+</li>
+</ul>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778787505.png" alt="Debug"></h2><p>这个页面主要跟调试有关，这部分的功能在我们日常工作中经常会使用。如果可以灵活使用这部分的功能在工作中可以达到事半功倍的效果。左边是软件仿真调试配置，右边是硬件仿真调试配置。</p>
+<p>两个复选use选项，二选一。我一般使用DAP_link仿真器（便宜），性能一般，支持的断点数目较少。</p>
+<ul>
+<li><p>仿真器选型<br>下拉选项，可以根据需要选择不同的仿真器。</p>
+</li>
+<li><p>Load Application at Startup是指跳转到启动文件开始执行。</p>
+</li>
+<li><p>Run to main()是指开始调试时程序的指针位置main()函数的第一条指令处。</p>
+</li>
+<li><p>Initialization File:用户自定义地址,能够使开始调试时程序的指针跳转到指定位置</p>
+<p><a href="https://blog.csdn.net/u014783785/article/details/92581102">详细内容参考此博客</a></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>setting</li>
+</ul>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778826246.png" alt="Setting"><br>在这个界面主要进行下载模式的选择（Port: SW/JTAG）以及最大时钟频率的配置（Max Clock）</p>
+<p>如果成功识别到仿真器，SWDIO处会显示该设备的序列号</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778867435.png" alt="FlashDown"></p>
+<p><em>Download unction</em></p>
+<pre><code> Erase Full Chip：下载程序时对芯片flash进行全片擦除；
+
+ Erase Sectors：下载程序时对芯片flash用到的扇区进行擦除；
+
+ Do not Erase：下载程序时不对flash进行擦除；
+</code></pre>
+<p>右面是对过程的控制：编程、校验、对芯片复位和运行；</p>
+<p>正常情况下建议选择部分擦除，，当遇到芯片锁死的情况建议使用全擦除。</p>
+<p><em>RAM Algorithm</em></p>
+<p>配置RAM的起始地址和大小。</p>
+<p><em>Programming Algorithm</em></p>
+<p>flash下载引导算法，这个算法的作用就是可以将数据写到芯片内部或者外部的flash中,选择与芯片flash大小一致的即可。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>keil5的魔法棒有很多功能，用好这些会让开发变得更加简单。这里仅对常用功能作大致介绍，余下部分可以自行探索。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778886935.png" alt="C结束"></p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>魔法棒</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32DMA学习</title>
     <url>/2023/10/01/dma-xue-xi/</url>
     <content><![CDATA[<h1 id="DMA中断"><a href="#DMA中断" class="headerlink" title="DMA中断"></a><strong>DMA中断</strong></h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a><strong>实现目的</strong></h2><ul>
@@ -709,6 +709,185 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
       </tags>
   </entry>
   <entry>
+    <title>Keil5-debug仿真教程</title>
+    <url>/2023/10/01/keil5-debug-fang-zhen-jiao-cheng/</url>
+    <content><![CDATA[<h1 id="Keil5-debug仿真教程"><a href="#Keil5-debug仿真教程" class="headerlink" title="Keil5-debug仿真教程"></a><strong>Keil5-debug仿真教程</strong></h1><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781254220.jpg" alt="keil5"></p>
+<h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><hr>
+<p><strong>Debug</strong> 是指在软件开发过程中，通过识别和解决问题来调试程序的过程。通常需要找出程序中的错误、异常或潜在问题，并修复它们以确保程序的正确性和稳定性。</p>
+<h5 id="常见的debug方法有三种："><a href="#常见的debug方法有三种：" class="headerlink" title="常见的debug方法有三种："></a><strong>常见的debug方法有三种：</strong></h5><ol>
+<li><p>==硬件调试==：通过LED灯、蜂鸣器等能使人员感知到的器件，利用其交互性进行调试。</p>
+</li>
+<li><p>==打印调试==：使用串口（Printf）,能将数据信息发送的方式，追踪程序运行状态。</p>
+</li>
+<li><p>==调速器调试==：利用设备支持的硬件内部运行状态追踪功能调试，大部分单片机都支持调试器调试，如STM32配合ST-Link,DAP-Link,fireDAP等调试工具。</p>
+</li>
+</ol>
+<p><strong>目的：</strong> 众所周知，硬件调试过于复杂，需要单独写一段初始化代码，所以不经常使用；而打印调试需要在源代码中加入大量 &lt;printf&gt;,极易引起代码混乱。以上两者方法调试效率低下，因此作为一名嵌入式工程师掌握调试器调试必不可少。</p>
+<hr>
+<h2 id="二、keil5-debug-步骤"><a href="#二、keil5-debug-步骤" class="headerlink" title="二、keil5-debug 步骤"></a>二、keil5-debug 步骤</h2><h3 id="（1）正确连接烧录器"><a href="#（1）正确连接烧录器" class="headerlink" title="（1）正确连接烧录器"></a>（1）正确连接烧录器</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>DAP-Link</strong></th>
+<th align="center"><strong>ST-Link</strong></th>
+<th align="center"><strong>Stm32单片机</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>SCK</strong></td>
+<td align="center"><strong>SWCLK</strong></td>
+<td align="center"><strong>SCK</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>SWD</strong></td>
+<td align="center"><strong>SWDIO</strong></td>
+<td align="center"><strong>DIO</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>3V3			（5V）</strong></td>
+<td align="center"><strong>3V3			（5V）</strong></td>
+<td align="center"><strong>VCC		（5V）</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>GND</strong></td>
+<td align="center"><strong>GND</strong></td>
+<td align="center"><strong>GND</strong></td>
+</tr>
+</tbody></table>
+<h3 id="（2）设置-keil5-Options-Debug选项"><a href="#（2）设置-keil5-Options-Debug选项" class="headerlink" title="（2）设置 keil5-Options-Debug选项"></a>（2）设置 keil5-Options-Debug选项</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781300736.png" alt="keil5-Debug-1.png"></p>
+<ol>
+<li>选择ST-link或者DAP-Link;</li>
+<li>勾选“Load Application at Startup” 和 Run to main();</li>
+<li>打开“Setting”并确定。</li>
+</ol>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781319301.png" alt="keil5-Debug-2.png"></p>
+<ol>
+<li>检查SWDIO是否连接成功；</li>
+<li>“Port” 设置为 “SW”，“Connect” 设置为 “Normal”，“Reset” 设置为 SYSRESETREQ(Default);</li>
+<li>Max Clock 设置低于10M;</li>
+<li>点击确定。</li>
+</ol>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781338308.png" alt="keil5-Debug-3.png"></p>
+<ol>
+<li>选择Flash DownLoad 中的 “Reset and Run”；</li>
+<li>检查是否添加Flash编程算法；</li>
+<li>Utilities 选择 “St-link Debugger” 或者 “DAP-Link Dabugger”,勾选 “Update Target before Debugger”；</li>
+<li>设置完毕后点击确定。</li>
+</ol>
+<h3 id="（3）开始调试"><a href="#（3）开始调试" class="headerlink" title="（3）开始调试"></a>（3）开始调试</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781385531.png" alt="image.png"></p>
+<p>单击窗口上的调试按钮快捷图标（上图红色框内图标），进入到软件模拟调试模式。</p>
+<h3 id="（4）调试工具栏介绍"><a href="#（4）调试工具栏介绍" class="headerlink" title="（4）调试工具栏介绍"></a>（4）调试工具栏介绍</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781398621.png" alt="image.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>1</strong></th>
+<th align="center"><strong>复位</strong></th>
+<th align="left">对程序进行复位操作，根据烧录器不同的复位方式配置会触发不同的复位类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>全速运行</strong></td>
+<td align="left">使当前程序开始正常全速运行，直到程序遇到断点时停止</td>
+</tr>
+<tr>
+<td align="center"><strong>3</strong></td>
+<td align="center"><strong>单步调试</strong></td>
+<td align="left">根据当前调试的窗口的语言，执行单条语句。如果遇到函数，则会进入函数内部。如果是在反汇编窗口中，则只执行一条汇编指令</td>
+</tr>
+<tr>
+<td align="center"><strong>4</strong></td>
+<td align="center"><strong>单步跳过调试</strong></td>
+<td align="left">如果是在C语言窗口中，则是按单条语句执行，与单步调试不同的是，遇到函数不会进入函数内部，而是直接全速运行函数，并跳到下一条语句</td>
+</tr>
+<tr>
+<td align="center"><strong>5</strong></td>
+<td align="center"><strong>单步返回调试</strong></td>
+<td align="left">如果是在C语言窗口中，则是按单条语句执行，与单步调试不同的是，遇到函数不会进入函数内部，而是直接全速运行函数，并跳到下一条语句</td>
+</tr>
+<tr>
+<td align="center"><strong>6</strong></td>
+<td align="center"><strong>运行到当前光标</strong></td>
+<td align="left">程序直接运行至当前光标所在行</td>
+</tr>
+<tr>
+<td align="center"><strong>7</strong></td>
+<td align="center"><strong>插入/移除断点</strong></td>
+<td align="left">如果当前光标所在行未有断点，则插入断点，在有断点的情况下则是移除断点，插入断点后，当前行前面会有个红圆表示断点位置。（断点最多只能打7个）</td>
+</tr>
+<tr>
+<td align="center"><strong>8</strong></td>
+<td align="center"><strong>使能/禁止断点</strong></td>
+<td align="left">开启或禁止当前光标所在行的断点。禁止后红圆变成白圆。</td>
+</tr>
+<tr>
+<td align="center"><strong>9</strong></td>
+<td align="center"><strong>禁止所有断点</strong></td>
+<td align="left">禁止当前所有的断点</td>
+</tr>
+<tr>
+<td align="center"><strong>10</strong></td>
+<td align="center"><strong>删除所有断点</strong></td>
+<td align="left">删除所有断点</td>
+</tr>
+</tbody></table>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781418964.png" alt="image.png"></p>
+<blockquote>
+<p>停止全速运行（上图红色框内图标），全速运行程序时激活该按钮，用来停止正全速运行的程序。</p>
+</blockquote>
+<p><a href="https://www.bilibili.com/video/BV1we4y1t7Uh/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">点击观看  Debug模式下调试选项介绍</a></p>
+<h3 id="（5）全局变量查看（Watch1-和-Watch2）"><a href="#（5）全局变量查看（Watch1-和-Watch2）" class="headerlink" title="（5）全局变量查看（Watch1    和    Watch2）"></a>（5）全局变量查看（Watch1    和    Watch2）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781653394.gif" alt="Watch.gif"></p>
+<blockquote>
+<p>通过”View-&gt;Watch Windows-&gt;Watch1、Watch2”可以选择打开Watch窗口，也可以在工具栏打开。</p>
+</blockquote>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781474820.gif" alt="Watch.gif"></p>
+<blockquote>
+<p>通过选中一个变量，右键添加入对应的Watch窗口，可以追踪查看当前变量的变化状态。注意，只有全局变量可以全程监视，临时变量只有在进入当前函数中才可监视到其数据，用static关键词修饰的变量无法监视。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781490481.gif" alt="Periodic-Window-Update.png"></p>
+</blockquote>
+<blockquote>
+<p>如果当前变量没有实时更新，则需要点击”View-&gt;Periodic Window Update”将其勾选上。</p>
+</blockquote>
+<h3 id="（6）局部变量查看（Call-Stack-Window）"><a href="#（6）局部变量查看（Call-Stack-Window）" class="headerlink" title="（6）局部变量查看（Call Stack Window）"></a>（6）局部变量查看（Call Stack Window）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781712720.gif" alt="Call-Stack-window.gif"></p>
+<blockquote>
+<p>这个窗口可以查看函数内部局部变量的栈空间，也可以查看当前程序调度关系，当出现有进入硬件错误异常调试时可以快速定位到是哪里触发的异常。</p>
+</blockquote>
+<h3 id="（6）逻辑分析窗口（Analysis-Windows）"><a href="#（6）逻辑分析窗口（Analysis-Windows）" class="headerlink" title="（6）逻辑分析窗口（Analysis Windows）"></a>（6）逻辑分析窗口（Analysis Windows）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781528548.gif" alt="image.gif"></p>
+<blockquote>
+<p>这个窗口只能在软件模拟仿真中使用，如果使用硬件调试，需要硬件支持，如下是逻辑分析窗口介绍。</p>
+</blockquote>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781546611.png" alt="image.png"></p>
+<p><a href="https://www.bilibili.com/video/BV1fm4y17777/?spm_id_from=333.337.search-card.all.click">点击观看逻辑分析窗口详细用法</a></p>
+<h3 id="（7）内存查看窗口（Memory）"><a href="#（7）内存查看窗口（Memory）" class="headerlink" title="（7）内存查看窗口（Memory）"></a>（7）内存查看窗口（Memory）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781562136.gif" alt="memory.gif"></p>
+<blockquote>
+<p>通过”View-&gt;Memory Windows-&gt;Memory1/2/3/4”打开Memory窗口，也可以通过工具栏打开。此窗口可以用来查看各变量的内存地址和RAM地址。</p>
+</blockquote>
+<h3 id="（8）寄存器窗口（Register-Window）"><a href="#（8）寄存器窗口（Register-Window）" class="headerlink" title="（8）寄存器窗口（Register Window）"></a>（8）寄存器窗口（Register Window）</h3><p>![image.gif]<img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781574989.gif" alt="enter description here"></p>
+<blockquote>
+<p>这个窗口用于查看当前内核的相关寄存器，如汇编里常说的15个通用寄存器。</p>
+</blockquote>
+<h3 id="（9）断点调试"><a href="#（9）断点调试" class="headerlink" title="（9）断点调试"></a>（9）断点调试</h3><p><a href="https://www.bilibili.com/video/BV1ee4y177Ad/?spm_id_from=333.788.recommend_more_video.0">点击观看 Debug模式下断点的使用</a></p>
+<ol>
+<li>设置断点；</li>
+<li>点击全速运行；</li>
+<li>查看代码光标是否运行到断点位置，如果运行至断点结束则说明前面代码正常运行；</li>
+<li>如果代码无法运行至断点则说明前面代码出现卡死现象异常或者断点设置异常；</li>
+<li>接着从最有可能卡停位置进行单步调试，适当观察全局变量和局部变量是否正常改变，直至找到bug；</li>
+<li>也可以利用逻辑分析仪观察对应IO口的电平变化，从而了解问题所在。</li>
+</ol>
+<p><a href="https://blog.csdn.net/u012749085/article/details/126830777?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169623360016800192274943%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=169623360016800192274943&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-126830777-null-null.142%5Ev94%5EchatsearchT3_1&amp;utm_term=keil5%20debug%E6%95%99%E7%A8%8B&amp;spm=1018.2226.3001.4187">如要详细了解 Keil5-debug 其他窗口，请点击这里</a></p>
+<hr>
+<h2 id="三、其他问题总结"><a href="#三、其他问题总结" class="headerlink" title="三、其他问题总结"></a>三、其他问题总结</h2><h5 id="1-keil硬件仿真无法进入main函数-或-debug卡死的原因总结"><a href="#1-keil硬件仿真无法进入main函数-或-debug卡死的原因总结" class="headerlink" title="1.keil硬件仿真无法进入main函数 或 debug卡死的原因总结"></a>1.keil硬件仿真无法进入main函数 或 debug卡死的原因总结</h5><p><a href="https://blog.csdn.net/sarsscofy/article/details/122395372?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=keil5%20%20debug%20%20%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-122395372.142%5Ev94%5EchatsearchT3_1&amp;spm=1018.2226.3001.4187">问题1解决方案</a></p>
+<h5 id="2-keil软件仿真进不去main函数"><a href="#2-keil软件仿真进不去main函数" class="headerlink" title="2.keil软件仿真进不去main函数"></a>2.keil软件仿真进不去main函数</h5><p><a href="https://blog.csdn.net/YANGHUIFEI01/article/details/132320956?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169624640016800186551666%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=169624640016800186551666&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-13-132320956-null-null.142%5Ev94%5EchatsearchT3_1&amp;utm_term=keil5%E8%BD%AF%E4%BB%B6%E4%BB%BF%E7%9C%9F%E4%B8%8D%E8%83%BD%E8%BF%90%E8%A1%8C&amp;spm=1018.2226.3001.4187">问题2解决方案</a></p>
+<p><a href="https://www.bilibili.com/video/BV12E411c7Nd/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">如果调试过程还有疑问，请点击观看调试全过程</a></p>
+<h4 id="总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。"><a href="#总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。" class="headerlink" title="总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。"></a>总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。</h4>]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>Keil5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32PID学习</title>
     <url>/2023/10/01/pid-xue-xi/</url>
     <content><![CDATA[<h1 id="PID教程"><a href="#PID教程" class="headerlink" title="PID教程"></a><strong>PID教程</strong></h1><hr>
@@ -739,6 +918,98 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
       <tags>
         <tag>STM32</tag>
         <tag>PID控制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RK3588S-Rock5A开机玩耍记录</title>
+    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
+    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
+<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
+<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
+<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
+<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
+<p>扫描以太网共享的IP</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
+<p>俺的是192.168.137.219</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
+<p>用户名和密码都是 rock</p>
+<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
+<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>设置VNC登录密码</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
+Password:
+Verify:
+Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
+A view-only password is not used
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加配置文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment">#!/bin/sh</span>
+<span class="token comment"># Start kde Desktop </span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
+<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
+    *gnome*<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
+        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
+      <span class="token keyword">fi</span>
+      <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token keyword">esac</span>
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
+xsetroot <span class="token parameter variable">-solid</span> grey
+xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
+twm <span class="token operator">&amp;</span>
+startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>增加可执行权限：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>启动vnc服务：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>查看VNC服务</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
+
+TigerVNC server sessions:
+
+X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
+<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用VNC连接即可</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
+<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>RK3588s</tag>
+        <tag>Rock5A</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1413,6 +1684,176 @@ I2C应答设置，收到一个字节后是否给从机应答
       </tags>
   </entry>
   <entry>
+    <title>STM32 Systick定时器延时</title>
+    <url>/2023/10/01/systick-ding-shi-qi-yan-shi/</url>
+    <content><![CDATA[<h1 id="Systick定时器延时"><a href="#Systick定时器延时" class="headerlink" title="Systick定时器延时"></a><strong>Systick定时器延时</strong></h1><h2 id="一、系统定时器"><a href="#一、系统定时器" class="headerlink" title="一、系统定时器"></a>一、系统定时器</h2><hr>
+<h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1. 目的"></a>1. 目的</h3><p>Systick定时器常用来做延时，或者实时系统的心跳时钟。这样可以节省MCU资源，不用浪费一个定时器。</p>
+<h3 id="2-简介"><a href="#2-简介" class="headerlink" title="2. 简介"></a>2. 简介</h3><p>SysTick 叫做系统滴答时钟、系统定时器，属于 Cortex-M4内核中的一个外设(外围设备)，也是属于NVIC的一部分，并且是24bit向下递减的计数器。</p>
+<p><strong>==最大计数：==</strong> 2^24-1 （向下计数到0，然后触发中断）</p>
+<h3 id="3-SysTick寄存器"><a href="#3-SysTick寄存器" class="headerlink" title="3. SysTick寄存器"></a>3. SysTick寄存器</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">寄存器</th>
+<th align="center">名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">CTRL</td>
+<td align="center">Systick控制和状态寄存器</td>
+<td align="center">使能Systick定时器并设置时钟源</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">LOAD</td>
+<td align="center">Systick自动重装载寄存器</td>
+<td align="center">当倒数至零时，将被重装载值</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">VAL</td>
+<td align="center">Systick当前值寄存器</td>
+<td align="center">读取时返回当前倒数值，写它则使之清零</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">CALB</td>
+<td align="center">Systick校准值寄存器</td>
+<td align="center">不常用</td>
+</tr>
+</tbody></table>
+<h4 id="（1）Systick控制和状态寄存器"><a href="#（1）Systick控制和状态寄存器" class="headerlink" title="（1）Systick控制和状态寄存器"></a>（1）Systick控制和状态寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781991874.png" alt="Sys-Tick.png"></p>
+<p>==外部时钟==是 HCLK(AHB总线时钟) 的1/8  （stm32f401 是 168/8=21M）<br>==内核时钟==是 HCLK时钟 （stm32f401 是 84M）</p>
+<h4 id="（2）Systick自动重装载寄存器"><a href="#（2）Systick自动重装载寄存器" class="headerlink" title="（2）Systick自动重装载寄存器"></a>（2）Systick自动重装载寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696782004933.png" alt="Sys-Tick.png"></p>
+<h4 id="（3）Systick当前值寄存器"><a href="#（3）Systick当前值寄存器" class="headerlink" title="（3）Systick当前值寄存器"></a>（3）Systick当前值寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696782018281.png" alt="Sys-Tick.png"></p>
+<h4 id="（4）Systick校准值寄存器"><a href="#（4）Systick校准值寄存器" class="headerlink" title="（4）Systick校准值寄存器"></a>（4）Systick校准值寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696782030472.png" alt="Sys-Tick.png"></p>
+<h3 id="4-计时原理"><a href="#4-计时原理" class="headerlink" title="4. 计时原理"></a>4. 计时原理</h3><blockquote>
+<p><strong>time = 中断次数*一次中断时间</strong><br>重装载次数为n，一次中断时间为t=1/SYSCLK，中断时间为T;<br><strong>T = n * t</strong></p>
+</blockquote>
+<hr>
+<h2 id="二、精准延时函数"><a href="#二、精准延时函数" class="headerlink" title="二、精准延时函数"></a>二、精准延时函数</h2><h3 id="1-固件库函数延时"><a href="#1-固件库函数延时" class="headerlink" title="1. 固件库函数延时"></a>1. 固件库函数延时</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> n<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//全局变量</span>
+<span class="token keyword">void</span> <span class="token function">SysTick_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+  	<span class="token comment">//uint32_t SystemCoreClock = 84000000;</span>
+  	<span class="token comment">//SystemFrequency / 1000     1ms    中断一次</span>
+  	<span class="token comment">//SystemFrequency / 100000   10us   中断一次</span>
+  	<span class="token comment">//SystemFrequency / 1000000  1us    中断一次</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">SysTick_Config</span><span class="token punctuation">(</span>SystemCoreClock<span class="token operator">/</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment">/*让系统中断一次耗时1us*/</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">delay_us</span><span class="token punctuation">(</span>__IO u32 nTime<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    n <span class="token operator">=</span>nTime<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">delay_ms</span><span class="token punctuation">(</span>__IO u32 nTime<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    n <span class="token operator">=</span>nTime<span class="token operator">*</span><span class="token number">1000</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">SysTick_Handler</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">!=</span><span class="token number">0x00</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        n<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-寄存器延时"><a href="#2-寄存器延时" class="headerlink" title="2. 寄存器延时"></a>2. 寄存器延时</h3><h5 id="寄存器延时比固件库函数写的更精简，推荐使用这种延时。"><a href="#寄存器延时比固件库函数写的更精简，推荐使用这种延时。" class="headerlink" title="寄存器延时比固件库函数写的更精简，推荐使用这种延时。"></a>寄存器延时比固件库函数写的更精简，推荐使用这种延时。</h5><pre class="line-numbers language-c" data-language="c"><code class="language-c">
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span>     <span class="token macro-name">PLL_m</span>       <span class="token expression"><span class="token number">8</span></span></span>
+
+<span class="token comment">/*----------------Systick微秒级延时----------------*/</span>
+<span class="token keyword">void</span> <span class="token function">delay_us</span><span class="token punctuation">(</span>u32 nus<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ u32 temp<span class="token punctuation">;</span>
+ 
+ SysTick<span class="token operator">-&gt;</span>LOAD <span class="token operator">=</span> SystemCoreClock<span class="token operator">/</span>PLL_m<span class="token operator">/</span><span class="token number">1000000</span><span class="token operator">*</span>nus<span class="token punctuation">;</span><span class="token comment">//设置重装载值 = 84000000/8/1000000 * n    (1us中断一次)</span>
+ 
+ SysTick<span class="token operator">-&gt;</span>VAL<span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span><span class="token comment">//清空计数器</span>
+ SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0X01</span><span class="token punctuation">;</span><span class="token comment">//使能，减到零是无动作，采用外部时钟源</span>
+ <span class="token keyword">do</span>
+ <span class="token punctuation">{</span>
+  temp<span class="token operator">=</span>SysTick<span class="token operator">-&gt;</span>CTRL<span class="token punctuation">;</span><span class="token comment">//读取当前倒计数值</span>
+ <span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token number">0x01</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等待时间到达</span>
+ 
+    SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">//关闭计数器</span>
+    SysTick<span class="token operator">-&gt;</span>VAL <span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span> <span class="token comment">//清空计数器</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*----------------Systick毫秒级延时----------------*/</span>
+<span class="token keyword">void</span> <span class="token function">delay_ms</span><span class="token punctuation">(</span>u16 nms<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ u32 temp<span class="token punctuation">;</span>
+ SysTick<span class="token operator">-&gt;</span>LOAD <span class="token operator">=</span> SystemCoreClock<span class="token operator">/</span>PLL_m<span class="token operator">/</span><span class="token number">1000</span><span class="token operator">*</span>nms<span class="token punctuation">;</span><span class="token comment">//设置重装载值 = 84000000/8/1000 * n  (1ms中断一次)</span>
+ SysTick<span class="token operator">-&gt;</span>VAL<span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span><span class="token comment">//清空计数器</span>
+ SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0X01</span><span class="token punctuation">;</span><span class="token comment">//使能，减到零是无动作，采用外部时钟源</span>
+ <span class="token keyword">do</span>
+ <span class="token punctuation">{</span>
+  temp<span class="token operator">=</span>SysTick<span class="token operator">-&gt;</span>CTRL<span class="token punctuation">;</span><span class="token comment">//读取当前倒计数值</span>
+ <span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token number">0x01</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等待时间到达</span>
+    SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">//关闭计数器</span>
+    SysTick<span class="token operator">-&gt;</span>VAL <span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span> <span class="token comment">//清空计数器</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-软延时"><a href="#3-软延时" class="headerlink" title="3. 软延时"></a>3. 软延时</h3><h5 id="在延时精度要求低的情况下建议采用软延时，减少中断次数。"><a href="#在延时精度要求低的情况下建议采用软延时，减少中断次数。" class="headerlink" title="在延时精度要求低的情况下建议采用软延时，减少中断次数。"></a>在延时精度要求低的情况下建议采用软延时，减少中断次数。</h5><pre class="line-numbers language-none"><code class="language-none">/*----------------软微秒级延时----------------*/
+void Delay_us(uint32_t Delay_us)
+{    
+  volatile unsigned int num;
+  volatile unsigned int t;
+ 
+  
+  for (num = 0; num &lt; Delay_us; num++)
+  {
+    t = 11;
+    while (t != 0)
+    {
+      t--;
+    }
+  }
+}
+/*----------------软毫秒级延时----------------*/
+void Delay_ms(uint16_t Delay_ms)
+{    
+  volatile unsigned int num;
+  for (num = 0; num &lt; Delay_ms; num++)
+  {
+    Delay_us(1000);
+  }
+}
+
+/*----------------软I2C延时----------------*/
+void I2C_Delay(void)
+{
+	uint8_t i;
+
+	for (i = 0; i &lt; 100; i++);
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="三、编程总结"><a href="#三、编程总结" class="headerlink" title="三、编程总结"></a>三、编程总结</h2><ol>
+<li>注意systick的时钟,首先需要先设置systick时钟源。</li>
+<li>接着设置重装载寄存器的值。</li>
+<li>清除当前数值寄存器的值。</li>
+<li>配置控制与状态寄存器。</li>
+<li>在main函数中循环调用延时函数实现灯闪烁。</li>
+<li>systick延时在之后起着重要作用，许多程序涉及到延时函数的调用，因此写好一个精准的延时函数必不可少！</li>
+</ol>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>Systick定时器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32F4驱动USB实现虚拟串口</title>
     <url>/2023/07/15/stm32f4-qu-dong-usb-shi-xian-xu-ni-chuan-kou/</url>
     <content><![CDATA[<h1 id="STM32F4驱动USB实现虚拟串口"><a href="#STM32F4驱动USB实现虚拟串口" class="headerlink" title="STM32F4驱动USB实现虚拟串口"></a>STM32F4驱动USB实现虚拟串口</h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a>实现目的</h2><p>使用Dap-link和stlink的时候，就发现这些仿真器上并没有USB转TTL芯片，就可以实现USB转串口，实现虚拟串口，非常方便。这里实测得出，使用USB虚拟串口，可以轻松达到921600波特率，接近1M/s，因为这个虚拟串口实际就是USB通讯，使用USB通讯，模拟COM类通讯端口协议，实现串口通讯。</p>
@@ -1718,447 +2159,6 @@ I2C应答设置，收到一个字节后是否给从机应答
       </tags>
   </entry>
   <entry>
-    <title>RK3588S-Rock5A开机玩耍记录</title>
-    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
-    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
-<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
-<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
-<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
-<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
-<p>扫描以太网共享的IP</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
-<p>俺的是192.168.137.219</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
-<p>用户名和密码都是 rock</p>
-<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
-<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
-<span class="token function">sudo</span> <span class="token function">apt</span> update
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>设置VNC登录密码</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
-Password:
-Verify:
-Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
-A view-only password is not used
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>添加配置文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-<span class="token comment">#!/bin/sh</span>
-<span class="token comment"># Start kde Desktop </span>
-<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
-<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
-<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
-    *gnome*<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
-        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
-      <span class="token keyword">fi</span>
-      <span class="token punctuation">;</span><span class="token punctuation">;</span>
-  <span class="token keyword">esac</span>
-<span class="token keyword">fi</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
-<span class="token keyword">fi</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
-<span class="token keyword">fi</span>
-<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
-xsetroot <span class="token parameter variable">-solid</span> grey
-xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
-twm <span class="token operator">&amp;</span>
-startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>增加可执行权限：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>启动vnc服务：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>查看VNC服务</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
-
-TigerVNC server sessions:
-
-X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
-<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>使用VNC连接即可</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
-<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>RK3588s</tag>
-        <tag>Rock5A</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Keil5-debug仿真教程</title>
-    <url>/2023/10/01/keil5-debug-fang-zhen-jiao-cheng/</url>
-    <content><![CDATA[<h1 id="Keil5-debug仿真教程"><a href="#Keil5-debug仿真教程" class="headerlink" title="Keil5-debug仿真教程"></a><strong>Keil5-debug仿真教程</strong></h1><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781254220.jpg" alt="keil5"></p>
-<h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><hr>
-<p><strong>Debug</strong> 是指在软件开发过程中，通过识别和解决问题来调试程序的过程。通常需要找出程序中的错误、异常或潜在问题，并修复它们以确保程序的正确性和稳定性。</p>
-<h5 id="常见的debug方法有三种："><a href="#常见的debug方法有三种：" class="headerlink" title="常见的debug方法有三种："></a><strong>常见的debug方法有三种：</strong></h5><ol>
-<li><p>==硬件调试==：通过LED灯、蜂鸣器等能使人员感知到的器件，利用其交互性进行调试。</p>
-</li>
-<li><p>==打印调试==：使用串口（Printf）,能将数据信息发送的方式，追踪程序运行状态。</p>
-</li>
-<li><p>==调速器调试==：利用设备支持的硬件内部运行状态追踪功能调试，大部分单片机都支持调试器调试，如STM32配合ST-Link,DAP-Link,fireDAP等调试工具。</p>
-</li>
-</ol>
-<p><strong>目的：</strong> 众所周知，硬件调试过于复杂，需要单独写一段初始化代码，所以不经常使用；而打印调试需要在源代码中加入大量 &lt;printf&gt;,极易引起代码混乱。以上两者方法调试效率低下，因此作为一名嵌入式工程师掌握调试器调试必不可少。</p>
-<hr>
-<h2 id="二、keil5-debug-步骤"><a href="#二、keil5-debug-步骤" class="headerlink" title="二、keil5-debug 步骤"></a>二、keil5-debug 步骤</h2><h3 id="（1）正确连接烧录器"><a href="#（1）正确连接烧录器" class="headerlink" title="（1）正确连接烧录器"></a>（1）正确连接烧录器</h3><table>
-<thead>
-<tr>
-<th align="center"><strong>DAP-Link</strong></th>
-<th align="center"><strong>ST-Link</strong></th>
-<th align="center"><strong>Stm32单片机</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><strong>SCK</strong></td>
-<td align="center"><strong>SWCLK</strong></td>
-<td align="center"><strong>SCK</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>SWD</strong></td>
-<td align="center"><strong>SWDIO</strong></td>
-<td align="center"><strong>DIO</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>3V3			（5V）</strong></td>
-<td align="center"><strong>3V3			（5V）</strong></td>
-<td align="center"><strong>VCC		（5V）</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>GND</strong></td>
-<td align="center"><strong>GND</strong></td>
-<td align="center"><strong>GND</strong></td>
-</tr>
-</tbody></table>
-<h3 id="（2）设置-keil5-Options-Debug选项"><a href="#（2）设置-keil5-Options-Debug选项" class="headerlink" title="（2）设置 keil5-Options-Debug选项"></a>（2）设置 keil5-Options-Debug选项</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781300736.png" alt="keil5-Debug-1.png"></p>
-<ol>
-<li>选择ST-link或者DAP-Link;</li>
-<li>勾选“Load Application at Startup” 和 Run to main();</li>
-<li>打开“Setting”并确定。</li>
-</ol>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781319301.png" alt="keil5-Debug-2.png"></p>
-<ol>
-<li>检查SWDIO是否连接成功；</li>
-<li>“Port” 设置为 “SW”，“Connect” 设置为 “Normal”，“Reset” 设置为 SYSRESETREQ(Default);</li>
-<li>Max Clock 设置低于10M;</li>
-<li>点击确定。</li>
-</ol>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781338308.png" alt="keil5-Debug-3.png"></p>
-<ol>
-<li>选择Flash DownLoad 中的 “Reset and Run”；</li>
-<li>检查是否添加Flash编程算法；</li>
-<li>Utilities 选择 “St-link Debugger” 或者 “DAP-Link Dabugger”,勾选 “Update Target before Debugger”；</li>
-<li>设置完毕后点击确定。</li>
-</ol>
-<h3 id="（3）开始调试"><a href="#（3）开始调试" class="headerlink" title="（3）开始调试"></a>（3）开始调试</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781385531.png" alt="image.png"></p>
-<p>单击窗口上的调试按钮快捷图标（上图红色框内图标），进入到软件模拟调试模式。</p>
-<h3 id="（4）调试工具栏介绍"><a href="#（4）调试工具栏介绍" class="headerlink" title="（4）调试工具栏介绍"></a>（4）调试工具栏介绍</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781398621.png" alt="image.png"></p>
-<table>
-<thead>
-<tr>
-<th align="center"><strong>1</strong></th>
-<th align="center"><strong>复位</strong></th>
-<th align="left">对程序进行复位操作，根据烧录器不同的复位方式配置会触发不同的复位类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><strong>2</strong></td>
-<td align="center"><strong>全速运行</strong></td>
-<td align="left">使当前程序开始正常全速运行，直到程序遇到断点时停止</td>
-</tr>
-<tr>
-<td align="center"><strong>3</strong></td>
-<td align="center"><strong>单步调试</strong></td>
-<td align="left">根据当前调试的窗口的语言，执行单条语句。如果遇到函数，则会进入函数内部。如果是在反汇编窗口中，则只执行一条汇编指令</td>
-</tr>
-<tr>
-<td align="center"><strong>4</strong></td>
-<td align="center"><strong>单步跳过调试</strong></td>
-<td align="left">如果是在C语言窗口中，则是按单条语句执行，与单步调试不同的是，遇到函数不会进入函数内部，而是直接全速运行函数，并跳到下一条语句</td>
-</tr>
-<tr>
-<td align="center"><strong>5</strong></td>
-<td align="center"><strong>单步返回调试</strong></td>
-<td align="left">如果是在C语言窗口中，则是按单条语句执行，与单步调试不同的是，遇到函数不会进入函数内部，而是直接全速运行函数，并跳到下一条语句</td>
-</tr>
-<tr>
-<td align="center"><strong>6</strong></td>
-<td align="center"><strong>运行到当前光标</strong></td>
-<td align="left">程序直接运行至当前光标所在行</td>
-</tr>
-<tr>
-<td align="center"><strong>7</strong></td>
-<td align="center"><strong>插入/移除断点</strong></td>
-<td align="left">如果当前光标所在行未有断点，则插入断点，在有断点的情况下则是移除断点，插入断点后，当前行前面会有个红圆表示断点位置。（断点最多只能打7个）</td>
-</tr>
-<tr>
-<td align="center"><strong>8</strong></td>
-<td align="center"><strong>使能/禁止断点</strong></td>
-<td align="left">开启或禁止当前光标所在行的断点。禁止后红圆变成白圆。</td>
-</tr>
-<tr>
-<td align="center"><strong>9</strong></td>
-<td align="center"><strong>禁止所有断点</strong></td>
-<td align="left">禁止当前所有的断点</td>
-</tr>
-<tr>
-<td align="center"><strong>10</strong></td>
-<td align="center"><strong>删除所有断点</strong></td>
-<td align="left">删除所有断点</td>
-</tr>
-</tbody></table>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781418964.png" alt="image.png"></p>
-<blockquote>
-<p>停止全速运行（上图红色框内图标），全速运行程序时激活该按钮，用来停止正全速运行的程序。</p>
-</blockquote>
-<p><a href="https://www.bilibili.com/video/BV1we4y1t7Uh/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">点击观看  Debug模式下调试选项介绍</a></p>
-<h3 id="（5）全局变量查看（Watch1-和-Watch2）"><a href="#（5）全局变量查看（Watch1-和-Watch2）" class="headerlink" title="（5）全局变量查看（Watch1    和    Watch2）"></a>（5）全局变量查看（Watch1    和    Watch2）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781653394.gif" alt="Watch.gif"></p>
-<blockquote>
-<p>通过”View-&gt;Watch Windows-&gt;Watch1、Watch2”可以选择打开Watch窗口，也可以在工具栏打开。</p>
-</blockquote>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781474820.gif" alt="Watch.gif"></p>
-<blockquote>
-<p>通过选中一个变量，右键添加入对应的Watch窗口，可以追踪查看当前变量的变化状态。注意，只有全局变量可以全程监视，临时变量只有在进入当前函数中才可监视到其数据，用static关键词修饰的变量无法监视。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781490481.gif" alt="Periodic-Window-Update.png"></p>
-</blockquote>
-<blockquote>
-<p>如果当前变量没有实时更新，则需要点击”View-&gt;Periodic Window Update”将其勾选上。</p>
-</blockquote>
-<h3 id="（6）局部变量查看（Call-Stack-Window）"><a href="#（6）局部变量查看（Call-Stack-Window）" class="headerlink" title="（6）局部变量查看（Call Stack Window）"></a>（6）局部变量查看（Call Stack Window）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781712720.gif" alt="Call-Stack-window.gif"></p>
-<blockquote>
-<p>这个窗口可以查看函数内部局部变量的栈空间，也可以查看当前程序调度关系，当出现有进入硬件错误异常调试时可以快速定位到是哪里触发的异常。</p>
-</blockquote>
-<h3 id="（6）逻辑分析窗口（Analysis-Windows）"><a href="#（6）逻辑分析窗口（Analysis-Windows）" class="headerlink" title="（6）逻辑分析窗口（Analysis Windows）"></a>（6）逻辑分析窗口（Analysis Windows）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781528548.gif" alt="image.gif"></p>
-<blockquote>
-<p>这个窗口只能在软件模拟仿真中使用，如果使用硬件调试，需要硬件支持，如下是逻辑分析窗口介绍。</p>
-</blockquote>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781546611.png" alt="image.png"></p>
-<p><a href="https://www.bilibili.com/video/BV1fm4y17777/?spm_id_from=333.337.search-card.all.click">点击观看逻辑分析窗口详细用法</a></p>
-<h3 id="（7）内存查看窗口（Memory）"><a href="#（7）内存查看窗口（Memory）" class="headerlink" title="（7）内存查看窗口（Memory）"></a>（7）内存查看窗口（Memory）</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781562136.gif" alt="memory.gif"></p>
-<blockquote>
-<p>通过”View-&gt;Memory Windows-&gt;Memory1/2/3/4”打开Memory窗口，也可以通过工具栏打开。此窗口可以用来查看各变量的内存地址和RAM地址。</p>
-</blockquote>
-<h3 id="（8）寄存器窗口（Register-Window）"><a href="#（8）寄存器窗口（Register-Window）" class="headerlink" title="（8）寄存器窗口（Register Window）"></a>（8）寄存器窗口（Register Window）</h3><p>![image.gif]<img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781574989.gif" alt="enter description here"></p>
-<blockquote>
-<p>这个窗口用于查看当前内核的相关寄存器，如汇编里常说的15个通用寄存器。</p>
-</blockquote>
-<h3 id="（9）断点调试"><a href="#（9）断点调试" class="headerlink" title="（9）断点调试"></a>（9）断点调试</h3><p><a href="https://www.bilibili.com/video/BV1ee4y177Ad/?spm_id_from=333.788.recommend_more_video.0">点击观看 Debug模式下断点的使用</a></p>
-<ol>
-<li>设置断点；</li>
-<li>点击全速运行；</li>
-<li>查看代码光标是否运行到断点位置，如果运行至断点结束则说明前面代码正常运行；</li>
-<li>如果代码无法运行至断点则说明前面代码出现卡死现象异常或者断点设置异常；</li>
-<li>接着从最有可能卡停位置进行单步调试，适当观察全局变量和局部变量是否正常改变，直至找到bug；</li>
-<li>也可以利用逻辑分析仪观察对应IO口的电平变化，从而了解问题所在。</li>
-</ol>
-<p><a href="https://blog.csdn.net/u012749085/article/details/126830777?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169623360016800192274943%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=169623360016800192274943&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-126830777-null-null.142%5Ev94%5EchatsearchT3_1&amp;utm_term=keil5%20debug%E6%95%99%E7%A8%8B&amp;spm=1018.2226.3001.4187">如要详细了解 Keil5-debug 其他窗口，请点击这里</a></p>
-<hr>
-<h2 id="三、其他问题总结"><a href="#三、其他问题总结" class="headerlink" title="三、其他问题总结"></a>三、其他问题总结</h2><h5 id="1-keil硬件仿真无法进入main函数-或-debug卡死的原因总结"><a href="#1-keil硬件仿真无法进入main函数-或-debug卡死的原因总结" class="headerlink" title="1.keil硬件仿真无法进入main函数 或 debug卡死的原因总结"></a>1.keil硬件仿真无法进入main函数 或 debug卡死的原因总结</h5><p><a href="https://blog.csdn.net/sarsscofy/article/details/122395372?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=keil5%20%20debug%20%20%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-122395372.142%5Ev94%5EchatsearchT3_1&amp;spm=1018.2226.3001.4187">问题1解决方案</a></p>
-<h5 id="2-keil软件仿真进不去main函数"><a href="#2-keil软件仿真进不去main函数" class="headerlink" title="2.keil软件仿真进不去main函数"></a>2.keil软件仿真进不去main函数</h5><p><a href="https://blog.csdn.net/YANGHUIFEI01/article/details/132320956?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169624640016800186551666%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=169624640016800186551666&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-13-132320956-null-null.142%5Ev94%5EchatsearchT3_1&amp;utm_term=keil5%E8%BD%AF%E4%BB%B6%E4%BB%BF%E7%9C%9F%E4%B8%8D%E8%83%BD%E8%BF%90%E8%A1%8C&amp;spm=1018.2226.3001.4187">问题2解决方案</a></p>
-<p><a href="https://www.bilibili.com/video/BV12E411c7Nd/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">如果调试过程还有疑问，请点击观看调试全过程</a></p>
-<h4 id="总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。"><a href="#总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。" class="headerlink" title="总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。"></a>总结：对于初学者来说，务必要实际动手操作一遍，特别是调试方法，要熟练掌握，因为以后工程调试时，用到的最多。</h4>]]></content>
-      <categories>
-        <category>嵌入式</category>
-      </categories>
-      <tags>
-        <tag>STM32</tag>
-        <tag>Keil5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM32 Systick定时器延时</title>
-    <url>/2023/10/01/systick-ding-shi-qi-yan-shi/</url>
-    <content><![CDATA[<h1 id="Systick定时器延时"><a href="#Systick定时器延时" class="headerlink" title="Systick定时器延时"></a><strong>Systick定时器延时</strong></h1><h2 id="一、系统定时器"><a href="#一、系统定时器" class="headerlink" title="一、系统定时器"></a>一、系统定时器</h2><hr>
-<h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1. 目的"></a>1. 目的</h3><p>Systick定时器常用来做延时，或者实时系统的心跳时钟。这样可以节省MCU资源，不用浪费一个定时器。</p>
-<h3 id="2-简介"><a href="#2-简介" class="headerlink" title="2. 简介"></a>2. 简介</h3><p>SysTick 叫做系统滴答时钟、系统定时器，属于 Cortex-M4内核中的一个外设(外围设备)，也是属于NVIC的一部分，并且是24bit向下递减的计数器。</p>
-<p><strong>==最大计数：==</strong> 2^24-1 （向下计数到0，然后触发中断）</p>
-<h3 id="3-SysTick寄存器"><a href="#3-SysTick寄存器" class="headerlink" title="3. SysTick寄存器"></a>3. SysTick寄存器</h3><table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">寄存器</th>
-<th align="center">名称</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">CTRL</td>
-<td align="center">Systick控制和状态寄存器</td>
-<td align="center">使能Systick定时器并设置时钟源</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">LOAD</td>
-<td align="center">Systick自动重装载寄存器</td>
-<td align="center">当倒数至零时，将被重装载值</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">VAL</td>
-<td align="center">Systick当前值寄存器</td>
-<td align="center">读取时返回当前倒数值，写它则使之清零</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">CALB</td>
-<td align="center">Systick校准值寄存器</td>
-<td align="center">不常用</td>
-</tr>
-</tbody></table>
-<h4 id="（1）Systick控制和状态寄存器"><a href="#（1）Systick控制和状态寄存器" class="headerlink" title="（1）Systick控制和状态寄存器"></a>（1）Systick控制和状态寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781991874.png" alt="Sys-Tick.png"></p>
-<p>==外部时钟==是 HCLK(AHB总线时钟) 的1/8  （stm32f401 是 168/8=21M）<br>==内核时钟==是 HCLK时钟 （stm32f401 是 84M）</p>
-<h4 id="（2）Systick自动重装载寄存器"><a href="#（2）Systick自动重装载寄存器" class="headerlink" title="（2）Systick自动重装载寄存器"></a>（2）Systick自动重装载寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696782004933.png" alt="Sys-Tick.png"></p>
-<h4 id="（3）Systick当前值寄存器"><a href="#（3）Systick当前值寄存器" class="headerlink" title="（3）Systick当前值寄存器"></a>（3）Systick当前值寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696782018281.png" alt="Sys-Tick.png"></p>
-<h4 id="（4）Systick校准值寄存器"><a href="#（4）Systick校准值寄存器" class="headerlink" title="（4）Systick校准值寄存器"></a>（4）Systick校准值寄存器</h4><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696782030472.png" alt="Sys-Tick.png"></p>
-<h3 id="4-计时原理"><a href="#4-计时原理" class="headerlink" title="4. 计时原理"></a>4. 计时原理</h3><blockquote>
-<p><strong>time = 中断次数*一次中断时间</strong><br>重装载次数为n，一次中断时间为t=1/SYSCLK，中断时间为T;<br><strong>T = n * t</strong></p>
-</blockquote>
-<hr>
-<h2 id="二、精准延时函数"><a href="#二、精准延时函数" class="headerlink" title="二、精准延时函数"></a>二、精准延时函数</h2><h3 id="1-固件库函数延时"><a href="#1-固件库函数延时" class="headerlink" title="1. 固件库函数延时"></a>1. 固件库函数延时</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> n<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//全局变量</span>
-<span class="token keyword">void</span> <span class="token function">SysTick_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span> 
-  	<span class="token comment">//uint32_t SystemCoreClock = 84000000;</span>
-  	<span class="token comment">//SystemFrequency / 1000     1ms    中断一次</span>
-  	<span class="token comment">//SystemFrequency / 100000   10us   中断一次</span>
-  	<span class="token comment">//SystemFrequency / 1000000  1us    中断一次</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">SysTick_Config</span><span class="token punctuation">(</span>SystemCoreClock<span class="token operator">/</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment">/*让系统中断一次耗时1us*/</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">delay_us</span><span class="token punctuation">(</span>__IO u32 nTime<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    n <span class="token operator">=</span>nTime<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">delay_ms</span><span class="token punctuation">(</span>__IO u32 nTime<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    n <span class="token operator">=</span>nTime<span class="token operator">*</span><span class="token number">1000</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">SysTick_Handler</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">!=</span><span class="token number">0x00</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        n<span class="token operator">--</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-寄存器延时"><a href="#2-寄存器延时" class="headerlink" title="2. 寄存器延时"></a>2. 寄存器延时</h3><h5 id="寄存器延时比固件库函数写的更精简，推荐使用这种延时。"><a href="#寄存器延时比固件库函数写的更精简，推荐使用这种延时。" class="headerlink" title="寄存器延时比固件库函数写的更精简，推荐使用这种延时。"></a>寄存器延时比固件库函数写的更精简，推荐使用这种延时。</h5><pre class="line-numbers language-c" data-language="c"><code class="language-c">
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span>     <span class="token macro-name">PLL_m</span>       <span class="token expression"><span class="token number">8</span></span></span>
-
-<span class="token comment">/*----------------Systick微秒级延时----------------*/</span>
-<span class="token keyword">void</span> <span class="token function">delay_us</span><span class="token punctuation">(</span>u32 nus<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- u32 temp<span class="token punctuation">;</span>
- 
- SysTick<span class="token operator">-&gt;</span>LOAD <span class="token operator">=</span> SystemCoreClock<span class="token operator">/</span>PLL_m<span class="token operator">/</span><span class="token number">1000000</span><span class="token operator">*</span>nus<span class="token punctuation">;</span><span class="token comment">//设置重装载值 = 84000000/8/1000000 * n    (1us中断一次)</span>
- 
- SysTick<span class="token operator">-&gt;</span>VAL<span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span><span class="token comment">//清空计数器</span>
- SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0X01</span><span class="token punctuation">;</span><span class="token comment">//使能，减到零是无动作，采用外部时钟源</span>
- <span class="token keyword">do</span>
- <span class="token punctuation">{</span>
-  temp<span class="token operator">=</span>SysTick<span class="token operator">-&gt;</span>CTRL<span class="token punctuation">;</span><span class="token comment">//读取当前倒计数值</span>
- <span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token number">0x01</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等待时间到达</span>
- 
-    SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">//关闭计数器</span>
-    SysTick<span class="token operator">-&gt;</span>VAL <span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span> <span class="token comment">//清空计数器</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/*----------------Systick毫秒级延时----------------*/</span>
-<span class="token keyword">void</span> <span class="token function">delay_ms</span><span class="token punctuation">(</span>u16 nms<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- u32 temp<span class="token punctuation">;</span>
- SysTick<span class="token operator">-&gt;</span>LOAD <span class="token operator">=</span> SystemCoreClock<span class="token operator">/</span>PLL_m<span class="token operator">/</span><span class="token number">1000</span><span class="token operator">*</span>nms<span class="token punctuation">;</span><span class="token comment">//设置重装载值 = 84000000/8/1000 * n  (1ms中断一次)</span>
- SysTick<span class="token operator">-&gt;</span>VAL<span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span><span class="token comment">//清空计数器</span>
- SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0X01</span><span class="token punctuation">;</span><span class="token comment">//使能，减到零是无动作，采用外部时钟源</span>
- <span class="token keyword">do</span>
- <span class="token punctuation">{</span>
-  temp<span class="token operator">=</span>SysTick<span class="token operator">-&gt;</span>CTRL<span class="token punctuation">;</span><span class="token comment">//读取当前倒计数值</span>
- <span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token number">0x01</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>temp<span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等待时间到达</span>
-    SysTick<span class="token operator">-&gt;</span>CTRL<span class="token operator">=</span><span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">//关闭计数器</span>
-    SysTick<span class="token operator">-&gt;</span>VAL <span class="token operator">=</span><span class="token number">0X00</span><span class="token punctuation">;</span> <span class="token comment">//清空计数器</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-软延时"><a href="#3-软延时" class="headerlink" title="3. 软延时"></a>3. 软延时</h3><h5 id="在延时精度要求低的情况下建议采用软延时，减少中断次数。"><a href="#在延时精度要求低的情况下建议采用软延时，减少中断次数。" class="headerlink" title="在延时精度要求低的情况下建议采用软延时，减少中断次数。"></a>在延时精度要求低的情况下建议采用软延时，减少中断次数。</h5><pre class="line-numbers language-none"><code class="language-none">/*----------------软微秒级延时----------------*/
-void Delay_us(uint32_t Delay_us)
-{    
-  volatile unsigned int num;
-  volatile unsigned int t;
- 
-  
-  for (num = 0; num &lt; Delay_us; num++)
-  {
-    t = 11;
-    while (t != 0)
-    {
-      t--;
-    }
-  }
-}
-/*----------------软毫秒级延时----------------*/
-void Delay_ms(uint16_t Delay_ms)
-{    
-  volatile unsigned int num;
-  for (num = 0; num &lt; Delay_ms; num++)
-  {
-    Delay_us(1000);
-  }
-}
-
-/*----------------软I2C延时----------------*/
-void I2C_Delay(void)
-{
-	uint8_t i;
-
-	for (i = 0; i &lt; 100; i++);
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<hr>
-<h2 id="三、编程总结"><a href="#三、编程总结" class="headerlink" title="三、编程总结"></a>三、编程总结</h2><ol>
-<li>注意systick的时钟,首先需要先设置systick时钟源。</li>
-<li>接着设置重装载寄存器的值。</li>
-<li>清除当前数值寄存器的值。</li>
-<li>配置控制与状态寄存器。</li>
-<li>在main函数中循环调用延时函数实现灯闪烁。</li>
-<li>systick延时在之后起着重要作用，许多程序涉及到延时函数的调用，因此写好一个精准的延时函数必不可少！</li>
-</ol>
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-      </categories>
-      <tags>
-        <tag>STM32</tag>
-        <tag>Systick定时器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>STM32串口学习</title>
     <url>/2023/10/01/chuan-kou-xue-xi/</url>
     <content><![CDATA[<h2 id="串口学习"><a href="#串口学习" class="headerlink" title="串口学习"></a>串口学习</h2><h4 id="用到新器件："><a href="#用到新器件：" class="headerlink" title="用到新器件："></a>用到新器件：</h4><p>USB转TTL</p>
@@ -2433,65 +2433,6 @@ ps .USART1-&gt;USART3    */</span>
       </tags>
   </entry>
   <entry>
-    <title>安装激活keil5</title>
-    <url>/2023/10/01/an-zhuang-ji-huo-keil5/</url>
-    <content><![CDATA[<h1 id="安装激活keil5"><a href="#安装激活keil5" class="headerlink" title="安装激活keil5"></a>安装激活keil5</h1><h1 id="1-Keil-MDK-ARM下载"><a href="#1-Keil-MDK-ARM下载" class="headerlink" title="1. Keil MDK-ARM下载"></a>1. Keil MDK-ARM下载</h1><p>目前（2023年10月）Keil MDK-ARM官方最新版本是V5.38</p>
-<p>MDK-ARM安装包下载</p>
-<p>官网下载地址：<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a></p>
-<p>百度网盘下载地址：<a href="https://download.csdn.net/download/dengjin20104042056/12718973">https://download.csdn.net/download/dengjin20104042056/12718973</a></p>
-<h1 id="2-官网下载"><a href="#2-官网下载" class="headerlink" title="2. 官网下载"></a>2. 官网下载</h1><p>进入网址<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826485273.png" alt="Alt text"><br>点击MDK-Arm<br>然后会进入新的界面，并让你填一些信息，这些信息随便填写就行。点击Submit<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826496639.png" alt="Alt text"><br>进入到以一下界面!<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826508191.png" alt="Alt text"><br>点击MDK538A.EXE下载最新版</p>
-<h1 id="3-安装Keil5"><a href="#3-安装Keil5" class="headerlink" title="3. 安装Keil5"></a>3. 安装Keil5</h1><p>3.1 双击安装包，进入安装向导界面，点击Next<br>![Alt text]<img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826517257.png" alt="enter description here"><br>3.2 选择同意协议，然后下一步<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826523209.png" alt="Alt text"><br>3.3 选择软件和支持包安装路径（可以默认），点击Next。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826574975.png" alt="Alt text"><br>3.4 填写基本信息，然后选择下一步。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826580262.png" alt="Alt text"><br>3.5 安装过程中，弹出如下窗口，选择安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826585149.png" alt="Alt text"><br>3.6 点击Finish，完成安装。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826590369.png" alt="Alt text"><br>安装完成之后弹出的这个界面直接关掉就行<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826596024.png" alt="Alt text"></p>
-<h1 id="4-激活Keil5"><a href="#4-激活Keil5" class="headerlink" title="4. 激活Keil5"></a>4. 激活Keil5</h1><p>Keil MDK-ARM是一个收费的软件，官方打击盗版也比较严厉，若你是商业用途，建议购买正版软件。当然，针对个人开发学习的朋友而言，进行非商业用途的使用。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826601898.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826608294.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826614185.png" alt="Alt text"><br>复制CID<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826619388.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826625181.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826633079.png" alt="Alt text"><br>粘贴序列号在1处，然后点击按钮2<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826640973.png" alt="Alt text"></p>
-<h1 id="5-安装芯片包"><a href="#5-安装芯片包" class="headerlink" title="5. 安装芯片包"></a>5. 安装芯片包</h1><h2 id="1-进入官网"><a href="#1-进入官网" class="headerlink" title="1.进入官网"></a>1.进入官网</h2><p>ARM Keil官网链接：(<a href="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png">https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png</a>)</p>
-<h2 id="2-进入CMSIS-Packs中选择需要的pack包"><a href="#2-进入CMSIS-Packs中选择需要的pack包" class="headerlink" title="2.进入CMSIS Packs中选择需要的pack包"></a>2.进入CMSIS Packs中选择需要的pack包</h2><p>输入需要的芯片型号后回车能显示出所有相关型号，或者在输入栏下方列表中查找：<br>找到所需安装包后，点击下载<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827134830.png" alt="Alt text"><br>下载速度慢的话可以在迅雷里面下载，迅雷有镜像源下载速度会很快</p>
-<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><p>双击打开，点Next就可以开始安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827139319.png" alt="Alt text"></p>
-<h1 id="6-安装V5编译器"><a href="#6-安装V5编译器" class="headerlink" title="6. 安装V5编译器"></a>6. 安装V5编译器</h1><h2 id="1-安装V5编译器的原因"><a href="#1-安装V5编译器的原因" class="headerlink" title="1.安装V5编译器的原因"></a>1.安装V5编译器的原因</h2><p>直接使用最新版的keil5编译时，发现网上的很多代码编译不过去。原因是以前的代码是ARM Compiler V5做的。然而，现在的KEIL不给预装ARM Compiler V5，如果用v6编译就如下图所示。所以我想办法给KEIL支持ARM Compiler V5。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827148073.png" alt="Alt text"><br>检查了一下，发现确实没有v5的编译器。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827157284.png" alt="Alt text"></p>
-<h2 id="2-获得ARM-Compiler-V5的安装包"><a href="#2-获得ARM-Compiler-V5的安装包" class="headerlink" title="2. 获得ARM Compiler V5的安装包"></a>2. 获得ARM Compiler V5的安装包</h2><p>国内有很多前辈其实已经把ARM Compiler V5下载下来了，仔细点搜还是搜得到的。但是我这里找到了一个官方的办法。</p>
-<p>找到了官方的这个问题说明文档：<a href="https://developer.arm.com/documentation/ka005198/latest">https://developer.arm.com/documentation/ka005198/latest</a></p>
-<p>然后顺着去找到下载网址：<a href="https://developer.arm.com/downloads/view/ACOMP5%E3%80%82">https://developer.arm.com/downloads/view/ACOMP5。</a><br>注意的是，这个网站是要登录ARM的账号。如果没有的话去注册一个就好。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827166455.png" alt="Alt text"><br>这里有两个下载资源。第一个应该是给linux的。如果是keil的话，我们一般是用在Windows上的，所以我们下载第二个。</p>
-<h2 id="3-安装-1"><a href="#3-安装-1" class="headerlink" title="3. 安装"></a>3. 安装</h2><p>下载以后，安装。但是注意安装路径一定要放在KEIL\ARM\下面创建的子目录里。我这里用的是KEIL\ARM\ARMCC5。</p>
-<h2 id="4-KEIL下引入ARM-Compiler-V5"><a href="#4-KEIL下引入ARM-Compiler-V5" class="headerlink" title="4. KEIL下引入ARM Compiler V5"></a>4. KEIL下引入ARM Compiler V5</h2><p>安装好了以后，点击那个－＞Folder/Extensions.<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827173569.png" alt="Alt text"><br>点Use ARM Compiler 最右边那个…。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827178876.png" alt="Alt text"><br>选中安装编译器的文件夹。于是就会出现：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827186382.png" alt="Alt text"><br>再点Setup Default ARM Compiler Version<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827194667.png" alt="Alt text"><br>一路点完确定。</p>
-<h2 id="5-确认"><a href="#5-确认" class="headerlink" title="5. 确认"></a>5. 确认</h2><p>点魔法棒，确认一下。已经可以选中ARM Compiler v5了。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827201560.png" alt="Alt text"></p>
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-      </categories>
-      <tags>
-        <tag>STM32</tag>
-        <tag>KEIL5</tag>
-        <tag>IDE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>嵌入式学习简介</title>
-    <url>/2023/07/23/qian-ru-shi-xue-xi-jian-jie/</url>
-    <content><![CDATA[<h1 id="嵌入式学习方向介绍"><a href="#嵌入式学习方向介绍" class="headerlink" title="嵌入式学习方向介绍"></a>嵌入式学习方向介绍</h1><h2 id="视频简介"><a href="#视频简介" class="headerlink" title="视频简介"></a>视频简介</h2><iframe src="//player.bilibili.com/player.html?aid=378089584&amp;bvid=BV1Hf4y1w7BH&amp;cid=410341156&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-<h2 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h2><p><strong>在我的两年学习经历中，嵌入式对我而言即是兴趣也是未来发展的方向。</strong></p>
-<p><strong>在我看来，嵌入式就是设计合适的能够完成目标任务需求的电子装置。在其中，我们会使用电气知识设计适用的电路板，在其中添加计算机控制单元——MCU，我们使用C语言（主要）或者其他编程语言对单片机进行编程，实现控制需求。</strong></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/ART-Pi.jpg" alt="1.单片机图"></p>
-<p>比较正式的说法：<em><strong>嵌入式即嵌入式系统，IEEE（美国电气和电子工程师协会）对其定义是用于控制、监视或者辅助操作机器和设备的装置，是一种专用的计算机系统；国内普遍认同的嵌入式系统定义是以应用为中心，以计算机技术为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统；从应用对象上加以定义来说，嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</strong></em></p>
-<p>嵌入式同时设计软件和硬件，在实际开发中，会专精一个方向，另一个辅修——嵌入式硬件工程师和嵌入式软件工程师，像我的话，主要是偏向软件方向，但我也会了解使用电路知识，PCB设计工具；认识的一个在公司里的硬件工程师大佬，就主攻硬件电路，软件方面主要使用STM32实现控制，会部署一些中间件在其中方便实现控制功能；</p>
-<h2 id="科创中心嵌入式小组"><a href="#科创中心嵌入式小组" class="headerlink" title="科创中心嵌入式小组"></a>科创中心嵌入式小组</h2><p><strong>在大学生科创中心，开设有嵌入式学习小组，每年会招收新成员进入培训，指导学习STM32、PCB设计、运动控制、FreeRtos、物联网等技术知识，会有学长带领学员设计机器人、无人机、智能小车等嵌入式系统集成设备，在实践中学习，在学习中探索未来，提高工科生的自我认知。</strong></p>
-<p>在实践学习中，科创中心的嵌入式小组主要发展为多个方向：</p>
-<p><strong>无人机组</strong> ：</p>
-<p><strong>工程小车组</strong>：</p>
-<p><strong>物联网开发组</strong>：</p>
-<p><strong>Ros机器人组</strong> ：</p>
-<p><strong>有趣的作品分享</strong>:</p>
-<iframe src="//player.bilibili.com/player.html?aid=226936627&amp;bvid=BV1Uh41137Th&amp;cid=1078338627&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-
-<iframe src="//player.bilibili.com/player.html?aid=420981979&amp;bvid=BV12341117rG&amp;cid=421416333&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>   
-
-
-<iframe src="//player.bilibili.com/player.html?aid=677612560&amp;bvid=BV1zm4y197Py&amp;cid=467867782&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
-
-
-]]></content>
-  </entry>
-  <entry>
     <title>STM32编码器速度采集</title>
     <url>/2023/10/01/dian-ji-bian-ma-qi-ce-su/</url>
     <content><![CDATA[<h1 id="电机编码器测速"><a href="#电机编码器测速" class="headerlink" title="电机编码器测速"></a>电机编码器测速</h1><h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923381345.png" alt="效果图"></p>
@@ -2608,6 +2549,65 @@ ps .USART1-&gt;USART3    */</span>
         <tag>STM32</tag>
         <tag>直流电机</tag>
         <tag>编码器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嵌入式学习简介</title>
+    <url>/2023/07/23/qian-ru-shi-xue-xi-jian-jie/</url>
+    <content><![CDATA[<h1 id="嵌入式学习方向介绍"><a href="#嵌入式学习方向介绍" class="headerlink" title="嵌入式学习方向介绍"></a>嵌入式学习方向介绍</h1><h2 id="视频简介"><a href="#视频简介" class="headerlink" title="视频简介"></a>视频简介</h2><iframe src="//player.bilibili.com/player.html?aid=378089584&amp;bvid=BV1Hf4y1w7BH&amp;cid=410341156&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
+
+<h2 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h2><p><strong>在我的两年学习经历中，嵌入式对我而言即是兴趣也是未来发展的方向。</strong></p>
+<p><strong>在我看来，嵌入式就是设计合适的能够完成目标任务需求的电子装置。在其中，我们会使用电气知识设计适用的电路板，在其中添加计算机控制单元——MCU，我们使用C语言（主要）或者其他编程语言对单片机进行编程，实现控制需求。</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/ART-Pi.jpg" alt="1.单片机图"></p>
+<p>比较正式的说法：<em><strong>嵌入式即嵌入式系统，IEEE（美国电气和电子工程师协会）对其定义是用于控制、监视或者辅助操作机器和设备的装置，是一种专用的计算机系统；国内普遍认同的嵌入式系统定义是以应用为中心，以计算机技术为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统；从应用对象上加以定义来说，嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</strong></em></p>
+<p>嵌入式同时设计软件和硬件，在实际开发中，会专精一个方向，另一个辅修——嵌入式硬件工程师和嵌入式软件工程师，像我的话，主要是偏向软件方向，但我也会了解使用电路知识，PCB设计工具；认识的一个在公司里的硬件工程师大佬，就主攻硬件电路，软件方面主要使用STM32实现控制，会部署一些中间件在其中方便实现控制功能；</p>
+<h2 id="科创中心嵌入式小组"><a href="#科创中心嵌入式小组" class="headerlink" title="科创中心嵌入式小组"></a>科创中心嵌入式小组</h2><p><strong>在大学生科创中心，开设有嵌入式学习小组，每年会招收新成员进入培训，指导学习STM32、PCB设计、运动控制、FreeRtos、物联网等技术知识，会有学长带领学员设计机器人、无人机、智能小车等嵌入式系统集成设备，在实践中学习，在学习中探索未来，提高工科生的自我认知。</strong></p>
+<p>在实践学习中，科创中心的嵌入式小组主要发展为多个方向：</p>
+<p><strong>无人机组</strong> ：</p>
+<p><strong>工程小车组</strong>：</p>
+<p><strong>物联网开发组</strong>：</p>
+<p><strong>Ros机器人组</strong> ：</p>
+<p><strong>有趣的作品分享</strong>:</p>
+<iframe src="//player.bilibili.com/player.html?aid=226936627&amp;bvid=BV1Uh41137Th&amp;cid=1078338627&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
+
+
+<iframe src="//player.bilibili.com/player.html?aid=420981979&amp;bvid=BV12341117rG&amp;cid=421416333&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>   
+
+
+<iframe src="//player.bilibili.com/player.html?aid=677612560&amp;bvid=BV1zm4y197Py&amp;cid=467867782&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="400px" height="300px"> </iframe>
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>安装激活keil5</title>
+    <url>/2023/10/01/an-zhuang-ji-huo-keil5/</url>
+    <content><![CDATA[<h1 id="安装激活keil5"><a href="#安装激活keil5" class="headerlink" title="安装激活keil5"></a>安装激活keil5</h1><h1 id="1-Keil-MDK-ARM下载"><a href="#1-Keil-MDK-ARM下载" class="headerlink" title="1. Keil MDK-ARM下载"></a>1. Keil MDK-ARM下载</h1><p>目前（2023年10月）Keil MDK-ARM官方最新版本是V5.38</p>
+<p>MDK-ARM安装包下载</p>
+<p>官网下载地址：<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a></p>
+<p>百度网盘下载地址：<a href="https://download.csdn.net/download/dengjin20104042056/12718973">https://download.csdn.net/download/dengjin20104042056/12718973</a></p>
+<h1 id="2-官网下载"><a href="#2-官网下载" class="headerlink" title="2. 官网下载"></a>2. 官网下载</h1><p>进入网址<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826485273.png" alt="Alt text"><br>点击MDK-Arm<br>然后会进入新的界面，并让你填一些信息，这些信息随便填写就行。点击Submit<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826496639.png" alt="Alt text"><br>进入到以一下界面!<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826508191.png" alt="Alt text"><br>点击MDK538A.EXE下载最新版</p>
+<h1 id="3-安装Keil5"><a href="#3-安装Keil5" class="headerlink" title="3. 安装Keil5"></a>3. 安装Keil5</h1><p>3.1 双击安装包，进入安装向导界面，点击Next<br>![Alt text]<img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826517257.png" alt="enter description here"><br>3.2 选择同意协议，然后下一步<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826523209.png" alt="Alt text"><br>3.3 选择软件和支持包安装路径（可以默认），点击Next。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826574975.png" alt="Alt text"><br>3.4 填写基本信息，然后选择下一步。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826580262.png" alt="Alt text"><br>3.5 安装过程中，弹出如下窗口，选择安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826585149.png" alt="Alt text"><br>3.6 点击Finish，完成安装。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826590369.png" alt="Alt text"><br>安装完成之后弹出的这个界面直接关掉就行<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826596024.png" alt="Alt text"></p>
+<h1 id="4-激活Keil5"><a href="#4-激活Keil5" class="headerlink" title="4. 激活Keil5"></a>4. 激活Keil5</h1><p>Keil MDK-ARM是一个收费的软件，官方打击盗版也比较严厉，若你是商业用途，建议购买正版软件。当然，针对个人开发学习的朋友而言，进行非商业用途的使用。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826601898.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826608294.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826614185.png" alt="Alt text"><br>复制CID<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826619388.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826625181.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826633079.png" alt="Alt text"><br>粘贴序列号在1处，然后点击按钮2<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826640973.png" alt="Alt text"></p>
+<h1 id="5-安装芯片包"><a href="#5-安装芯片包" class="headerlink" title="5. 安装芯片包"></a>5. 安装芯片包</h1><h2 id="1-进入官网"><a href="#1-进入官网" class="headerlink" title="1.进入官网"></a>1.进入官网</h2><p>ARM Keil官网链接：(<a href="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png">https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png</a>)</p>
+<h2 id="2-进入CMSIS-Packs中选择需要的pack包"><a href="#2-进入CMSIS-Packs中选择需要的pack包" class="headerlink" title="2.进入CMSIS Packs中选择需要的pack包"></a>2.进入CMSIS Packs中选择需要的pack包</h2><p>输入需要的芯片型号后回车能显示出所有相关型号，或者在输入栏下方列表中查找：<br>找到所需安装包后，点击下载<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827134830.png" alt="Alt text"><br>下载速度慢的话可以在迅雷里面下载，迅雷有镜像源下载速度会很快</p>
+<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><p>双击打开，点Next就可以开始安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827139319.png" alt="Alt text"></p>
+<h1 id="6-安装V5编译器"><a href="#6-安装V5编译器" class="headerlink" title="6. 安装V5编译器"></a>6. 安装V5编译器</h1><h2 id="1-安装V5编译器的原因"><a href="#1-安装V5编译器的原因" class="headerlink" title="1.安装V5编译器的原因"></a>1.安装V5编译器的原因</h2><p>直接使用最新版的keil5编译时，发现网上的很多代码编译不过去。原因是以前的代码是ARM Compiler V5做的。然而，现在的KEIL不给预装ARM Compiler V5，如果用v6编译就如下图所示。所以我想办法给KEIL支持ARM Compiler V5。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827148073.png" alt="Alt text"><br>检查了一下，发现确实没有v5的编译器。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827157284.png" alt="Alt text"></p>
+<h2 id="2-获得ARM-Compiler-V5的安装包"><a href="#2-获得ARM-Compiler-V5的安装包" class="headerlink" title="2. 获得ARM Compiler V5的安装包"></a>2. 获得ARM Compiler V5的安装包</h2><p>国内有很多前辈其实已经把ARM Compiler V5下载下来了，仔细点搜还是搜得到的。但是我这里找到了一个官方的办法。</p>
+<p>找到了官方的这个问题说明文档：<a href="https://developer.arm.com/documentation/ka005198/latest">https://developer.arm.com/documentation/ka005198/latest</a></p>
+<p>然后顺着去找到下载网址：<a href="https://developer.arm.com/downloads/view/ACOMP5%E3%80%82">https://developer.arm.com/downloads/view/ACOMP5。</a><br>注意的是，这个网站是要登录ARM的账号。如果没有的话去注册一个就好。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827166455.png" alt="Alt text"><br>这里有两个下载资源。第一个应该是给linux的。如果是keil的话，我们一般是用在Windows上的，所以我们下载第二个。</p>
+<h2 id="3-安装-1"><a href="#3-安装-1" class="headerlink" title="3. 安装"></a>3. 安装</h2><p>下载以后，安装。但是注意安装路径一定要放在KEIL\ARM\下面创建的子目录里。我这里用的是KEIL\ARM\ARMCC5。</p>
+<h2 id="4-KEIL下引入ARM-Compiler-V5"><a href="#4-KEIL下引入ARM-Compiler-V5" class="headerlink" title="4. KEIL下引入ARM Compiler V5"></a>4. KEIL下引入ARM Compiler V5</h2><p>安装好了以后，点击那个－＞Folder/Extensions.<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827173569.png" alt="Alt text"><br>点Use ARM Compiler 最右边那个…。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827178876.png" alt="Alt text"><br>选中安装编译器的文件夹。于是就会出现：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827186382.png" alt="Alt text"><br>再点Setup Default ARM Compiler Version<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827194667.png" alt="Alt text"><br>一路点完确定。</p>
+<h2 id="5-确认"><a href="#5-确认" class="headerlink" title="5. 确认"></a>5. 确认</h2><p>点魔法棒，确认一下。已经可以选中ARM Compiler v5了。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827201560.png" alt="Alt text"></p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>KEIL5</tag>
+        <tag>IDE</tag>
       </tags>
   </entry>
 </search>
