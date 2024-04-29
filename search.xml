@@ -376,7 +376,8 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
   <entry>
     <title>Keil5的魔法棒选项简介</title>
     <url>/2023/10/01/c-keil5-de-mo-fa-bang-jian-jie/</url>
-    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778413765.png" alt="魔法棒引入"></h2><h1 id="Keil5的魔法棒选项简介"><a href="#Keil5的魔法棒选项简介" class="headerlink" title="Keil5的魔法棒选项简介"></a>Keil5的魔法棒选项简介</h1><h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778460206.png" alt="Device"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><hr>
+<h1 id="Keil5的魔法棒选项简介"><a href="#Keil5的魔法棒选项简介" class="headerlink" title="Keil5的魔法棒选项简介"></a>Keil5的魔法棒选项简介</h1><h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778460206.png" alt="Device"></p>
 <p>这个页面功能较为简单，左上方分别显示供应商、芯片类型、工具集，右上方pack为当前使用的芯片包的版本号，URL为arm芯片包的下载地址（魔法上网访问）。中间带有一个搜索框可供检索。下方左侧是目前支持的芯片列表，右侧为该系列芯片资源的英文简介。</p>
 <h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778479212.png" alt="Target"></p>
 <p>在这个界面中有很多配置信息。<br>Xtal:为当前工程使用的晶振频率</p>
@@ -411,8 +412,8 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
 </ul>
 <p>勾选后会生成.crf文件，便于调试，但会使工程编译速度变慢</p>
 <p>.crf：浏览信息文件，使用Go to Definition Of(F12) 功能，就需要有这类文件。</p>
-<h2 id="Listing"><a href="#Listing" class="headerlink" title="Listing"></a>Listing</h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778724401.png" alt="Listing"></h2><p>第一个选项，可以选择生成链接文件的文件夹。<br>其余配置一般默认。</p>
-<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778760780.png" alt="C-C++"></h2><ul>
+<h2 id="Listing"><a href="#Listing" class="headerlink" title="Listing"></a>Listing</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778724401.png" alt="Listing"></h2><p>第一个选项，可以选择生成链接文件的文件夹。<br>其余配置一般默认。</p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778760780.png" alt="C-C++"></h2><ul>
 <li><p>Preprocessor Symbols:<br>预处理符号，在这里进行的Define/Undefine具有全局属性。</p>
 </li>
 <li><p>Language/Code Generation：</p>
@@ -432,7 +433,7 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
 <p>   在这里需要添加工程中包含的头文件路径。</p>
 </li>
 </ul>
-<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778787505.png" alt="Debug"></h2><p>这个页面主要跟调试有关，这部分的功能在我们日常工作中经常会使用。如果可以灵活使用这部分的功能在工作中可以达到事半功倍的效果。左边是软件仿真调试配置，右边是硬件仿真调试配置。</p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778787505.png" alt="Debug"></h2><p>这个页面主要跟调试有关，这部分的功能在我们日常工作中经常会使用。如果可以灵活使用这部分的功能在工作中可以达到事半功倍的效果。左边是软件仿真调试配置，右边是硬件仿真调试配置。</p>
 <p>两个复选use选项，二选一。我一般使用DAP_link仿真器（便宜），性能一般，支持的断点数目较少。</p>
 <ul>
 <li><p>仿真器选型<br>下拉选项，可以根据需要选择不同的仿真器。</p>
@@ -711,7 +712,7 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
   <entry>
     <title>Keil5-debug仿真教程</title>
     <url>/2023/10/01/keil5-debug-fang-zhen-jiao-cheng/</url>
-    <content><![CDATA[<h1 id="Keil5-debug仿真教程"><a href="#Keil5-debug仿真教程" class="headerlink" title="Keil5-debug仿真教程"></a><strong>Keil5-debug仿真教程</strong></h1><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781254220.jpg" alt="keil5"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Keil5-debug仿真教程"><a href="#Keil5-debug仿真教程" class="headerlink" title="Keil5-debug仿真教程"></a><strong>Keil5-debug仿真教程</strong></h1><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781254220.jpg" alt="keil5"></p>
 <h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><hr>
 <p><strong>Debug</strong> 是指在软件开发过程中，通过识别和解决问题来调试程序的过程。通常需要找出程序中的错误、异常或潜在问题，并修复它们以确保程序的正确性和稳定性。</p>
 <h5 id="常见的debug方法有三种："><a href="#常见的debug方法有三种：" class="headerlink" title="常见的debug方法有三种："></a><strong>常见的debug方法有三种：</strong></h5><ol>
@@ -1686,7 +1687,7 @@ I2C应答设置，收到一个字节后是否给从机应答
   <entry>
     <title>STM32 Systick定时器延时</title>
     <url>/2023/10/01/systick-ding-shi-qi-yan-shi/</url>
-    <content><![CDATA[<h1 id="Systick定时器延时"><a href="#Systick定时器延时" class="headerlink" title="Systick定时器延时"></a><strong>Systick定时器延时</strong></h1><h2 id="一、系统定时器"><a href="#一、系统定时器" class="headerlink" title="一、系统定时器"></a>一、系统定时器</h2><hr>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Systick定时器延时"><a href="#Systick定时器延时" class="headerlink" title="Systick定时器延时"></a><strong>Systick定时器延时</strong></h1><h2 id="一、系统定时器"><a href="#一、系统定时器" class="headerlink" title="一、系统定时器"></a>一、系统定时器</h2><hr>
 <h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1. 目的"></a>1. 目的</h3><p>Systick定时器常用来做延时，或者实时系统的心跳时钟。这样可以节省MCU资源，不用浪费一个定时器。</p>
 <h3 id="2-简介"><a href="#2-简介" class="headerlink" title="2. 简介"></a>2. 简介</h3><p>SysTick 叫做系统滴答时钟、系统定时器，属于 Cortex-M4内核中的一个外设(外围设备)，也是属于NVIC的一部分，并且是24bit向下递减的计数器。</p>
 <p><strong>==最大计数：==</strong> 2^24-1 （向下计数到0，然后触发中断）</p>
