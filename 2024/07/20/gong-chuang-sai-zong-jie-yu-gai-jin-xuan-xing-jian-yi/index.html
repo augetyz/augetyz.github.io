@@ -1,0 +1,1691 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="工创赛总结与改进-选型建议, Sparkle.now">
+    <meta name="description" content="@:
+工创赛总结与改进——选型建议任务目标
+扫描二维码
+平面移动定位
+拿取物料
+色环定位
+放置物料
+
+比赛总体只有这么些执行要点，每个部分都需要重视，随着序号顺序其重要性降序！最重要的就是扫二维码和移动以及拿物料，一步步进行，才能得分，根据">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>工创赛总结与改进-选型建议 | Sparkle.now</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sparkle.now</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-paper-plane" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>时轴</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tag" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>推荐链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>多媒体</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>阅读</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/images">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sparkle.now</div>
+        <div class="logo-desc">
+            
+            惟愿无事常相见
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-archive"></i>
+			
+			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paper-plane" style="position: absolute;left:50px" ></i>
+			      
+		          <span>时轴</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tag" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			推荐链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			多媒体
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>阅读</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/images " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17197660798456.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">工创赛总结与改进-选型建议</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%AF%94%E8%B5%9B/">
+                                    <span class="chip bg-color">
+                                        比赛
+                                    </span>
+                                </a>
+                                
+                        </div>
+                        
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/%E6%AF%94%E8%B5%9B/" class="post-category">
+                                    比赛
+                                </a>
+                                
+                        </div>
+                        
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                            2024-07-20
+                    </div>
+                    
+
+                        
+                            <div class="post-date info-break-policy">
+                                <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                                    2024-07-20
+                            </div>
+                            
+
+                                
+                                    <div class="info-break-policy">
+                                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                                            4.8k
+                                    </div>
+                                    
+
+                                        
+                                            <div class="info-break-policy">
+                                                <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                                                    16
+                                                        分
+                                            </div>
+                                            
+
+                                                
+                                                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                                                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                                                            <span id="busuanzi_value_page_pv"></span>
+                                                    </div>
+                                                    
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/libs/prism/prism.min.css">
+            
+
+                
+
+                        <div class="card-content article-card-content">
+                            <div id="articleContent">
+                                <p>@:</p>
+<h1 id="工创赛总结与改进——选型建议"><a href="#工创赛总结与改进——选型建议" class="headerlink" title="工创赛总结与改进——选型建议"></a>工创赛总结与改进——选型建议</h1><h2 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h2><ol>
+<li>扫描二维码</li>
+<li>平面移动定位</li>
+<li>拿取物料</li>
+<li>色环定位</li>
+<li>放置物料</li>
+</ol>
+<p>比赛总体只有这么些执行要点，每个部分都需要重视，随着序号顺序其重要性降序！最重要的就是扫二维码和移动以及拿物料，一步步进行，才能得分，根据顺序执行，哪个部分寄掉，后面的环节大概率也要寄。<br>下面对每个环节所需要的主要器件选型做介绍和建议。</p>
+<h2 id="扫描二维码方案"><a href="#扫描二维码方案" class="headerlink" title="扫描二维码方案"></a>扫描二维码方案</h2><p><strong>这个环节即是最简单的，也是最重要的，也是绝对不能出问题的！一定要稳定！不能出问题！不能依靠运气，在长春国赛，初赛有不少强队因为这个寄了没进决赛，决赛也有不少队因为无法适应位置修改了的二维码板而寄了，这里扫不到数据，后面所有环节全完蛋！一分都没！</strong></p>
+<p>这里我分享两种思路：</p>
+<h3 id="1-使用二维码扫描模块直接扫描。"><a href="#1-使用二维码扫描模块直接扫描。" class="headerlink" title="1. 使用二维码扫描模块直接扫描。"></a>1. 使用二维码扫描模块直接扫描。</h3><p>就用这种淘宝几十块钱的二维码模块，以前都是用在超市收银机的，需要用一个串口驱动，这也是我们队国赛的方案。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703076883875.png" alt="GM65"></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>方便</li>
+<li>使用简单</li>
+<li>只要在合适角度，扫描稳定</li>
+<li>数据简单</li>
+<li>扫描距离远</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>慢</li>
+<li>扫描角度小</li>
+<li>需要占用一个串口</li>
+<li>必须要停下来扫描，行走扫描不一定能扫的到</li>
+</ul>
+<blockquote>
+<p>我们队用这个，没在二维码上出过问题！（前提是车车要走到二维码板前）走到了，就能扫到，扫到了数据就有，而这个模块自带补光，可以通过指令开启扫描时补光。这里需要注意国赛初赛规则上写了，不准向场外补光，这里我也不知道向二维码板上补光算不算犯规，所以国赛的时候我用#define修改了扫描指令，没加补光，依然稳定。</p>
+</blockquote>
+<h3 id="2-使用K210或者openmv之类的摄像头模组"><a href="#2-使用K210或者openmv之类的摄像头模组" class="headerlink" title="2.使用K210或者openmv之类的摄像头模组"></a>2.使用K210或者openmv之类的摄像头模组</h3><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703077103725.png" alt="V831"></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>可编程，可控性强</li>
+<li>可视角度大，可以换镜头</li>
+<li>识别速度快，可以跑着扫描</li>
+<li>可扩展其他功能，不仅用来扫二维码</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>贵</li>
+<li>可能会出问题，不稳定</li>
+<li>需要自己写代码</li>
+<li>其实没啥缺点</li>
+</ul>
+<blockquote>
+<p>我们队三四月份的时候用的就是V831，有一说一，快！稳定性还行，但我听群里说有人国赛扫描摄像头的时候因为国赛场馆灯光问题，扫不到二维码，我的评价是，哥们没加补光以及代码没调太好可能是，二维码这玩意库那么多，我觉得应该蛮好操作的。</p>
+</blockquote>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用啥都行，只要会用。我们队采用的是GM65-二维码扫描模块，稳定，容易更换，排错误，出问题，基本不会去查看该模块的问题。唯一的地方就是，在二维码识别那里，比别的队慢2s，因为我们车车需要停下来扫描。我建议，如果没有别的需求，还是采用GM65就行，如果对自己实力比较有信心，代码稳定，图快的话，可以采用V831或者树莓派。</p>
+<blockquote>
+<p>补充，可以看一下下面两个场地的区别，如果是使用了机械臂上的摄像头功能复用扫描二维码（有的是两个摄像头），需要专门设计一个动作执行二维码扫描，而在决赛的时候，二维码位置变换，在另一侧：我们队是直接把GM65模块（双面胶粘的）拔下来，放在车车的另一侧，保证车车总体运行方向不变；如果用机械臂的话，要么重新设计一个动作，要么修改车车运行方向，决赛发布规则到准备时间结束一共只有五个小时，要对自己的能力有正确的认识。</p>
+</blockquote>
+<h2 id="平面移动方案"><a href="#平面移动方案" class="headerlink" title="平面移动方案"></a>平面移动方案</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703077532860.png" alt="初赛场地"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703077562386.png" alt="决赛场地"></p>
+<p>两个场地的运动方向是相反的，具体可以看规则————即在决赛需要在五个小时内写一套新的定位移动代码；</p>
+<p>比赛场地是分很多个区域的，如果不能准确到达每个区域，就不能得分，甚至会因为碰到黄色区域导致比赛提前结束。</p>
+<p>所以，在这个比赛中，电控选手最重要的任务之一就是平面移动和精确定位，车车跑得快，车车跑的准，才能算好。这里我们团队采用的思路是，底盘运动控制粗略定位，视觉识别精确定位。</p>
+<p>这里主要分享底盘运动控制粗略定位的电机选型，轮子选型以及视觉识别精确定位的摄像头，板子选型。</p>
+<h3 id="底盘运动控制粗略定位"><a href="#底盘运动控制粗略定位" class="headerlink" title="底盘运动控制粗略定位"></a>底盘运动控制粗略定位</h3><p>这里直接使用编码器记录车车行走的距离，配合陀螺仪，实现定向定距离移动，考虑到场地打滑，机械结构误差，编码器误差累计等多种影响因素，这种方法会在多次移动、刹车、拐弯之后，出现较大误差；在短距离移动中，使用这种定位方式，可以达到1cm的定位精度，在刹车、拐弯、起步大概5-8次之后，会出现较大误差，不能保证重复定位精度，所以单纯依靠这种方法是行不通的，需要配合视觉定位实现精确定位和累计误差消除。</p>
+<h4 id="底盘电机"><a href="#底盘电机" class="headerlink" title="底盘电机"></a>底盘电机</h4><p>底盘电机有多种选择</p>
+<ul>
+<li>直流有刷电机</li>
+<li>直流步进电机</li>
+<li>无刷伺服电机</li>
+</ul>
+<p>我们队采用的方案是：直流有刷电机+齿轮减速器+光电型编码器</p>
+<p>看到国赛场上好多队采用的都是：步进电机+磁编码器+FOC闭环控制器</p>
+<p>也有用无刷电机的。</p>
+<p>各个选择的个人看法：</p>
+<h5 id="直流有刷电机"><a href="#直流有刷电机" class="headerlink" title="直流有刷电机"></a>直流有刷电机</h5><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703079260948.png" alt="直流光电编码器有刷减速电机"><br><strong>优点</strong></p>
+<ul>
+<li>便宜</li>
+<li>控制简单</li>
+<li>容易更换</li>
+<li>刚入门学习用的多</li>
+<li>上手快</li>
+<li>配合高精度光电编码器，定位精度还行</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>精度不够，空程大</li>
+<li>建议采用行星减速器</li>
+<li>采用的是电压控制速度，在低速情况下，不能稳定控制扭矩，导致扭矩不够，精度低</li>
+</ul>
+<p> 我们队用这种电机全然因为是代码更迭下来一直用的是这种电机，代码不好改，或者说是懒，后面用了别的方法来弥补这种电机导致的精度不够，强烈建议使用行星减速器，但最好不要用直流有刷电机，因为这个电机有个致命问题，这个电机是采用降低电压也就是减低功率来减低转速的，在需要低速的情况下，电机扭矩会不够，导致运行不稳定！非常坑！</p>
+<h5 id="步进电机"><a href="#步进电机" class="headerlink" title="步进电机"></a>步进电机</h5><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703079305093.png" alt="步进电机+闭环驱动器"><br><strong>优点</strong></p>
+<ul>
+<li>便宜</li>
+<li>控制简单</li>
+<li>进度高</li>
+<li>高速也还行，能跑的蛮快的</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>高速状态下会丢步</li>
+<li>比较重</li>
+<li>别的也没啥</li>
+</ul>
+<p>相当建议采用步进电机，然后配合张大头的步进电机闭环驱动器，可以实现简单控制，稳定控制，精确控制。国赛上好多人用这个方案，连PID都不用写了。<br>这里需要提到一个点，就是步进电机在使用时，功率是恒定的，高速和低速情况下，功率都差不多，可以解决有刷电机的低速下扭矩不够的问题，但步进电机在高速下可能会丢步，所以需要采用磁编码器来实现闭环。一般买的闭环驱动器上都会有磁编码器，和电流闭环。所以用步进电机就会很简单，实际操作起来效果也会很好。</p>
+<h5 id="无刷电机"><a href="#无刷电机" class="headerlink" title="无刷电机"></a>无刷电机</h5><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703079360075.png" alt="随便找的，能用在车车上的大概300块能解决"><br><strong>优点</strong></p>
+<ul>
+<li>稳定</li>
+<li>准</li>
+<li>速度快</li>
+<li>劲大</li>
+<li>好用<br><strong>缺点</strong></li>
+<li>贵</li>
+<li>对嵌入式电控选手要求有点高，得会用</li>
+<li>如果直接上了伺服电机（驱动一体的那种）上一个选项可以忽略</li>
+</ul>
+<p>建议采用无刷电机，真的好用，刹车快，起步快，配合FOC驱动器，嘎嘎好用，换向丝滑，学会使用了连机械臂也解决了。而且这玩意还准！</p>
+<p>唯一的问题就是贵，一个电机大概499，好一点的随便上千，有钱的真的可以试试。</p>
+<h4 id="麦克纳姆轮"><a href="#麦克纳姆轮" class="headerlink" title="麦克纳姆轮"></a>麦克纳姆轮</h4><p>这个比赛车车好像用的都是麦克纳姆轮，说实话，如果机械臂自由度足够的话，车车应该是不需要转向的，一个方向走完全场，控制起来也舒服。当然，这里主要是总结下轮子的选择。<br>国赛的时候，有不少队反映场地打滑，导致自己成绩不好：我觉得吧，工程赛题，尽管看起来就像个小游戏，但实际工程上场地环境各种情况都有，打滑都是小问题，设计产品和设备的时候就要充分考虑这些情况，国赛主办方也提供了场地图纸，大家也都在实验室测试过的，基本摩擦系数应该是差不多的。国赛场地和我们队的测试场地差异就在国赛的场地是体育馆改的，有几个地图可能不是特别平，稍微有些颠簸。车车上加个悬挂系统就基本解决很多问题，再写一些算法检测打滑和偏向纠正，基本就能解决问题；题外话，这仅仅只是个不到6平米的小场地，如果放到实际物流仓储仓库做自动搬运机器人，那环境岂不是更加复杂。</p>
+<p>麦轮的选择上：</p>
+<blockquote>
+<p>首先是结实，承重要好，车车越重，摩擦力越大，越不易打滑，当然重量要合适，不然太重就跑不动啦；</p>
+</blockquote>
+<blockquote>
+<p>轮径要大一些，在不超高的情况下，轮径越大跑的越快，都知道移动速度=电机转速*轮子周长。当然电机功率是一定的，轮子直径大了，力臂会长，扭矩不够的电机可能带不起来。但基本上咱这个赛题上，用42步进电机功率都能带动。</p>
+</blockquote>
+<p>仔细看我们车车视频能看到，我们初赛没跑完，最后一个码垛没码完时间就结束了，总结就是跑的比较慢：50减速比的直流有刷电机+天府之土70mm轮子跑的还是太慢了</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>有钱的就整无刷电机，没钱的就整步进电机，嫌自己事情少的，就整有刷电机。车轮上建议用天府之土轮子或者轮径大一些的，我看到几个队跑的飞快，轮子直径大概是100mm，建议可以搜一下，只要扭矩足够，精度足够，越快越好。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17198154451502.jpg" alt="左边的是刚搜的，右边是我们用的"></p>
+<h3 id="视觉识别控制精确定位"><a href="#视觉识别控制精确定位" class="headerlink" title="视觉识别控制精确定位"></a>视觉识别控制精确定位</h3><p>我们国赛用的是旭日派x3+USB摄像头+opencv识别圆环，视觉队友阿伟组队前跟我一样是玩stm32的，跟我一起后现学的机械视觉，总结就是，从省赛到国赛，视觉没出过问题，稳得一批。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17198158391246.jpg" alt="视觉识别和机械臂都准结果才能准"></p>
+<p>具体视觉代码分享在后续文章，这里只谈元件使用。</p>
+<p><strong>用板载计算机还是嵌入式视觉</strong><br>板载计算机就是 NUC，树莓派，香橙派一类的能够跑机械视觉，神经网络的Linux计算机，我建议用一个你会用的，速度快一点的，资料多的，Linux板子；例如：树莓派5，香橙派的RK3588，ROCK5系列的板子，这些SOC性能都足够了，便宜点的也够用，方便调试，移植代码的就行。</p>
+<p>嵌入式视觉，openmv，K210之类的，都不推荐；K210识别二维码还可以，队里资金紧张的话，用到省赛也没问题，在河南省用K210到国赛也问题不大，稍微累点，后面到国赛的话麻烦些换个方案就行；openmv就更不推荐了，这价格，疫情涨价就算了，疫情之后，H7芯片的价格都这样了，还卖五六百😆，性价比太低。也别想着这玩意开源代码多，看看420元的树莓派5和499元的RK3588s吧。</p>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>用RK3588或者树莓派5就OK的，配一个100块的USB摄像头就能识别OK了。</p>
+<p>树莓派5+USB摄像头和起来也就520块。😆😆😆😆😆</p>
+<h2 id="物料拿取和放置"><a href="#物料拿取和放置" class="headerlink" title="物料拿取和放置"></a>物料拿取和放置</h2><p>对物料的拿取和放置，主要依赖机械臂的设计。多自由度的机械臂拿取就更灵活，但控制会比较难；自由度低的机械臂设计，控制起来简单高效，但题目更换后，不好适应，而且上限摆在那了。</p>
+<p>今年看到好多升降式的机械臂，很准，但我们队没用，原因是觉得自由度不高，针对性很强，一旦更换题目，就没招了，而且，运作模式固定了。</p>
+<p>我们队采用了连杆式机械臂，类似下图这种，驱动电机用的是fashionstar的磁编码器无刷舵机，三百块一个</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1703080225272.png" alt="连杆式"></p>
+<p>@:<br>省赛的时候是这种，舵机用的就是图中这款，100块一个。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17198315585735.jpg" alt="一节接着一节式"></p>
+<p>省赛的时候用的是数组存储动作，在特定位置实行规定动作就行了，一个是机械精度问题，一个是定位精度问题，最低三环（运气好一环二环），如果没出幺蛾子的话，稳定120分，时间不限制的情况哈哈哈哈。</p>
+<p>国赛用了机械臂逆运动学解算，还是粗略走过去，视觉精确定位，这个时候用动作组的车队会执行动作组进行放置，仍然会有误差，不会特别准。我们这个时候用摄像头识别色环中心位置，并线性变化到机械臂的坐标系，转化为空间XYZ坐标，再逆运动解算为电机角度，拿取物料，执行放置；我们的机械臂自由度低，有唯一解，我是直接拿着平板和游标卡尺算的，不是特别严谨，一堆三角函数，但效果很好，计算直接在单片机里算的，国赛一共放置了9次色环，印象里是六个一环，三个二环。</p>
+<p>这里简单说一下，电机的话，用舵机或者步进电机或者无刷电机都行，一定要精准的，一般都贵，推荐上步进电机，步进电机真的很准很准，用张大头的闭环控制器，一个关节90块能搞定，车车底盘也可以用这个方案。</p>
+<p>所以这里主要的来自机械结构误差，选择什么样的结构很影响准确性和控制方案，我的建议是按照我国赛的那种结构设计机械臂。最后再贴一张来自工创赛赞助商为决赛题目做的demo截图，决赛没人拿满分，而且可能连一半分都没人能拿完，毕竟时间太紧了，赛后官方发了个视频，他们做了一版，也是连杆式机械臂，四自由度，视觉识别可能是K210之类的，有个小屏幕，没有做逆运动解算应该，用中心的色环定位后直接放的。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17198327088061.png" alt="国赛官方范例"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17198329643136.jpg" alt="感觉他这个视频是不是剪辑了哈哈"></p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><strong>3D打印材料</strong><br>最好都用一种颜色，不然花里胡哨的跟我省赛一样，会很丑，建议全黑色或者全白色，也见识过好多个彩色车车，可惜我不会设计。<br><strong>线材</strong><br>最好都用硅胶线，整理线材方便。<br><strong>悬挂</strong><br>整个摆式悬挂就够了，车身太重，刚度不够的，可以用铝板做地板，注意绝缘。<br><strong>摄像头</strong><br>USB摄像头，1080P，150广角，500万像素。我用的是。<br>配置可以低点，用不到这么高，广角也不需要那么高。<br><strong>电池</strong><br>2023年要求电压不超过12v，建议整3S锂电池，大容量，平时超过12v没事，比赛的时候带个放电器以防万一。<br><strong>烧录器</strong><br>！！！！很重要！！！不要用无线烧录器！！赛场上人多，好多家伙都用无线烧录器，比赛的时候会烧录不进去的，建议整有线的，平时调试用无线的可以，不用整正点原子那个，我看立创有个佬开源了一款esp32做的，速度跟有线的差不多，淘宝开卖了，一个39，两个才80，当个都可以当有线的用。<br><strong>imu</strong><br>我们队用的是维特的单轴陀螺仪，学校批钱买的，用着还行吧，二三百一个，跟之前用超核电子的HI229效果差不太多；这里没啥推荐的，用成品模块也好，自己写滤波也好，只要稳定就OK的，我推荐的话，维特一般的陀螺仪就OK的，几十块就OK。有钱整那啥啥单轴水晶陀螺仪也可以。<br><strong>爪子</strong><br>建议学一下用TPU做爪子，决赛那个物料，一般爪子抓不住，我们队学弟设计的TPU爪子还没阿伟兄弟硬，根本抓不了，我们灵光一闪，用的两块亚克力错齿叠放做的爪子，舵机加大力矩的话，能抓住，比较稳。<br><strong>工具</strong><br>带齐全，方便的话，建议带副麻将或者纸牌，最好带件法器，赛场蛮紧张的，我看决赛入场的时候，好多队都在敲木鱼，我们队没有真家伙，整了个电子木鱼。<br><strong>女孩子</strong><br>队里要有个女孩子，最好是那种能力强还很温柔漂亮的，可以一边摆一边赢，我看好几个队都是女孩子写代码，调车，男的在一旁看着，好羡慕🥹🥹</p>
+<h2 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h2><p>这里仅仅是推荐选型，看完之后方案基本定了差不多了，确定控制思路后，机械已经可以开始设计了；具体控制思路呀，结构设计呀，运动规划呀，视觉方案呀，硬件方案呀，我这里会放到后面一块块的分享，保证咱学弟学妹们少走弯路，不走弯路，并且很多地方我没做过，会跟大家讲清楚，对这些大家可以自由思考自由创新。阅读学长的比赛记录帖子，不是让你照着学长的做，而是告诉你，哪些方案在哪些情况下会有大问题，是告诉你坑在哪，你不要再跳了，我的车车上坑那么多，你照着我这玩意做，指不定有多难受。我只希望，下一届国赛决赛上，咱实验室里能够更创佳绩，不要连决赛1/4分都拿不到，那真的是太捞了，我就是捞货一枚。很多地方可以创新，后面会一一给大家分享，希望大家能够勇夺高分，biubiu强。</p>
+
+                                    
+                            </div>
+                            <hr />
+
+                            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">biubiu选手</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://sparkle-now.cn/2024/07/20/gong-chuang-sai-zong-jie-yu-gai-jin-xuan-xing-jian-yi/">https://sparkle-now.cn/2024/07/20/gong-chuang-sai-zong-jie-yu-gai-jin-xuan-xing-jian-yi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">biubiu选手</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+                                <div class="tag_share" style="display: block;">
+                                    <div class="post-meta__tag-list" style="display: inline-block;">
+                                        
+                                            <div class="article-tag">
+                                                
+                                                    <a href="/tags/%E6%AF%94%E8%B5%9B/">
+                                                        <span class="chip bg-color">
+                                                            比赛
+                                                        </span>
+                                                    </a>
+                                                    
+                                            </div>
+                                            
+                                    </div>
+                                    <div class="post_share"
+                                        style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                                        <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                                    </div>
+                                </div>
+                                
+                                    <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+                                        
+                        </div>
+    </div>
+
+    
+
+                
+
+                            
+
+                                        
+
+                                                    
+                                                        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'TDZUmZerX6VqnfJv5E9xOQv1-gzGzoHsz',
+        appKey: '9yLFi7oVqiKPjIXNMPqnmi57',
+        notify: '' === 'true',
+        verify: '' === 'true',
+        visitor: '' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '昵称填写qq号可以显示qq头像哦~',
+        enableQQ: true,
+        emojiCDN: '//i0.hdslb.com/bfs/emote/',
+        // 表情title和图片映射
+        emojiMaps: {
+            "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+            "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+            "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+            "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+            "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+            "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+            "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+            "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+            "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+            "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+            "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+            "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+            "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+            "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+            "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+            "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+            "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+            "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+            "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+            "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+            "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
+            "tv_打脸": "56ab10b624063e966bfcb76ea5dc4794d87dfd47.png",
+            "tv_抓狂": "fe31c08edad661d63762b04e17b8d5ae3c71a757.png",
+            "tv_抠鼻": "c666f55e88d471e51bbd9fab9bb308110824a6eb.png",
+            "tv_斜眼笑": "911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png",
+            "tv_无奈": "ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png",
+            "tv_晕": "5443c22b4d07fb1907ccc610c8e6db254f2461b7.png",
+            "tv_流汗": "cead1c351ab8d79e9f369605beb90148db0fbed3.png",
+            "tv_流泪": "7e71cde7858f0cd50d74b0264aa26db612a8a167.png",
+            "tv_流鼻血": "c32d39db2737f89b904ca32700d140a9241b0767.png",
+            "tv_点赞": "f85c354995bd99e28fc76c869bfe42ba6438eff4.png",
+            "tv_生气": "26702dcafdab5e8225b43ffd23c94ac1ff932654.png",
+            "tv_生病": "8b0ec90e6b86771092a498c54f09fc94621c1900.png",
+            "tv_疑问": "0793d949b18d7be716078349c202c15ff166f314.png",
+            "tv_白眼": "c1d59f439e379ee50eef488bcb5e5378e5044ea4.png",
+            "tv_皱眉": "72ccad6679fea0d14cce648b4d818e09b8ffea2d.png",
+            "tv_目瞪口呆": "0b8cb81a68de5d5365212c99375e7ace3e7891b7.png",
+            "tv_睡着": "8b196675b53af58264f383c50ad0945048290b33.png",
+            "tv_笑哭": "1abc628f6d4f4caf9d0e7800878f4697abbc8273.png",
+            "tv_腼腆": "89712c0d4af73e67f89e35cbc518420380a7f6f4.png",
+            "tv_色": "61822c7e9aae5da76475e7892534545336b23a6f.png",
+            "tv_调侃": "4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png",
+            "tv_调皮": "b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png",
+            "tv_鄙视": "6e72339f346a692a495b123174b49e4e8e781303.png",
+            "tv_闭嘴": "c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png",
+            "tv_难过": "87f46748d3f142ebc6586ff58860d0e2fc8263ba.png",
+            "tv_馋": "fc7e829b845c43c623c8b490ee3602b7f0e76a31.png",
+            "tv_鬼脸": "0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png",
+            "tv_黑人问号": "45821a01f51bc867da9edbaa2e070410819a95b2.png",
+            "tv_鼓掌": "1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png"
+            // ... 更多表情
+        },
+        requiredFields: ['nick', 'mail'], //设置必填项
+    });
+</script>
+
+<!--酷Q推送-->
+
+                                                            
+
+                                                                
+
+                                                                            
+
+                                                                                        
+
+                                                                                                    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/07/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/">
+                    <div class="card-image">
+                        
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721409192725.png" class="responsive-img" alt="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试">
+                        
+                        <span class="card-title">在clion平台使用openocd工具向STM32H7外置flash下载代码并调试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
+                                    嵌入式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                        <span class="chip bg-color">嵌入式</span>
+                    </a>
+                    
+                    <a href="/tags/QSPI/">
+                        <span class="chip bg-color">QSPI</span>
+                    </a>
+                    
+                    <a href="/tags/CLion/">
+                        <span class="chip bg-color">CLion</span>
+                    </a>
+                    
+                    <a href="/tags/openocd/">
+                        <span class="chip bg-color">openocd</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/07/20/gong-chuang-sai-zong-jie-yu-gai-jin-bi-sai-jie-du/">
+                    <div class="card-image">
+                        
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17197660798456.jpg" class="responsive-img" alt="工创赛总结与改进-比赛解读">
+                        
+                        <span class="card-title">工创赛总结与改进-比赛解读</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%AF%94%E8%B5%9B/" class="post-category">
+                                    比赛
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%AF%94%E8%B5%9B/">
+                        <span class="chip bg-color">比赛</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+        <!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="6561804067"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">biubiu选手</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/augetyz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2061477607@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2061477607" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2061477607" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
