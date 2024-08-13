@@ -3527,4 +3527,434 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
         <tag>西安</tag>
       </tags>
   </entry>
+  <entry>
+    <title>FATFS文件系统常用函数记录</title>
+    <url>/2024/07/20/fatfs-wen-jian-xi-tong-han-shu-shi-yong-ji-lu/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Fatfs-文件系统函数使用记录"><a href="#Fatfs-文件系统函数使用记录" class="headerlink" title="Fatfs 文件系统函数使用记录"></a>Fatfs 文件系统函数使用记录</h1><p><strong>FatFs 文件系统</strong></p>
+<h2 id="1、f-open-打开-创建文件"><a href="#1、f-open-打开-创建文件" class="headerlink" title="1、f_open 打开/创建文件"></a>1、f_open 打开/创建文件</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_open</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>           <span class="token comment">/* [OUT] Pointer to the file object structure */</span>
+    <span class="token keyword">const</span> TCHAR<span class="token operator">*</span> path<span class="token punctuation">,</span> <span class="token comment">/* [IN] File name */</span>
+    BYTE mode          <span class="token comment">/* [IN] Mode flags */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件结构体指针</li>
+<li><code>@path</code>：文件路径（文件名）</li>
+<li><code>@mode</code>：打开方式</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>成功返回 <code>FR_OK</code>（0），文件对象有效</li>
+<li>失败则文件对象无效（NULL）</li>
+<li>可能的返回值：<code>FR_OK</code>, <code>FR_DISK_ERR</code>, <code>FR_INT_ERR</code>, <code>FR_NOT_READY</code>, <code>FR_NO_FILE</code>, <code>FR_NO_PATH</code>, <code>FR_INVALID_NAME</code>, <code>FR_DENIED</code>, <code>FR_EXIST</code>, <code>FR_INVALID_OBJECT</code>, <code>FR_WRITE_PROTECTED</code>, <code>FR_INVALID_DRIVE</code>, <code>FR_NOT_ENABLED</code>, <code>FR_NO_FILESYSTEM</code>, <code>FR_TIMEOUT</code>, <code>FR_LOCKED</code>, <code>FR_NOT_ENOUGH_CORE</code>, <code>FR_TOO_MANY_OPEN_FILES</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li><code>f_open</code> 打开并创建一个文件对象，打开的文件应该在使用后调用 <code>f_close</code> 关闭文件。</li>
+<li>如果对文件进行了更改，并且在断电、删除介质或重新挂载前未关闭，则文件可能会崩溃。</li>
+<li>只能以读的方式重复打开一个文件，不能以任何具有写模式的方式重复打开一个文件（第二次打开不成功 <code>FR_LOCKED</code>，哪怕第二次是只读、只打开）。</li>
+<li>当把 FatFs 配置为只读模式（<code>FF_FS_READONLY == 1</code>）的时候，<code>mode</code> 只能是 <code>FA_READ</code> 和 <code>FA_OPEN_EXISTING</code>。</li>
+</ul>
+<p><strong>MODE：</strong></p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>FA_READ</code></td>
+<td>指定对文件的读取访问权限。可以从文件中读取数据。</td>
+</tr>
+<tr>
+<td><code>FA_WRITE</code></td>
+<td>指定对文件的写入权限。数据可以写入文件。与 <code>FA_READ</code> 结合使用以实现读写访问。</td>
+</tr>
+<tr>
+<td><code>FA_OPEN_EXISTING</code></td>
+<td>打开文件。如果文件不存在，则该函数将失败。（默认）</td>
+</tr>
+<tr>
+<td><code>FA_CREATE_NEW</code></td>
+<td>创建新文件。如果文件存在，则该函数将失败并返回 <code>FR_EXIST</code>。</td>
+</tr>
+<tr>
+<td><code>FA_CREATE_ALWAYS</code></td>
+<td>创建新文件。如果该文件存在，它将被截断并覆盖。</td>
+</tr>
+<tr>
+<td><code>FA_OPEN_ALWAYS</code></td>
+<td>打开文件（如果存在）。如果没有，将创建一个新文件。</td>
+</tr>
+<tr>
+<td><code>FA_OPEN_APPEND</code></td>
+<td>与 <code>FA_OPEN_ALWAYS</code> 相同，只是读/写指针设置在文件的末尾。</td>
+</tr>
+</tbody></table>
+<p><strong>POSIX <code>fopen()</code> 函数中的模式标志对应于 FatFs 模式标志，如下所示：</strong></p>
+<table>
+<thead>
+<tr>
+<th>POSIX</th>
+<th>FatFs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>”r”</code></td>
+<td><code>FA_READ</code></td>
+</tr>
+<tr>
+<td><code>”r+”</code></td>
+<td><code>FA_READ / FA_WRITE</code></td>
+</tr>
+<tr>
+<td><code>”w”</code></td>
+<td><code>FA_CREATE_ALWAYS / FA_WRITE</code></td>
+</tr>
+<tr>
+<td><code>”w+”</code></td>
+<td><code>FA_CREATE_ALWAYS / FA_WRITE / FA_READ</code></td>
+</tr>
+<tr>
+<td><code>”a”</code></td>
+<td><code>FA_OPEN_APPEND / FA_WRITE</code></td>
+</tr>
+<tr>
+<td><code>”a+”</code></td>
+<td><code>FA_OPEN_APPEND / FA_WRITE / FA_READ</code></td>
+</tr>
+<tr>
+<td><code>”wx”</code></td>
+<td><code>FA_CREATE_NEW / FA_WRITE</code></td>
+</tr>
+<tr>
+<td><code>”w+x”</code></td>
+<td><code>FA_CREATE_NEW / FA_WRITE / FA_READ</code></td>
+</tr>
+</tbody></table>
+<h2 id="2、f-close-关闭文件"><a href="#2、f-close-关闭文件" class="headerlink" title="2、f_close 关闭文件"></a>2、f_close 关闭文件</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_close</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp     <span class="token comment">/* [IN] Pointer to the file object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_INVALID_OBJECT</code>（double free）</li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li><code>f_close</code> 函数关闭打开的文件对象。如果文件已更改，则文件的缓存信息将写回卷。函数成功后，文件对象不再有效（在函数中将文件指针置为 0），可以丢弃。</li>
+<li>请注意，如果文件对象处于只读模式且未启用 <code>FF_FS_LOCK</code>（限制最大打开数量），则也可以在不执行此过程的情况下丢弃该文件对象。但是，为了将来的兼容性，不建议这样做。</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>始终可用</li>
+</ul>
+<h2 id="3、f-read-从文件中读数据"><a href="#3、f-read-从文件中读数据" class="headerlink" title="3、f_read 从文件中读数据"></a>3、f_read 从文件中读数据</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_read</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>     <span class="token comment">/* [IN] File object */</span>
+    <span class="token keyword">void</span><span class="token operator">*</span> buff<span class="token punctuation">,</span>  <span class="token comment">/* [OUT] Buffer to store read data */</span>
+    UINT btr<span class="token punctuation">,</span>    <span class="token comment">/* [IN] Number of bytes to read */</span>
+    UINT<span class="token operator">*</span> br     <span class="token comment">/* [OUT] Number of bytes read */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+<li><code>@buff</code>：读出数据存放的地址，如果需要快速读出数据则空间应该尽量大</li>
+<li><code>@btr</code>：想要读取的数据字节数</li>
+<li><code>@br</code>：实际读取的数据字节数。无论函数返回代码如何，此值在函数调用后始终有效。如果返回值等于 <code>btr</code>，则函数返回代码应为 <code>FR_OK</code></li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_DENIED</code></li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>读取文件后，文件的读写指针（可以理解为光标）将会向后偏移。</li>
+<li>函数执行成功后，如果 <code>*br &lt; btr</code> 则表明文件读取到文件末尾。</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>始终可用</li>
+</ul>
+<h2 id="4、f-write-向文件中写数据"><a href="#4、f-write-向文件中写数据" class="headerlink" title="4、f_write 向文件中写数据"></a>4、f_write 向文件中写数据</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_write</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>           <span class="token comment">/* [IN] Pointer to the file object structure */</span>
+    <span class="token keyword">const</span> <span class="token keyword">void</span><span class="token operator">*</span> buff<span class="token punctuation">,</span>  <span class="token comment">/* [IN] Pointer to the data to be written */</span>
+    UINT btw<span class="token punctuation">,</span>          <span class="token comment">/* [IN] Number of bytes to write */</span>
+    UINT<span class="token operator">*</span> bw           <span class="token comment">/* [OUT] Pointer to the variable to return number of bytes written */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+<li><code>@buff</code>：要写入数据的存放地址，如果需要快速写入数据则空间应该尽量大</li>
+<li><code>@btw</code>：想要写入的数据字节数</li>
+<li><code>@bw</code>：实际写入的数据字节数。无论函数返回代码如何，此值在函数调用后始终有效。如果返回值等于 <code>btw</code>，则函数返回代码应为 <code>FR_OK</code></li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_DENIED</code></li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>函数成功后，应检查 <code>*bw</code> 以检测磁盘是否已满。如果 <code>*bw &lt; btw</code>，则表示卷在写入操作期间已满。当卷已满或接近满时，该函数可能需要一段时间。</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>当 <code>FF_FS_READONLY == 0</code> 时可用</li>
+</ul>
+<h2 id="5、f-lseek-重定位"><a href="#5、f-lseek-重定位" class="headerlink" title="5、f_lseek 重定位"></a>5、f_lseek 重定位</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_lseek</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span>    fp<span class="token punctuation">,</span>  <span class="token comment">/* [IN] File object */</span>
+    FSIZE_t ofs  <span class="token comment">/* [IN] Offset of file read/write pointer to be set */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+<li><code>@ofs</code>：文件偏移的字节数（从文件开头计算）。数据类型 <code>FSIZE_t</code> 是 <code>DWORD</code>（32 位）或 <code>QWORD</code>（64 位）（exFAT）的别名，具体取决于 <code>FF_FS_EXFAT</code> 配置选项。</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>如果在写入模式下指定了超出文件大小的偏移量，则文件大小将扩展到指定的偏移量。留下的空间，但是在此过程中并没有写入数据。</li>
+<li>若是函数执行成功但是指针却没有偏移，则可能是：<ul>
+<li>文件结束。指定的 <code>ofs</code> 以只读模式在文件末尾剪裁。</li>
+<li>磁盘已满。卷上没有可用空间来扩展文件。</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>当 <code>FF_FS_MINIMIZE &lt;= 2</code> 时可用。要使用快速查找功能，需要将 <code>FF_USE_FASTSEEK</code> 设置为 1 以启用此功能（当 <code>FF_FS_MINIMIZE = 3</code> 时删除了 <code>f_lseek</code>）。</li>
+</ul>
+<p><strong>宏：</strong></p>
+<ul>
+<li><code>f_rewind</code>（光标移动到文件开头）函数作为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_rewind</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token function">f_lseek</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h2 id="6、f-truncate-截断文件"><a href="#6、f-truncate-截断文件" class="headerlink" title="6、f_truncate 截断文件"></a>6、f_truncate 截断文件</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_truncate</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp     <span class="token comment">/* [IN] File object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_DENIED</code>（操作只读函数）</li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>将文件截断为当前文件指针所在的大小，如果文件指针指向末尾则不起作用。</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>当 <code>FF_FS_READONLY == 0</code> 和 <code>FF_FS_MINIMIZE == 0</code> 时可用。</li>
+</ul>
+<h2 id="7、f-sync-冲刷数据缓冲区"><a href="#7、f-sync-冲刷数据缓冲区" class="headerlink" title="7、f_sync 冲刷数据缓冲区"></a>7、f_sync 冲刷数据缓冲区</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_sync</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp     <span class="token comment">/* [IN] File object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>文件在写入的时候会暂存在文件缓冲区，只有遇到刷新条件的时候才会将写缓冲区的数据写入到文件中。但是在未将缓冲区的数据冲刷到缓冲区之前突然发生错误，那么写入的信息就丢失了。</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>当 <code>FF_FS_READONLY == 0</code> 时可用。</li>
+</ul>
+<h2 id="8、f-forward-读取文件数据并将其转发到数据流设备"><a href="#8、f-forward-读取文件数据并将其转发到数据流设备" class="headerlink" title="8、f_forward 读取文件数据并将其转发到数据流设备"></a>8、f_forward 读取文件数据并将其转发到数据流设备</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_forward</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>                        <span class="token comment">/* [IN] File object */</span>
+    <span class="token function">UINT</span> <span class="token punctuation">(</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> BYTE<span class="token operator">*</span><span class="token punctuation">,</span> UINT<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">/* [IN] Data streaming function */</span>
+    UINT btf<span class="token punctuation">,</span>                       <span class="token comment">/* [IN] Number of bytes to forward */</span>
+    UINT<span class="token operator">*</span> bf                        <span class="token comment">/* [OUT] Number of bytes forwarded */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+<li><code>@func</code>：数据处理函数</li>
+<li><code>@btf</code>：传输的数据大小</li>
+<li><code>@bf</code>：实际传输的数据</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_DENIED</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>如果 <code>*bf</code> 小于 <code>btf</code> 而没有错误，则表示由于文件结束或流在数据传输期间繁忙，无法传输请求的数据大小。</li>
+</ul>
+<h2 id="9、f-expand-为文件准备或分配一个连续的区域"><a href="#9、f-expand-为文件准备或分配一个连续的区域" class="headerlink" title="9、f_expand 为文件准备或分配一个连续的区域"></a>9、f_expand 为文件准备或分配一个连续的区域</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_expand</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span>    fp<span class="token punctuation">,</span>  <span class="token comment">/* [IN] File object */</span>
+    FSIZE_t fsz<span class="token punctuation">,</span> <span class="token comment">/* [IN] File size expanded to */</span>
+    BYTE    opt  <span class="token comment">/* [IN] Allocation mode */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+<li><code>@fsz</code>：分配空间的大小</li>
+<li><code>@opt</code>：分配模式（0）准备分配、（1）立即分配</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li><code>FR_OK</code></li>
+<li><code>FR_DISK_ERR</code></li>
+<li><code>FR_INT_ERR</code></li>
+<li><code>FR_INVALID_OBJECT</code></li>
+<li><code>FR_DENIED</code></li>
+<li><code>FR_TIMEOUT</code></li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>为一个空文件分配连续的空间，必须是空文件，函数执行完之后读写指针（光标）在文件开头。在分配空间的时候不会像文件写入数据。由于以下一些原因，该函数可能会因 <code>FR_DENIED</code> 而失败：<ul>
+<li>未找到可用的连续空间。</li>
+<li>文件大小不为零。</li>
+<li>该文件已以只读模式打开。</li>
+<li>不允许的文件大小（&gt;= 4 GB 的 FAT 卷）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>当 <code>FF_USE_EXPAND == 1</code> 和 <code>FF_FS_READONLY == 0</code> 时可用。</li>
+</ul>
+<h2 id="10、f-tell-获取当前文件指针的位置"><a href="#10、f-tell-获取当前文件指针的位置" class="headerlink" title="10、f_tell 获取当前文件指针的位置"></a>10、f_tell 获取当前文件指针的位置</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FSIZE_t <span class="token function">f_tell</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>文件指针的位置，也就是光标的位置，距离文件开头的位置</li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_tell</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>fptr<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>始终可用</li>
+</ul>
+<h2 id="11、f-eof-判断文件指针是否在文件尾"><a href="#11、f-eof-判断文件指针是否在文件尾" class="headerlink" title="11、f_eof 判断文件指针是否在文件尾"></a>11、f_eof 判断文件指针是否在文件尾</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">f_eof</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>如果读/写指针到达文件末尾，则 <code>f_eof</code> 函数返回非零值；否则返回零。</li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_eof</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>fptr <span class="token operator">==</span> <span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>fsize<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>始终可用</li>
+</ul>
+<h2 id="12、f-size-获取文件的大小"><a href="#12、f-size-获取文件的大小" class="headerlink" title="12、f_size 获取文件的大小"></a>12、f_size 获取文件的大小</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FSIZE_t <span class="token function">f_size</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>以字节为单位返回文件的大小</li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_size</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>obj<span class="token punctuation">.</span>objsize<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>始终可用</li>
+</ul>
+<h2 id="13、f-error-测试文件上的错误"><a href="#13、f-error-测试文件上的错误" class="headerlink" title="13、f_error 测试文件上的错误"></a>13、f_error 测试文件上的错误</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">f_error</span> <span class="token punctuation">(</span>
+    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>@fp</code>：文件指针</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>如果发生硬错误，则返回非零值；否则返回零。</li>
+</ul>
+<p><strong>描述：</strong></p>
+<ul>
+<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_error</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>err<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>使用条件：</strong></p>
+<ul>
+<li>始终可用</li>
+</ul>
+<h2 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h2><p>欢迎访问<a href="https://sparkle-now.cn/">我的博客</a></p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>文件系统</tag>
+      </tags>
+  </entry>
 </search>
