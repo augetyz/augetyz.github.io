@@ -3957,4 +3957,529 @@ ps .USART1-&gt;USART3    */</span>
         <tag>翻墙</tag>
       </tags>
   </entry>
+  <entry>
+    <title>STM32F407一般外设IO分配</title>
+    <url>/2024/07/20/stm32f407-yin-jiao-fen-pei/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>stm32f407主要通信外设的io分配和复用预览。之前做工创赛整理的，又用AI处理了一下，方便查看。</p>
+<h2 id="引脚复用一览"><a href="#引脚复用一览" class="headerlink" title="引脚复用一览"></a>引脚复用一览</h2><h3 id="串口-USART"><a href="#串口-USART" class="headerlink" title="串口 (USART)"></a>串口 (USART)</h3><table>
+<thead>
+<tr>
+<th>USART</th>
+<th>TX 引脚</th>
+<th>RX 引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>USART1</td>
+<td>PA9, PB6</td>
+<td>PA10, PB7</td>
+<td>AF7</td>
+</tr>
+<tr>
+<td>USART2</td>
+<td>PA2, PD5</td>
+<td>PA3, PD6</td>
+<td>AF7</td>
+</tr>
+<tr>
+<td>USART3</td>
+<td>PB10, PD8</td>
+<td>PB11, PD9</td>
+<td>AF7</td>
+</tr>
+<tr>
+<td>UART4</td>
+<td>PA0, PC10</td>
+<td>PA1, PC11</td>
+<td>AF8</td>
+</tr>
+<tr>
+<td>UART5</td>
+<td>PC12</td>
+<td>PD2</td>
+<td>AF8</td>
+</tr>
+<tr>
+<td>USART6</td>
+<td>PC6, PG14</td>
+<td>PC7, PG9</td>
+<td>AF8</td>
+</tr>
+</tbody></table>
+<h3 id="定时器-TIM"><a href="#定时器-TIM" class="headerlink" title="定时器 (TIM)"></a>定时器 (TIM)</h3><table>
+<thead>
+<tr>
+<th>定时器</th>
+<th>通道</th>
+<th>引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TIM1</td>
+<td>CH1</td>
+<td>PA8</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM1</td>
+<td>CH2</td>
+<td>PA9</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM1</td>
+<td>CH3</td>
+<td>PA10</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM1</td>
+<td>CH4</td>
+<td>PA11</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM2</td>
+<td>CH1</td>
+<td>PA0, PA5</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM2</td>
+<td>CH2</td>
+<td>PA1</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM2</td>
+<td>CH3</td>
+<td>PA2</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM2</td>
+<td>CH4</td>
+<td>PA3</td>
+<td>AF1</td>
+</tr>
+<tr>
+<td>TIM3</td>
+<td>CH1</td>
+<td>PA6, PB4</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM3</td>
+<td>CH2</td>
+<td>PA7, PB5</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM3</td>
+<td>CH3</td>
+<td>PB0, PC8</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM3</td>
+<td>CH4</td>
+<td>PB1, PC9</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM4</td>
+<td>CH1</td>
+<td>PB6, PD12</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM4</td>
+<td>CH2</td>
+<td>PB7, PD13</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM4</td>
+<td>CH3</td>
+<td>PB8, PD14</td>
+<td>AF2</td>
+</tr>
+<tr>
+<td>TIM4</td>
+<td>CH4</td>
+<td>PB9, PD15</td>
+<td>AF2</td>
+</tr>
+</tbody></table>
+<h3 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a>I2C</h3><table>
+<thead>
+<tr>
+<th>I2C</th>
+<th>SCL 引脚</th>
+<th>SDA 引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I2C1</td>
+<td>PB6, PB8</td>
+<td>PB7, PB9</td>
+<td>AF4</td>
+</tr>
+<tr>
+<td>I2C2</td>
+<td>PB10, PF1</td>
+<td>PB11, PF0</td>
+<td>AF4</td>
+</tr>
+<tr>
+<td>I2C3</td>
+<td>PA8</td>
+<td>PC9</td>
+<td>AF4</td>
+</tr>
+</tbody></table>
+<h3 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h3><table>
+<thead>
+<tr>
+<th>SPI</th>
+<th>SCK 引脚</th>
+<th>MISO 引脚</th>
+<th>MOSI 引脚</th>
+<th>NSS 引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SPI1</td>
+<td>PA5, PB3</td>
+<td>PA6, PB4</td>
+<td>PA7, PB5</td>
+<td>PA4, PA15</td>
+<td>AF5</td>
+</tr>
+<tr>
+<td>SPI2</td>
+<td>PB10, PB13</td>
+<td>PC2, PB14</td>
+<td>PC3, PB15</td>
+<td>PB9, PB12</td>
+<td>AF5</td>
+</tr>
+<tr>
+<td>SPI3</td>
+<td>PC10, PB3</td>
+<td>PC11, PB4</td>
+<td>PC12, PB5</td>
+<td>PA4, PA15</td>
+<td>AF6</td>
+</tr>
+</tbody></table>
+<h3 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a>CAN</h3><table>
+<thead>
+<tr>
+<th>CAN</th>
+<th>TX 引脚</th>
+<th>RX 引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CAN1</td>
+<td>PA12, PB9</td>
+<td>PA11, PB8</td>
+<td>AF9</td>
+</tr>
+<tr>
+<td>CAN2</td>
+<td>PB13</td>
+<td>PB12</td>
+<td>AF9</td>
+</tr>
+</tbody></table>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><table>
+<thead>
+<tr>
+<th>USB</th>
+<th>引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>USB_FS</td>
+<td>PA11 (DM), PA12 (DP)</td>
+<td>AF10</td>
+</tr>
+<tr>
+<td>USB_HS</td>
+<td>PA11 (DM), PA12 (DP)</td>
+<td>AF10</td>
+</tr>
+</tbody></table>
+<h3 id="SDIO"><a href="#SDIO" class="headerlink" title="SDIO"></a>SDIO</h3><table>
+<thead>
+<tr>
+<th>SDIO</th>
+<th>引脚</th>
+<th>复用功能 (AF)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SDIO</td>
+<td>PC8 (D0), PC9 (D1), PC10 (D2), PC11 (D3), PC12 (CLK), PD2 (CMD)</td>
+<td>AF12</td>
+</tr>
+</tbody></table>
+<h2 id="单片机引脚调用"><a href="#单片机引脚调用" class="headerlink" title="单片机引脚调用"></a>单片机引脚调用</h2><table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>功能</th>
+<th>引脚</th>
+<th>功能</th>
+<th>引脚</th>
+<th>功能</th>
+<th>引脚</th>
+<th>功能</th>
+<th>引脚</th>
+<th>功能</th>
+<th>引脚</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PA0</td>
+<td>编码器4-A</td>
+<td>PB0</td>
+<td></td>
+<td>PC0</td>
+<td></td>
+<td>PD0</td>
+<td></td>
+<td>PE0</td>
+<td></td>
+<td>PF0</td>
+<td></td>
+</tr>
+<tr>
+<td>PA1</td>
+<td>编码器4-B</td>
+<td>PB1</td>
+<td></td>
+<td>PC1</td>
+<td></td>
+<td>PD1</td>
+<td></td>
+<td>PE1</td>
+<td></td>
+<td>PF1</td>
+<td></td>
+</tr>
+<tr>
+<td>PA2</td>
+<td>2-TX</td>
+<td>PB2</td>
+<td></td>
+<td>PC2</td>
+<td></td>
+<td>PD2</td>
+<td>5-RX</td>
+<td>PE2</td>
+<td></td>
+<td>PF2</td>
+<td></td>
+</tr>
+<tr>
+<td>PA3</td>
+<td>2-RX</td>
+<td>PB3</td>
+<td>编码器1-B</td>
+<td>PC3</td>
+<td></td>
+<td>PD3</td>
+<td></td>
+<td>PE3</td>
+<td></td>
+<td>PF3</td>
+<td></td>
+</tr>
+<tr>
+<td>PA4</td>
+<td></td>
+<td>PB4</td>
+<td>编码器2-A</td>
+<td>PC4</td>
+<td></td>
+<td>PD4</td>
+<td></td>
+<td>PE4</td>
+<td></td>
+<td>PF4</td>
+<td></td>
+</tr>
+<tr>
+<td>PA5</td>
+<td>编码器1-A</td>
+<td>PB5</td>
+<td>编码器2-B</td>
+<td>PC5</td>
+<td></td>
+<td>PD5</td>
+<td></td>
+<td>PE5</td>
+<td>PWM7</td>
+<td>PF5</td>
+<td></td>
+</tr>
+<tr>
+<td>PA6</td>
+<td>PWM1</td>
+<td>PB6</td>
+<td>编码器3-A</td>
+<td>PC6</td>
+<td>6-TX</td>
+<td>PD6</td>
+<td></td>
+<td>PE6</td>
+<td>PWM8</td>
+<td>PF6</td>
+<td></td>
+</tr>
+<tr>
+<td>PA7</td>
+<td>PWM2</td>
+<td>PB7</td>
+<td>编码器3-B</td>
+<td>PC7</td>
+<td>6-RX</td>
+<td>PD7</td>
+<td></td>
+<td>PE7</td>
+<td></td>
+<td>PF7</td>
+<td></td>
+</tr>
+<tr>
+<td>PA8</td>
+<td></td>
+<td>PB8</td>
+<td>PWM3</td>
+<td>PC8</td>
+<td></td>
+<td>PD8</td>
+<td>MOTOR1-A</td>
+<td>PE8</td>
+<td></td>
+<td>PF8</td>
+<td></td>
+</tr>
+<tr>
+<td>PA9</td>
+<td>1-TX</td>
+<td>PB9</td>
+<td>PWM4</td>
+<td>PC9</td>
+<td></td>
+<td>PD9</td>
+<td>MOTOR1-B</td>
+<td>PE9</td>
+<td>PWM9_M1</td>
+<td>PF9</td>
+<td></td>
+</tr>
+<tr>
+<td>PA10</td>
+<td>1-RX</td>
+<td>PB10</td>
+<td>3-TX</td>
+<td>PC10</td>
+<td>4-TX</td>
+<td>PD10</td>
+<td>MOTOR2-A</td>
+<td>PE10</td>
+<td></td>
+<td>PF10</td>
+<td></td>
+</tr>
+<tr>
+<td>PA11</td>
+<td></td>
+<td>PB11</td>
+<td>3-RX</td>
+<td>PC11</td>
+<td>4-RX</td>
+<td>PD11</td>
+<td>MOTOR2-B</td>
+<td>PE11</td>
+<td>PWM10_M2</td>
+<td>PF11</td>
+<td></td>
+</tr>
+<tr>
+<td>PA12</td>
+<td></td>
+<td>PB12</td>
+<td></td>
+<td>PC12</td>
+<td>5-TX</td>
+<td>PD12</td>
+<td>MOTOR3-A</td>
+<td>PE12</td>
+<td></td>
+<td>PF12</td>
+<td></td>
+</tr>
+<tr>
+<td>PA13</td>
+<td></td>
+<td>PB13</td>
+<td></td>
+<td>PC13</td>
+<td></td>
+<td>PD13</td>
+<td>MOTOR3-B</td>
+<td>PE13</td>
+<td>PWM11_M3</td>
+<td>PF13</td>
+<td></td>
+</tr>
+<tr>
+<td>PA14</td>
+<td></td>
+<td>PB14</td>
+<td>PWM5</td>
+<td>PC14</td>
+<td></td>
+<td>PD14</td>
+<td>MOTOR4-A</td>
+<td>PE14</td>
+<td>PWM12_M4</td>
+<td>PF14</td>
+<td></td>
+</tr>
+<tr>
+<td>PA15</td>
+<td></td>
+<td>PB15</td>
+<td>PWM6</td>
+<td>PC15</td>
+<td></td>
+<td>PD15</td>
+<td>MOTOR4-B</td>
+<td>PE15</td>
+<td></td>
+<td>PF15</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+      </tags>
+  </entry>
 </search>
