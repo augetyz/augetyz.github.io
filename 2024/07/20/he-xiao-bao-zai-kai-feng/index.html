@@ -4,21 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="STM32F407一般外设IO分配, Sparkle.now">
-    <meta name="description" content="概述stm32f407主要通信外设的io分配和复用预览。之前做工创赛整理的，又用AI处理了一下，方便查看。
-引脚复用一览串口 (USART)
-
-
-USART
-TX 引脚
-RX 引脚
-复用功能 (AF)
-
-
-
-USART1
-PA9, PB6
-">
+    <meta name="keywords" content="和小宝在开封, Sparkle.now">
+    <meta name="description" content="去开封玩喽
+这是一次计划很久的见面
+(这里的内容是不是不要密码在封面就可以看到哇就不让你看保密)
+自从小宝毕业后小宝就不能天天黏着大宝了突然多了些许的不适应但也可能是毕业计划考证书压力太大很快投入了备考中并且考点在郑州这样还可以再见一面
+有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,7 +21,7 @@ PA9, PB6
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>STM32F407一般外设IO分配 | Sparkle.now</title>
+    <title>和小宝在开封 | Sparkle.now</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -371,7 +362,7 @@ PA9, PB6
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'A11B4A3BA9ED34F1DEFDD8F8AA6169C71210EA99BB5E6424BA6511B77CB5D775';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -384,12 +375,12 @@ PA9, PB6
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/s3yUma.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/qG0B7G.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">STM32F407一般外设IO分配</h1>
+                    <h1 class="description center-align post-title">和小宝在开封</h1>
                 </div>
             </div>
         </div>
@@ -413,9 +404,9 @@ PA9, PB6
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/STM32/">
+                                <a href="/tags/%E5%BC%80%E5%B0%81/">
                                     <span class="chip bg-color">
-                                        STM32
+                                        开封
                                     </span>
                                 </a>
                                 
@@ -427,8 +418,8 @@ PA9, PB6
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
+                                <a href="/categories/%E6%97%85%E8%A1%8C/" class="post-category">
+                                    旅行
                                 </a>
                                 
                         </div>
@@ -454,14 +445,14 @@ PA9, PB6
                                 
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                                            546
+                                            1.9k
                                     </div>
                                     
 
                                         
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                                                    2
+                                                    6
                                                         分
                                             </div>
                                             
@@ -485,520 +476,64 @@ PA9, PB6
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>stm32f407主要通信外设的io分配和复用预览。之前做工创赛整理的，又用AI处理了一下，方便查看。</p>
-<h2 id="引脚复用一览"><a href="#引脚复用一览" class="headerlink" title="引脚复用一览"></a>引脚复用一览</h2><h3 id="串口-USART"><a href="#串口-USART" class="headerlink" title="串口 (USART)"></a>串口 (USART)</h3><table>
-<thead>
-<tr>
-<th>USART</th>
-<th>TX 引脚</th>
-<th>RX 引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>USART1</td>
-<td>PA9, PB6</td>
-<td>PA10, PB7</td>
-<td>AF7</td>
-</tr>
-<tr>
-<td>USART2</td>
-<td>PA2, PD5</td>
-<td>PA3, PD6</td>
-<td>AF7</td>
-</tr>
-<tr>
-<td>USART3</td>
-<td>PB10, PD8</td>
-<td>PB11, PD9</td>
-<td>AF7</td>
-</tr>
-<tr>
-<td>UART4</td>
-<td>PA0, PC10</td>
-<td>PA1, PC11</td>
-<td>AF8</td>
-</tr>
-<tr>
-<td>UART5</td>
-<td>PC12</td>
-<td>PD2</td>
-<td>AF8</td>
-</tr>
-<tr>
-<td>USART6</td>
-<td>PC6, PG14</td>
-<td>PC7, PG9</td>
-<td>AF8</td>
-</tr>
-</tbody></table>
-<h3 id="定时器-TIM"><a href="#定时器-TIM" class="headerlink" title="定时器 (TIM)"></a>定时器 (TIM)</h3><table>
-<thead>
-<tr>
-<th>定时器</th>
-<th>通道</th>
-<th>引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>TIM1</td>
-<td>CH1</td>
-<td>PA8</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM1</td>
-<td>CH2</td>
-<td>PA9</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM1</td>
-<td>CH3</td>
-<td>PA10</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM1</td>
-<td>CH4</td>
-<td>PA11</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM2</td>
-<td>CH1</td>
-<td>PA0, PA5</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM2</td>
-<td>CH2</td>
-<td>PA1</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM2</td>
-<td>CH3</td>
-<td>PA2</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM2</td>
-<td>CH4</td>
-<td>PA3</td>
-<td>AF1</td>
-</tr>
-<tr>
-<td>TIM3</td>
-<td>CH1</td>
-<td>PA6, PB4</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM3</td>
-<td>CH2</td>
-<td>PA7, PB5</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM3</td>
-<td>CH3</td>
-<td>PB0, PC8</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM3</td>
-<td>CH4</td>
-<td>PB1, PC9</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM4</td>
-<td>CH1</td>
-<td>PB6, PD12</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM4</td>
-<td>CH2</td>
-<td>PB7, PD13</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM4</td>
-<td>CH3</td>
-<td>PB8, PD14</td>
-<td>AF2</td>
-</tr>
-<tr>
-<td>TIM4</td>
-<td>CH4</td>
-<td>PB9, PD15</td>
-<td>AF2</td>
-</tr>
-</tbody></table>
-<h3 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a>I2C</h3><table>
-<thead>
-<tr>
-<th>I2C</th>
-<th>SCL 引脚</th>
-<th>SDA 引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>I2C1</td>
-<td>PB6, PB8</td>
-<td>PB7, PB9</td>
-<td>AF4</td>
-</tr>
-<tr>
-<td>I2C2</td>
-<td>PB10, PF1</td>
-<td>PB11, PF0</td>
-<td>AF4</td>
-</tr>
-<tr>
-<td>I2C3</td>
-<td>PA8</td>
-<td>PC9</td>
-<td>AF4</td>
-</tr>
-</tbody></table>
-<h3 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h3><table>
-<thead>
-<tr>
-<th>SPI</th>
-<th>SCK 引脚</th>
-<th>MISO 引脚</th>
-<th>MOSI 引脚</th>
-<th>NSS 引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SPI1</td>
-<td>PA5, PB3</td>
-<td>PA6, PB4</td>
-<td>PA7, PB5</td>
-<td>PA4, PA15</td>
-<td>AF5</td>
-</tr>
-<tr>
-<td>SPI2</td>
-<td>PB10, PB13</td>
-<td>PC2, PB14</td>
-<td>PC3, PB15</td>
-<td>PB9, PB12</td>
-<td>AF5</td>
-</tr>
-<tr>
-<td>SPI3</td>
-<td>PC10, PB3</td>
-<td>PC11, PB4</td>
-<td>PC12, PB5</td>
-<td>PA4, PA15</td>
-<td>AF6</td>
-</tr>
-</tbody></table>
-<h3 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a>CAN</h3><table>
-<thead>
-<tr>
-<th>CAN</th>
-<th>TX 引脚</th>
-<th>RX 引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CAN1</td>
-<td>PA12, PB9</td>
-<td>PA11, PB8</td>
-<td>AF9</td>
-</tr>
-<tr>
-<td>CAN2</td>
-<td>PB13</td>
-<td>PB12</td>
-<td>AF9</td>
-</tr>
-</tbody></table>
-<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><table>
-<thead>
-<tr>
-<th>USB</th>
-<th>引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>USB_FS</td>
-<td>PA11 (DM), PA12 (DP)</td>
-<td>AF10</td>
-</tr>
-<tr>
-<td>USB_HS</td>
-<td>PA11 (DM), PA12 (DP)</td>
-<td>AF10</td>
-</tr>
-</tbody></table>
-<h3 id="SDIO"><a href="#SDIO" class="headerlink" title="SDIO"></a>SDIO</h3><table>
-<thead>
-<tr>
-<th>SDIO</th>
-<th>引脚</th>
-<th>复用功能 (AF)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SDIO</td>
-<td>PC8 (D0), PC9 (D1), PC10 (D2), PC11 (D3), PC12 (CLK), PD2 (CMD)</td>
-<td>AF12</td>
-</tr>
-</tbody></table>
-<h2 id="单片机引脚调用"><a href="#单片机引脚调用" class="headerlink" title="单片机引脚调用"></a>单片机引脚调用</h2><table>
-<thead>
-<tr>
-<th>引脚</th>
-<th>功能</th>
-<th>引脚</th>
-<th>功能</th>
-<th>引脚</th>
-<th>功能</th>
-<th>引脚</th>
-<th>功能</th>
-<th>引脚</th>
-<th>功能</th>
-<th>引脚</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PA0</td>
-<td>编码器4-A</td>
-<td>PB0</td>
-<td></td>
-<td>PC0</td>
-<td></td>
-<td>PD0</td>
-<td></td>
-<td>PE0</td>
-<td></td>
-<td>PF0</td>
-<td></td>
-</tr>
-<tr>
-<td>PA1</td>
-<td>编码器4-B</td>
-<td>PB1</td>
-<td></td>
-<td>PC1</td>
-<td></td>
-<td>PD1</td>
-<td></td>
-<td>PE1</td>
-<td></td>
-<td>PF1</td>
-<td></td>
-</tr>
-<tr>
-<td>PA2</td>
-<td>2-TX</td>
-<td>PB2</td>
-<td></td>
-<td>PC2</td>
-<td></td>
-<td>PD2</td>
-<td>5-RX</td>
-<td>PE2</td>
-<td></td>
-<td>PF2</td>
-<td></td>
-</tr>
-<tr>
-<td>PA3</td>
-<td>2-RX</td>
-<td>PB3</td>
-<td>编码器1-B</td>
-<td>PC3</td>
-<td></td>
-<td>PD3</td>
-<td></td>
-<td>PE3</td>
-<td></td>
-<td>PF3</td>
-<td></td>
-</tr>
-<tr>
-<td>PA4</td>
-<td></td>
-<td>PB4</td>
-<td>编码器2-A</td>
-<td>PC4</td>
-<td></td>
-<td>PD4</td>
-<td></td>
-<td>PE4</td>
-<td></td>
-<td>PF4</td>
-<td></td>
-</tr>
-<tr>
-<td>PA5</td>
-<td>编码器1-A</td>
-<td>PB5</td>
-<td>编码器2-B</td>
-<td>PC5</td>
-<td></td>
-<td>PD5</td>
-<td></td>
-<td>PE5</td>
-<td>PWM7</td>
-<td>PF5</td>
-<td></td>
-</tr>
-<tr>
-<td>PA6</td>
-<td>PWM1</td>
-<td>PB6</td>
-<td>编码器3-A</td>
-<td>PC6</td>
-<td>6-TX</td>
-<td>PD6</td>
-<td></td>
-<td>PE6</td>
-<td>PWM8</td>
-<td>PF6</td>
-<td></td>
-</tr>
-<tr>
-<td>PA7</td>
-<td>PWM2</td>
-<td>PB7</td>
-<td>编码器3-B</td>
-<td>PC7</td>
-<td>6-RX</td>
-<td>PD7</td>
-<td></td>
-<td>PE7</td>
-<td></td>
-<td>PF7</td>
-<td></td>
-</tr>
-<tr>
-<td>PA8</td>
-<td></td>
-<td>PB8</td>
-<td>PWM3</td>
-<td>PC8</td>
-<td></td>
-<td>PD8</td>
-<td>MOTOR1-A</td>
-<td>PE8</td>
-<td></td>
-<td>PF8</td>
-<td></td>
-</tr>
-<tr>
-<td>PA9</td>
-<td>1-TX</td>
-<td>PB9</td>
-<td>PWM4</td>
-<td>PC9</td>
-<td></td>
-<td>PD9</td>
-<td>MOTOR1-B</td>
-<td>PE9</td>
-<td>PWM9_M1</td>
-<td>PF9</td>
-<td></td>
-</tr>
-<tr>
-<td>PA10</td>
-<td>1-RX</td>
-<td>PB10</td>
-<td>3-TX</td>
-<td>PC10</td>
-<td>4-TX</td>
-<td>PD10</td>
-<td>MOTOR2-A</td>
-<td>PE10</td>
-<td></td>
-<td>PF10</td>
-<td></td>
-</tr>
-<tr>
-<td>PA11</td>
-<td></td>
-<td>PB11</td>
-<td>3-RX</td>
-<td>PC11</td>
-<td>4-RX</td>
-<td>PD11</td>
-<td>MOTOR2-B</td>
-<td>PE11</td>
-<td>PWM10_M2</td>
-<td>PF11</td>
-<td></td>
-</tr>
-<tr>
-<td>PA12</td>
-<td></td>
-<td>PB12</td>
-<td></td>
-<td>PC12</td>
-<td>5-TX</td>
-<td>PD12</td>
-<td>MOTOR3-A</td>
-<td>PE12</td>
-<td></td>
-<td>PF12</td>
-<td></td>
-</tr>
-<tr>
-<td>PA13</td>
-<td></td>
-<td>PB13</td>
-<td></td>
-<td>PC13</td>
-<td></td>
-<td>PD13</td>
-<td>MOTOR3-B</td>
-<td>PE13</td>
-<td>PWM11_M3</td>
-<td>PF13</td>
-<td></td>
-</tr>
-<tr>
-<td>PA14</td>
-<td></td>
-<td>PB14</td>
-<td>PWM5</td>
-<td>PC14</td>
-<td></td>
-<td>PD14</td>
-<td>MOTOR4-A</td>
-<td>PE14</td>
-<td>PWM12_M4</td>
-<td>PF14</td>
-<td></td>
-</tr>
-<tr>
-<td>PA15</td>
-<td></td>
-<td>PB15</td>
-<td>PWM6</td>
-<td>PC15</td>
-<td></td>
-<td>PD15</td>
-<td>MOTOR4-B</td>
-<td>PE15</td>
-<td></td>
-<td>PF15</td>
-<td></td>
-</tr>
-</tbody></table>
+                                <h1 id="去开封玩喽"><a href="#去开封玩喽" class="headerlink" title="去开封玩喽"></a>去开封玩喽</h1><hr>
+<p>这是一次计划很久的见面</p>
+<p>(这里的内容是不是不要密码<br>在封面就可以看到哇<br>就不让你看<br>保密)</p>
+<p>自从小宝毕业后<br>小宝就不能天天黏着大宝了<br>突然多了些许的不适应<br>但也可能是毕业计划考证书<br>压力太大<br>很快投入了备考中<br>并且考点在郑州<br>这样还可以再见一面</p>
+<p>有所期待<br>日子也便不难熬了</p>
+<p>小宝和大宝也就八月份见了一面，还是因为小宝考试，由于时间原因，两个人也没有出去玩</p>
+<p>时隔四个月<br>小宝终于结束了研究生考试<br>考完一身疲惫<br>腰疼的抵不住<br>在家休息一天<br>26 号出发<br>找大宝喽</p>
+<p>这次我们选择去开封<br>开封之旅——回忆版</p>
+<h1 id="2023-12-26"><a href="#2023-12-26" class="headerlink" title="2023-12-26"></a><strong>2023-12-26</strong></h1><p>小宝依旧早起赶大巴<br>六点五十抵达车站<br>出发~</p>
+<p>到达开封就已经下午一点多啦<br>大宝也快到了<br>小宝站在原地等大宝打车过来<br>回到民宿收拾收拾</p>
+<p>猜一猜<br>谁先亲亲的<br>嘿嘿</p>
+<p>两点多出发吃好吃的啦<br>因为实在太饿了<br>在等饭的时候<br>大宝一直在和我分享他们比赛的事情<br>不得不说大宝老厉害了<br>给大宝点个赞赞</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723618357775.png" alt="开封菜"><br>包子好吃，菜就一般般啦<br>小宝记得最后没有吃完</p>
+<h1 id="2023-12-27"><a href="#2023-12-27" class="headerlink" title="2023-12-27"></a><strong>2023-12-27</strong></h1><p>两个小懒猪 ，睡到大中午才起床，磨磨蹭蹭，快一点才出发，也是饿的不行了</p>
+<p>大宝在美团上找呀找，终于找到了一家火锅店，可不是一般的火锅哦，是铜锅涮肉</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723618545653.png" alt="涮肉"><br>得到了大宝小宝的一致好评<br>肉香味很浓<br>量非常大<br>主打一个原汁原味<br>大宝小宝都吃撑了</p>
+<p>不记得下午去干嘛了<br>估计去逛商场？买零食去了？<br>因为小宝记得那几天晚上都有吃零食和水果</p>
+<h2 id="第一站：清明上河园"><a href="#第一站：清明上河园" class="headerlink" title="第一站：清明上河园"></a><strong>第一站：清明上河园</strong></h2><p>服了呀，小宝突然想起来，前一段时间，亲戚问小宝，去没去清明上河园<br>小宝说的没去<br>呜呜，其实去了，不过是白天去的，而且看起来和张择端的清明上河图不太一样，可能是身在其中感受不到吧</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723618831876.png" alt="门票"><br>清明上河园，我们来了<br>入园就是张择端手拿画卷的雕像<br>也是人们的打卡留恋区</p>
+<p><strong>表演</strong><br>园区很大，由于是下午来的，很多表演都结束了，而且不知道具体位置，小宝和大宝就主打随意，毕竟重要的是过程，如果为了看表演而忽略了途中美景，忘记享受陪伴身边人就不好玩了</p>
+<p>没走几步<br>就让大宝和小宝看见了表演<br>真是得来全不费功夫<br>==<em>斗鸡</em> #12AA9C==<br>猜猜是什么<br>当然是经典的<br>斗鸡！<br>然后围观群众下“赌注”<br>俩宝凑个热闹<br>也在猜哪个最厉害</p>
+<p>不得不说<br>斗鸡这个表演<br>这几天的游玩中看到两三次了<br>==<em>战马</em> #12AA9C==<br>战马<br>就是做了很高大的机械马<br>有六到七个工作人员操作<br>他们穿的像刺客一样<br>很酷<br>==<em>舞狮子</em> #12AA9C==<br>好久没见舞狮子了<br>两只狮子<br>四个人<br>两两配合<br>在独立桩上跳来跳去<br>很佩服狮子下面的人<br>小宝和大宝一边吃薯片一边为他们呐喊<br>==<em>考状元</em> #12AA9C==<br>就是演员抽几个幸运观众<br>上台答题<br>然后选出状元<br>刚好碰上小学生研习<br>遇到一个小胖孩<br>黑黑的<br>长得太像大宝的朋友了<br>哈哈哈<br>==<em>击鼓</em> #12AA9C==<br>击鼓是最后的表演啦<br>刚好到出口的时候碰到的<br>敲鼓<br>转换队形<br>武枪<br>看起来很厉害<br>表情也很到位<br>看的小宝手痒痒<br>也想上去玩一会</p>
+<p>但是这个时候已经六点了<br>冬天天黑的早<br>大宝小宝一圈走下来<br>脚都累痳了</p>
+<p>准备出发找吃的了<br>哎哎哎，别急，看看小宝和大宝拍的美美照片</p>
+<p><strong>快乐的痕迹</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723619392564.png" alt="开心的小宝"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723619443873.png" alt="开心的大宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620664582.png" alt="好像一位女诗人"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620717330.png" alt="女诗人的小助理"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620774975.png" alt="好开心呀"><br>美美哒</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620843224.png" alt="正常的合照"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620953647.png" alt="看什么看"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620985305.png" alt="再看就把你吃掉"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620868313.png" alt="吃到了！报吃"></p>
+<p>STOP！<br>够了<br>真的饿了<br>觅食去</p>
+<h2 id="第二站：河南大学西门夜市"><a href="#第二站：河南大学西门夜市" class="headerlink" title="第二站：河南大学西门夜市"></a><strong>第二站：河南大学西门夜市</strong></h2><p>人太多了，马家焖烤鸡腿的队排的老长了，大宝小宝分头行动，买了好多好吃的<br>回民宿喽</p>
+<p>==突发事件 #CC5595==<br>小宝妈妈查岗<br>好在当时大宝小宝分头买吃的去了，小宝一个人应付过来了，问题不大</p>
+<p>大宝导员查岗<br>晚上看电影的时候，大宝导员突然查寝，是的，大宝不在寝室，大宝直接硬气的说我现在通知你，我在外面玩。哈哈哈，太勇敢了</p>
+<h1 id="2023-12-28"><a href="#2023-12-28" class="headerlink" title="2023-12-28"></a><strong>2023-12-28</strong></h1><h2 id="第三站：万岁山武侠城"><a href="#第三站：万岁山武侠城" class="headerlink" title="第三站：万岁山武侠城"></a><strong>第三站：万岁山武侠城</strong></h2><p>万岁山去的时候稍微有点晚，不知道俩宝在墨迹什么，再加上元旦前的装修，俩宝在万岁山没待多久，就只能在里面摸黑玩了，还碰到施工大队</p>
+<p>里面有一个防空洞，虽然味道不太好，但是想象着自己背着枪，猫着背往前慢慢走<br>嘟嘟嘟</p>
+<p>这里面没拍太多照片，但是万岁山里面拍的照片都可逗了，里面的主题是关于水浒传的</p>
+<p>来欣赏一下照片片<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624194562.png" alt="两手支球"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624253179.png" alt="五指支球"><br>好好好，卷起来了<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624303600.png" alt="俩短腿嘻嘻"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624352486.png" alt="替天行道"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624392403.png" alt="大宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624433913.png" alt="要拔刀了"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624461139.png" alt="小宝"></p>
+<p>摸黑摸的头晕转向，但是氛围感超级足，走夜路，只靠月光，好像下一秒，就要入戏了，但是园区里面几乎剩下工作人员了<br>开溜</p>
+<p>回来的路上去了兴盛德，买开封的特产：花生酥、桂花糕、花生米、菊花茶</p>
+<h1 id="2023-12-29"><a href="#2023-12-29" class="headerlink" title="2023-12-29"></a><strong>2023-12-29</strong></h1><p>依旧是睡到中午才出发的俩宝<br>午饭是小区门口的槐店王婆大虾<br>好吃好吃，巨好吃<br>除了李想大虾<br>就是这家店了</p>
+<h2 id="第四站：中国翰园碑林"><a href="#第四站：中国翰园碑林" class="headerlink" title="第四站：中国翰园碑林"></a><strong>第四站：中国翰园碑林</strong></h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623698584.png" alt="大宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623770567.png" alt="小宝"><br>好吧好吧！小宝宣布，两张照片，大宝拍的完胜</p>
+<p>进去啦<br>碑林里面大都是文字<br>俩宝浅作欣赏</p>
+<p>还有一个假山<br>下山的时候<br>大宝像老头子<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623630968.png" alt="老头下山"></p>
+<p>看了那么多字体<br>俩宝也来露一手<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623937259.png" alt="认真的小宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623964797.png" alt="认真的大宝"><br>俩宝写的太好了，就不展示成果了<br>开溜，干饭去</p>
+<p>吃烤肉，水浒传主题<br>评价：氛围感强、量一般般、好吃</p>
+<p>晚上回来<br>大宝带小宝去打台球了，这是小宝第一次打台球，之前都是听大宝分享大宝在学校打台球的事情，终于小宝也可以玩咯</p>
+<p>果然小宝天赋异禀<br>晚上总比分超过了大宝<br>耶<br>(其实是大宝在放水啦)</p>
+<h1 id="2023-12-30"><a href="#2023-12-30" class="headerlink" title="2023-12-30"></a><strong>2023-12-30</strong></h1><p>小宝和大宝都是下午的车，于是吃完午饭，俩宝又去打台球了<br>小宝上瘾了</p>
+<p>两个人掐好时间，掐点到车站，就是出租车没有把小宝送到门口，小宝一个人背个大书包，拎着两大包特产，挺着不争气的腰，吭哧吭哧才走到车站里面</p>
+<p>但是这次开封游玩小宝很开心<br>拍了很多很多可爱、搞怪、开心的照片<br>还学会了打台球<br>（因为是回忆版）<br>小宝回家就教朋友打台球了<br>哈哈哈哈</p>
 
                                     
                             </div>
@@ -1015,7 +550,7 @@ PA9, PB6
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">biubiu选手</a>
+                    <a href="/about" rel="external nofollow noreferrer">小宝</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -1025,7 +560,7 @@ PA9, PB6
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sparkle-now.cn/2024/07/20/stm32f407-yin-jiao-fen-pei/">https://sparkle-now.cn/2024/07/20/stm32f407-yin-jiao-fen-pei/</a>
+                    <a href="https://sparkle-now.cn/2024/07/20/he-xiao-bao-zai-kai-feng/">https://sparkle-now.cn/2024/07/20/he-xiao-bao-zai-kai-feng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1038,7 +573,7 @@ PA9, PB6
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">biubiu选手</a>
+                    <a href="/about" target="_blank">小宝</a>
                     !
                 </span>
             </div>
@@ -1063,9 +598,9 @@ PA9, PB6
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/STM32/">
+                                                    <a href="/tags/%E5%BC%80%E5%B0%81/">
                                                         <span class="chip bg-color">
-                                                            STM32
+                                                            开封
                                                         </span>
                                                     </a>
                                                     
@@ -1483,12 +1018,12 @@ PA9, PB6
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/07/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/">
+                <a href="/2024/07/20/stm32f407-yin-jiao-fen-pei/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721578058652.png" class="responsive-img" alt="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/s3yUma.png" class="responsive-img" alt="STM32F407一般外设IO分配">
                         
-                        <span class="card-title">在clion平台使用openocd工具向STM32H7外置flash下载代码并调试</span>
+                        <span class="card-title">STM32F407一般外设IO分配</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1516,20 +1051,8 @@ PA9, PB6
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                        <span class="chip bg-color">嵌入式</span>
-                    </a>
-                    
-                    <a href="/tags/CLion/">
-                        <span class="chip bg-color">CLion</span>
-                    </a>
-                    
-                    <a href="/tags/QSPI/">
-                        <span class="chip bg-color">QSPI</span>
-                    </a>
-                    
-                    <a href="/tags/openocd/">
-                        <span class="chip bg-color">openocd</span>
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
                     </a>
                     
                 </div>
@@ -1543,12 +1066,12 @@ PA9, PB6
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/20/he-xiao-bao-zai-kai-feng/">
+                <a href="/2024/07/20/gong-chuang-sai-zong-jie-yu-gai-jin-xuan-xing-jian-yi/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/qG0B7G.png" class="responsive-img" alt="和小宝在开封">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17197660798456.jpg" class="responsive-img" alt="工创赛总结与改进-选型建议">
                         
-                        <span class="card-title">和小宝在开封</span>
+                        <span class="card-title">工创赛总结与改进-选型建议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1565,8 +1088,8 @@ PA9, PB6
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%85%E8%A1%8C/" class="post-category">
-                                    旅行
+                            <a href="/categories/%E6%AF%94%E8%B5%9B/" class="post-category">
+                                    比赛
                                 </a>
                             
                             
@@ -1576,8 +1099,8 @@ PA9, PB6
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BC%80%E5%B0%81/">
-                        <span class="chip bg-color">开封</span>
+                    <a href="/tags/%E6%AF%94%E8%B5%9B/">
+                        <span class="chip bg-color">比赛</span>
                     </a>
                     
                 </div>
