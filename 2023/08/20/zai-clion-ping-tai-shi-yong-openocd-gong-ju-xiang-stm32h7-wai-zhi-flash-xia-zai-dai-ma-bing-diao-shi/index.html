@@ -4,10 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="FATFS文件系统常用函数记录, Sparkle.now">
-    <meta name="description" content="Fatfs 文件系统函数使用记录FatFs 文件系统
-1、f_open 打开/创建文件FRESULT f_open (
-    FIL* fp,           /* [OUT] Pointer to the file object s">
+    <meta name="keywords" content="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试, Sparkle.now">
+    <meta name="description" content="使用clion向STM32H7外置flash下载代码简介根据安福莱的STM32H7教程，H7单片机的QSPI外设是直接连到芯片内核上的，地址是0X90000000；QSPI外设可以设置为内存映射模式，由此执行代码，达到扩展stm32flas">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>FATFS文件系统常用函数记录 | Sparkle.now</title>
+    <title>在clion平台使用openocd工具向STM32H7外置flash下载代码并调试 | Sparkle.now</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -373,12 +371,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/3IsaRF.JPG')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721578058652.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">FATFS文件系统常用函数记录</h1>
+                    <h1 class="description center-align post-title">在clion平台使用openocd工具向STM32H7外置flash下载代码并调试</h1>
                 </div>
             </div>
         </div>
@@ -402,9 +400,27 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
                                     <span class="chip bg-color">
-                                        文件系统
+                                        嵌入式
+                                    </span>
+                                </a>
+                                
+                                <a href="/tags/CLion/">
+                                    <span class="chip bg-color">
+                                        CLion
+                                    </span>
+                                </a>
+                                
+                                <a href="/tags/QSPI/">
+                                    <span class="chip bg-color">
+                                        QSPI
+                                    </span>
+                                </a>
+                                
+                                <a href="/tags/openocd/">
+                                    <span class="chip bg-color">
+                                        openocd
                                     </span>
                                 </a>
                                 
@@ -429,21 +445,21 @@
                 
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                            2024-07-20
+                            2023-08-20
                     </div>
                     
 
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2024-08-13
+                                    2024-08-14
                             </div>
                             
 
                                 
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                                            2.2k
+                                            2.1k
                                     </div>
                                     
 
@@ -474,425 +490,192 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="Fatfs-文件系统函数使用记录"><a href="#Fatfs-文件系统函数使用记录" class="headerlink" title="Fatfs 文件系统函数使用记录"></a>Fatfs 文件系统函数使用记录</h1><p><strong>FatFs 文件系统</strong></p>
-<h2 id="1、f-open-打开-创建文件"><a href="#1、f-open-打开-创建文件" class="headerlink" title="1、f_open 打开/创建文件"></a>1、f_open 打开/创建文件</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_open</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>           <span class="token comment">/* [OUT] Pointer to the file object structure */</span>
-    <span class="token keyword">const</span> TCHAR<span class="token operator">*</span> path<span class="token punctuation">,</span> <span class="token comment">/* [IN] File name */</span>
-    BYTE mode          <span class="token comment">/* [IN] Mode flags */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                                <h1 id="使用clion向STM32H7外置flash下载代码"><a href="#使用clion向STM32H7外置flash下载代码" class="headerlink" title="使用clion向STM32H7外置flash下载代码"></a>使用clion向STM32H7外置flash下载代码</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>根据安福莱的STM32H7教程，H7单片机的QSPI外设是直接连到芯片内核上的，地址是0X90000000；QSPI外设可以设置为内存映射模式，由此执行代码，达到扩展stm32flash的效果，一般移植lvgl都需要外扩flash。</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605742489.png" alt="STM3H7单片机矩阵架构"><br>相关操作在keil5上比较简单，配置点东西就行；可以参考安福莱教程。</p>
+<p>这里要介绍的是在linux环境下没有keil5 IDE的情况下，如何使用clion+openocd实现</p>
+<ul>
+<li>将大体积代码下载到外置flash并执行</li>
+<li>对外置flash执行的代码进行仿真</li>
+</ul>
+<h2 id="代码配置"><a href="#代码配置" class="headerlink" title="代码配置"></a>代码配置</h2><h3 id="修改系统配置文件"><a href="#修改系统配置文件" class="headerlink" title="修改系统配置文件"></a>修改系统配置文件</h3><p>STM32的代码都是有起始地址的，每一句代码，编译为相关机器码执行时，都有对应地址的；对于一般情况的代码，起始地址都是0X8000000；</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605792831.png" alt="工程FLASH配置文件"><br>该文件中详细的配置了单片机所使用的flash大小，ram大小，地址等信息。</p>
+<p>由于采用外置flash启动，我们需要将flash地址配置为QSPI地址，并修改LENGTH为我们的flash芯片大小。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">MEMORY
+<span class="token punctuation">{</span>
+  <span class="token function">FLASH</span> <span class="token punctuation">(</span>rx<span class="token punctuation">)</span>     <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x90000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">8192</span>K
+  <span class="token function">DTCMRAM</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>  <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x20000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">128</span>K
+  <span class="token function">RAM_D1</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>   <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x24000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">512</span>K
+  <span class="token function">RAM_D2</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>   <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x30000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">288</span>K
+  <span class="token function">RAM_D3</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>   <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x38000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">64</span>K
+  <span class="token function">ITCMRAM</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>  <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x00000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">64</span>K
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>参数：</strong></p>
+<h3 id="修改系统初始化函数"><a href="#修改系统初始化函数" class="headerlink" title="修改系统初始化函数"></a>修改系统初始化函数</h3><p>STM32单片机启动时会先执行汇编启动文件，先定义中断向量表，再执行复位，设置栈顶指针，再执行系统初始化函数，再跳转main函数。</p>
+<p>其中系统初始化函数中需要修改SCB-&gt;VTOR的值。<br>==SCB-&gt;VTOR为Cortex内核的中断向量表的基地址，一般为程序执行的初始地址。 #12AA9C==<br>关于该变量理解，<a target="_blank" rel="noopener" href="https://dgvy.gitee.io/2021/STM32%E4%B8%ADSCB-VTOR%E7%9A%84%E7%90%86%E8%A7%A3/">参考链接</a></p>
+<p>这里需要修改为我们程序启动的地址0X90000000。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605816210.png" alt="SCB->VTOR地址修改"></p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>点击编译，即可制作一个运行在外部flash的代码，下载到外置flash中，引导运行即可。</p>
+<p>那么现在出现两个问题：</p>
 <ul>
-<li><code>@fp</code>：文件结构体指针</li>
-<li><code>@path</code>：文件路径（文件名）</li>
-<li><code>@mode</code>：打开方式</li>
+<li>如何下载到外置flash</li>
+<li>如何从外置flash中启动</li>
 </ul>
-<p><strong>返回值：</strong></p>
+<h2 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a>代码下载</h2><h3 id="使用CubeProgramer工具下载"><a href="#使用CubeProgramer工具下载" class="headerlink" title="使用CubeProgramer工具下载"></a>使用CubeProgramer工具下载</h3><p>使用ST提供的下载工具下载；<br>需要：</p>
 <ul>
-<li>成功返回 <code>FR_OK</code>（0），文件对象有效</li>
-<li>失败则文件对象无效（NULL）</li>
-<li>可能的返回值：<code>FR_OK</code>, <code>FR_DISK_ERR</code>, <code>FR_INT_ERR</code>, <code>FR_NOT_READY</code>, <code>FR_NO_FILE</code>, <code>FR_NO_PATH</code>, <code>FR_INVALID_NAME</code>, <code>FR_DENIED</code>, <code>FR_EXIST</code>, <code>FR_INVALID_OBJECT</code>, <code>FR_WRITE_PROTECTED</code>, <code>FR_INVALID_DRIVE</code>, <code>FR_NOT_ENABLED</code>, <code>FR_NO_FILESYSTEM</code>, <code>FR_TIMEOUT</code>, <code>FR_LOCKED</code>, <code>FR_NOT_ENOUGH_CORE</code>, <code>FR_TOO_MANY_OPEN_FILES</code></li>
+<li>对应板子的下载算法文件</li>
+<li>烧录器</li>
+<li>能够运行在外置flash的代码</li>
 </ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li><code>f_open</code> 打开并创建一个文件对象，打开的文件应该在使用后调用 <code>f_close</code> 关闭文件。</li>
-<li>如果对文件进行了更改，并且在断电、删除介质或重新挂载前未关闭，则文件可能会崩溃。</li>
-<li>只能以读的方式重复打开一个文件，不能以任何具有写模式的方式重复打开一个文件（第二次打开不成功 <code>FR_LOCKED</code>，哪怕第二次是只读、只打开）。</li>
-<li>当把 FatFs 配置为只读模式（<code>FF_FS_READONLY == 1</code>）的时候，<code>mode</code> 只能是 <code>FA_READ</code> 和 <code>FA_OPEN_EXISTING</code>。</li>
-</ul>
-<p><strong>MODE：</strong></p>
-<table>
-<thead>
-<tr>
-<th>标志</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>FA_READ</code></td>
-<td>指定对文件的读取访问权限。可以从文件中读取数据。</td>
-</tr>
-<tr>
-<td><code>FA_WRITE</code></td>
-<td>指定对文件的写入权限。数据可以写入文件。与 <code>FA_READ</code> 结合使用以实现读写访问。</td>
-</tr>
-<tr>
-<td><code>FA_OPEN_EXISTING</code></td>
-<td>打开文件。如果文件不存在，则该函数将失败。（默认）</td>
-</tr>
-<tr>
-<td><code>FA_CREATE_NEW</code></td>
-<td>创建新文件。如果文件存在，则该函数将失败并返回 <code>FR_EXIST</code>。</td>
-</tr>
-<tr>
-<td><code>FA_CREATE_ALWAYS</code></td>
-<td>创建新文件。如果该文件存在，它将被截断并覆盖。</td>
-</tr>
-<tr>
-<td><code>FA_OPEN_ALWAYS</code></td>
-<td>打开文件（如果存在）。如果没有，将创建一个新文件。</td>
-</tr>
-<tr>
-<td><code>FA_OPEN_APPEND</code></td>
-<td>与 <code>FA_OPEN_ALWAYS</code> 相同，只是读/写指针设置在文件的末尾。</td>
-</tr>
-</tbody></table>
-<p><strong>POSIX <code>fopen()</code> 函数中的模式标志对应于 FatFs 模式标志，如下所示：</strong></p>
-<table>
-<thead>
-<tr>
-<th>POSIX</th>
-<th>FatFs</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>”r”</code></td>
-<td><code>FA_READ</code></td>
-</tr>
-<tr>
-<td><code>”r+”</code></td>
-<td><code>FA_READ / FA_WRITE</code></td>
-</tr>
-<tr>
-<td><code>”w”</code></td>
-<td><code>FA_CREATE_ALWAYS / FA_WRITE</code></td>
-</tr>
-<tr>
-<td><code>”w+”</code></td>
-<td><code>FA_CREATE_ALWAYS / FA_WRITE / FA_READ</code></td>
-</tr>
-<tr>
-<td><code>”a”</code></td>
-<td><code>FA_OPEN_APPEND / FA_WRITE</code></td>
-</tr>
-<tr>
-<td><code>”a+”</code></td>
-<td><code>FA_OPEN_APPEND / FA_WRITE / FA_READ</code></td>
-</tr>
-<tr>
-<td><code>”wx”</code></td>
-<td><code>FA_CREATE_NEW / FA_WRITE</code></td>
-</tr>
-<tr>
-<td><code>”w+x”</code></td>
-<td><code>FA_CREATE_NEW / FA_WRITE / FA_READ</code></td>
-</tr>
-</tbody></table>
-<h2 id="2、f-close-关闭文件"><a href="#2、f-close-关闭文件" class="headerlink" title="2、f_close 关闭文件"></a>2、f_close 关闭文件</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_close</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp     <span class="token comment">/* [IN] Pointer to the file object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>刚才已经成功编译了外置执行代码，烧录器咱也有，而烧录算法呢，推荐看安福莱的相关教程。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/110133013">相关教程</a></p>
+<h3 id="使用Clion下载"><a href="#使用Clion下载" class="headerlink" title="使用Clion下载"></a>使用Clion下载</h3><p>这个是我主要想讲的，在一个编辑器里完成编译、下载、调试，嘿嘿</p>
+<p>先解决下载问题。</p>
+<p>我们知道，STM32下载代码时会先执行一个配置程序，该程序运行在RAM中，会初始化部分关于下载代码的外设。</p>
+<p>使用keil5时，我们会使用一个.flm文件下载代码，该文件就是下载引导程序，其制作流程安福莱里讲的有。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605834906.png" alt="反客的keil5下载教程"></p>
+<p>同样，在正常下载的时候也会有一个keil5官方提供的.flm文件，这些文件就储存在官方目录里。</p>
+<p>对于CubeMX而言，也有相应的文件，</p>
+<p>所以，我们使用的openocd工具也是有的，在我们的工程目录里，有一些配置文件，都具有各自相应的功能。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605850131.png" alt="clion工程目录"><br>在stm32h750b-disco.cfg文件中，初始化了芯片时钟，和部分必要的下载外设；</p>
+<p>在19行、23行：跳转到了其他配置文件中，执行具体的操作</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># enable stmqspi</span>
+<span class="token keyword">if</span> <span class="token punctuation">{</span><span class="token operator">!</span><span class="token punctuation">[</span>info exists QUADSPI<span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+	<span class="token builtin class-name">set</span> QUADSPI <span class="token number">1</span>
+<span class="token punctuation">}</span>
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_INVALID_OBJECT</code>（double free）</li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li><code>f_close</code> 函数关闭打开的文件对象。如果文件已更改，则文件的缓存信息将写回卷。函数成功后，文件对象不再有效（在函数中将文件指针置为 0），可以丢弃。</li>
-<li>请注意，如果文件对象处于只读模式且未启用 <code>FF_FS_LOCK</code>（限制最大打开数量），则也可以在不执行此过程的情况下丢弃该文件对象。但是，为了将来的兼容性，不建议这样做。</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>始终可用</li>
-</ul>
-<h2 id="3、f-read-从文件中读数据"><a href="#3、f-read-从文件中读数据" class="headerlink" title="3、f_read 从文件中读数据"></a>3、f_read 从文件中读数据</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_read</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>     <span class="token comment">/* [IN] File object */</span>
-    <span class="token keyword">void</span><span class="token operator">*</span> buff<span class="token punctuation">,</span>  <span class="token comment">/* [OUT] Buffer to store read data */</span>
-    UINT btr<span class="token punctuation">,</span>    <span class="token comment">/* [IN] Number of bytes to read */</span>
-    UINT<span class="token operator">*</span> br     <span class="token comment">/* [OUT] Number of bytes read */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin class-name">source</span> <span class="token punctuation">[</span>find target/stm32h7x.cfg<span class="token punctuation">]</span>
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-<li><code>@buff</code>：读出数据存放的地址，如果需要快速读出数据则空间应该尽量大</li>
-<li><code>@btr</code>：想要读取的数据字节数</li>
-<li><code>@br</code>：实际读取的数据字节数。无论函数返回代码如何，此值在函数调用后始终有效。如果返回值等于 <code>btr</code>，则函数返回代码应为 <code>FR_OK</code></li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_DENIED</code></li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>读取文件后，文件的读写指针（可以理解为光标）将会向后偏移。</li>
-<li>函数执行成功后，如果 <code>*br &lt; btr</code> 则表明文件读取到文件末尾。</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>始终可用</li>
-</ul>
-<h2 id="4、f-write-向文件中写数据"><a href="#4、f-write-向文件中写数据" class="headerlink" title="4、f_write 向文件中写数据"></a>4、f_write 向文件中写数据</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_write</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>           <span class="token comment">/* [IN] Pointer to the file object structure */</span>
-    <span class="token keyword">const</span> <span class="token keyword">void</span><span class="token operator">*</span> buff<span class="token punctuation">,</span>  <span class="token comment">/* [IN] Pointer to the data to be written */</span>
-    UINT btw<span class="token punctuation">,</span>          <span class="token comment">/* [IN] Number of bytes to write */</span>
-    UINT<span class="token operator">*</span> bw           <span class="token comment">/* [OUT] Pointer to the variable to return number of bytes written */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+reset_config srst_only
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-<li><code>@buff</code>：要写入数据的存放地址，如果需要快速写入数据则空间应该尽量大</li>
-<li><code>@btw</code>：想要写入的数据字节数</li>
-<li><code>@bw</code>：实际写入的数据字节数。无论函数返回代码如何，此值在函数调用后始终有效。如果返回值等于 <code>btw</code>，则函数返回代码应为 <code>FR_OK</code></li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_DENIED</code></li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>函数成功后，应检查 <code>*bw</code> 以检测磁盘是否已满。如果 <code>*bw &lt; btw</code>，则表示卷在写入操作期间已满。当卷已满或接近满时，该函数可能需要一段时间。</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>当 <code>FF_FS_READONLY == 0</code> 时可用</li>
-</ul>
-<h2 id="5、f-lseek-重定位"><a href="#5、f-lseek-重定位" class="headerlink" title="5、f_lseek 重定位"></a>5、f_lseek 重定位</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_lseek</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span>    fp<span class="token punctuation">,</span>  <span class="token comment">/* [IN] File object */</span>
-    FSIZE_t ofs  <span class="token comment">/* [IN] Offset of file read/write pointer to be set */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin class-name">source</span> <span class="token punctuation">[</span>find board/stm32h7x_dual_qspi.cfg<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-<li><code>@ofs</code>：文件偏移的字节数（从文件开头计算）。数据类型 <code>FSIZE_t</code> 是 <code>DWORD</code>（32 位）或 <code>QWORD</code>（64 位）（exFAT）的别名，具体取决于 <code>FF_FS_EXFAT</code> 配置选项。</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>如果在写入模式下指定了超出文件大小的偏移量，则文件大小将扩展到指定的偏移量。留下的空间，但是在此过程中并没有写入数据。</li>
-<li>若是函数执行成功但是指针却没有偏移，则可能是：<ul>
-<li>文件结束。指定的 <code>ofs</code> 以只读模式在文件末尾剪裁。</li>
-<li>磁盘已满。卷上没有可用空间来扩展文件。</li>
-</ul>
-</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>当 <code>FF_FS_MINIMIZE &lt;= 2</code> 时可用。要使用快速查找功能，需要将 <code>FF_USE_FASTSEEK</code> 设置为 1 以启用此功能（当 <code>FF_FS_MINIMIZE = 3</code> 时删除了 <code>f_lseek</code>）。</li>
-</ul>
-<p><strong>宏：</strong></p>
-<ul>
-<li><code>f_rewind</code>（光标移动到文件开头）函数作为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_rewind</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token function">f_lseek</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<h2 id="6、f-truncate-截断文件"><a href="#6、f-truncate-截断文件" class="headerlink" title="6、f_truncate 截断文件"></a>6、f_truncate 截断文件</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_truncate</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp     <span class="token comment">/* [IN] File object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在这里，代码定义了QUADSPI为1，即会在stm32h7x_dual_qspi.cfg中执行该外设的初始化；</p>
+<p>但是，这里该外设的初始化是以STM32官方出的板子的引脚定义的，不一定适合我们，而且实操下来，该文件改来改去效果不大，而且我觉得不建议跳到人家官方配置文件里修修改改，这里我们直接在该配置语句下面执行我们板子的配置代码；</p>
+<pre class="line-numbers language-dsconfig" data-language="dsconfig"><code class="language-dsconfig"># ART_Pi qspi.
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_DENIED</code>（操作只读函数）</li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>将文件截断为当前文件指针所在的大小，如果文件指针指向末尾则不起作用。</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>当 <code>FF_FS_READONLY == 0</code> 和 <code>FF_FS_MINIMIZE == 0</code> 时可用。</li>
-</ul>
-<h2 id="7、f-sync-冲刷数据缓冲区"><a href="#7、f-sync-冲刷数据缓冲区" class="headerlink" title="7、f_sync 冲刷数据缓冲区"></a>7、f_sync 冲刷数据缓冲区</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_sync</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp     <span class="token comment">/* [IN] File object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+# QUADSPI initialization
+proc qspi_init {  } {
+    global a
+    mmw 0x580244E0 0x000007FF 0             ;# RCC_AHB4ENR |= GPIOAEN-GPIOKEN (enable clocks)
+    mmw 0x580244D4 0x00004000 0             ;# RCC_AHB3ENR |= QSPIEN (enable clock)
+    sleep 1                                 ;# Wait for clock startup
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>文件在写入的时候会暂存在文件缓冲区，只有遇到刷新条件的时候才会将写缓冲区的数据写入到文件中。但是在未将缓冲区的数据冲刷到缓冲区之前突然发生错误，那么写入的信息就丢失了。</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>当 <code>FF_FS_READONLY == 0</code> 时可用。</li>
-</ul>
-<h2 id="8、f-forward-读取文件数据并将其转发到数据流设备"><a href="#8、f-forward-读取文件数据并将其转发到数据流设备" class="headerlink" title="8、f_forward 读取文件数据并将其转发到数据流设备"></a>8、f_forward 读取文件数据并将其转发到数据流设备</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_forward</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp<span class="token punctuation">,</span>                        <span class="token comment">/* [IN] File object */</span>
-    <span class="token function">UINT</span> <span class="token punctuation">(</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> BYTE<span class="token operator">*</span><span class="token punctuation">,</span> UINT<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">/* [IN] Data streaming function */</span>
-    UINT btf<span class="token punctuation">,</span>                       <span class="token comment">/* [IN] Number of bytes to forward */</span>
-    UINT<span class="token operator">*</span> bf                        <span class="token comment">/* [OUT] Number of bytes forwarded */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    # PF10:AF09:H, PF09:AF10:H, PF08:AF10:H, PF07:AF09:H, PF06:AF09:H, PG06:AF10:H
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-<li><code>@func</code>：数据处理函数</li>
-<li><code>@btf</code>：传输的数据大小</li>
-<li><code>@bf</code>：实际传输的数据</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_DENIED</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>如果 <code>*bf</code> 小于 <code>btf</code> 而没有错误，则表示由于文件结束或流在数据传输期间繁忙，无法传输请求的数据大小。</li>
-</ul>
-<h2 id="9、f-expand-为文件准备或分配一个连续的区域"><a href="#9、f-expand-为文件准备或分配一个连续的区域" class="headerlink" title="9、f_expand 为文件准备或分配一个连续的区域"></a>9、f_expand 为文件准备或分配一个连续的区域</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FRESULT <span class="token function">f_expand</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span>    fp<span class="token punctuation">,</span>  <span class="token comment">/* [IN] File object */</span>
-    FSIZE_t fsz<span class="token punctuation">,</span> <span class="token comment">/* [IN] File size expanded to */</span>
-    BYTE    opt  <span class="token comment">/* [IN] Allocation mode */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    # Port F: PF10:AF09:H, PF09:AF10:H, PF08:AF10:H, PF07:AF09:H, PF06:AF09:H
+    mmw 0x58021400 0x002AA000 0x00155000    ;# MODER
+    mmw 0x58021408 0x002AA000 0x00155000    ;# OSPEEDR
+    mmw 0x5802140C 0x00000000 0x003FF000    ;# PUPDR
+    mmw 0x58021420 0x99000000 0x66000000    ;# AFRL
+    mmw 0x58021424 0x000009AA 0x00000655    ;# AFRH
+    # Port G: PG06:AF10:H
+    mmw 0x58021800 0x00002000 0x00001000    ;# MODER
+    mmw 0x58021808 0x00002000 0x00001000    ;# OSPEEDR
+    mmw 0x5802180C 0x00000000 0x00003000    ;# PUPDR
+    mmw 0x58021820 0x0A000000 0x05000000    ;# AFRL
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-<li><code>@fsz</code>：分配空间的大小</li>
-<li><code>@opt</code>：分配模式（0）准备分配、（1）立即分配</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li><code>FR_OK</code></li>
-<li><code>FR_DISK_ERR</code></li>
-<li><code>FR_INT_ERR</code></li>
-<li><code>FR_INVALID_OBJECT</code></li>
-<li><code>FR_DENIED</code></li>
-<li><code>FR_TIMEOUT</code></li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>为一个空文件分配连续的空间，必须是空文件，函数执行完之后读写指针（光标）在文件开头。在分配空间的时候不会像文件写入数据。由于以下一些原因，该函数可能会因 <code>FR_DENIED</code> 而失败：<ul>
-<li>未找到可用的连续空间。</li>
-<li>文件大小不为零。</li>
-<li>该文件已以只读模式打开。</li>
-<li>不允许的文件大小（&gt;= 4 GB 的 FAT 卷）。</li>
-</ul>
-</li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>当 <code>FF_USE_EXPAND == 1</code> 和 <code>FF_FS_READONLY == 0</code> 时可用。</li>
-</ul>
-<h2 id="10、f-tell-获取当前文件指针的位置"><a href="#10、f-tell-获取当前文件指针的位置" class="headerlink" title="10、f_tell 获取当前文件指针的位置"></a>10、f_tell 获取当前文件指针的位置</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FSIZE_t <span class="token function">f_tell</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    # correct FSIZE is 0x16, however, this causes trouble when
+    # reading the last bytes at end of bank in *memory mapped* mode
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li>文件指针的位置，也就是光标的位置，距离文件开头的位置</li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_tell</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>fptr<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>始终可用</li>
-</ul>
-<h2 id="11、f-eof-判断文件指针是否在文件尾"><a href="#11、f-eof-判断文件指针是否在文件尾" class="headerlink" title="11、f_eof 判断文件指针是否在文件尾"></a>11、f_eof 判断文件指针是否在文件尾</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">f_eof</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    # for single flash mode w25q64jv
+                                            ;# 010101010000000000000 0 011000
+    mww 0x52005000 0x05500018               ;# QUADSPI_CR: PRESCALER=5, APMS=1, FTHRES=1, FSEL=0, DFM=0, SSHIFT=1, TCEN=1
+    mww 0x52005004 0x00160500               ;# QUADSPI_DCR: FSIZE=0x16, CSHT=0x05, CKMODE=0
+                                            ;# FSIZE flash的大小。
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li>如果读/写指针到达文件末尾，则 <code>f_eof</code> 函数返回非零值；否则返回零。</li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_eof</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>fptr <span class="token operator">==</span> <span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>fsize<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>始终可用</li>
-</ul>
-<h2 id="12、f-size-获取文件的大小"><a href="#12、f-size-获取文件的大小" class="headerlink" title="12、f_size 获取文件的大小"></a>12、f_size 获取文件的大小</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">FSIZE_t <span class="token function">f_size</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    mww 0x52005030 0x00001000               ;# QUADSPI_LPTR: deactivate CS after 4096 clocks when FIFO is full
+                                            ;# 11010000000000 10 010100000011
+    mww 0x52005014 0x0D002503               ;# QUADSPI_CCR: FMODE=0x3, DMODE=0x1, DCYC=0x0, ADSIZE=0x2, ADMODE=0x1, IMODE=0x1
+    mmw 0x52005000 0x00000001 0             ;# QUADSPI_CR: EN=1
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li>以字节为单位返回文件的大小</li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_size</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>obj<span class="token punctuation">.</span>objsize<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>始终可用</li>
-</ul>
-<h2 id="13、f-error-测试文件上的错误"><a href="#13、f-error-测试文件上的错误" class="headerlink" title="13、f_error 测试文件上的错误"></a>13、f_error 测试文件上的错误</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">f_error</span> <span class="token punctuation">(</span>
-    FIL<span class="token operator">*</span> fp   <span class="token comment">/* [IN] File object */</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    # Exit QPI mode
+    #mmw 0x52005000 0x00000002 0            ;# QUADSPI_CR: ABORT=1
+    #mww 0x52005014 0x000003F5              ;# QUADSPI_CCR: FMODE=0x0, DMODE=0x0, DCYC=0x0, ADSIZE=0x0, ADMODE=0x0, IMODE=0x3, INSTR=Exit QPI
+    sleep 1
 
-<p><strong>参数：</strong></p>
-<ul>
-<li><code>@fp</code>：文件指针</li>
-</ul>
-<p><strong>返回值：</strong></p>
-<ul>
-<li>如果发生硬错误，则返回非零值；否则返回零。</li>
-</ul>
-<p><strong>描述：</strong></p>
-<ul>
-<li>此函数为宏：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">f_error</span><span class="token expression"><span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token operator">-&gt;</span>err<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p><strong>使用条件：</strong></p>
-<ul>
-<li>始终可用</li>
-</ul>
-<h2 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h2><p>欢迎访问<a href="https://sparkle-now.cn/">我的博客</a></p>
+    # reset flash
+    mmw 0x52005000 0x00000002 0             ;# QUADSPI_CR: ABORT=1
+    mww 0x52005014 0x00000166               ;# QUADSPI_CCR: FMODE=0x0, DMODE=0x0, DCYC=0x0, ADSIZE=0x0, ADMODE=0x0, IMODE=0x1, INSTR=0x66
+    mww 0x52005014 0x00000199               ;# QUADSPI_CCR: FMODE=0x0, DMODE=0x0, DCYC=0x0, ADSIZE=0x0, ADMODE=0x0, IMODE=0x1, INSTR=0x99
+
+    # memory-mapped read mode with 3-byte addresses
+    mmw 0x52005000 0x00000002 0             ;# QUADSPI_CR: ABORT=1
+                                            ;# 11 11 0 00100 00 11 10 11 01 11101011
+    mww 0x52005014 0x0F10EDEB               ;# QUADSPI_CCR: FMODE=0x3, DMODE=0x3, DCYC=0x4, ADSIZE=0x2, ADMODE=0x3, IMODE=0x1, INSTR=READ
+    ;mww 0x52005014 0x0D002503
+}
+
+$_CHIPNAME.cpu0 configure -event reset-init {
+    global QUADSPI
+
+    mmw 0x52002000 0x00000004 0x0000000B    ;# FLASH_ACR: 4 WS for 192 MHZ HCLK
+
+    mmw 0x58024400 0x00000001 0x00000018    ;# RCC_CR: HSIDIV=1, HSI on
+    mmw 0x58024410 0x10000000 0xEE000007    ;# RCC_CFGR: MCO2=system, MCO2PRE=8, HSI as system clock
+    mww 0x58024418 0x00000040               ;# RCC_D1CFGR: D1CPRE=1, D1PPRE=2, HPRE=1
+    mww 0x5802441C 0x00000440               ;# RCC_D2CFGR: D2PPRE2=2, D2PPRE1=2
+    mww 0x58024420 0x00000040               ;# RCC_D3CFGR: D3PPRE=2
+    mww 0x58024428 0x00000040               ;# RCC_PPLCKSELR: DIVM3=0, DIVM2=0, DIVM1=4, PLLSRC=HSI
+    mmw 0x5802442C 0x0001000C 0x00000002    ;# RCC_PLLCFGR: PLL1RGE=8MHz to 16MHz, PLL1VCOSEL=wide
+    mww 0x58024430 0x01070217               ;# RCC_PLL1DIVR: 192 MHz: DIVR1=2, DIVQ=8, DIVP1=2, DIVN1=24
+    mmw 0x58024400 0x01000000 0             ;# RCC_CR: PLL1ON=1
+    sleep 1
+    mmw 0x58024410 0x00000003 0             ;# RCC_CFGR: PLL1 as system clock
+    sleep 1
+
+    adapter speed 24000
+
+    if { $QUADSPI } {
+        qspi_init
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>改代码中主要就初始化了QSPI外设的GPIO，并配置了QSPI外设，使用的板子是ART-Pi；</p>
+<p>使用的GPIO是： PF10,PF09,PF08,PF07,PF06,PG06.</p>
+<p>相关外设初始化主要时钟匹配自己的芯片速度。</p>
+<p>这里主要参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/suguguan/EmbeddedProjectTemplates/blob/main/BootLoader_Application/Application/STM32H750VBTX_RAM.ld">在CLion上实现STM32H750VBT6的Bootloader</a></p>
+<p><a target="_blank" rel="noopener" href="https://club.rt-thread.org/ask/article/95a03d2494e01ada.html">使用openOCD擦写ART_Pi外部qspi_flash</a></p>
+<p>两个教程都很全面，并且将代码文件、配置文件都开源了，去点星星咯。</p>
+<p>大家可以根据自己的板子的引脚定义进行修改相关寄存器即可。</p>
+<p>到这里，基本完成了配置，可以实现在clion中通过openocd实现向单片机外置flash下载代码，并进行仿真调试了。</p>
+<h2 id="从外置flash中启动代码"><a href="#从外置flash中启动代码" class="headerlink" title="从外置flash中启动代码"></a>从外置flash中启动代码</h2><p>不管上面如何下载代码，都需要从外置flash启动，前面也简略提到了——我们需要在单片机的内置flash中下载一个bootloader代码，用于从外置flash启动。</p>
+<p>这个代码比较简单，就初始化一点点外设，主要还是QSPI，然后关闭Cache、MPU，对外置flash进行内存映射，并启动。具体内容可以参考安福莱教程。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/109903301">硬汉嵌入式的bootloader教程</a></p>
+<p>我的是修改的反客科技的bootloader代码，将其QSPI外设的引脚改成我的板子的就可以用了。是之前用keil5写的，也可以自己用cubemx生成一个，添加应用代码即可。比较简单。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/augetyz/stm32/tree/master/H750XBH6%E4%B8%8B%E8%BD%BD%E7%AE%97%E6%B3%95">适配ART-Pi的下载算法和bootloader</a></p>
+<p>另外，从外置flash引导的代码，受flash限制，运行速度并不快，不如芯片内部的flash，对此，我们参考安福莱教程，使用MPU配置外置flash内存，用Cache预存取指令，提高代码运行速度。相关配置：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605878766.png" alt="Cubemx配置"></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">MPU_Region_InitTypeDef MPU_InitStruct <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* Disables the MPU */</span>
+<span class="token function">HAL_MPU_Disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** Initializes and configures the Region and the memory to be protected
+*/</span>
+MPU_InitStruct<span class="token punctuation">.</span>Enable <span class="token operator">=</span> MPU_REGION_ENABLE<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>Number <span class="token operator">=</span> MPU_REGION_NUMBER0<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>BaseAddress <span class="token operator">=</span> <span class="token number">0x90000000</span><span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>Size <span class="token operator">=</span> MPU_REGION_SIZE_8MB<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>SubRegionDisable <span class="token operator">=</span> <span class="token number">0x0</span><span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>TypeExtField <span class="token operator">=</span> MPU_TEX_LEVEL1<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>AccessPermission <span class="token operator">=</span> MPU_REGION_FULL_ACCESS<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>DisableExec <span class="token operator">=</span> MPU_INSTRUCTION_ACCESS_ENABLE<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>IsShareable <span class="token operator">=</span> MPU_ACCESS_NOT_SHAREABLE<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>IsCacheable <span class="token operator">=</span> MPU_ACCESS_CACHEABLE<span class="token punctuation">;</span>
+MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="token operator">=</span> MPU_ACCESS_BUFFERABLE<span class="token punctuation">;</span>
+
+<span class="token function">HAL_MPU_ConfigRegion</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>MPU_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/* Enables the MPU */</span>
+<span class="token function">HAL_MPU_Enable</span><span class="token punctuation">(</span>MPU_PRIVILEGED_DEFAULT<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>MPU配置代码。</p>
+<p>相关教程：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/as480133937/article/details/123663197?spm=1001.2014.3001.5506">理论学习，详细好理解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/90690541?spm=1001.2014.3001.5506">硬汉哥的MPU教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/124649487?spm=1001.2014.3001.5506">硬汉哥的实战教程，超级好用</a></p>
+<h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p>在clion使用openocd仿真的话，为了查看各个寄存器的值，需要添加寄存器配置文件，一般keil5安装目录里有，我把我的上传到Github上了，欢迎下载。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/augetyz/STM32_svd_file">SVD文件</a></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605892344.png" alt="仿真视图"></p>
+<p>欢迎访问<a href="https://sparkle-now.cn/">我的博客</a>
+    </p>
 
                                     
                             </div>
@@ -919,7 +702,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sparkle-now.cn/2024/07/20/fatfs-wen-jian-xi-tong-han-shu-shi-yong-ji-lu/">https://sparkle-now.cn/2024/07/20/fatfs-wen-jian-xi-tong-han-shu-shi-yong-ji-lu/</a>
+                    <a href="https://sparkle-now.cn/2023/08/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/">https://sparkle-now.cn/2023/08/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -957,9 +740,27 @@
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+                                                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
                                                         <span class="chip bg-color">
-                                                            文件系统
+                                                            嵌入式
+                                                        </span>
+                                                    </a>
+                                                    
+                                                    <a href="/tags/CLion/">
+                                                        <span class="chip bg-color">
+                                                            CLion
+                                                        </span>
+                                                    </a>
+                                                    
+                                                    <a href="/tags/QSPI/">
+                                                        <span class="chip bg-color">
+                                                            QSPI
+                                                        </span>
+                                                    </a>
+                                                    
+                                                    <a href="/tags/openocd/">
+                                                        <span class="chip bg-color">
+                                                            openocd
                                                         </span>
                                                     </a>
                                                     
@@ -1377,7 +1178,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/07/20/ubuntu-shang-shi-yong-clion-cubemx-openocd-kai-fa-stm32/">
+                <a href="/2023/08/20/ubuntu-shang-shi-yong-clion-cubemx-openocd-kai-fa-stm32/">
                     <div class="card-image">
                         
                         <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721409750494.png" class="responsive-img" alt="Ubuntu上使用CLion+cubemx+openocd开发STM32">
@@ -1393,7 +1194,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-20
                         </span>
                         <span class="publish-author">
                             
@@ -1437,12 +1238,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/">
+                <a href="/2023/07/23/qian-ru-shi-xue-xi-jian-jie/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721578058652.png" class="responsive-img" alt="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D/%E8%83%8C%E6%99%AF-%E5%B0%8F%E7%86%8A%E6%B4%BEFPGA.webp" class="responsive-img" alt="嵌入式学习简介">
                         
-                        <span class="card-title">在clion平台使用openocd工具向STM32H7外置flash下载代码并调试</span>
+                        <span class="card-title">嵌入式学习简介</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1453,39 +1254,15 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-23
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            刘昌俣 徐逸凡 大学生科创中心2022级嵌入式全体学员
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                        <span class="chip bg-color">嵌入式</span>
-                    </a>
-                    
-                    <a href="/tags/CLion/">
-                        <span class="chip bg-color">CLion</span>
-                    </a>
-                    
-                    <a href="/tags/QSPI/">
-                        <span class="chip bg-color">QSPI</span>
-                    </a>
-                    
-                    <a href="/tags/openocd/">
-                        <span class="chip bg-color">openocd</span>
-                    </a>
-                    
                 </div>
                 
             </div>

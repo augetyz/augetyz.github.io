@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu上使用CLion+cubemx+openocd开发STM32, Sparkle.now">
-    <meta name="description" content="Ubuntu上使用CLion+cubemx+openocd开发STM32简述后面需要在linux下学习驱动开发，然后不想玩虚拟机，就直接安装了双系统。用kde桌面玩的蛮开心的，就索性把win下的开发内容都搬过来吧
-在Linux下开发STM3">
+    <meta name="keywords" content="科学上网简单教程, Sparkle.now">
+    <meta name="description" content="科学上网教程
+科学上网：大陆建设有外网屏蔽，保护本国舆论与网络安全，但很多资料尤其是科研资料与学习资料需要参考国外优秀内容，所以需要越过大陆屏蔽，科学上网，而且一般大学校园网和公司Wi-Fi对国外部分资料网站都有加速（专线），但对于个人研究">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Ubuntu上使用CLion+cubemx+openocd开发STM32 | Sparkle.now</title>
+    <title>科学上网简单教程 | Sparkle.now</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -372,12 +372,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721409750494.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721407133612.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Ubuntu上使用CLion+cubemx+openocd开发STM32</h1>
+                    <h1 class="description center-align post-title">科学上网简单教程</h1>
                 </div>
             </div>
         </div>
@@ -401,27 +401,15 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/STM32/">
+                                <a href="/tags/%E7%BD%91%E7%BB%9C/">
                                     <span class="chip bg-color">
-                                        STM32
+                                        网络
                                     </span>
                                 </a>
                                 
-                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                <a href="/tags/%E7%BF%BB%E5%A2%99/">
                                     <span class="chip bg-color">
-                                        嵌入式
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/Ubuntu/">
-                                    <span class="chip bg-color">
-                                        Ubuntu
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/CLion/">
-                                    <span class="chip bg-color">
-                                        CLion
+                                        翻墙
                                     </span>
                                 </a>
                                 
@@ -433,8 +421,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
+                                <a href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="post-category">
+                                    科学上网
                                 </a>
                                 
                         </div>
@@ -446,21 +434,21 @@
                 
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                            2024-07-20
+                            2024-07-12
                     </div>
                     
 
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2024-07-20
+                                    2024-08-14
                             </div>
                             
 
                                 
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                                            943
+                                            1.1k
                                     </div>
                                     
 
@@ -491,108 +479,39 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="Ubuntu上使用CLion-cubemx-openocd开发STM32"><a href="#Ubuntu上使用CLion-cubemx-openocd开发STM32" class="headerlink" title="Ubuntu上使用CLion+cubemx+openocd开发STM32"></a>Ubuntu上使用CLion+cubemx+openocd开发STM32</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>后面需要在linux下学习驱动开发，然后不想玩虚拟机，就直接安装了双系统。用kde桌面玩的蛮开心的，就索性把win下的开发内容都搬过来吧</p>
-<p>在Linux下开发STM32，使用Clion和Cubemx开发，openocd调试，关于芯片下载，编译器选项，代码起始内容都需要自行通过工程的配置文件修改，不依靠keil5的IDE选项界面，用起来虽然说麻烦了点，但对于整个单片机系统启动、运行、配置的相关内容来说，学习起来会更深入些。</p>
-<h2 id="环境版本"><a href="#环境版本" class="headerlink" title="环境版本"></a>环境版本</h2><ul>
-<li>操作系统:  Kubuntu22.04.3</li>
-<li>Clion:        CLion 2023.2.2</li>
-<li>CubeMX:   CubeMX 6.9.2</li>
-<li>Openocd:  Openocd 0.12.0</li>
-<li>试验板子： Art-pi ——STM32H750XBH6 </li>
-<li>仿真器：     STlink-v2</li>
-</ul>
-<h2 id="下载Clion"><a href="#下载Clion" class="headerlink" title="下载Clion"></a>下载Clion</h2><p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/clion/">官网链接</a></p>
-<p>clion 是jetbrains全家桶里的一个，收费，可以试用一个月</p>
-<ul>
-<li>学生可以免费使用，只需要提供校园邮箱或者学信网学籍证明注册一个账号即可。</li>
-<li>下载完成后解压，找到目录里的安装脚本即可（clion.sh）</li>
-<li>安装完成后，可以在软件目录里找到Clion，向桌面添加即可，或者使用软链接到桌面，也可以自行创建.desktop文件，输入相关内容。</li>
-</ul>
-<h2 id="下载CubeMX"><a href="#下载CubeMX" class="headerlink" title="下载CubeMX"></a>下载CubeMX</h2><p> <a target="_blank" rel="noopener" href="https://www.st.com/zh/development-tools/stm32cubemx.html">官网链接</a></p>
-<p> <img src="https://img-blog.csdnimg.cn/img_convert/0d12a7be42979a74a24034811c2f3cee.png" alt="选择下载"></p>
-<ul>
-<li>下载后解压，执行解压目录下的可执行文件，选择默认安装位置即可</li>
-<li>添加桌面快捷方式：这个我在软件目录里没有找到，就在桌面创建了个CubeMX.desktop文件，用于快捷访问CubeMX。</li>
-</ul>
-<p>CubeMX.desktop文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env xdg-open</span>
-<span class="token punctuation">[</span>Desktop Entry<span class="token punctuation">]</span>
-<span class="token assign-left variable">Name</span><span class="token operator">=</span>STM32CubeMX
-<span class="token assign-left variable">Exec</span><span class="token operator">=</span>/home/augety/STM32CubeMX/STM32CubeMX
-<span class="token assign-left variable">Terminal</span><span class="token operator">=</span>false
-<span class="token assign-left variable">Type</span><span class="token operator">=</span>Application
-<span class="token assign-left variable">Icon</span><span class="token operator">=</span>/home/augety/Pictures/Icon/cubemx.png
-<span class="token assign-left variable">StartupWMClass</span><span class="token operator">=</span>STM32CubeMX
-<span class="token assign-left variable">Categories</span><span class="token operator">=</span>Development<span class="token punctuation">;</span>IDE<span class="token punctuation">;</span>
-<span class="token assign-left variable">Comment</span><span class="token operator">=</span>STM32CubeMX<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d558380e63804e22c196db5999e183b6.png" alt="图标"></p>
-<h2 id="下载openocd"><a href="#下载openocd" class="headerlink" title="下载openocd"></a>下载openocd</h2><h3 id="apt直接安装"><a href="#apt直接安装" class="headerlink" title="apt直接安装"></a>apt直接安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openocd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#github下载</span>
-<span class="token function">git</span> clone git://git.code.sf.net/p/openocd/code openocd
-<span class="token comment">#安装依赖</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> build-essential pkg-config autoconf automake libtool libusb-dev libusb-1.0-0-dev libhidapi-dev libtool libsysfs-dev
-<span class="token comment">#引导生成环境</span>
-./bootstrap
-<span class="token comment">#配置</span>
-./configure<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#执行版本查询命令</span>
-openocd <span class="token parameter variable">-version</span>
-<span class="token comment">#输出版本信息</span>
-Open On-Chip Debugger <span class="token number">0.12</span>.0+dev-00344-gf76c8de91 <span class="token punctuation">(</span><span class="token number">2023</span>-10-05-02:13<span class="token punctuation">)</span>
-Licensed under GNU GPL v2
-For bug reports, <span class="token builtin class-name">read</span>
-        http://openocd.org/doc/doxygen/bugs.html
-openocd: invalid option -- <span class="token string">'e'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="安装stlink驱动"><a href="#安装stlink驱动" class="headerlink" title="安装stlink驱动"></a>安装stlink驱动</h2><p><a target="_blank" rel="noopener" href="https://github.com/stlink-org/stlink/releases">下载链接</a></p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/06bbfbdce62b474d90ab19edcbe0bbd4.png" alt="选择下载"></p>
-<p>下载后安装deb包</p>
-<h2 id="安装arm编译器"><a href="#安装arm编译器" class="headerlink" title="安装arm编译器"></a>安装arm编译器</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gcc-arm-none-eabi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="配置clion"><a href="#配置clion" class="headerlink" title="配置clion"></a>配置clion</h2><ul>
-<li><p>打开设置&gt;构建、执行、部署&gt;嵌入式开发<br><img src="https://img-blog.csdnimg.cn/img_convert/5c633e4dffe66d3e8af51fcada167572.png" alt="打开设置"></p>
-</li>
-<li><p>配置相关工具路径，点击测试。</p>
-</li>
-<li><p>新建项目，注意项目命名<br><img src="https://img-blog.csdnimg.cn/img_convert/65acb455499809bdf89612e76b96b395.png" alt="新建嵌入式项目"></p>
-</li>
-<li><p>会自动运行CubeMX并且配置出一个F030的工程。</p>
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d887035f71eabaa71ecbf1c8cc44be8c.png" alt="自动配置"></p>
-<ul>
-<li><p>这里clion会自动将目标型号芯片的配置文件复制到工程里  选择 复制到项目并使用<br><img src="https://img-blog.csdnimg.cn/img_convert/c93f429b3836c963bec8e7d898a24e5d.png" alt="选择复制到项目并使用"></p>
-</li>
-<li><p>我们选择点击工程目录里的.ioc文件，选择 通过STM3CubeMX打开</p>
-</li>
-<li><p>打开后修改相关内容即可</p>
-</li>
-<li><p>注意最后工程名字，并配置为STM32CubeIDE</p>
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/182c02a29ca2da04604f6e8b56ab7024.png" alt="生成工程配置"></p>
-<ul>
-<li>生成文件后，更新工程，在左边目录里进入用户代码。</li>
-<li>点击右上角编译，点击运行下载，点击调试进行调试</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/92f04a6c1407807e7fcb470d2d13186d.png" alt="相关内容"><br>其他具体操作可以自行尝试，包括汉化插件、主题、添加自定义文件夹等等。</p>
-<h2 id="相关小操作"><a href="#相关小操作" class="headerlink" title="相关小操作"></a>相关小操作</h2><p>官方提供的配置文件里有些小问题</p>
-<ul>
-<li><p>openocd下载的代码不能自动复位，需要手动复位，这里修改.cfg的21行</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/bee6adc6737b7cf946ad795f29c4b0e6.png" alt="复位操作"></p>
-</li>
-<li><p>添加自定义文件，直接在目录里添加即可，添加相关依赖时，选择默认即可</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/05cefe325d70c0317d0a25044b433572.png" alt="添加文件"></p>
-</li>
-<li><p>然后直接编译会报错，需要删除CMakeLists.txt里的一些新内容。<br>  <img src="https://img-blog.csdnimg.cn/img_convert/81fd362b0a3fb9a2b6c62e49ba59fe60.png" alt="删掉即可"></p>
-</li>
-</ul>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41115751/article/details/121439534">ubuntu 使用clion 搭建stm32开环境使用stlink下载调试</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_36482169/article/details/81005060">Linux上 openocd的安装和使用</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40839071/article/details/114700646">Ubuntu下OpenOCD+GDB的安装、编译及使用</a></p>
-<p>欢迎访问<a href="https://sparkle-now.cn/">我的博客</a></p>
+                                <h1 id="科学上网教程"><a href="#科学上网教程" class="headerlink" title="科学上网教程"></a>科学上网教程</h1><blockquote>
+<p>科学上网：大陆建设有外网屏蔽，保护本国舆论与网络安全，但很多资料尤其是科研资料与学习资料需要参考国外优秀内容，所以需要越过大陆屏蔽，科学上网，而且一般大学校园网和公司Wi-Fi对国外部分资料网站都有加速（专线），但对于个人研究来说，掌握科学上网是学习过程中基础的一环。</p>
+</blockquote>
+<hr>
+<h3 id="科学上网原理简介"><a href="#科学上网原理简介" class="headerlink" title="科学上网原理简介"></a>科学上网原理简介</h3><p>科学上网是一种关于翻墙的巧妙称呼，主要是指通过技术手段访问被国内屏蔽的网站和服务。谈到翻墙，肯定少不了提及 GFW 防火长城，下面是维基百科关于防火长城的介绍。</p>
+<p>防火长城（英语：Great Firewall，常用简称：GFW），中文也称中国国家防火墙，通常简称为墙、防火墙等，中国国家互联网信息办公室称为数据跨境安全网关 ，是中华人民共和国政府监控和过滤国际互联网出口内容的软硬件系统集合，用于通过技术手段，阻断不符合政府要求的互联网内容传输，由北京邮电大学前校长方滨兴主持设计。方滨兴因此也被网民称之为“中国防火墙之父”。</p>
+<p>随着防火长城逐渐为人熟知，“墙”一词有时也被用作动词，“被墙”即指网站内容被防火长城所屏蔽。“翻墙”、“挂梯子”也被引申为突破网络审查浏境外被屏蔽的网站或使用服务的行为。</p>
+<p>在国内使用VPN翻墙，显然是一种”落后“的方式了，因为VPN协议十分容易被识别，阻断和干扰都是常态。即使是 ExpressVPN 这种海外知名大厂，在中国的VPN节点也仅仅有4~5个能用，并且还不稳定。</p>
+<p>很多在国内能用的VPN，其本质也并非VPN协议，而是 Shadowsocks 等专用代理协议的套壳，只是有和VPN软件一样的客户端而已。</p>
+<p>当前常用的翻墙协议有 Shadowsocks、V2ray（vmess）、Trojan，常见于各类「<a target="_blank" rel="noopener" href="https://clashforios.com/">机场</a>」服务，使用VPS自建翻墙节点的使用 Shadowsocks 并不多了，更多的是 vmess、Trojan 以及其他更新兴的协议。</p>
+<p>———来自<a target="_blank" rel="noopener" href="https://clashforios.com/principles-of-scientific-internet-access">https://clashforios.com/principles-of-scientific-internet-access</a></p>
+<h2 id="科学上网步骤"><a href="#科学上网步骤" class="headerlink" title="科学上网步骤"></a>科学上网步骤</h2><h3 id="一、测试"><a href="#一、测试" class="headerlink" title="一、测试"></a>一、测试</h3><p>访问下列网站，没翻墙的情况下应该是访问不了的，翻墙了应该就可以。连校园网或者公司Wi-Fi也可以访问。</p>
+<p><a target="_blank" rel="noopener" href="https://poe.com/">Just a moment…</a></p>
+<p><a target="_blank" rel="noopener" href="http://ustic.top/">科创中心</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.17lai.site/">夜法之书</a></p>
+<h3 id="二、获取加速节点"><a href="#二、获取加速节点" class="headerlink" title="二、获取加速节点"></a>二、获取加速节点</h3><p>访问外网的话，首先需要有一个加速节点。下图是我在iPad上通过小火箭使用我自己购买的宝贝云机场为我提供的加速节点，翻墙时，只需要选择一个速度延时合适的节点，就可以通过客户端实现翻墙，选择哪个节点，那么你的IP地址相应的也会改到哪里。</p>
+<p><img src="https://res.craft.do/user/full/acb27c06-6568-c1dc-2fad-17c27c23c9c1/doc/44D2BF19-40AC-4F34-BB57-8769D2C3205B/FA8D4FC2-6604-4432-8A6A-6ABC543CF1A9_2/yCCg7z2VyBB3ei83HdO8TIRrucn9EIFRlMViuzhycHEz/Image.heic" alt="Image"></p>
+<p>这里我推荐使用宝贝云的机场，好用不贵。可以看自己需求购买，有的套餐是有效期一个月，流量贼多，有的是流量有限，有效期无限。根据自己情况选择，我是购买的600G流量，大半年了，用的也不是很频繁，消耗不是很大，还剩400多个G。</p>
+<p>机场链接：</p>
+<p><a target="_blank" rel="noopener" href="https://9.234456.xyz/abc.html?t=638156797079021431">XYZ</a></p>
+<p><a target="_blank" rel="noopener" href="https://bby008.com/#/">宝贝云</a></p>
+<h3 id="三、windows下翻墙"><a href="#三、windows下翻墙" class="headerlink" title="三、windows下翻墙"></a>三、windows下翻墙</h3><p>在win下翻墙，这里推荐使用Clash for windows 客户端。好用，简单，方便。</p>
+<p><a target="_blank" rel="noopener" href="https://clashxhub.com/clash-backup-download/?amp=1">2024最新Clash版本全家桶（包含Windows、Mac、Android）备份下载​ – Clash 官网导航</a></p>
+<p><a target="_blank" rel="noopener" href="https://clashxhub.com/clash-for-windows/?amp=1">2024最新 Clash for Windows 官网下载及使用教程​​(含备份下载) – Clash 官网导航</a></p>
+<p>下载后安装即可。</p>
+<p>然后在宝贝云或者别的平台购买节点，导入节点数据。</p>
+<p>在宝贝云复制节点订阅地址，然后打开clash for windows，在Profiles选项里添加即可，如下图操作。</p>
+<p><img src="https://res.craft.do/user/full/acb27c06-6568-c1dc-2fad-17c27c23c9c1/doc/44D2BF19-40AC-4F34-BB57-8769D2C3205B/585537BD-E0D3-416E-85C8-CF3E3A0DEED3_2/Et24b20y9V6OD7W94599mxxzxhAaPD9OmXHqyhOIraEz/Image.png" alt="Image.png"></p>
+<p><img src="https://res.craft.do/user/full/acb27c06-6568-c1dc-2fad-17c27c23c9c1/doc/44D2BF19-40AC-4F34-BB57-8769D2C3205B/FB47EC8E-E1BE-41B3-84E9-BD24BE81514A_2/HWOBIsnWbt1PYoEtxeJ6UVPbycIcgCcyPxZ9n4ymcvcz/Image.jpeg" alt="Image.jpeg"></p>
+<p>添加地址后，设置软件全局代理；然后在Proxies选项里选择网速合适的节点即可。</p>
+<p><img src="https://res.craft.do/user/full/acb27c06-6568-c1dc-2fad-17c27c23c9c1/doc/44D2BF19-40AC-4F34-BB57-8769D2C3205B/DA3ADC0F-DE5A-4BBA-AB38-4DFEB3FB8879_2/KoHtK6SmvdRG1r6PhGyNRKP55NFE7gRb2WjCeulixAkz/Image.heic" alt="Image"></p>
+<p><img src="https://res.craft.do/user/full/acb27c06-6568-c1dc-2fad-17c27c23c9c1/doc/44D2BF19-40AC-4F34-BB57-8769D2C3205B/C76D786A-3B21-4626-9AC6-C006E5D3587A_2/ipOdWKogjNjcWx6xazmRItnBNw71IttkluR92qQLbXQz/IMG_0195.png" alt="IMG_0195.png"></p>
+<p>然后你的电脑就可以访问外网了。可以去前面的测试网站测试一下。</p>
 
                                     
                             </div>
@@ -619,7 +538,7 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sparkle-now.cn/2024/07/20/ubuntu-shang-shi-yong-clion-cubemx-openocd-kai-fa-stm32/">https://sparkle-now.cn/2024/07/20/ubuntu-shang-shi-yong-clion-cubemx-openocd-kai-fa-stm32/</a>
+                    <a href="https://sparkle-now.cn/2024/07/12/ke-xue-shang-wang-jian-dan-jiao-cheng/">https://sparkle-now.cn/2024/07/12/ke-xue-shang-wang-jian-dan-jiao-cheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -657,27 +576,15 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/STM32/">
+                                                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
                                                         <span class="chip bg-color">
-                                                            STM32
+                                                            网络
                                                         </span>
                                                     </a>
                                                     
-                                                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                                    <a href="/tags/%E7%BF%BB%E5%A2%99/">
                                                         <span class="chip bg-color">
-                                                            嵌入式
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/Ubuntu/">
-                                                        <span class="chip bg-color">
-                                                            Ubuntu
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/CLion/">
-                                                        <span class="chip bg-color">
-                                                            CLion
+                                                            翻墙
                                                         </span>
                                                     </a>
                                                     
@@ -1095,12 +1002,12 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/07/20/kai-yuan-lian-jie-ji-lu/">
+                <a href="/2024/07/15/gong-chuang-sai-zong-jie-yu-gai-jin/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721406692660.png" class="responsive-img" alt="开源项目链接记录">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/2024/07/01/17197660798456.jpg" class="responsive-img" alt="工创赛总结与改进">
                         
-                        <span class="card-title">开源项目链接记录</span>
+                        <span class="card-title">工创赛总结与改进</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1111,14 +1018,14 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-15
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="post-category">
-                                    项目
+                            <a href="/categories/%E6%AF%94%E8%B5%9B/" class="post-category">
+                                    比赛
                                 </a>
                             
                             
@@ -1128,12 +1035,8 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BC%80%E6%BA%90/">
-                        <span class="chip bg-color">开源</span>
-                    </a>
-                    
-                    <a href="/tags/GitHub/">
-                        <span class="chip bg-color">GitHub</span>
+                    <a href="/tags/%E6%AF%94%E8%B5%9B/">
+                        <span class="chip bg-color">比赛</span>
                     </a>
                     
                 </div>
@@ -1147,12 +1050,12 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/20/fatfs-wen-jian-xi-tong-han-shu-shi-yong-ji-lu/">
+                <a href="/2023/10/08/i2c-jiao-cheng/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/3IsaRF.JPG" class="responsive-img" alt="FATFS文件系统常用函数记录">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/Background%2Fmount.jpg" class="responsive-img" alt="STM32 I2C教程">
                         
-                        <span class="card-title">FATFS文件系统常用函数记录</span>
+                        <span class="card-title">STM32 I2C教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1163,7 +1066,7 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-08
                             </span>
                         <span class="publish-author">
                             
@@ -1180,8 +1083,8 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">文件系统</span>
+                    <a href="/tags/STM32-%E6%A0%87%E5%87%86%E5%BA%93-I2C/">
+                        <span class="chip bg-color">STM32,标准库,I2C</span>
                     </a>
                     
                 </div>

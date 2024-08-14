@@ -4,8 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试, Sparkle.now">
-    <meta name="description" content="使用clion向STM32H7外置flash下载代码简介根据安福莱的STM32H7教程，H7单片机的QSPI外设是直接连到芯片内核上的，地址是0X90000000；QSPI外设可以设置为内存映射模式，由此执行代码，达到扩展stm32flas">
+    <meta name="keywords" content="和小宝在开封, Sparkle.now">
+    <meta name="description" content="去开封玩喽
+这是一次计划很久的见面
+(这里的内容是不是不要密码在封面就可以看到哇就不让你看保密)
+自从小宝毕业后小宝就不能天天黏着大宝了突然多了些许的不适应但也可能是毕业计划考证书压力太大很快投入了备考中并且考点在郑州这样还可以再见一面
+有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +21,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>在clion平台使用openocd工具向STM32H7外置flash下载代码并调试 | Sparkle.now</title>
+    <title>和小宝在开封 | Sparkle.now</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -358,7 +362,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'a11b4a3ba9ed34f1defdd8f8aa6169c71210ea99bb5e6424ba6511b77cb5d775';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -371,12 +375,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721578058652.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/qG0B7G.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">在clion平台使用openocd工具向STM32H7外置flash下载代码并调试</h1>
+                    <h1 class="description center-align post-title">和小宝在开封</h1>
                 </div>
             </div>
         </div>
@@ -400,27 +404,9 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                <a href="/tags/%E5%BC%80%E5%B0%81/">
                                     <span class="chip bg-color">
-                                        嵌入式
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/CLion/">
-                                    <span class="chip bg-color">
-                                        CLion
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/QSPI/">
-                                    <span class="chip bg-color">
-                                        QSPI
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/openocd/">
-                                    <span class="chip bg-color">
-                                        openocd
+                                        开封
                                     </span>
                                 </a>
                                 
@@ -432,8 +418,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
+                                <a href="/categories/%E6%97%85%E8%A1%8C/" class="post-category">
+                                    旅行
                                 </a>
                                 
                         </div>
@@ -445,28 +431,28 @@
                 
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                            2024-07-20
+                            2024-08-14
                     </div>
                     
 
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2024-07-22
+                                    2024-08-14
                             </div>
                             
 
                                 
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                                            2.1k
+                                            1.9k
                                     </div>
                                     
 
                                         
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                                                    8
+                                                    6
                                                         分
                                             </div>
                                             
@@ -490,192 +476,64 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="使用clion向STM32H7外置flash下载代码"><a href="#使用clion向STM32H7外置flash下载代码" class="headerlink" title="使用clion向STM32H7外置flash下载代码"></a>使用clion向STM32H7外置flash下载代码</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>根据安福莱的STM32H7教程，H7单片机的QSPI外设是直接连到芯片内核上的，地址是0X90000000；QSPI外设可以设置为内存映射模式，由此执行代码，达到扩展stm32flash的效果，一般移植lvgl都需要外扩flash。</strong></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605742489.png" alt="STM3H7单片机矩阵架构"><br>相关操作在keil5上比较简单，配置点东西就行；可以参考安福莱教程。</p>
-<p>这里要介绍的是在linux环境下没有keil5 IDE的情况下，如何使用clion+openocd实现</p>
-<ul>
-<li>将大体积代码下载到外置flash并执行</li>
-<li>对外置flash执行的代码进行仿真</li>
-</ul>
-<h2 id="代码配置"><a href="#代码配置" class="headerlink" title="代码配置"></a>代码配置</h2><h3 id="修改系统配置文件"><a href="#修改系统配置文件" class="headerlink" title="修改系统配置文件"></a>修改系统配置文件</h3><p>STM32的代码都是有起始地址的，每一句代码，编译为相关机器码执行时，都有对应地址的；对于一般情况的代码，起始地址都是0X8000000；</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605792831.png" alt="工程FLASH配置文件"><br>该文件中详细的配置了单片机所使用的flash大小，ram大小，地址等信息。</p>
-<p>由于采用外置flash启动，我们需要将flash地址配置为QSPI地址，并修改LENGTH为我们的flash芯片大小。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">MEMORY
-<span class="token punctuation">{</span>
-  <span class="token function">FLASH</span> <span class="token punctuation">(</span>rx<span class="token punctuation">)</span>     <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x90000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">8192</span>K
-  <span class="token function">DTCMRAM</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>  <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x20000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">128</span>K
-  <span class="token function">RAM_D1</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>   <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x24000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">512</span>K
-  <span class="token function">RAM_D2</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>   <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x30000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">288</span>K
-  <span class="token function">RAM_D3</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>   <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x38000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">64</span>K
-  <span class="token function">ITCMRAM</span> <span class="token punctuation">(</span>xrw<span class="token punctuation">)</span>  <span class="token operator">:</span> ORIGIN <span class="token operator">=</span> <span class="token number">0x00000000</span><span class="token punctuation">,</span> LENGTH <span class="token operator">=</span> <span class="token number">64</span>K
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="修改系统初始化函数"><a href="#修改系统初始化函数" class="headerlink" title="修改系统初始化函数"></a>修改系统初始化函数</h3><p>STM32单片机启动时会先执行汇编启动文件，先定义中断向量表，再执行复位，设置栈顶指针，再执行系统初始化函数，再跳转main函数。</p>
-<p>其中系统初始化函数中需要修改SCB-&gt;VTOR的值。<br>==SCB-&gt;VTOR为Cortex内核的中断向量表的基地址，一般为程序执行的初始地址。 #12AA9C==<br>关于该变量理解，<a target="_blank" rel="noopener" href="https://dgvy.gitee.io/2021/STM32%E4%B8%ADSCB-VTOR%E7%9A%84%E7%90%86%E8%A7%A3/">参考链接</a></p>
-<p>这里需要修改为我们程序启动的地址0X90000000。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605816210.png" alt="SCB->VTOR地址修改"></p>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>点击编译，即可制作一个运行在外部flash的代码，下载到外置flash中，引导运行即可。</p>
-<p>那么现在出现两个问题：</p>
-<ul>
-<li>如何下载到外置flash</li>
-<li>如何从外置flash中启动</li>
-</ul>
-<h2 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a>代码下载</h2><h3 id="使用CubeProgramer工具下载"><a href="#使用CubeProgramer工具下载" class="headerlink" title="使用CubeProgramer工具下载"></a>使用CubeProgramer工具下载</h3><p>使用ST提供的下载工具下载；<br>需要：</p>
-<ul>
-<li>对应板子的下载算法文件</li>
-<li>烧录器</li>
-<li>能够运行在外置flash的代码</li>
-</ul>
-<p>刚才已经成功编译了外置执行代码，烧录器咱也有，而烧录算法呢，推荐看安福莱的相关教程。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/110133013">相关教程</a></p>
-<h3 id="使用Clion下载"><a href="#使用Clion下载" class="headerlink" title="使用Clion下载"></a>使用Clion下载</h3><p>这个是我主要想讲的，在一个编辑器里完成编译、下载、调试，嘿嘿</p>
-<p>先解决下载问题。</p>
-<p>我们知道，STM32下载代码时会先执行一个配置程序，该程序运行在RAM中，会初始化部分关于下载代码的外设。</p>
-<p>使用keil5时，我们会使用一个.flm文件下载代码，该文件就是下载引导程序，其制作流程安福莱里讲的有。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605834906.png" alt="反客的keil5下载教程"></p>
-<p>同样，在正常下载的时候也会有一个keil5官方提供的.flm文件，这些文件就储存在官方目录里。</p>
-<p>对于CubeMX而言，也有相应的文件，</p>
-<p>所以，我们使用的openocd工具也是有的，在我们的工程目录里，有一些配置文件，都具有各自相应的功能。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605850131.png" alt="clion工程目录"><br>在stm32h750b-disco.cfg文件中，初始化了芯片时钟，和部分必要的下载外设；</p>
-<p>在19行、23行：跳转到了其他配置文件中，执行具体的操作</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># enable stmqspi</span>
-<span class="token keyword">if</span> <span class="token punctuation">{</span><span class="token operator">!</span><span class="token punctuation">[</span>info exists QUADSPI<span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
-	<span class="token builtin class-name">set</span> QUADSPI <span class="token number">1</span>
-<span class="token punctuation">}</span>
-
-<span class="token builtin class-name">source</span> <span class="token punctuation">[</span>find target/stm32h7x.cfg<span class="token punctuation">]</span>
-
-reset_config srst_only
-
-<span class="token builtin class-name">source</span> <span class="token punctuation">[</span>find board/stm32h7x_dual_qspi.cfg<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>在这里，代码定义了QUADSPI为1，即会在stm32h7x_dual_qspi.cfg中执行该外设的初始化；</p>
-<p>但是，这里该外设的初始化是以STM32官方出的板子的引脚定义的，不一定适合我们，而且实操下来，该文件改来改去效果不大，而且我觉得不建议跳到人家官方配置文件里修修改改，这里我们直接在该配置语句下面执行我们板子的配置代码；</p>
-<pre class="line-numbers language-dsconfig" data-language="dsconfig"><code class="language-dsconfig"># ART_Pi qspi.
-
-# QUADSPI initialization
-proc qspi_init {  } {
-    global a
-    mmw 0x580244E0 0x000007FF 0             ;# RCC_AHB4ENR |= GPIOAEN-GPIOKEN (enable clocks)
-    mmw 0x580244D4 0x00004000 0             ;# RCC_AHB3ENR |= QSPIEN (enable clock)
-    sleep 1                                 ;# Wait for clock startup
-
-    # PF10:AF09:H, PF09:AF10:H, PF08:AF10:H, PF07:AF09:H, PF06:AF09:H, PG06:AF10:H
-
-    # Port F: PF10:AF09:H, PF09:AF10:H, PF08:AF10:H, PF07:AF09:H, PF06:AF09:H
-    mmw 0x58021400 0x002AA000 0x00155000    ;# MODER
-    mmw 0x58021408 0x002AA000 0x00155000    ;# OSPEEDR
-    mmw 0x5802140C 0x00000000 0x003FF000    ;# PUPDR
-    mmw 0x58021420 0x99000000 0x66000000    ;# AFRL
-    mmw 0x58021424 0x000009AA 0x00000655    ;# AFRH
-    # Port G: PG06:AF10:H
-    mmw 0x58021800 0x00002000 0x00001000    ;# MODER
-    mmw 0x58021808 0x00002000 0x00001000    ;# OSPEEDR
-    mmw 0x5802180C 0x00000000 0x00003000    ;# PUPDR
-    mmw 0x58021820 0x0A000000 0x05000000    ;# AFRL
-
-    # correct FSIZE is 0x16, however, this causes trouble when
-    # reading the last bytes at end of bank in *memory mapped* mode
-
-    # for single flash mode w25q64jv
-                                            ;# 010101010000000000000 0 011000
-    mww 0x52005000 0x05500018               ;# QUADSPI_CR: PRESCALER=5, APMS=1, FTHRES=1, FSEL=0, DFM=0, SSHIFT=1, TCEN=1
-    mww 0x52005004 0x00160500               ;# QUADSPI_DCR: FSIZE=0x16, CSHT=0x05, CKMODE=0
-                                            ;# FSIZE flash的大小。
-
-    mww 0x52005030 0x00001000               ;# QUADSPI_LPTR: deactivate CS after 4096 clocks when FIFO is full
-                                            ;# 11010000000000 10 010100000011
-    mww 0x52005014 0x0D002503               ;# QUADSPI_CCR: FMODE=0x3, DMODE=0x1, DCYC=0x0, ADSIZE=0x2, ADMODE=0x1, IMODE=0x1
-    mmw 0x52005000 0x00000001 0             ;# QUADSPI_CR: EN=1
-
-    # Exit QPI mode
-    #mmw 0x52005000 0x00000002 0            ;# QUADSPI_CR: ABORT=1
-    #mww 0x52005014 0x000003F5              ;# QUADSPI_CCR: FMODE=0x0, DMODE=0x0, DCYC=0x0, ADSIZE=0x0, ADMODE=0x0, IMODE=0x3, INSTR=Exit QPI
-    sleep 1
-
-    # reset flash
-    mmw 0x52005000 0x00000002 0             ;# QUADSPI_CR: ABORT=1
-    mww 0x52005014 0x00000166               ;# QUADSPI_CCR: FMODE=0x0, DMODE=0x0, DCYC=0x0, ADSIZE=0x0, ADMODE=0x0, IMODE=0x1, INSTR=0x66
-    mww 0x52005014 0x00000199               ;# QUADSPI_CCR: FMODE=0x0, DMODE=0x0, DCYC=0x0, ADSIZE=0x0, ADMODE=0x0, IMODE=0x1, INSTR=0x99
-
-    # memory-mapped read mode with 3-byte addresses
-    mmw 0x52005000 0x00000002 0             ;# QUADSPI_CR: ABORT=1
-                                            ;# 11 11 0 00100 00 11 10 11 01 11101011
-    mww 0x52005014 0x0F10EDEB               ;# QUADSPI_CCR: FMODE=0x3, DMODE=0x3, DCYC=0x4, ADSIZE=0x2, ADMODE=0x3, IMODE=0x1, INSTR=READ
-    ;mww 0x52005014 0x0D002503
-}
-
-$_CHIPNAME.cpu0 configure -event reset-init {
-    global QUADSPI
-
-    mmw 0x52002000 0x00000004 0x0000000B    ;# FLASH_ACR: 4 WS for 192 MHZ HCLK
-
-    mmw 0x58024400 0x00000001 0x00000018    ;# RCC_CR: HSIDIV=1, HSI on
-    mmw 0x58024410 0x10000000 0xEE000007    ;# RCC_CFGR: MCO2=system, MCO2PRE=8, HSI as system clock
-    mww 0x58024418 0x00000040               ;# RCC_D1CFGR: D1CPRE=1, D1PPRE=2, HPRE=1
-    mww 0x5802441C 0x00000440               ;# RCC_D2CFGR: D2PPRE2=2, D2PPRE1=2
-    mww 0x58024420 0x00000040               ;# RCC_D3CFGR: D3PPRE=2
-    mww 0x58024428 0x00000040               ;# RCC_PPLCKSELR: DIVM3=0, DIVM2=0, DIVM1=4, PLLSRC=HSI
-    mmw 0x5802442C 0x0001000C 0x00000002    ;# RCC_PLLCFGR: PLL1RGE=8MHz to 16MHz, PLL1VCOSEL=wide
-    mww 0x58024430 0x01070217               ;# RCC_PLL1DIVR: 192 MHz: DIVR1=2, DIVQ=8, DIVP1=2, DIVN1=24
-    mmw 0x58024400 0x01000000 0             ;# RCC_CR: PLL1ON=1
-    sleep 1
-    mmw 0x58024410 0x00000003 0             ;# RCC_CFGR: PLL1 as system clock
-    sleep 1
-
-    adapter speed 24000
-
-    if { $QUADSPI } {
-        qspi_init
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>改代码中主要就初始化了QSPI外设的GPIO，并配置了QSPI外设，使用的板子是ART-Pi；</p>
-<p>使用的GPIO是： PF10,PF09,PF08,PF07,PF06,PG06.</p>
-<p>相关外设初始化主要时钟匹配自己的芯片速度。</p>
-<p>这里主要参考链接：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/suguguan/EmbeddedProjectTemplates/blob/main/BootLoader_Application/Application/STM32H750VBTX_RAM.ld">在CLion上实现STM32H750VBT6的Bootloader</a></p>
-<p><a target="_blank" rel="noopener" href="https://club.rt-thread.org/ask/article/95a03d2494e01ada.html">使用openOCD擦写ART_Pi外部qspi_flash</a></p>
-<p>两个教程都很全面，并且将代码文件、配置文件都开源了，去点星星咯。</p>
-<p>大家可以根据自己的板子的引脚定义进行修改相关寄存器即可。</p>
-<p>到这里，基本完成了配置，可以实现在clion中通过openocd实现向单片机外置flash下载代码，并进行仿真调试了。</p>
-<h2 id="从外置flash中启动代码"><a href="#从外置flash中启动代码" class="headerlink" title="从外置flash中启动代码"></a>从外置flash中启动代码</h2><p>不管上面如何下载代码，都需要从外置flash启动，前面也简略提到了——我们需要在单片机的内置flash中下载一个bootloader代码，用于从外置flash启动。</p>
-<p>这个代码比较简单，就初始化一点点外设，主要还是QSPI，然后关闭Cache、MPU，对外置flash进行内存映射，并启动。具体内容可以参考安福莱教程。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/109903301">硬汉嵌入式的bootloader教程</a></p>
-<p>我的是修改的反客科技的bootloader代码，将其QSPI外设的引脚改成我的板子的就可以用了。是之前用keil5写的，也可以自己用cubemx生成一个，添加应用代码即可。比较简单。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/augetyz/stm32/tree/master/H750XBH6%E4%B8%8B%E8%BD%BD%E7%AE%97%E6%B3%95">适配ART-Pi的下载算法和bootloader</a></p>
-<p>另外，从外置flash引导的代码，受flash限制，运行速度并不快，不如芯片内部的flash，对此，我们参考安福莱教程，使用MPU配置外置flash内存，用Cache预存取指令，提高代码运行速度。相关配置：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605878766.png" alt="Cubemx配置"></p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">MPU_Region_InitTypeDef MPU_InitStruct <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token comment">/* Disables the MPU */</span>
-<span class="token function">HAL_MPU_Disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">/** Initializes and configures the Region and the memory to be protected
-*/</span>
-MPU_InitStruct<span class="token punctuation">.</span>Enable <span class="token operator">=</span> MPU_REGION_ENABLE<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>Number <span class="token operator">=</span> MPU_REGION_NUMBER0<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>BaseAddress <span class="token operator">=</span> <span class="token number">0x90000000</span><span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>Size <span class="token operator">=</span> MPU_REGION_SIZE_8MB<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>SubRegionDisable <span class="token operator">=</span> <span class="token number">0x0</span><span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>TypeExtField <span class="token operator">=</span> MPU_TEX_LEVEL1<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>AccessPermission <span class="token operator">=</span> MPU_REGION_FULL_ACCESS<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>DisableExec <span class="token operator">=</span> MPU_INSTRUCTION_ACCESS_ENABLE<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>IsShareable <span class="token operator">=</span> MPU_ACCESS_NOT_SHAREABLE<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>IsCacheable <span class="token operator">=</span> MPU_ACCESS_CACHEABLE<span class="token punctuation">;</span>
-MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="token operator">=</span> MPU_ACCESS_BUFFERABLE<span class="token punctuation">;</span>
-
-<span class="token function">HAL_MPU_ConfigRegion</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>MPU_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/* Enables the MPU */</span>
-<span class="token function">HAL_MPU_Enable</span><span class="token punctuation">(</span>MPU_PRIVILEGED_DEFAULT<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>MPU配置代码。</p>
-<p>相关教程：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/as480133937/article/details/123663197?spm=1001.2014.3001.5506">理论学习，详细好理解</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/90690541?spm=1001.2014.3001.5506">硬汉哥的MPU教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/124649487?spm=1001.2014.3001.5506">硬汉哥的实战教程，超级好用</a></p>
-<h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p>在clion使用openocd仿真的话，为了查看各个寄存器的值，需要添加寄存器配置文件，一般keil5安装目录里有，我把我的上传到Github上了，欢迎下载。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/augetyz/STM32_svd_file">SVD文件</a></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721605892344.png" alt="仿真视图"></p>
-<p>欢迎访问<a href="https://sparkle-now.cn/">我的博客</a>
-    </p>
+                                <h1 id="去开封玩喽"><a href="#去开封玩喽" class="headerlink" title="去开封玩喽"></a>去开封玩喽</h1><hr>
+<p>这是一次计划很久的见面</p>
+<p>(这里的内容是不是不要密码<br>在封面就可以看到哇<br>就不让你看<br>保密)</p>
+<p>自从小宝毕业后<br>小宝就不能天天黏着大宝了<br>突然多了些许的不适应<br>但也可能是毕业计划考证书<br>压力太大<br>很快投入了备考中<br>并且考点在郑州<br>这样还可以再见一面</p>
+<p>有所期待<br>日子也便不难熬了</p>
+<p>小宝和大宝也就八月份见了一面，还是因为小宝考试，由于时间原因，两个人也没有出去玩</p>
+<p>时隔四个月<br>小宝终于结束了研究生考试<br>考完一身疲惫<br>腰疼的抵不住<br>在家休息一天<br>26 号出发<br>找大宝喽</p>
+<p>这次我们选择去开封<br>开封之旅——回忆版</p>
+<h1 id="2023-12-26"><a href="#2023-12-26" class="headerlink" title="2023-12-26"></a><strong>2023-12-26</strong></h1><p>小宝依旧早起赶大巴<br>六点五十抵达车站<br>出发~</p>
+<p>到达开封就已经下午一点多啦<br>大宝也快到了<br>小宝站在原地等大宝打车过来<br>回到民宿收拾收拾</p>
+<p>猜一猜<br>谁先亲亲的<br>嘿嘿</p>
+<p>两点多出发吃好吃的啦<br>因为实在太饿了<br>在等饭的时候<br>大宝一直在和我分享他们比赛的事情<br>不得不说大宝老厉害了<br>给大宝点个赞赞</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723618357775.png" alt="开封菜"><br>包子好吃，菜就一般般啦<br>小宝记得最后没有吃完</p>
+<h1 id="2023-12-27"><a href="#2023-12-27" class="headerlink" title="2023-12-27"></a><strong>2023-12-27</strong></h1><p>两个小懒猪 ，睡到大中午才起床，磨磨蹭蹭，快一点才出发，也是饿的不行了</p>
+<p>大宝在美团上找呀找，终于找到了一家火锅店，可不是一般的火锅哦，是铜锅涮肉</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723618545653.png" alt="涮肉"><br>得到了大宝小宝的一致好评<br>肉香味很浓<br>量非常大<br>主打一个原汁原味<br>大宝小宝都吃撑了</p>
+<p>不记得下午去干嘛了<br>估计去逛商场？买零食去了？<br>因为小宝记得那几天晚上都有吃零食和水果</p>
+<h2 id="第一站：清明上河园"><a href="#第一站：清明上河园" class="headerlink" title="第一站：清明上河园"></a><strong>第一站：清明上河园</strong></h2><p>服了呀，小宝突然想起来，前一段时间，亲戚问小宝，去没去清明上河园<br>小宝说的没去<br>呜呜，其实去了，不过是白天去的，而且看起来和张择端的清明上河图不太一样，可能是身在其中感受不到吧</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723618831876.png" alt="门票"><br>清明上河园，我们来了<br>入园就是张择端手拿画卷的雕像<br>也是人们的打卡留恋区</p>
+<p><strong>表演</strong><br>园区很大，由于是下午来的，很多表演都结束了，而且不知道具体位置，小宝和大宝就主打随意，毕竟重要的是过程，如果为了看表演而忽略了途中美景，忘记享受陪伴身边人就不好玩了</p>
+<p>没走几步<br>就让大宝和小宝看见了表演<br>真是得来全不费功夫<br>==<em>斗鸡</em> #12AA9C==<br>猜猜是什么<br>当然是经典的<br>斗鸡！<br>然后围观群众下“赌注”<br>俩宝凑个热闹<br>也在猜哪个最厉害</p>
+<p>不得不说<br>斗鸡这个表演<br>这几天的游玩中看到两三次了<br>==<em>战马</em> #12AA9C==<br>战马<br>就是做了很高大的机械马<br>有六到七个工作人员操作<br>他们穿的像刺客一样<br>很酷<br>==<em>舞狮子</em> #12AA9C==<br>好久没见舞狮子了<br>两只狮子<br>四个人<br>两两配合<br>在独立桩上跳来跳去<br>很佩服狮子下面的人<br>小宝和大宝一边吃薯片一边为他们呐喊<br>==<em>考状元</em> #12AA9C==<br>就是演员抽几个幸运观众<br>上台答题<br>然后选出状元<br>刚好碰上小学生研习<br>遇到一个小胖孩<br>黑黑的<br>长得太像大宝的朋友了<br>哈哈哈<br>==<em>击鼓</em> #12AA9C==<br>击鼓是最后的表演啦<br>刚好到出口的时候碰到的<br>敲鼓<br>转换队形<br>武枪<br>看起来很厉害<br>表情也很到位<br>看的小宝手痒痒<br>也想上去玩一会</p>
+<p>但是这个时候已经六点了<br>冬天天黑的早<br>大宝小宝一圈走下来<br>脚都累痳了</p>
+<p>准备出发找吃的了<br>哎哎哎，别急，看看小宝和大宝拍的美美照片</p>
+<p><strong>快乐的痕迹</strong></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723619392564.png" alt="开心的小宝"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723619443873.png" alt="开心的大宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620664582.png" alt="好像一位女诗人"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620717330.png" alt="女诗人的小助理"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620774975.png" alt="好开心呀"><br>美美哒</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620843224.png" alt="正常的合照"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620953647.png" alt="看什么看"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620985305.png" alt="再看就把你吃掉"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723620868313.png" alt="吃到了！报吃"></p>
+<p>STOP！<br>够了<br>真的饿了<br>觅食去</p>
+<h2 id="第二站：河南大学西门夜市"><a href="#第二站：河南大学西门夜市" class="headerlink" title="第二站：河南大学西门夜市"></a><strong>第二站：河南大学西门夜市</strong></h2><p>人太多了，马家焖烤鸡腿的队排的老长了，大宝小宝分头行动，买了好多好吃的<br>回民宿喽</p>
+<p>==突发事件 #CC5595==<br>小宝妈妈查岗<br>好在当时大宝小宝分头买吃的去了，小宝一个人应付过来了，问题不大</p>
+<p>大宝导员查岗<br>晚上看电影的时候，大宝导员突然查寝，是的，大宝不在寝室，大宝直接硬气的说我现在通知你，我在外面玩。哈哈哈，太勇敢了</p>
+<h1 id="2023-12-28"><a href="#2023-12-28" class="headerlink" title="2023-12-28"></a><strong>2023-12-28</strong></h1><h2 id="第三站：万岁山武侠城"><a href="#第三站：万岁山武侠城" class="headerlink" title="第三站：万岁山武侠城"></a><strong>第三站：万岁山武侠城</strong></h2><p>万岁山去的时候稍微有点晚，不知道俩宝在墨迹什么，再加上元旦前的装修，俩宝在万岁山没待多久，就只能在里面摸黑玩了，还碰到施工大队</p>
+<p>里面有一个防空洞，虽然味道不太好，但是想象着自己背着枪，猫着背往前慢慢走<br>嘟嘟嘟</p>
+<p>这里面没拍太多照片，但是万岁山里面拍的照片都可逗了，里面的主题是关于水浒传的</p>
+<p>来欣赏一下照片片<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624194562.png" alt="两手支球"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624253179.png" alt="五指支球"><br>好好好，卷起来了<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624303600.png" alt="俩短腿嘻嘻"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624352486.png" alt="替天行道"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624392403.png" alt="大宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624433913.png" alt="要拔刀了"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723624461139.png" alt="小宝"></p>
+<p>摸黑摸的头晕转向，但是氛围感超级足，走夜路，只靠月光，好像下一秒，就要入戏了，但是园区里面几乎剩下工作人员了<br>开溜</p>
+<p>回来的路上去了兴盛德，买开封的特产：花生酥、桂花糕、花生米、菊花茶</p>
+<h1 id="2023-12-29"><a href="#2023-12-29" class="headerlink" title="2023-12-29"></a><strong>2023-12-29</strong></h1><p>依旧是睡到中午才出发的俩宝<br>午饭是小区门口的槐店王婆大虾<br>好吃好吃，巨好吃<br>除了李想大虾<br>就是这家店了</p>
+<h2 id="第四站：中国翰园碑林"><a href="#第四站：中国翰园碑林" class="headerlink" title="第四站：中国翰园碑林"></a><strong>第四站：中国翰园碑林</strong></h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623698584.png" alt="大宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623770567.png" alt="小宝"><br>好吧好吧！小宝宣布，两张照片，大宝拍的完胜</p>
+<p>进去啦<br>碑林里面大都是文字<br>俩宝浅作欣赏</p>
+<p>还有一个假山<br>下山的时候<br>大宝像老头子<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623630968.png" alt="老头下山"></p>
+<p>看了那么多字体<br>俩宝也来露一手<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623937259.png" alt="认真的小宝"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1723623964797.png" alt="认真的大宝"><br>俩宝写的太好了，就不展示成果了<br>开溜，干饭去</p>
+<p>吃烤肉，水浒传主题<br>评价：氛围感强、量一般般、好吃</p>
+<p>晚上回来<br>大宝带小宝去打台球了，这是小宝第一次打台球，之前都是听大宝分享大宝在学校打台球的事情，终于小宝也可以玩咯</p>
+<p>果然小宝天赋异禀<br>晚上总比分超过了大宝<br>耶<br>(其实是大宝在放水啦)</p>
+<h1 id="2023-12-30"><a href="#2023-12-30" class="headerlink" title="2023-12-30"></a><strong>2023-12-30</strong></h1><p>小宝和大宝都是下午的车，于是吃完午饭，俩宝又去打台球了<br>小宝上瘾了</p>
+<p>两个人掐好时间，掐点到车站，就是出租车没有把小宝送到门口，小宝一个人背个大书包，拎着两大包特产，挺着不争气的腰，吭哧吭哧才走到车站里面</p>
+<p>但是这次开封游玩小宝很开心<br>拍了很多很多可爱、搞怪、开心的照片<br>还学会了打台球<br>（因为是回忆版）<br>小宝回家就教朋友打台球了<br>哈哈哈哈</p>
 
                                     
                             </div>
@@ -692,7 +550,7 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">biubiu选手</a>
+                    <a href="/about" rel="external nofollow noreferrer">小宝</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -702,7 +560,7 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sparkle-now.cn/2024/07/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/">https://sparkle-now.cn/2024/07/20/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/</a>
+                    <a href="https://sparkle-now.cn/2024/08/14/he-xiao-bao-zai-kai-feng/">https://sparkle-now.cn/2024/08/14/he-xiao-bao-zai-kai-feng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -715,7 +573,7 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">biubiu选手</a>
+                    <a href="/about" target="_blank">小宝</a>
                     !
                 </span>
             </div>
@@ -740,27 +598,9 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                                    <a href="/tags/%E5%BC%80%E5%B0%81/">
                                                         <span class="chip bg-color">
-                                                            嵌入式
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/CLion/">
-                                                        <span class="chip bg-color">
-                                                            CLion
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/QSPI/">
-                                                        <span class="chip bg-color">
-                                                            QSPI
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/openocd/">
-                                                        <span class="chip bg-color">
-                                                            openocd
+                                                            开封
                                                         </span>
                                                     </a>
                                                     
@@ -1174,11 +1014,61 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/07/20/fatfs-wen-jian-xi-tong-han-shu-shi-yong-ji-lu/">
+                <a href="/2024/08/14/he-xiao-bao-zai-kai-feng/">
+                    <div class="card-image">
+                        
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/qG0B7G.png" class="responsive-img" alt="和小宝在开封">
+                        
+                        <span class="card-title">和小宝在开封</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%97%85%E8%A1%8C/" class="post-category">
+                                    旅行
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%BC%80%E5%B0%81/">
+                        <span class="chip bg-color">开封</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/08/13/fatfs-wen-jian-xi-tong-han-shu-shi-yong-ji-lu/">
                     <div class="card-image">
                         
                         <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/3IsaRF.JPG" class="responsive-img" alt="FATFS文件系统常用函数记录">
@@ -1193,9 +1083,9 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1213,54 +1103,6 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                     
                     <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
                         <span class="chip bg-color">文件系统</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/07/20/stm32f407-yin-jiao-fen-pei/">
-                    <div class="card-image">
-                        
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/s3yUma.png" class="responsive-img" alt="STM32F407一般外设IO分配">
-                        
-                        <span class="card-title">STM32F407一般外设IO分配</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/STM32/">
-                        <span class="chip bg-color">STM32</span>
                     </a>
                     
                 </div>
