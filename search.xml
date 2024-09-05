@@ -4696,4 +4696,58 @@ ps .USART1-&gt;USART3    */</span>
         <tag>大沙河</tag>
       </tags>
   </entry>
+  <entry>
+    <title>将 OpenCV 处理后的视频通过 `mjpg-streamer` 转发</title>
+    <url>/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-mipg-streamer-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><hr>
+<h2 id="将-OpenCV-处理后的视频通过-mjpg-streamer-转发"><a href="#将-OpenCV-处理后的视频通过-mjpg-streamer-转发" class="headerlink" title="将 OpenCV 处理后的视频通过 mjpg-streamer 转发"></a>将 OpenCV 处理后的视频通过 <code>mjpg-streamer</code> 转发</h2><h3 id="1-安装必要的依赖包"><a href="#1-安装必要的依赖包" class="headerlink" title="1. 安装必要的依赖包"></a>1. 安装必要的依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> subversion libv4l-dev libjpeg62-dev imagemagick libjpeg8-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-下载并编译-mjpg-streamer"><a href="#2-下载并编译-mjpg-streamer" class="headerlink" title="2. 下载并编译 mjpg-streamer"></a>2. 下载并编译 <code>mjpg-streamer</code></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/jacksonliam/mjpg-streamer.git
+<span class="token builtin class-name">cd</span> mjpg-streamer/mjpg-streamer-experimental
+<span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-创建-OpenCV-处理视频的脚本"><a href="#3-创建-OpenCV-处理视频的脚本" class="headerlink" title="3. 创建 OpenCV 处理视频的脚本"></a>3. 创建 OpenCV 处理视频的脚本</h3><p>下面是一个简单的 Python 脚本，用于从摄像头获取视频帧，进行处理，然后通过管道转发给mjpg-streamer</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> cv2
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> subprocess
+
+<span class="token comment"># 启动 mjpg-streamer</span>
+subprocess<span class="token punctuation">.</span>Popen<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'mjpg_streamer'</span><span class="token punctuation">,</span> <span class="token string">'-i'</span><span class="token punctuation">,</span> <span class="token string">'input_pipe.so -f /tmp -n stream'</span><span class="token punctuation">,</span> <span class="token string">'-o'</span><span class="token punctuation">,</span> <span class="token string">'output_http.so -w ./www'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+cap <span class="token operator">=</span> cv2<span class="token punctuation">.</span>VideoCapture<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    ret<span class="token punctuation">,</span> frame <span class="token operator">=</span> cap<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> ret<span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+
+    <span class="token comment"># 进行一些 OpenCV 处理，例如将图像转换为灰度</span>
+    gray <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+
+    <span class="token comment"># 将处理后的帧写入管道</span>
+    cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation">(</span><span class="token string">'/tmp/stream'</span><span class="token punctuation">,</span> gray<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> cv2<span class="token punctuation">.</span>waitKey<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span> <span class="token operator">==</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'q'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+
+cap<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
+cv2<span class="token punctuation">.</span>destroyAllWindows<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-启动-mjpg-streamer"><a href="#4-启动-mjpg-streamer" class="headerlink" title="4. 启动 mjpg-streamer"></a>4. 启动 <code>mjpg-streamer</code></h3><p>使用以下命令启动 <code>mjpg-streamer</code>，将处理后的图像文件作为输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkfifo</span> /tmp/stream
+mjpg_streamer <span class="token parameter variable">-i</span> <span class="token string">"input_file.so -f /tmp -n stream"</span> <span class="token parameter variable">-o</span> <span class="token string">"output_http.so -w ./www"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="5-在浏览器中查看视频流"><a href="#5-在浏览器中查看视频流" class="headerlink" title="5. 在浏览器中查看视频流"></a>5. 在浏览器中查看视频流</h3><p>打开浏览器并访问 <code>http://localhost:8080</code>，应该能够看到实时处理后的视频流。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>opencv</tag>
+      </tags>
+  </entry>
 </search>
