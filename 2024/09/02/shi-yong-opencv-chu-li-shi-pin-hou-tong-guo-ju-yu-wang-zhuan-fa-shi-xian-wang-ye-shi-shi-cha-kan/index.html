@@ -4,9 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="将 OpenCV 处理后的视频通过 `mjpg-streamer` 转发, Sparkle.now">
+    <meta name="keywords" content="使用opencv处理视频后通过局域网转发实现网页实时查看, Sparkle.now">
     <meta name="description" content="
-将 OpenCV 处理后的视频通过 mjpg-streamer 转发1. 安装必要的依赖包sudo apt-get install subversion libv4l-dev libjpeg62-dev imagemagick libjp">
+使用opencv处理视频后通过局域网转发实现网页实时查看安装所需的软件
+OpenCV: 用于处理图像和视频流
+Flask: 用于创建Web服务器和处理HTTP请求
+
+原理
+使用OpenCV的VideoCapture类来捕获摄像头的视频流
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +24,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>将 OpenCV 处理后的视频通过 `mjpg-streamer` 转发 | Sparkle.now</title>
+    <title>使用opencv处理视频后通过局域网转发实现网页实时查看 | Sparkle.now</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -377,7 +383,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">将 OpenCV 处理后的视频通过 `mjpg-streamer` 转发</h1>
+                    <h1 class="description center-align post-title">使用opencv处理视频后通过局域网转发实现网页实时查看</h1>
                 </div>
             </div>
         </div>
@@ -415,8 +421,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                                <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                                 
                         </div>
@@ -435,21 +441,21 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2024-09-05
+                                    2024-09-16
                             </div>
                             
 
                                 
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                                            282
+                                            568
                                     </div>
                                     
 
                                         
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                                                    1
+                                                    2
                                                         分
                                             </div>
                                             
@@ -474,49 +480,89 @@
                         <div class="card-content article-card-content">
                             <div id="articleContent">
                                 <hr>
-<h2 id="将-OpenCV-处理后的视频通过-mjpg-streamer-转发"><a href="#将-OpenCV-处理后的视频通过-mjpg-streamer-转发" class="headerlink" title="将 OpenCV 处理后的视频通过 mjpg-streamer 转发"></a>将 OpenCV 处理后的视频通过 <code>mjpg-streamer</code> 转发</h2><h3 id="1-安装必要的依赖包"><a href="#1-安装必要的依赖包" class="headerlink" title="1. 安装必要的依赖包"></a>1. 安装必要的依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> subversion libv4l-dev libjpeg62-dev imagemagick libjpeg8-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="使用opencv处理视频后通过局域网转发实现网页实时查看"><a href="#使用opencv处理视频后通过局域网转发实现网页实时查看" class="headerlink" title="使用opencv处理视频后通过局域网转发实现网页实时查看"></a>使用opencv处理视频后通过局域网转发实现网页实时查看</h1><h2 id="安装所需的软件"><a href="#安装所需的软件" class="headerlink" title="安装所需的软件"></a>安装所需的软件</h2><ul>
+<li>OpenCV: 用于处理图像和视频流</li>
+<li>Flask: 用于创建Web服务器和处理HTTP请求</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ol>
+<li>使用OpenCV的VideoCapture类来捕获摄像头的视频流</li>
+<li>使用OpenCV的imencode函数将每一帧图像编码成JPEG格式</li>
+<li>使用Flask框架创建一个Web服务器，并定义一个路由来处理视频流的请求</li>
+<li>使用Response对象将视频流以multipart/x-mixed-replace格式返回给客户端</li>
+<li>客户端通过<img>标签请求视频流，并显示在网页上</li>
+<li></li>
+</ol>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>安装OpenCV和Flask<pre class="line-numbers language-none"><code class="language-none">pip install opencv-python flask<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>运行脚本<pre class="line-numbers language-none"><code class="language-none">python camera_test.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>打开浏览器，访问</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://0.0.0.0:5000/%EF%BC%8C%E5%8D%B3%E5%8F%AF%E7%9C%8B%E5%88%B0%E6%91%84%E5%83%8F%E5%A4%B4%E7%9A%84%E5%AE%9E%E6%97%B6%E8%A7%86%E9%A2%91%E6%B5%81(%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE)">http://0.0.0.0:5000/，即可看到摄像头的实时视频流(本地访问)</a></li>
+<li><a target="_blank" rel="noopener" href="http://192.168.31.83:5000/">http://192.168.31.83:5000/</a> (以太网IP地址或者WLAN IP地址)</li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><strong>视频</strong></p>
+<p><strong>总结</strong><br>蛮好用的，我的镜头模糊和抖动是因为我的摄像头很唠，34块200万像素720P自动对焦，不准喷；明显本地访问和以太网访问（第二个网址是以太网的）没有啥差别，速度很快，用手机热点（第三个）就很卡，但我觉得问题不大，因为我用的是iPhone11，4G手机+IPhone，debuff叠满了属于是，所以我觉得 上5G问题的话，视频流应该没那么卡。</p>
+<p>做机器人的时候，测试起来蛮方便的。</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> cv2
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> Response
 
-<h3 id="2-下载并编译-mjpg-streamer"><a href="#2-下载并编译-mjpg-streamer" class="headerlink" title="2. 下载并编译 mjpg-streamer"></a>2. 下载并编译 <code>mjpg-streamer</code></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/jacksonliam/mjpg-streamer.git
-<span class="token builtin class-name">cd</span> mjpg-streamer/mjpg-streamer-experimental
-<span class="token function">make</span>
-<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
 
-<h3 id="3-创建-OpenCV-处理视频的脚本"><a href="#3-创建-OpenCV-处理视频的脚本" class="headerlink" title="3. 创建 OpenCV 处理视频的脚本"></a>3. 创建 OpenCV 处理视频的脚本</h3><p>下面是一个简单的 Python 脚本，用于从摄像头获取视频帧，进行处理，然后通过管道转发给mjpg-streamer</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">
-<span class="token keyword">import</span> cv2
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token keyword">import</span> subprocess
-
-<span class="token comment"># 启动 mjpg-streamer</span>
-subprocess<span class="token punctuation">.</span>Popen<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'mjpg_streamer'</span><span class="token punctuation">,</span> <span class="token string">'-i'</span><span class="token punctuation">,</span> <span class="token string">'input_pipe.so -f /tmp -n stream'</span><span class="token punctuation">,</span> <span class="token string">'-o'</span><span class="token punctuation">,</span> <span class="token string">'output_http.so -w ./www'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
+<span class="token comment"># 打开摄像头，参数0表示第一个摄像头</span>
 cap <span class="token operator">=</span> cv2<span class="token punctuation">.</span>VideoCapture<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 
-<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-    ret<span class="token punctuation">,</span> frame <span class="token operator">=</span> cap<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token keyword">not</span> ret<span class="token punctuation">:</span>
-        <span class="token keyword">break</span>
+<span class="token keyword">if</span> <span class="token keyword">not</span> cap<span class="token punctuation">.</span>isOpened<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"无法打开摄像头"</span><span class="token punctuation">)</span>
+    exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="token comment"># 进行一些 OpenCV 处理，例如将图像转换为灰度</span>
-    gray <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">generate_frames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token comment"># 读取一帧图像</span>
+        ret<span class="token punctuation">,</span> frame <span class="token operator">=</span> cap<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">if</span> <span class="token keyword">not</span> ret<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"无法接收帧 (stream end?). Exiting ..."</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
 
-    <span class="token comment"># 将处理后的帧写入管道</span>
-    cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation">(</span><span class="token string">'/tmp/stream'</span><span class="token punctuation">,</span> gray<span class="token punctuation">)</span>
+        <span class="token comment"># 编码成JPEG格式</span>
+        ret<span class="token punctuation">,</span> <span class="token builtin">buffer</span> <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imencode<span class="token punctuation">(</span><span class="token string">'.jpg'</span><span class="token punctuation">,</span> frame<span class="token punctuation">)</span>
+        frame <span class="token operator">=</span> <span class="token builtin">buffer</span><span class="token punctuation">.</span>tobytes<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">if</span> cv2<span class="token punctuation">.</span>waitKey<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span> <span class="token operator">==</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'q'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">break</span>
+        <span class="token comment"># 使用yield生成视频流</span>
+        <span class="token keyword">yield</span> <span class="token punctuation">(</span><span class="token string">b'--frame\r\n'</span>
+               <span class="token string">b'Content-Type: image/jpeg\r\n\r\n'</span> <span class="token operator">+</span> frame <span class="token operator">+</span> <span class="token string">b'\r\n'</span><span class="token punctuation">)</span>
 
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/video_feed'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">video_feed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Response<span class="token punctuation">(</span>generate_frames<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mimetype<span class="token operator">=</span><span class="token string">'multipart/x-mixed-replace; boundary=frame'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token triple-quoted-string string">'''
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Camera Stream&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Camera Stream&lt;/h1&gt;
+            &lt;img src="/video_feed"&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+    '''</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 释放摄像头并关闭所有窗口</span>
 cap<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
 cv2<span class="token punctuation">.</span>destroyAllWindows<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="4-启动-mjpg-streamer"><a href="#4-启动-mjpg-streamer" class="headerlink" title="4. 启动 mjpg-streamer"></a>4. 启动 <code>mjpg-streamer</code></h3><p>使用以下命令启动 <code>mjpg-streamer</code>，将处理后的图像文件作为输入：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkfifo</span> /tmp/stream
-mjpg_streamer <span class="token parameter variable">-i</span> <span class="token string">"input_file.so -f /tmp -n stream"</span> <span class="token parameter variable">-o</span> <span class="token string">"output_http.so -w ./www"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="5-在浏览器中查看视频流"><a href="#5-在浏览器中查看视频流" class="headerlink" title="5. 在浏览器中查看视频流"></a>5. 在浏览器中查看视频流</h3><p>打开浏览器并访问 <code>http://localhost:8080</code>，应该能够看到实时处理后的视频流。</p>
-<hr>
 
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                                     
                             </div>
                             <hr />
@@ -542,7 +588,7 @@ mjpg_streamer <span class="token parameter variable">-i</span> <span class="toke
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sparkle-now.cn/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-mipg-streamer-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/">https://sparkle-now.cn/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-mipg-streamer-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/</a>
+                    <a href="https://sparkle-now.cn/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-ju-yu-wang-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/">https://sparkle-now.cn/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-ju-yu-wang-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1001,12 +1047,12 @@ mjpg_streamer <span class="token parameter variable">-i</span> <span class="toke
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-mipg-streamer-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/">
+                <a href="/2024/09/02/shi-yong-opencv-chu-li-shi-pin-hou-tong-guo-ju-yu-wang-zhuan-fa-shi-xian-wang-ye-shi-shi-cha-kan/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721578058652.png" class="responsive-img" alt="将 OpenCV 处理后的视频通过 `mjpg-streamer` 转发">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1721578058652.png" class="responsive-img" alt="使用opencv处理视频后通过局域网转发实现网页实时查看">
                         
-                        <span class="card-title">将 OpenCV 处理后的视频通过 `mjpg-streamer` 转发</span>
+                        <span class="card-title">使用opencv处理视频后通过局域网转发实现网页实时查看</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1023,8 +1069,8 @@ mjpg_streamer <span class="token parameter variable">-i</span> <span class="toke
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
