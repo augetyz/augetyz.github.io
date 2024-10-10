@@ -4794,7 +4794,7 @@ cv2<span class="token punctuation">.</span>destroyAllWindows<span class="token p
   </entry>
   <entry>
     <title>OpenCV视觉识别与flask转发实现局域网调试</title>
-    <url>/2023/12/26/opencv-shi-jue-shi-bie-yu-flask-zhuan-fa-shi-xian-ju-yu-wang-diao-shi/</url>
+    <url>/2024/10/09/opencv-shi-jue-shi-bie-yu-flask-zhuan-fa-shi-xian-ju-yu-wang-diao-shi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="OpenCV视觉识别与flask转发实现局域网调试"><a href="#OpenCV视觉识别与flask转发实现局域网调试" class="headerlink" title="OpenCV视觉识别与flask转发实现局域网调试"></a>OpenCV视觉识别与flask转发实现局域网调试</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
 <li>安装所需的 Python 包：</li>
 </ol>
