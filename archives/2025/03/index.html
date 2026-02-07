@@ -538,7 +538,7 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    梳理了USB协议的核心知识，涵盖USB标准请求、设备描述符、配置描述符、字符串描述符及HID报告描述符等关键内容。详细解析了8字节控制请求的结构（bmRequestType、bRequest、wValue、wIndex、wLength）与常见请求示例；深入讲解了设备描述符各字段含义及实际产品（boot/app）描述符分析；逐层剖析配置描述符及其包含的接口描述符、HID描述符、端点描述符的组成与作用；介绍了字符串描述符的获取方式与实例；最后对HID报告描述符的主项目（Input/Output/Feature/Collection）、全局项目（Usage Page、Report Size等）和局部项目（Usage、Usage Min/Max）进行了分类说明，并提供了详细的报告描述符示例。笔记结合具体产品实例，帮助理解USB枚举过程与数据传输机制。
+                                    梳理了USB协议的核心知识，涵盖USB标准请求、设备描述符、配置描述符、字符串描述符及HID报告描述符等关键内容。
                                 
                             </div>
                             <div class="publish-info">
@@ -811,21 +811,47 @@ $(function () {
     <div id="stars3"></div>  
 </div>
 
+<link id="prism-style" rel="stylesheet" href="/libs/prism/prism.css">
+
 <script>
     function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body'));
+
         setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
+            if ($('body').hasClass('DarkMode')) {
+                // 切换到白天
+                $('body').removeClass('DarkMode');
+                localStorage.setItem('isDark', '0');
+                $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon');
+
+                // 切换 Prism 代码样式到白天
+                $('#prism-style').attr('href', '/libs/prism/prism.css');
+            } else {
+                // 切换到黑夜
+                $('body').addClass('DarkMode');
+                localStorage.setItem('isDark', '1');
+                $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon');
+
+                // 切换 Prism 代码样式到黑夜
+                $('#prism-style').attr('href', '/libs/prism/prism_dark.css');
+            }
+
             setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
+                $('.Cuteen_DarkSky').fadeOut(1000, function () {
+                    $(this).remove();
+                });
+            }, 2000);
+        });
     }
+
+    // 页面加载时恢复代码主题
+    $(document).ready(function() {
+        if (localStorage.getItem('isDark') === '1') {
+            $('body').addClass('DarkMode');
+            $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon');
+            $('#prism-style').attr('href', '/libs/prism/prism_dark.css');
+        }
+    });
 </script>
 
     <!-- 回到顶部按钮 -->

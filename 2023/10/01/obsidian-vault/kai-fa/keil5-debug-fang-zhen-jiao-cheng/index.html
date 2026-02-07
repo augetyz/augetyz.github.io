@@ -475,7 +475,7 @@ Debug 是指在软件开发过程中，通过识别和解决问题来调试程�
 
         
             <!-- 是否加载使用自带的 prismjs. -->
-            <link rel="stylesheet" href="/libs/prism/prism.min.css">
+            <link rel="stylesheet" href="/libs/prism/prism.css">
             
 
                 
@@ -1249,7 +1249,7 @@ Debug 是指在软件开发过程中，通过识别和解决问题来调试程�
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1589,21 +1589,47 @@ $(function () {
     <div id="stars3"></div>  
 </div>
 
+<link id="prism-style" rel="stylesheet" href="/libs/prism/prism.css">
+
 <script>
     function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body'));
+
         setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
+            if ($('body').hasClass('DarkMode')) {
+                // 切换到白天
+                $('body').removeClass('DarkMode');
+                localStorage.setItem('isDark', '0');
+                $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon');
+
+                // 切换 Prism 代码样式到白天
+                $('#prism-style').attr('href', '/libs/prism/prism.css');
+            } else {
+                // 切换到黑夜
+                $('body').addClass('DarkMode');
+                localStorage.setItem('isDark', '1');
+                $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon');
+
+                // 切换 Prism 代码样式到黑夜
+                $('#prism-style').attr('href', '/libs/prism/prism_dark.css');
+            }
+
             setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
+                $('.Cuteen_DarkSky').fadeOut(1000, function () {
+                    $(this).remove();
+                });
+            }, 2000);
+        });
     }
+
+    // 页面加载时恢复代码主题
+    $(document).ready(function() {
+        if (localStorage.getItem('isDark') === '1') {
+            $('body').addClass('DarkMode');
+            $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon');
+            $('#prism-style').attr('href', '/libs/prism/prism_dark.css');
+        }
+    });
 </script>
 
     <!-- 回到顶部按钮 -->
