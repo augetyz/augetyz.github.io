@@ -866,42 +866,25 @@
 <h3 id="boot配置描述符"><a href="#boot配置描述符" class="headerlink" title="boot配置描述符"></a>boot配置描述符</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">IN 09 02 29 00 01 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 2e 00 07 05 81 03 40 00 01 07 05 01 03 40 00 01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="1、配置描述符（Configuration-Descriptor）"><a href="#1、配置描述符（Configuration-Descriptor）" class="headerlink" title="1、配置描述符（Configuration Descriptor）"></a><strong>1、配置描述符（Configuration Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">09 02 29 00 01 01 00 a0 32
-
 09：描述符长度（9 字节）
-
 02：描述符类型（配置描述符）
-
 29 00：总长度（41 字节）
-
 01：配置数量
-
 01：配置值
-
 00：配置字符串索引
-
 a0：属性（总线供电，远程唤醒）
-
-32：最大电流（100 mA）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+32：最大电流（100 mA）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="2、接口描述符（Interface-Descriptor）"><a href="#2、接口描述符（Interface-Descriptor）" class="headerlink" title="2、接口描述符（Interface Descriptor）"></a><strong>2、接口描述符（Interface Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">09 04 00 00 02 03 00 00 00
-
 09：描述符长度（9 字节）
-
 04：描述符类型（接口描述符）
-
 00：接口编号
-
 00：备用设置
-
 02：端点数量
-
 03：接口类（HID）
-
 00：接口子类
-
 00：接口协议
-
-00：接口字符串索引<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+00：接口字符串索引<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="3、HID-描述符（HID-Descriptor）"><a href="#3、HID-描述符（HID-Descriptor）" class="headerlink" title="3、HID 描述符（HID Descriptor）"></a><strong>3、HID 描述符（HID Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">09 21 00 02 00 01 22 2e 00
 
@@ -965,17 +948,17 @@ a0：属性（总线供电，远程唤醒）
   |   |- Endpoint 3 IN (7字节)
   |   |- Endpoint 3 OUT (7字节)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="配置描述符（Configuration-Descriptor）"><a href="#配置描述符（Configuration-Descriptor）" class="headerlink" title="配置描述符（Configuration Descriptor）"></a><strong>配置描述符（Configuration Descriptor）</strong></h4><pre><code>  09&nbsp;02&nbsp;69&nbsp;00&nbsp;03&nbsp;01&nbsp;00&nbsp;a0&nbsp;32
+<h4 id="配置描述符（Configuration-Descriptor）"><a href="#配置描述符（Configuration-Descriptor）" class="headerlink" title="配置描述符（Configuration Descriptor）"></a><strong>配置描述符（Configuration Descriptor）</strong></h4><pre class="line-numbers language-none"><code class="language-none">09&nbsp;02&nbsp;69&nbsp;00&nbsp;03&nbsp;01&nbsp;00&nbsp;a0&nbsp;32
 
-  - 09：描述符长度（9 字节）
-  - 02：描述符类型（配置描述符）
-  - 69 00：总长度（105 字节）
-  - 03：配置三个接口
-  - 01：配置值
-  - 00：配置字符串索引
-  - a0：属性（总线供电，远程唤醒）
-  - 32：最大电流（100 mA）
-</code></pre>
+- 09：描述符长度（9 字节）
+- 02：描述符类型（配置描述符）
+- 69 00：总长度（105 字节）
+- 03：配置三个接口
+- 01：配置值
+- 00：配置字符串索引
+- a0：属性（总线供电，远程唤醒）
+- 32：最大电流（100 mA）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="1-接口0（Interface-0）"><a href="#1-接口0（Interface-0）" class="headerlink" title="1. 接口0（Interface 0）"></a><strong>1. 接口0（Interface 0）</strong></h4><pre class="line-numbers language-none"><code class="language-none">09 04 00 00 02 03 00 00 00  // 接口描述符（Interface 0）
 09 21 00 02 00 01 22 C6 02  // HID描述符（HID 1.0，报告描述符长度710字节）
 07 05 81 03 40 00 01        // 端点1 IN（中断传输，64字节包大小，轮询间隔1ms）
@@ -1002,20 +985,18 @@ a0：属性（总线供电，远程唤醒）
 <p><strong>APP的设备序列号字符串描述符</strong></p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">16 03 44 00<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>   设备的完整字符串描述符是在用户访问USB设备信息时实时从设备上获取的，例如：查看设备管理器里的设备的属性时，主机会向设备发送三个获取字符串描述符的控制传输指令</p>
-<h2 id="六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网"><a href="#六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网" class="headerlink" title="六、HID报告描述符 HID 报表描述符/报告描述符 - USB中文网"></a>六、HID报告描述符 <a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-48.html">HID 报表描述符/报告描述符 - USB中文网</a></h2><p>   报表描述符用于描述USB HID与主机之间传输的数据的用途和数据格式的。通过报表描述符，USB主机可以区分出报告里的数据表的含义。报表描述符和<a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-104.html">设备描述符</a>、<a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-67.html">配置描述符</a>和字符串描述一样，都有一个固定的描述符类型ID,并且是通过<a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-15.html">GET_DESCRIPTOR</a>来获取的，只不过该请求发向的是USB设备的接口。</p>
-<p>   一个报表描述符可以多个数据格式，就如同一个我们可以将要传输的多种数据结构放在一个大的结构体中一样，不同的报表内容区分可以使用报告ID来识别。报告ID在报表描述符的最前端，即第一个字节。如果报描述符只包含一个报告，可以不设计报告ID.报告ID之后一般是实际的报告数据。</p>
-<p>   HID报告描述符由一系列项目（Items）组成，这些项目定义了设备如何向主机报告数据以及主机如何发送数据到设备。每个项目可以属于Main、Global或Local类型。Main项目用于定义集合的开始和结束，Global项目设置全局状态（如用途页、逻辑最小值等），而Local项目定义特定字段的属性（如用途、最小值等）。</p>
-<h3 id="主项目-main-item"><a href="#主项目-main-item" class="headerlink" title="主项目(main item)"></a>主项目(main item)</h3><pre><code>   主项目用于定义数据域或者用于进行数据域的分组。
-
-   主项目其有5个，分别为Input,Output,Feature,Collection和End Collection.
-</code></pre>
-<h4 id="Collection和End-Collection项目"><a href="#Collection和End-Collection项目" class="headerlink" title="Collection和End Collection项目"></a>Collection和End Collection项目</h4><p>   Collection共有四种，分别为Physical,Application,Logical和Vendoer Defined.</p>
-<p>   所有的报表类型都可以使用Collection与 End Collection项目来将相关的Main类型项目组成群组。这两个项目分别用于打开和关闭集合。所有在Collection与End Collection项目之间的Main类型项目都是 Collection的一部分。</p>
-<p>   Collection有3种类型：Application、Physical与Logical，其项目的数据项的值分别为1、0和2。厂商也可以自己定义Collection类型，数据项的值为80h~FFh保留给厂商定义。End Collection项目无数据项。</p>
-<p>   Application Collection包含有共同用途的项目或执行单一功能的项目。例如键盘的开机描述符将键盘的按键与LED指示灯数据集合成一个Application Collection。所有的报表必须在一个Application Collection内。</p>
-<p>   Physical Collection包含在一个单一几何点上的数据项目，可以将每个位置的数据集合成一个 Physical Collection。在设备报告多个传感器的位置的时候，使用Physical Collection指明不同的数据来自不同的传感器。</p>
-<p>   Logical Collection形成一个数据结构，包含由 Collection所连结的不同类型的项目。例如数据缓冲区的内容以及缓冲区内字节数目的计数。</p>
+<p>设备的完整字符串描述符是在用户访问USB设备信息时实时从设备上获取的，例如：查看设备管理器里的设备的属性时，主机会向设备发送三个获取字符串描述符的控制传输指令</p>
+<h2 id="六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网"><a href="#六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网" class="headerlink" title="六、HID报告描述符 HID 报表描述符/报告描述符 - USB中文网"></a>六、HID报告描述符 <a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-48.html">HID 报表描述符/报告描述符 - USB中文网</a></h2><p>报表描述符用于描述USB HID与主机之间传输的数据的用途和数据格式的。通过报表描述符，USB主机可以区分出报告里的数据表的含义。报表描述符和<a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-104.html">设备描述符</a>、<a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-67.html">配置描述符</a>和字符串描述一样，都有一个固定的描述符类型ID,并且是通过<a target="_blank" rel="noopener" href="https://www.usbzh.com/article/detail-15.html">GET_DESCRIPTOR</a>来获取的，只不过该请求发向的是USB设备的接口。</p>
+<p>一个报表描述符可以多个数据格式，就如同一个我们可以将要传输的多种数据结构放在一个大的结构体中一样，不同的报表内容区分可以使用报告ID来识别。报告ID在报表描述符的最前端，即第一个字节。如果报描述符只包含一个报告，可以不设计报告ID.报告ID之后一般是实际的报告数据。</p>
+<p>HID报告描述符由一系列项目（Items）组成，这些项目定义了设备如何向主机报告数据以及主机如何发送数据到设备。每个项目可以属于Main、Global或Local类型。Main项目用于定义集合的开始和结束，Global项目设置全局状态（如用途页、逻辑最小值等），而Local项目定义特定字段的属性（如用途、最小值等）。</p>
+<h3 id="主项目-main-item"><a href="#主项目-main-item" class="headerlink" title="主项目(main item)"></a>主项目(main item)</h3><p>主项目用于定义数据域或者用于进行数据域的分组。</p>
+<p>主项目其有5个，分别为Input,Output,Feature,Collection和End Collection.</p>
+<h4 id="Collection和End-Collection项目"><a href="#Collection和End-Collection项目" class="headerlink" title="Collection和End Collection项目"></a>Collection和End Collection项目</h4><p>Collection共有四种，分别为Physical,Application,Logical和Vendoer Defined.</p>
+<p>所有的报表类型都可以使用Collection与 End Collection项目来将相关的Main类型项目组成群组。这两个项目分别用于打开和关闭集合。所有在Collection与End Collection项目之间的Main类型项目都是 Collection的一部分。</p>
+<p>Collection有3种类型：Application、Physical与Logical，其项目的数据项的值分别为1、0和2。厂商也可以自己定义Collection类型，数据项的值为80h~FFh保留给厂商定义。End Collection项目无数据项。</p>
+<p>Application Collection包含有共同用途的项目或执行单一功能的项目。例如键盘的开机描述符将键盘的按键与LED指示灯数据集合成一个Application Collection。所有的报表必须在一个Application Collection内。</p>
+<p>Physical Collection包含在一个单一几何点上的数据项目，可以将每个位置的数据集合成一个 Physical Collection。在设备报告多个传感器的位置的时候，使用Physical Collection指明不同的数据来自不同的传感器。</p>
+<p>Logical Collection形成一个数据结构，包含由 Collection所连结的不同类型的项目。例如数据缓冲区的内容以及缓冲区内字节数目的计数。</p>
 <pre class="line-numbers language-none"><code class="language-none">1.  COLLCTION(Physical) A1 00
 2.  COLLCTION(Application) A1 01
 3.  COLLCTION(Logical) A1 02
