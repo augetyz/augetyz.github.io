@@ -4342,106 +4342,95 @@ void I2C_Delay(void)
 </ul>
 <p>   标准请求：80 06 00 02 00 00 09 00，从设备获取描述符，描述符类型由第四位字节02确定，为配置描述符，第一次获取数据长度为9，获取到配置描述符：09 02 29 00 01 01 00 a0 32后，根据数据中的第三位字节29确定描述符总长度为0X29，第二次发送获取描述符标准请求：80 06 00 02 00 00 29 00，与第一次不同的只有数据长度字节变为了29，获取到整个配置描述符。</p>
 <p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/USB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ab83a37b-8fa8-44bb-9cb0-4a3b0687703d" alt="image.png"></p>
-<h3 id="boot配置描述符"><a href="#boot配置描述符" class="headerlink" title="boot配置描述符"></a>boot配置描述符</h3><blockquote>
-<p>IN 09 02 29 00 01 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 2e 00 07 05 81 03 40 00 01 07 05 01 03 40 00 01</p>
-</blockquote>
-<h4 id="1、配置描述符（Configuration-Descriptor）"><a href="#1、配置描述符（Configuration-Descriptor）" class="headerlink" title="1、配置描述符（Configuration Descriptor）"></a><strong>1、配置描述符（Configuration Descriptor）</strong></h4><pre><code>  09&nbsp;02&nbsp;29&nbsp;00&nbsp;01&nbsp;01&nbsp;00&nbsp;a0&nbsp;32
+<h3 id="boot配置描述符"><a href="#boot配置描述符" class="headerlink" title="boot配置描述符"></a>boot配置描述符</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">IN 09 02 29 00 01 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 2e 00 07 05 81 03 40 00 01 07 05 01 03 40 00 01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-  09：描述符长度（9 字节）
+<h4 id="1、配置描述符（Configuration-Descriptor）"><a href="#1、配置描述符（Configuration-Descriptor）" class="headerlink" title="1、配置描述符（Configuration Descriptor）"></a><strong>1、配置描述符（Configuration Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">09 02 29 00 01 01 00 a0 32
 
-  02：描述符类型（配置描述符）
+09：描述符长度（9 字节）
 
-  29 00：总长度（41 字节）
+02：描述符类型（配置描述符）
 
-  01：配置数量
+29 00：总长度（41 字节）
 
-  01：配置值
+01：配置数量
 
-  00：配置字符串索引
+01：配置值
 
-  a0：属性（总线供电，远程唤醒）
+00：配置字符串索引
 
-  32：最大电流（100 mA）
-</code></pre>
-<h4 id="2、接口描述符（Interface-Descriptor）"><a href="#2、接口描述符（Interface-Descriptor）" class="headerlink" title="2、接口描述符（Interface Descriptor）"></a><strong>2、接口描述符（Interface Descriptor）</strong></h4><pre><code>  09&nbsp;04&nbsp;00&nbsp;00&nbsp;02&nbsp;03&nbsp;00&nbsp;00&nbsp;00
+a0：属性（总线供电，远程唤醒）
 
-  09：描述符长度（9 字节）
+32：最大电流（100 mA）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  04：描述符类型（接口描述符）
+<h4 id="2、接口描述符（Interface-Descriptor）"><a href="#2、接口描述符（Interface-Descriptor）" class="headerlink" title="2、接口描述符（Interface Descriptor）"></a><strong>2、接口描述符（Interface Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">09 04 00 00 02 03 00 00 00
 
-  00：接口编号
+09：描述符长度（9 字节）
 
-  00：备用设置
+04：描述符类型（接口描述符）
 
-  02：端点数量
+00：接口编号
 
-  03：接口类（HID）
+00：备用设置
 
-  00：接口子类
+02：端点数量
 
-  00：接口协议
+03：接口类（HID）
 
-  00：接口字符串索引
-</code></pre>
-<h4 id="3、HID-描述符（HID-Descriptor）"><a href="#3、HID-描述符（HID-Descriptor）" class="headerlink" title="3、HID 描述符（HID Descriptor）"></a><strong>3、HID 描述符（HID Descriptor）</strong></h4><pre><code>  09&nbsp;21&nbsp;00&nbsp;02&nbsp;00&nbsp;01&nbsp;22&nbsp;2e&nbsp;00
+00：接口子类
 
-  09：描述符长度（9 字节）
+00：接口协议
 
-  21：描述符类型（HID 描述符）
+00：接口字符串索引<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  00 02：HID 版本（2.00）
+<h4 id="3、HID-描述符（HID-Descriptor）"><a href="#3、HID-描述符（HID-Descriptor）" class="headerlink" title="3、HID 描述符（HID Descriptor）"></a><strong>3、HID 描述符（HID Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">09 21 00 02 00 01 22 2e 00
 
-  00：国家代码
+09：描述符长度（9 字节）
 
-  01：类描述符数量
+21：描述符类型（HID 描述符）
 
-  22：描述符类型（报告描述符）
+00 02：HID 版本（2.00）
 
-  2e 00：描述符长度（46 字节）
-</code></pre>
-<h4 id="4、端点描述符（Endpoint-Descriptor）"><a href="#4、端点描述符（Endpoint-Descriptor）" class="headerlink" title="4、端点描述符（Endpoint Descriptor）"></a><strong>4、端点描述符（Endpoint Descriptor）</strong></h4><pre><code>  07&nbsp;05&nbsp;81&nbsp;03&nbsp;40&nbsp;00&nbsp;01
+00：国家代码
 
-  07：描述符长度（7 字节）
+01：类描述符数量
 
-  05：描述符类型（端点描述符）
+22：描述符类型（报告描述符）
 
-  81：端点地址（IN 端点 1）
+2e 00：描述符长度（46 字节）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  03：属性（中断传输）
+<h4 id="4、端点描述符（Endpoint-Descriptor）"><a href="#4、端点描述符（Endpoint-Descriptor）" class="headerlink" title="4、端点描述符（Endpoint Descriptor）"></a><strong>4、端点描述符（Endpoint Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">07 05 81 03 40 00 01
 
-  40 00：最大包大小（64 字节）
+07：描述符长度（7 字节）
 
-  01：轮询间隔（1 毫秒）
-</code></pre>
-<h4 id="5、端点描述符（Endpoint-Descriptor）"><a href="#5、端点描述符（Endpoint-Descriptor）" class="headerlink" title="5、端点描述符（Endpoint Descriptor）"></a><strong>5、端点描述符（Endpoint Descriptor）</strong></h4><pre><code>  07&nbsp;05&nbsp;01&nbsp;03&nbsp;40&nbsp;00&nbsp;01
+05：描述符类型（端点描述符）
 
-  07：描述符长度（7 字节）
+81：端点地址（IN 端点 1）
 
-  05：描述符类型（端点描述符）
+03：属性（中断传输）
 
-  01：端点地址（OUT 端点 1）
+40 00：最大包大小（64 字节）
 
-  03：属性（中断传输）
+01：轮询间隔（1 毫秒）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  40 00：最大包大小（64 字节）
+<h4 id="5、端点描述符（Endpoint-Descriptor）"><a href="#5、端点描述符（Endpoint-Descriptor）" class="headerlink" title="5、端点描述符（Endpoint Descriptor）"></a><strong>5、端点描述符（Endpoint Descriptor）</strong></h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">07 05 01 03 40 00 01
 
-  01：轮询间隔（1 毫秒）
+07：描述符长度（7 字节）
+05：描述符类型（端点描述符）
+01：端点地址（OUT 端点 1）
+03：属性（中断传输）
+40 00：最大包大小（64 字节）
+01：轮询间隔（1 毫秒）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  总结：
-
+<pre><code>  总结：
   09 02 29 00 01 01 00 a0 32 是配置描述符。
-
   09 04 00 00 02 03 00 00 00 是接口描述符。
-
   09 21 00 02 00 01 22 2e 00 是 HID 描述符。
-
   07 05 81 03 40 00 01 是 IN 端点描述符。
-
   07 05 01 03 40 00 01 是 OUT 端点描述符
 </code></pre>
-<h3 id="产品的配置描述符"><a href="#产品的配置描述符" class="headerlink" title="产品的配置描述符"></a>产品的配置描述符</h3><pre><code>IN 09 02 69 00 03 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 c6 02 07 05 81 03 40 00 01 07 05 01 03 40 00 01 09 04   01 00 02 03 00 00 00 09 21 00 02 00 01 22 5e 00 07 05 82 03 08 00 01 07 05 02 03 08 00 01 09 04 02 00 02 03 00 00 00 09 21 00 02 00   01 22 04 02 07 05 83 03 3e 00 01 07 05 03 03 3e 00 01
+<h3 id="产品的配置描述符"><a href="#产品的配置描述符" class="headerlink" title="产品的配置描述符"></a>产品的配置描述符</h3><pre><code>  IN 09 02 69 00 03 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 c6 02 07 05 81 03 40 00 01 07 05 01 03 40 00 01 09 04   01 00 02 03 00 00 00 09 21 00 02 00 01 22 5e 00 07 05 82 03 08 00 01 07 05 02 03 08 00 01 09 04 02 00 02 03 00 00 00 09 21 00 02 00   01 22 04 02 07 05 83 03 3e 00 01 07 05 03 03 3e 00 01
 </code></pre>
-<pre class="line-numbers language-other" data-language="other"><code class="language-other">Configuration Descriptor (9字节)
+<pre class="line-numbers language-none"><code class="language-none">Configuration Descriptor (9字节)
   |- Interface 0 Descriptor (9字节)
   |   |- HID Descriptor (9字节)
   |   |- Endpoint 1 IN (7字节)
@@ -4466,29 +4455,32 @@ void I2C_Delay(void)
   - a0：属性（总线供电，远程唤醒）
   - 32：最大电流（100 mA）
 </code></pre>
-<h4 id="1-接口0（Interface-0）"><a href="#1-接口0（Interface-0）" class="headerlink" title="1. 接口0（Interface 0）"></a><strong>1. 接口0（Interface 0）</strong></h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">09</span> <span class="token number">04</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">03</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">00</span>  <span class="token comment">// 接口描述符（Interface 0）</span>
-<span class="token number">09</span> <span class="token number">21</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">00</span> <span class="token number">01</span> <span class="token number">22</span> <span class="token constant">C6</span> <span class="token number">02</span>  <span class="token comment">// HID描述符（HID 1.0，报告描述符长度710字节）</span>
-<span class="token number">07</span> <span class="token number">05</span> <span class="token number">81</span> <span class="token number">03</span> <span class="token number">40</span> <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点1 IN（中断传输，64字节包大小，轮询间隔1ms）</span>
-<span class="token number">07</span> <span class="token number">05</span> <span class="token number">01</span> <span class="token number">03</span> <span class="token number">40</span> <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点1 OUT（中断传输，64字节包大小，轮询间隔1ms）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1-接口0（Interface-0）"><a href="#1-接口0（Interface-0）" class="headerlink" title="1. 接口0（Interface 0）"></a><strong>1. 接口0（Interface 0）</strong></h4><pre class="line-numbers language-none"><code class="language-none">09 04 00 00 02 03 00 00 00  // 接口描述符（Interface 0）
+09 21 00 02 00 01 22 C6 02  // HID描述符（HID 1.0，报告描述符长度710字节）
+07 05 81 03 40 00 01        // 端点1 IN（中断传输，64字节包大小，轮询间隔1ms）
+07 05 01 03 40 00 01        // 端点1 OUT（中断传输，64字节包大小，轮询间隔1ms）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2-接口1（Interface-1）"><a href="#2-接口1（Interface-1）" class="headerlink" title="2. 接口1（Interface 1）"></a><strong>2. 接口1（Interface 1）</strong></h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">09</span> <span class="token number">04</span> <span class="token number">01</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">03</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">00</span>  <span class="token comment">// 接口描述符（Interface 1）</span>
-<span class="token number">09</span> <span class="token number">21</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">00</span> <span class="token number">01</span> <span class="token number">22</span> 5E <span class="token number">00</span>  <span class="token comment">// HID描述符（HID 1.0，报告描述符长度94字节）</span>
-<span class="token number">07</span> <span class="token number">05</span> <span class="token number">82</span> <span class="token number">03</span> <span class="token number">08</span> <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点2 IN（中断传输，8字节包大小，轮询间隔1ms）</span>
-<span class="token number">07</span> <span class="token number">05</span> <span class="token number">02</span> <span class="token number">03</span> <span class="token number">08</span> <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点2 OUT（中断传输，8字节包大小，轮询间隔1ms）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-接口1（Interface-1）"><a href="#2-接口1（Interface-1）" class="headerlink" title="2. 接口1（Interface 1）"></a><strong>2. 接口1（Interface 1）</strong></h4><pre class="line-numbers language-none"><code class="language-none">09 04 01 00 02 03 00 00 00  // 接口描述符（Interface 1）
+09 21 00 02 00 01 22 5E 00  // HID描述符（HID 1.0，报告描述符长度94字节）
+07 05 82 03 08 00 01        // 端点2 IN（中断传输，8字节包大小，轮询间隔1ms）
+07 05 02 03 08 00 01        // 端点2 OUT（中断传输，8字节包大小，轮询间隔1ms）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>   <strong>3. 接口2（Interface 2）</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">09</span> <span class="token number">04</span> <span class="token number">02</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">03</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">00</span>  <span class="token comment">// 接口描述符（Interface 2）</span>
-<span class="token number">09</span> <span class="token number">21</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">00</span> <span class="token number">01</span> <span class="token number">22</span> <span class="token number">04</span> <span class="token number">02</span>  <span class="token comment">// HID描述符（HID 1.0，报告描述符长度516字节）</span>
-<span class="token number">07</span> <span class="token number">05</span> <span class="token number">83</span> <span class="token number">03</span> 3E <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点3 IN（中断传输，62字节包大小，轮询间隔1ms）</span>
-<span class="token number">07</span> <span class="token number">05</span> <span class="token number">03</span> <span class="token number">03</span> 3E <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点3 OUT（中断传输，62字节包大小，轮询间隔1ms）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3. 接口2（Interface 2）</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">09 04 02 00 02 03 00 00 00  // 接口描述符（Interface 2）
+09 21 00 02 00 01 22 04 02  // HID描述符（HID 1.0，报告描述符长度516字节）
+07 05 83 03 3E 00 01        // 端点3 IN（中断传输，62字节包大小，轮询间隔1ms）
+07 05 03 03 3E 00 01        // 端点3 OUT（中断传输，62字节包大小，轮询间隔1ms）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="五、字符串描述符"><a href="#五、字符串描述符" class="headerlink" title="五、字符串描述符"></a>五、字符串描述符</h2><p>   根据设备描述符的15、16、17字节的值，设备有描述厂商字符串的索引，描述产品字符串的索引，描述设备序列号字符串的索引，在枚举中，首先通过标准请求 80 06 02 03 09 04 04 00 获取设备的产品字符串描述符</p>
-<p>   <strong>APP的产品字符串描述符</strong></p>
-<p>   6a 03 43 00 44 00 2d 00 45 00 42 00 37 00 35 00 42 00 32 00 2d 00 43 00 2d 00 41 00 31 00 2d 00 46 00 2d 00 32 00 30 00 50 00 2c 00 37 00 35 00 20 00 32 00 30 00 20 00 34 00 38 00 30 0030 00 2d 00 44 00 38 00 34 00 35 00 2c 00 32 00 30 00 32 00 32 00 31 00 32 00 31 00 33 00 2d 00 32 00 31 00 30 00 30 00 35 00 31 00</p>
-<p>   <strong>APP的厂商字符串描述符</strong></p>
-<p>   24 03 54 00</p>
-<p>   <strong>APP的设备序列号字符串描述符</strong></p>
-<p>   16 03 44 00</p>
+<h2 id="五、字符串描述符"><a href="#五、字符串描述符" class="headerlink" title="五、字符串描述符"></a>五、字符串描述符</h2><p>根据设备描述符的15、16、17字节的值，设备有描述厂商字符串的索引，描述产品字符串的索引，描述设备序列号字符串的索引，在枚举中，首先通过标准请求 80 06 02 03 09 04 04 00 获取设备的产品字符串描述符</p>
+<p><strong>APP的产品字符串描述符</strong></p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">6a 03 43 00 44 00 2d 00 45 00 42 00 37 00 35 00 42 00 32 00 2d 00 43 00 2d 00 41 00 31 00 2d 00 46 00 2d 00 32 00 30 00 50 00 2c 00 37 00 35 00 20 00 32 00 30 00 20 00 34 00 38 00 30 0030 00 2d 00 44 00 38 00 34 00 35 00 2c 00 32 00 30 00 32 00 32 00 31 00 32 00 31 00 33 00 2d 00 32 00 31 00 30 00 30 00 35 00 31 00<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>APP的厂商字符串描述符</strong></p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">24 03 54 00<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>APP的设备序列号字符串描述符</strong></p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">16 03 44 00<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>   设备的完整字符串描述符是在用户访问USB设备信息时实时从设备上获取的，例如：查看设备管理器里的设备的属性时，主机会向设备发送三个获取字符串描述符的控制传输指令</p>
 <h2 id="六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网"><a href="#六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网" class="headerlink" title="六、HID报告描述符 HID 报表描述符/报告描述符 - USB中文网"></a>六、HID报告描述符 <a href="https://www.usbzh.com/article/detail-48.html">HID 报表描述符/报告描述符 - USB中文网</a></h2><p>   报表描述符用于描述USB HID与主机之间传输的数据的用途和数据格式的。通过报表描述符，USB主机可以区分出报告里的数据表的含义。报表描述符和<a href="https://www.usbzh.com/article/detail-104.html">设备描述符</a>、<a href="https://www.usbzh.com/article/detail-67.html">配置描述符</a>和字符串描述一样，都有一个固定的描述符类型ID,并且是通过<a href="https://www.usbzh.com/article/detail-15.html">GET_DESCRIPTOR</a>来获取的，只不过该请求发向的是USB设备的接口。</p>
 <p>   一个报表描述符可以多个数据格式，就如同一个我们可以将要传输的多种数据结构放在一个大的结构体中一样，不同的报表内容区分可以使用报告ID来识别。报告ID在报表描述符的最前端，即第一个字节。如果报描述符只包含一个报告，可以不设计报告ID.报告ID之后一般是实际的报告数据。</p>
@@ -4531,9 +4523,9 @@ Usage Minmum:用途的最小值
 Usage Maxmum:用途的最大值。
 </code></pre>
 <p>   <strong>产品HID报表描述符</strong></p>
-<pre class="line-numbers language-other" data-language="other"><code class="language-other">05 0d 09 04 a1 01 85 32 75 08 95 01 81 03 09 54 15 00 26 80 00 81 02 09 22 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 75 08 95 05 81 01 05 0d 85 07 09 55 15 00 26 80 00 b1 02 c0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">05 0d 09 04 a1 01 85 32 75 08 95 01 81 03 09 54 15 00 26 80 00 81 02 09 22 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 75 08 95 05 81 01 05 0d 85 07 09 55 15 00 26 80 00 b1 02 c0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-other" data-language="other"><code class="language-other">05 01 09 02  a1 01 09 01  a1 00 85 01  05 09 19 01  29 03 15 00  25 01 95 03  75 01 81 02  95 01 75 05 81 03 05 01  09 30 09 31  15 00 26 ff  7f 35 00 46  ff 7f 75 10  95 02 81 02  05 0d 09 33  15 00 26 ff 00 35 00 46  ff 00 75 08  95 01 81 02  05 01 09 38  15 81 25 7f  35 81 45 7f  95 01 81 06  c0 c0  
+<pre class="line-numbers language-none"><code class="language-none">05 01 09 02  a1 01 09 01  a1 00 85 01  05 09 19 01  29 03 15 00  25 01 95 03  75 01 81 02  95 01 75 05 81 03 05 01  09 30 09 31  15 00 26 ff  7f 35 00 46  ff 7f 75 10  95 02 81 02  05 0d 09 33  15 00 26 ff 00 35 00 46  ff 00 75 08  95 01 81 02  05 01 09 38  15 81 25 7f  35 81 45 7f  95 01 81 06  c0 c0  
 0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
 0x09, 0x02,        // Usage (Mouse)
 0xA1, 0x01,        // Collection (Application)
