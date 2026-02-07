@@ -3951,15 +3951,140 @@ void I2C_Delay(void)
   <entry>
     <title>USB学习笔记</title>
     <url>/2025/03/20/obsidian-vault/kai-fa/usb-xue-xi-bi-ji/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="USB学习笔记"><a href="#USB学习笔记" class="headerlink" title="USB学习笔记"></a>USB学习笔记</h1><h2 id="一、USB基础内容"><a href="#一、USB基础内容" class="headerlink" title="一、USB基础内容"></a>一、USB基础内容</h2><h4 id="USB分类"><a href="#USB分类" class="headerlink" title="USB分类"></a>USB分类</h4><p>没写</p>
-<h2 id="二、标准请求-USB-标准请求-USB中文网"><a href="#二、标准请求-USB-标准请求-USB中文网" class="headerlink" title="二、标准请求   USB 标准请求 - USB中文网"></a>二、标准请求   <a href="https://www.usbzh.com/article/detail-417.html">USB 标准请求 - USB中文网</a></h2><ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="USB学习笔记"><a href="#USB学习笔记" class="headerlink" title="USB学习笔记"></a>USB学习笔记</h1><h2 id="一、USB基础内容"><a href="#一、USB基础内容" class="headerlink" title="一、USB基础内容"></a>一、USB基础内容</h2><h3 id="USB简介"><a href="#USB简介" class="headerlink" title="USB简介"></a>USB简介</h3><p>USB（Universal Serial Bus，通用串行总线）是一种外部总线标准，用于规范计算机与外部设备的连接和通信。自1996年推出以来，已成为个人计算机和移动设备中最常用的接口标准。</p>
+<p>主要特点：</p>
+<ul>
+<li><strong>热插拔</strong>：可以在不关闭系统的情况下连接或断开设备。</li>
+<li><strong>即插即用</strong>：系统自动检测并配置设备，无需手动设置。</li>
+<li><strong>总线供电</strong>：许多USB设备可直接从总线获取电源，无需额外电源。</li>
+<li><strong>高扩展性</strong>：通过USB集线器可连接多达127个设备。</li>
+</ul>
+<h3 id="USB分类"><a href="#USB分类" class="headerlink" title="USB分类"></a>USB分类</h3><p>USB可根据传输速率、接口形态和功能用途进行分类。</p>
+<h4 id="按传输速率（版本）"><a href="#按传输速率（版本）" class="headerlink" title="按传输速率（版本）"></a>按传输速率（版本）</h4><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>推出时间</th>
+<th>理论速率</th>
+<th>别名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>USB 1.0</td>
+<td>1996</td>
+<td>1.5 Mbps</td>
+<td>Low‑Speed</td>
+</tr>
+<tr>
+<td>USB 1.1</td>
+<td>1998</td>
+<td>12 Mbps</td>
+<td>Full‑Speed</td>
+</tr>
+<tr>
+<td>USB 2.0</td>
+<td>2000</td>
+<td>480 Mbps</td>
+<td>High‑Speed</td>
+</tr>
+<tr>
+<td>USB 3.0</td>
+<td>2008</td>
+<td>5 Gbps</td>
+<td>SuperSpeed</td>
+</tr>
+<tr>
+<td>USB 3.1</td>
+<td>2013</td>
+<td>10 Gbps</td>
+<td>SuperSpeed+</td>
+</tr>
+<tr>
+<td>USB 3.2</td>
+<td>2017</td>
+<td>20 Gbps</td>
+<td>SuperSpeed+ 2×2</td>
+</tr>
+<tr>
+<td>USB4</td>
+<td>2019</td>
+<td>40 Gbps</td>
+<td>基于 Thunderbolt 3</td>
+</tr>
+</tbody></table>
+<h4 id="按接口形态"><a href="#按接口形态" class="headerlink" title="按接口形态"></a>按接口形态</h4><ul>
+<li><strong>Type‑A</strong>：标准主机端接口，常见于电脑、充电器。</li>
+<li><strong>Type‑B</strong>：设备端接口，常用于打印机、扫描仪。</li>
+<li><strong>Mini‑USB</strong>：旧式移动设备接口，已逐渐被淘汰。</li>
+<li><strong>Micro‑USB</strong>：安卓手机、平板等设备的常用接口。</li>
+<li><strong>Type‑C</strong>：正反可插、支持高速数据传输和高功率充电的新一代接口。</li>
+</ul>
+<h4 id="按功能用途"><a href="#按功能用途" class="headerlink" title="按功能用途"></a>按功能用途</h4><ul>
+<li><strong>充电端口</strong>：仅提供电力，无数据功能。</li>
+<li><strong>数据端口</strong>：支持数据传输，也可供电。</li>
+<li><strong>OTG（On‑The‑Go）</strong>：允许移动设备作为主机连接其他USB设备。</li>
+</ul>
+<h3 id="USB物理接口"><a href="#USB物理接口" class="headerlink" title="USB物理接口"></a>USB物理接口</h3><p>USB接口由四根基础线缆组成：</p>
+<ul>
+<li><strong>VBUS</strong>（+5V电源）</li>
+<li>**D+**（数据正）</li>
+<li><strong>D−</strong>（数据负）</li>
+<li><strong>GND</strong>（地）</li>
+</ul>
+<p>高速版本（USB 3.0及以上）额外增加多对差分信号线。</p>
+<h3 id="USB传输类型"><a href="#USB传输类型" class="headerlink" title="USB传输类型"></a>USB传输类型</h3><p>USB协议定义了四种传输类型，以适应不同数据流的需求：</p>
+<table>
+<thead>
+<tr>
+<th>传输类型</th>
+<th>方向性</th>
+<th>数据保证</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>控制传输</strong></td>
+<td>双向（主机发起）</td>
+<td>可靠</td>
+<td>设备枚举、配置命令</td>
+</tr>
+<tr>
+<td><strong>中断传输</strong></td>
+<td>单向或双向</td>
+<td>保证延迟</td>
+<td>键盘、鼠标等HID设备</td>
+</tr>
+<tr>
+<td><strong>批量传输</strong></td>
+<td>单向或双向</td>
+<td>可靠，无延迟保证</td>
+<td>大容量存储、打印机</td>
+</tr>
+<tr>
+<td><strong>同步传输</strong></td>
+<td>单向或双向</td>
+<td>保证带宽，不保证数据完整性</td>
+<td>音频、视频流</td>
+</tr>
+</tbody></table>
+<h3 id="USB拓扑结构"><a href="#USB拓扑结构" class="headerlink" title="USB拓扑结构"></a>USB拓扑结构</h3><p>USB采用树状拓扑，最多支持7层（包括根层）。每台主机只有一个<strong>根集线器</strong>（Root Hub），可连接外部集线器或设备。每个集线器可向下扩展多个端口，最多连接127个设备。</p>
+<p><strong>关键概念</strong>：</p>
+<ul>
+<li><strong>主机（Host）</strong>：控制总线，发起所有传输。</li>
+<li><strong>设备（Device）</strong>：接受主机命令并返回数据。</li>
+<li><strong>集线器（Hub）</strong>：扩展端口数量，中继信号。</li>
+</ul>
+<h2 id="二、标准请求"><a href="#二、标准请求" class="headerlink" title="二、标准请求"></a>二、标准请求</h2><p><a href="https://www.usbzh.com/article/detail-417.html">USB 标准请求 - USB中文网</a></p>
+<ul>
 <li>USB定义了8个字节的标准请求，通过这些请求，可以对设备的状态进行更改或对设备进行枚举。</li>
 <li>USB的标准请求的数据传输方式都是<a href="https://www.usbzh.com/article/detail-55.html">控制传输</a>方式，所以使用的端点是设备的默认端点0。</li>
 <li>USB这8个字节的的控制请求不包括传输过程中的数据，但包括了控制请求的数据长度。当数据长度为不为0时，设备或主机向对方传输相应长的数据。这些数据有可能是设备返回给主机的回应数据，也可能是主机发给设备的控制参数。</li>
 <li>USB标准请求的个字节分为5个部分，其变量分别定义为： 1字节的bm<a href="https://www.usbzh.com/article/detail-1120.html">Request</a>Type,1 字节的bReqest,2字节的wValue,2字节的wIndex和2字节的wLength.</li>
 </ul>
 <p>例如获取设备描述符的标准请求：</p>
-<p><code>CTL    80 06 00 01  00 00 12 00  GET DESCRIPTOR  08:56:12.278</code></p>
+<blockquote>
+<p>CTL    80 06 00 01  00 00 12 00  GET DESCRIPTOR  08:56:12.278</p>
+</blockquote>
 <p>其中80是bm<a href="https://www.usbzh.com/article/detail-1120.html">Request</a>Type，06是bRequest，00 02是wValue，00 00是请求索引参数，09 00是期望GET数据长度</p>
 <p>80意味着该请求是标准请求，接收方是设备，数据传输方向是设备到主机；</p>
 <p>06意味着是GET_DESCRIPTOR</p>
@@ -3973,50 +4098,50 @@ void I2C_Delay(void)
 <li>设置接口的标准请求：21 0a 00 00 00 00 00 00</li>
 <li>获取报告描述符标准请求：81 06 00 22 00 00 6E 00 (wValue[8:15] Desc Type: (HID Report))<a href="https://www.usbzh.com/article/detail-1340.html">HID设备标准请求GetDescriptor之获取报告描述符 - USB中文网</a></li>
 </ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/*
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*
  * USB 控制传输-请求类型 联合体 (对应USB规范9.3节)
  * 用于描述USB请求的特性，使用位域和联合体实现单字节的多模式访问
  */</span>
-typedef union _BM_REQUEST_TYPE <span class="token punctuation">{</span>
-    struct _BM <span class="token punctuation">{</span>                <span class="token comment">// 位域结构体 (总长度8bit)</span>
-        <span class="token constant">UCHAR</span> <span class="token literal-property property">Recipient</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">;</span>      <span class="token comment">// 请求接收方 (0000=设备, 0001=接口, 0010=端点, 0011=其他)</span>
-        <span class="token constant">UCHAR</span> <span class="token literal-property property">Reserved</span><span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">;</span>      <span class="token comment">// 保留位（必须设为0）</span>
-        <span class="token constant">UCHAR</span> <span class="token literal-property property">Type</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">;</span>           <span class="token comment">// 请求类型  (0000=标准, 0001=类, 0010=厂商, 0011=保留)</span>
-        <span class="token constant">UCHAR</span> <span class="token literal-property property">Dir</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment">// 数据传输方向 (0=主机到设备，1=设备到主机)</span>
-#ifdef __cplusplus              <span class="token comment">// C++兼容性处理：结构体名称作用域不同</span>
+<span class="token keyword">typedef</span> <span class="token keyword">union</span> _BM_REQUEST_TYPE <span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> <span class="token class-name">_BM</span> <span class="token punctuation">{</span>                <span class="token comment">// 位域结构体 (总长度8bit)</span>
+        UCHAR Recipient<span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">;</span>      <span class="token comment">// 请求接收方 (0000=设备, 0001=接口, 0010=端点, 0011=其他)</span>
+        UCHAR Reserved<span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">;</span>      <span class="token comment">// 保留位（必须设为0）</span>
+        UCHAR Type<span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">;</span>           <span class="token comment">// 请求类型  (0000=标准, 0001=类, 0010=厂商, 0011=保留)</span>
+        UCHAR Dir<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment">// 数据传输方向 (0=主机到设备，1=设备到主机)</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">__cplusplus              </span><span class="token comment">// C++兼容性处理：结构体名称作用域不同</span></span>
         <span class="token punctuation">}</span> s<span class="token punctuation">;</span>
-#<span class="token keyword">else</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
         <span class="token punctuation">}</span><span class="token punctuation">;</span>
-#endif
-    <span class="token constant">UCHAR</span> <span class="token constant">B</span><span class="token punctuation">;</span>                    <span class="token comment">// 完整的字节值（可通过此字段直接读写整个字节）</span>
-<span class="token punctuation">}</span> <span class="token constant">BM_REQUEST_TYPE</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token constant">PBM_REQUEST_TYPE</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+    UCHAR B<span class="token punctuation">;</span>                    <span class="token comment">// 完整的字节值（可通过此字段直接读写整个字节）</span>
+<span class="token punctuation">}</span> BM_REQUEST_TYPE<span class="token punctuation">,</span> <span class="token operator">*</span>PBM_REQUEST_TYPE<span class="token punctuation">;</span>
 
 <span class="token comment">/*
  * USB 默认管道设置包结构 (USB规范第9章定义的控制传输数据结构)
  * 用于构建USB控制传输的Setup阶段数据包（8字节固定长度）
  */</span>
-typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET <span class="token punctuation">{</span>
-    <span class="token constant">BM_REQUEST_TYPE</span> bmRequestType<span class="token punctuation">;</span> <span class="token comment">// 请求特性（包含方向/类型/接收方）</span>
-    <span class="token constant">UCHAR</span> bRequest<span class="token punctuation">;</span>               <span class="token comment">// 具体请求代码（如GET_DESCRIPTOR=0x06）</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_USB_DEFAULT_PIPE_SETUP_PACKET</span> <span class="token punctuation">{</span>
+    BM_REQUEST_TYPE bmRequestType<span class="token punctuation">;</span> <span class="token comment">// 请求特性（包含方向/类型/接收方）</span>
+    UCHAR bRequest<span class="token punctuation">;</span>               <span class="token comment">// 具体请求代码（如GET_DESCRIPTOR=0x06）</span>
     
-    union _wValue <span class="token punctuation">{</span>                <span class="token comment">// 请求参数（根据请求不同含义不同）</span>
-        struct <span class="token punctuation">{</span>                   <span class="token comment">// 分解为两个字节的布局</span>
-            <span class="token constant">UCHAR</span> LowByte<span class="token punctuation">;</span>         <span class="token comment">// 低位字节（LSB）</span>
-            <span class="token constant">UCHAR</span> HiByte<span class="token punctuation">;</span>          <span class="token comment">// 高位字节（MSB）</span>
+    <span class="token keyword">union</span> _wValue <span class="token punctuation">{</span>                <span class="token comment">// 请求参数（根据请求不同含义不同）</span>
+        <span class="token keyword">struct</span> <span class="token punctuation">{</span>                   <span class="token comment">// 分解为两个字节的布局</span>
+            UCHAR LowByte<span class="token punctuation">;</span>         <span class="token comment">// 低位字节（LSB）</span>
+            UCHAR HiByte<span class="token punctuation">;</span>          <span class="token comment">// 高位字节（MSB）</span>
         <span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token constant">USHORT</span> <span class="token constant">W</span><span class="token punctuation">;</span>                  <span class="token comment">// 完整的16位值（可直接存取）</span>
+        USHORT W<span class="token punctuation">;</span>                  <span class="token comment">// 完整的16位值（可直接存取）</span>
     <span class="token punctuation">}</span> wValue<span class="token punctuation">;</span>
     
-    union _wIndex <span class="token punctuation">{</span>                <span class="token comment">// 请求索引参数（通常用于指定接口/端点号）</span>
-        struct <span class="token punctuation">{</span>
-            <span class="token constant">UCHAR</span> LowByte<span class="token punctuation">;</span>         <span class="token comment">// 低位字节（如接口号）</span>
-            <span class="token constant">UCHAR</span> HiByte<span class="token punctuation">;</span>          <span class="token comment">// 高位字节（通常为0）</span>
+    <span class="token keyword">union</span> _wIndex <span class="token punctuation">{</span>                <span class="token comment">// 请求索引参数（通常用于指定接口/端点号）</span>
+        <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            UCHAR LowByte<span class="token punctuation">;</span>         <span class="token comment">// 低位字节（如接口号）</span>
+            UCHAR HiByte<span class="token punctuation">;</span>          <span class="token comment">// 高位字节（通常为0）</span>
         <span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token constant">USHORT</span> <span class="token constant">W</span><span class="token punctuation">;</span>                  <span class="token comment">// 完整的16位值</span>
+        USHORT W<span class="token punctuation">;</span>                  <span class="token comment">// 完整的16位值</span>
     <span class="token punctuation">}</span> wIndex<span class="token punctuation">;</span>
     
-    <span class="token constant">USHORT</span> wLength<span class="token punctuation">;</span>                <span class="token comment">// 请求期望传输的数据长度（DATA阶段）</span>
-<span class="token punctuation">}</span> <span class="token constant">USB_DEFAULT_PIPE_SETUP_PACKET</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token constant">PUSB_DEFAULT_PIPE_SETUP_PACKET</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    USHORT wLength<span class="token punctuation">;</span>                <span class="token comment">// 请求期望传输的数据长度（DATA阶段）</span>
+<span class="token punctuation">}</span> USB_DEFAULT_PIPE_SETUP_PACKET<span class="token punctuation">,</span> <span class="token operator">*</span>PUSB_DEFAULT_PIPE_SETUP_PACKET<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <table>
 <thead>
@@ -4173,7 +4298,7 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET <span class="token punctuation">{<
 </ul>
 <hr>
 <p>   <strong>产品boot设备描述符分析</strong></p>
-<p>   <code>IN     12 01 00 02  00 00 00 40  f7 1f 0a 0f  00 01 01 02 03 01     08:56:12.278</code></p>
+<p>   IN     12 01 00 02  00 00 00 40  f7 1f 0a 0f  00 01 01 02 03 01     08:56:12.278</p>
 <ul>
 <li>12：设备描述符的字节数大小，为0x12</li>
 <li>01：描述符类型编</li>
@@ -4217,115 +4342,104 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET <span class="token punctuation">{<
 </ul>
 <p>   标准请求：80 06 00 02 00 00 09 00，从设备获取描述符，描述符类型由第四位字节02确定，为配置描述符，第一次获取数据长度为9，获取到配置描述符：09 02 29 00 01 01 00 a0 32后，根据数据中的第三位字节29确定描述符总长度为0X29，第二次发送获取描述符标准请求：80 06 00 02 00 00 29 00，与第一次不同的只有数据长度字节变为了29，获取到整个配置描述符。</p>
 <p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/USB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ab83a37b-8fa8-44bb-9cb0-4a3b0687703d" alt="image.png"></p>
-<h3 id="boot配置描述符"><a href="#boot配置描述符" class="headerlink" title="boot配置描述符"></a>boot配置描述符</h3><pre><code>  `IN 09 02 29 00 01 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 2e 00 07 05 81 03 40 00 01 07 05 01 03 40 00 01`
+<h3 id="boot配置描述符"><a href="#boot配置描述符" class="headerlink" title="boot配置描述符"></a>boot配置描述符</h3><blockquote>
+<p>IN 09 02 29 00 01 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 2e 00 07 05 81 03 40 00 01 07 05 01 03 40 00 01</p>
+</blockquote>
+<h4 id="1、配置描述符（Configuration-Descriptor）"><a href="#1、配置描述符（Configuration-Descriptor）" class="headerlink" title="1、配置描述符（Configuration Descriptor）"></a><strong>1、配置描述符（Configuration Descriptor）</strong></h4><pre><code>  09&nbsp;02&nbsp;29&nbsp;00&nbsp;01&nbsp;01&nbsp;00&nbsp;a0&nbsp;32
 
-  #### **1、配置描述符（Configuration Descriptor）**
+  09：描述符长度（9 字节）
 
-  09&nbsp;02&nbsp;29&nbsp;00&nbsp;01&nbsp;01&nbsp;00&nbsp;a0&nbsp;32
+  02：描述符类型（配置描述符）
 
-  `09`：描述符长度（9 字节）
+  29 00：总长度（41 字节）
 
-  `02`：描述符类型（配置描述符）
+  01：配置数量
 
-  `29 00`：总长度（41 字节）
+  01：配置值
 
-  `01`：配置数量
+  00：配置字符串索引
 
-  `01`：配置值
+  a0：属性（总线供电，远程唤醒）
 
-  `00`：配置字符串索引
+  32：最大电流（100 mA）
+</code></pre>
+<h4 id="2、接口描述符（Interface-Descriptor）"><a href="#2、接口描述符（Interface-Descriptor）" class="headerlink" title="2、接口描述符（Interface Descriptor）"></a><strong>2、接口描述符（Interface Descriptor）</strong></h4><pre><code>  09&nbsp;04&nbsp;00&nbsp;00&nbsp;02&nbsp;03&nbsp;00&nbsp;00&nbsp;00
 
-  `a0`：属性（总线供电，远程唤醒）
+  09：描述符长度（9 字节）
 
-  `32`：最大电流（100 mA）
+  04：描述符类型（接口描述符）
 
-  #### **2、接口描述符（Interface Descriptor）**
+  00：接口编号
 
-  09&nbsp;04&nbsp;00&nbsp;00&nbsp;02&nbsp;03&nbsp;00&nbsp;00&nbsp;00
+  00：备用设置
 
-  `09`：描述符长度（9 字节）
+  02：端点数量
 
-  `04`：描述符类型（接口描述符）
+  03：接口类（HID）
 
-  `00`：接口编号
+  00：接口子类
 
-  `00`：备用设置
+  00：接口协议
 
-  `02`：端点数量
+  00：接口字符串索引
+</code></pre>
+<h4 id="3、HID-描述符（HID-Descriptor）"><a href="#3、HID-描述符（HID-Descriptor）" class="headerlink" title="3、HID 描述符（HID Descriptor）"></a><strong>3、HID 描述符（HID Descriptor）</strong></h4><pre><code>  09&nbsp;21&nbsp;00&nbsp;02&nbsp;00&nbsp;01&nbsp;22&nbsp;2e&nbsp;00
 
-  `03`：接口类（HID）
+  09：描述符长度（9 字节）
 
-  `00`：接口子类
+  21：描述符类型（HID 描述符）
 
-  `00`：接口协议
+  00 02：HID 版本（2.00）
 
-  `00`：接口字符串索引
+  00：国家代码
 
-  #### **3、HID 描述符（HID Descriptor）**
+  01：类描述符数量
 
-  09&nbsp;21&nbsp;00&nbsp;02&nbsp;00&nbsp;01&nbsp;22&nbsp;2e&nbsp;00
+  22：描述符类型（报告描述符）
 
-  `09`：描述符长度（9 字节）
+  2e 00：描述符长度（46 字节）
+</code></pre>
+<h4 id="4、端点描述符（Endpoint-Descriptor）"><a href="#4、端点描述符（Endpoint-Descriptor）" class="headerlink" title="4、端点描述符（Endpoint Descriptor）"></a><strong>4、端点描述符（Endpoint Descriptor）</strong></h4><pre><code>  07&nbsp;05&nbsp;81&nbsp;03&nbsp;40&nbsp;00&nbsp;01
 
-  `21`：描述符类型（HID 描述符）
+  07：描述符长度（7 字节）
 
-  `00 02`：HID 版本（2.00）
+  05：描述符类型（端点描述符）
 
-  `00`：国家代码
+  81：端点地址（IN 端点 1）
 
-  `01`：类描述符数量
+  03：属性（中断传输）
 
-  `22`：描述符类型（报告描述符）
+  40 00：最大包大小（64 字节）
 
-  `2e 00`：描述符长度（46 字节）
+  01：轮询间隔（1 毫秒）
+</code></pre>
+<h4 id="5、端点描述符（Endpoint-Descriptor）"><a href="#5、端点描述符（Endpoint-Descriptor）" class="headerlink" title="5、端点描述符（Endpoint Descriptor）"></a><strong>5、端点描述符（Endpoint Descriptor）</strong></h4><pre><code>  07&nbsp;05&nbsp;01&nbsp;03&nbsp;40&nbsp;00&nbsp;01
 
-  #### **4、端点描述符（Endpoint Descriptor）**
+  07：描述符长度（7 字节）
 
-  07&nbsp;05&nbsp;81&nbsp;03&nbsp;40&nbsp;00&nbsp;01
+  05：描述符类型（端点描述符）
 
-  `07`：描述符长度（7 字节）
+  01：端点地址（OUT 端点 1）
 
-  `05`：描述符类型（端点描述符）
+  03：属性（中断传输）
 
-  `81`：端点地址（IN 端点 1）
+  40 00：最大包大小（64 字节）
 
-  `03`：属性（中断传输）
-
-  `40 00`：最大包大小（64 字节）
-
-  `01`：轮询间隔（1 毫秒）
-
-  #### **5、端点描述符（Endpoint Descriptor）**
-
-  07&nbsp;05&nbsp;01&nbsp;03&nbsp;40&nbsp;00&nbsp;01
-
-  `07`：描述符长度（7 字节）
-
-  `05`：描述符类型（端点描述符）
-
-  `01`：端点地址（OUT 端点 1）
-
-  `03`：属性（中断传输）
-
-  `40 00`：最大包大小（64 字节）
-
-  `01`：轮询间隔（1 毫秒）
+  01：轮询间隔（1 毫秒）
 
   总结：
 
-  `09 02 29 00 01 01 00 a0 32` 是配置描述符。
+  09 02 29 00 01 01 00 a0 32 是配置描述符。
 
-  `09 04 00 00 02 03 00 00 00` 是接口描述符。
+  09 04 00 00 02 03 00 00 00 是接口描述符。
 
-  `09 21 00 02 00 01 22 2e 00` 是 HID 描述符。
+  09 21 00 02 00 01 22 2e 00 是 HID 描述符。
 
-  `07 05 81 03 40 00 01` 是 IN 端点描述符。
+  07 05 81 03 40 00 01 是 IN 端点描述符。
 
-  `07 05 01 03 40 00 01` 是 OUT 端点描述符
-
-### 产品的配置描述符
-
-  `IN 09 02 69 00 03 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 c6 02 07 05 81 03 40 00 01 07 05 01 03 40 00 01 09 04   01 00 02 03 00 00 00 09 21 00 02 00 01 22 5e 00 07 05 82 03 08 00 01 07 05 02 03 08 00 01 09 04 02 00 02 03 00 00 00 09 21 00 02 00   01 22 04 02 07 05 83 03 3e 00 01 07 05 03 03 3e 00 01`
+  07 05 01 03 40 00 01 是 OUT 端点描述符
+</code></pre>
+<h3 id="产品的配置描述符"><a href="#产品的配置描述符" class="headerlink" title="产品的配置描述符"></a>产品的配置描述符</h3><pre><code>IN 09 02 69 00 03 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 c6 02 07 05 81 03 40 00 01 07 05 01 03 40 00 01 09 04   01 00 02 03 00 00 00 09 21 00 02 00 01 22 5e 00 07 05 82 03 08 00 01 07 05 02 03 08 00 01 09 04 02 00 02 03 00 00 00 09 21 00 02 00   01 22 04 02 07 05 83 03 3e 00 01 07 05 03 03 3e 00 01
 </code></pre>
 <pre class="line-numbers language-other" data-language="other"><code class="language-other">Configuration Descriptor (9字节)
   |- Interface 0 Descriptor (9字节)
@@ -4341,16 +4455,16 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET <span class="token punctuation">{<
   |   |- Endpoint 3 IN (7字节)
   |   |- Endpoint 3 OUT (7字节)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="配置描述符（Configuration-Descriptor）"><a href="#配置描述符（Configuration-Descriptor）" class="headerlink" title="配置描述符（Configuration Descriptor）"></a><strong>配置描述符（Configuration Descriptor）</strong></h4><pre><code>  `09&nbsp;02&nbsp;69&nbsp;00&nbsp;03&nbsp;01&nbsp;00&nbsp;a0&nbsp;32`
+<h4 id="配置描述符（Configuration-Descriptor）"><a href="#配置描述符（Configuration-Descriptor）" class="headerlink" title="配置描述符（Configuration Descriptor）"></a><strong>配置描述符（Configuration Descriptor）</strong></h4><pre><code>  09&nbsp;02&nbsp;69&nbsp;00&nbsp;03&nbsp;01&nbsp;00&nbsp;a0&nbsp;32
 
-  - `09`：描述符长度（9 字节）
-  - `02`：描述符类型（配置描述符）
-  - `69 00`：总长度（105 字节）
-  - `03`：配置三个接口
-  - `01`：配置值
-  - `00`：配置字符串索引
-  - `a0`：属性（总线供电，远程唤醒）
-  - `32`：最大电流（100 mA）
+  - 09：描述符长度（9 字节）
+  - 02：描述符类型（配置描述符）
+  - 69 00：总长度（105 字节）
+  - 03：配置三个接口
+  - 01：配置值
+  - 00：配置字符串索引
+  - a0：属性（总线供电，远程唤醒）
+  - 32：最大电流（100 mA）
 </code></pre>
 <h4 id="1-接口0（Interface-0）"><a href="#1-接口0（Interface-0）" class="headerlink" title="1. 接口0（Interface 0）"></a><strong>1. 接口0（Interface 0）</strong></h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">09</span> <span class="token number">04</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">03</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">00</span>  <span class="token comment">// 接口描述符（Interface 0）</span>
 <span class="token number">09</span> <span class="token number">21</span> <span class="token number">00</span> <span class="token number">02</span> <span class="token number">00</span> <span class="token number">01</span> <span class="token number">22</span> <span class="token constant">C6</span> <span class="token number">02</span>  <span class="token comment">// HID描述符（HID 1.0，报告描述符长度710字节）</span>
@@ -4368,149 +4482,58 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET <span class="token punctuation">{<
 <span class="token number">07</span> <span class="token number">05</span> <span class="token number">83</span> <span class="token number">03</span> 3E <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点3 IN（中断传输，62字节包大小，轮询间隔1ms）</span>
 <span class="token number">07</span> <span class="token number">05</span> <span class="token number">03</span> <span class="token number">03</span> 3E <span class="token number">00</span> <span class="token number">01</span>        <span class="token comment">// 端点3 OUT（中断传输，62字节包大小，轮询间隔1ms）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="五、字符串描述符"><a href="#五、字符串描述符" class="headerlink" title="五、字符串描述符"></a>五、字符串描述符</h2><p>   根据设备描述符的15、16、17字节的值，设备有描述厂商字符串的索引，描述产品字符串的索引，描述设备序列号字符串的索引，在枚举中，首先通过标准请求 <code>80 06 02 03 09 04 04 00</code> 获取设备的产品字符串描述符</p>
+<h2 id="五、字符串描述符"><a href="#五、字符串描述符" class="headerlink" title="五、字符串描述符"></a>五、字符串描述符</h2><p>   根据设备描述符的15、16、17字节的值，设备有描述厂商字符串的索引，描述产品字符串的索引，描述设备序列号字符串的索引，在枚举中，首先通过标准请求 80 06 02 03 09 04 04 00 获取设备的产品字符串描述符</p>
 <p>   <strong>APP的产品字符串描述符</strong></p>
-<p>   <code>6a 03 43 00 44 00 2d 00 45 00 42 00 37 00 35 00 42 00 32 00 2d 00 43 00 2d 00 41 00 31 00 2d 00 46 00 2d 00 32 00 30 00 50 00 2c 00 37 00 35 00 20 00 32 00 30 00 20 00 34 00 38 00 30 0030 00 2d 00 44 00 38 00 34 00 35 00 2c 00 32 00 30 00 32 00 32 00 31 00 32 00 31 00 33 00 2d 00 32 00 31 00 30 00 30 00 35 00 31 00</code></p>
+<p>   6a 03 43 00 44 00 2d 00 45 00 42 00 37 00 35 00 42 00 32 00 2d 00 43 00 2d 00 41 00 31 00 2d 00 46 00 2d 00 32 00 30 00 50 00 2c 00 37 00 35 00 20 00 32 00 30 00 20 00 34 00 38 00 30 0030 00 2d 00 44 00 38 00 34 00 35 00 2c 00 32 00 30 00 32 00 32 00 31 00 32 00 31 00 33 00 2d 00 32 00 31 00 30 00 30 00 35 00 31 00</p>
 <p>   <strong>APP的厂商字符串描述符</strong></p>
-<p>   <code>24 03 54 00</code></p>
+<p>   24 03 54 00</p>
 <p>   <strong>APP的设备序列号字符串描述符</strong></p>
-<p>   <code>16 03 44 00</code></p>
+<p>   16 03 44 00</p>
 <p>   设备的完整字符串描述符是在用户访问USB设备信息时实时从设备上获取的，例如：查看设备管理器里的设备的属性时，主机会向设备发送三个获取字符串描述符的控制传输指令</p>
 <h2 id="六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网"><a href="#六、HID报告描述符-HID-报表描述符-报告描述符-USB中文网" class="headerlink" title="六、HID报告描述符 HID 报表描述符/报告描述符 - USB中文网"></a>六、HID报告描述符 <a href="https://www.usbzh.com/article/detail-48.html">HID 报表描述符/报告描述符 - USB中文网</a></h2><p>   报表描述符用于描述USB HID与主机之间传输的数据的用途和数据格式的。通过报表描述符，USB主机可以区分出报告里的数据表的含义。报表描述符和<a href="https://www.usbzh.com/article/detail-104.html">设备描述符</a>、<a href="https://www.usbzh.com/article/detail-67.html">配置描述符</a>和字符串描述一样，都有一个固定的描述符类型ID,并且是通过<a href="https://www.usbzh.com/article/detail-15.html">GET_DESCRIPTOR</a>来获取的，只不过该请求发向的是USB设备的接口。</p>
 <p>   一个报表描述符可以多个数据格式，就如同一个我们可以将要传输的多种数据结构放在一个大的结构体中一样，不同的报表内容区分可以使用报告ID来识别。报告ID在报表描述符的最前端，即第一个字节。如果报描述符只包含一个报告，可以不设计报告ID.报告ID之后一般是实际的报告数据。</p>
 <p>   HID报告描述符由一系列项目（Items）组成，这些项目定义了设备如何向主机报告数据以及主机如何发送数据到设备。每个项目可以属于Main、Global或Local类型。Main项目用于定义集合的开始和结束，Global项目设置全局状态（如用途页、逻辑最小值等），而Local项目定义特定字段的属性（如用途、最小值等）。</p>
-<h3 id="主项目-main-item"><a href="#主项目-main-item" class="headerlink" title="主项目(main item)"></a>主项目(main item)</h3><blockquote>
-<p>主项目用于定义数据域或者用于进行数据域的分组。</p>
-</blockquote>
-<blockquote>
-<p>主项目其有5个，分别为Input,Output,Feature,Collection和End Collection.</p>
-</blockquote>
-<h4 id="Collection和End-Collection项目"><a href="#Collection和End-Collection项目" class="headerlink" title="Collection和End Collection项目"></a>Collection和End Collection项目</h4><blockquote>
-<p>Collection共有四种，分别为Physical,Application,Logical和Vendoer Defined.</p>
-</blockquote>
-<blockquote>
-<p>所有的报表类型都可以使用Collection与 End Collection项目来将相关的Main类型项目组成群组。这两个项目分别用于打开和关闭集合。所有在Collection与End Collection项目之间的Main类型项目都是 Collection的一部分。</p>
-</blockquote>
-<blockquote>
-<p>Collection有3种类型：Application、Physical与Logical，其项目的数据项的值分别为1、0和2。厂商也可以自己定义Collection类型，数据项的值为80h~FFh保留给厂商定义。End Collection项目无数据项。</p>
-</blockquote>
-<blockquote>
-<p>Application Collection包含有共同用途的项目或执行单一功能的项目。例如键盘的开机描述符将键盘的按键与LED指示灯数据集合成一个Application Collection。所有的报表必须在一个Application Collection内。</p>
-</blockquote>
-<blockquote>
-<p>Physical Collection包含在一个单一几何点上的数据项目，可以将每个位置的数据集合成一个 Physical Collection。在设备报告多个传感器的位置的时候，使用Physical Collection指明不同的数据来自不同的传感器。</p>
-</blockquote>
-<blockquote>
-<p>Logical Collection形成一个数据结构，包含由 Collection所连结的不同类型的项目。例如数据缓冲区的内容以及缓冲区内字节数目的计数。</p>
-</blockquote>
-<blockquote>
-<ol>
-<li><code>COLLCTION(Physical) A1 00</code></li>
-<li><code>COLLCTION(Application) A1 01</code></li>
-<li><code>COLLCTION(Logical) A1 02</code></li>
-<li><code>COLLCTION(Vendoer Defined.) A1 xx</code></li>
-</ol>
-</blockquote>
-<blockquote>
-<p>Blockquote</p>
-</blockquote>
-<blockquote>
-<p>End Collection是Collection条目的结束标志：</p>
-</blockquote>
-<blockquote>
-<ol>
-<li><code>END_COLLECTION C0</code></li>
-</ol>
-</blockquote>
-<h3 id="全局项目（Global-Item）"><a href="#全局项目（Global-Item）" class="headerlink" title="全局项目（Global Item）"></a>全局项目（Global Item）</h3><blockquote>
-<p>全局项目主要用来选择用途页(Usage Page)，定义数据域的长度(Report Count)、数量（Report Size）、报告ID(ReportId)等。</p>
-</blockquote>
-<blockquote>
-<p>全局项目描述对后续的所有项目有效，除非遇到有新的全局项目。</p>
-</blockquote>
-<blockquote>
-<p>常见的全局项目有：</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>Usage Page(用途页)</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Logical Minimum(逻辑最小值)</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Logical Maxinum(逻辑最大值)</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Physical Minimum（物理最小值）</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Physical Maximum（物理最大值）</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Report Size：数据域大小,表示每个数据域有多少位</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Report Count:数据域有多少个数据域。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>ReportId:报告ID</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="局部项目（local-Item）"><a href="#局部项目（local-Item）" class="headerlink" title="局部项目（local Item）"></a>局部项目（local Item）</h3><blockquote>
-<p>局部项目用于定义数据的控制特性，如该数据域的用途，用途的最大值，用途的最小值等。</p>
-</blockquote>
-<blockquote>
-<p>局部项目只在局部有效，遇到一个主条目后，它的失效。</p>
-</blockquote>
-<blockquote>
-<p>常见的局部数据项目有：</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>Usage :用途</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Usage Minmum:用途的最小值</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Usage Maxmum:用途的最大值。</p>
-</blockquote>
-</li>
-</ul>
-<p>   <strong>产品HID报表描述符</strong></p>
-<pre class="line-numbers language-other" data-language="other"><code class="language-other">05 0d 09 04 a1 01 85 32 75 08 95 01 81 03 09 54 15 00 26 80 00 81 02 09 22 a1 02 09 42 15 00 25
-01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75
-10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09
-48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02
-09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75
-01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55
-0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26
-14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f
-55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95
-01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65
-11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b
-46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f
-65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81
-02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15
-00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14
-4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14
-15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 75 08 95 05 81 01 05 0d 85 07 09 55 15 00 26
-80 00 b1 02 c0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="主项目-main-item"><a href="#主项目-main-item" class="headerlink" title="主项目(main item)"></a>主项目(main item)</h3><pre><code>   主项目用于定义数据域或者用于进行数据域的分组。
 
-<pre class="line-numbers language-other" data-language="other"><code class="language-other">05 01 09 02  a1 01 09 01  a1 00 85 01  05 09 19 01  29 03 15 00  25 01 95 03  75 01 81 02  95 01 75 05 
-81 03 05 01  09 30 09 31  15 00 26 ff  7f 35 00 46  ff 7f 75 10  95 02 81 02  05 0d 09 33  15 00 26 ff 
-00 35 00 46  ff 00 75 08  95 01 81 02  05 01 09 38  15 81 25 7f  35 81 45 7f  95 01 81 06  c0 c0  
+   主项目其有5个，分别为Input,Output,Feature,Collection和End Collection.
+</code></pre>
+<h4 id="Collection和End-Collection项目"><a href="#Collection和End-Collection项目" class="headerlink" title="Collection和End Collection项目"></a>Collection和End Collection项目</h4><p>   Collection共有四种，分别为Physical,Application,Logical和Vendoer Defined.</p>
+<p>   所有的报表类型都可以使用Collection与 End Collection项目来将相关的Main类型项目组成群组。这两个项目分别用于打开和关闭集合。所有在Collection与End Collection项目之间的Main类型项目都是 Collection的一部分。</p>
+<p>   Collection有3种类型：Application、Physical与Logical，其项目的数据项的值分别为1、0和2。厂商也可以自己定义Collection类型，数据项的值为80h~FFh保留给厂商定义。End Collection项目无数据项。</p>
+<p>   Application Collection包含有共同用途的项目或执行单一功能的项目。例如键盘的开机描述符将键盘的按键与LED指示灯数据集合成一个Application Collection。所有的报表必须在一个Application Collection内。</p>
+<p>   Physical Collection包含在一个单一几何点上的数据项目，可以将每个位置的数据集合成一个 Physical Collection。在设备报告多个传感器的位置的时候，使用Physical Collection指明不同的数据来自不同的传感器。</p>
+<p>   Logical Collection形成一个数据结构，包含由 Collection所连结的不同类型的项目。例如数据缓冲区的内容以及缓冲区内字节数目的计数。</p>
+<pre><code>1.  COLLCTION(Physical) A1 00
+2.  COLLCTION(Application) A1 01
+3.  COLLCTION(Logical) A1 02
+4.  COLLCTION(Vendoer Defined.) A1 xx
+
+End Collection是Collection条目的结束标志：
+END_COLLECTION C0
+</code></pre>
+<h3 id="全局项目（Global-Item）"><a href="#全局项目（Global-Item）" class="headerlink" title="全局项目（Global Item）"></a>全局项目（Global Item）</h3><p>全局项目主要用来选择用途页(Usage Page)，定义数据域的长度(Report Count)、数量（Report Size）、报告ID(ReportId)等。</p>
+<p>全局项目描述对后续的所有项目有效，除非遇到有新的全局项目。</p>
+<p>常见的全局项目有：</p>
+<pre><code>Usage Page(用途页)
+Logical Minimum(逻辑最小值)
+Logical Maxinum(逻辑最大值)
+Physical Minimum（物理最小值）
+Physical Maximum（物理最大值）
+Report Size：数据域大小,表示每个数据域有多少位
+Report Count:数据域有多少个数据域。
+ReportId:报告ID
+</code></pre>
+<h3 id="局部项目（local-Item）"><a href="#局部项目（local-Item）" class="headerlink" title="局部项目（local Item）"></a>局部项目（local Item）</h3><p>局部项目用于定义数据的控制特性，如该数据域的用途，用途的最大值，用途的最小值等。</p>
+<p>局部项目只在局部有效，遇到一个主条目后，它的失效。</p>
+<p> 常见的局部数据项目有：</p>
+<pre><code>Usage :用途
+Usage Minmum:用途的最小值
+Usage Maxmum:用途的最大值。
+</code></pre>
+<p>   <strong>产品HID报表描述符</strong></p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">05 0d 09 04 a1 01 85 32 75 08 95 01 81 03 09 54 15 00 26 80 00 81 02 09 22 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 75 08 95 05 81 01 05 0d 85 07 09 55 15 00 26 80 00 b1 02 c0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">05 01 09 02  a1 01 09 01  a1 00 85 01  05 09 19 01  29 03 15 00  25 01 95 03  75 01 81 02  95 01 75 05 81 03 05 01  09 30 09 31  15 00 26 ff  7f 35 00 46  ff 7f 75 10  95 02 81 02  05 0d 09 33  15 00 26 ff 00 35 00 46  ff 00 75 08  95 01 81 02  05 01 09 38  15 81 25 7f  35 81 45 7f  95 01 81 06  c0 c0  
 0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
 0x09, 0x02,        // Usage (Mouse)
 0xA1, 0x01,        // Collection (Application)
@@ -4556,9 +4579,9 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET <span class="token punctuation">{<
 0x95, 0x01,        //     Report Count (1)
 0x81, 0x06,        //     Input (Data,Var,Rel,No Wrap,Linear,Preferred State,No Null Position)
 0xC0,              //   End Collection
-0xC0,              // End Collection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0xC0,              // End Collection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h2><p> <strong>问题1：为什么两次获取的配置描述符不同，第一次有三个interface，第二次只有一个</strong></p>
+<h2 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h2><p><strong>问题1：为什么两次获取的配置描述符不同，第一次有三个interface，第二次只有一个</strong></p>
 <blockquote>
 <p>产品是复合类设备，在设备表里有一个USB port下有三个接口(interface)，每个接口下有数量不定的设备，第一次的配置描述符里有产品的配置描述符+三个接口的接口描述符，每个接口均是HID设备，所以有HID描述符，以及接口下的端点描述符；第二次获取的配置描述符是主机对产品三个接口下的接口1的枚举产生的配置描述符，只包含接口一的配置描述符。</p>
 </blockquote>
