@@ -4421,15 +4421,15 @@ a0：属性（总线供电，远程唤醒）
 40 00：最大包大小（64 字节）
 01：轮询间隔（1 毫秒）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre><code>  总结：
-  09 02 29 00 01 01 00 a0 32 是配置描述符。
-  09 04 00 00 02 03 00 00 00 是接口描述符。
-  09 21 00 02 00 01 22 2e 00 是 HID 描述符。
-  07 05 81 03 40 00 01 是 IN 端点描述符。
-  07 05 01 03 40 00 01 是 OUT 端点描述符
-</code></pre>
-<h3 id="产品的配置描述符"><a href="#产品的配置描述符" class="headerlink" title="产品的配置描述符"></a>产品的配置描述符</h3><pre><code>  IN 09 02 69 00 03 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 c6 02 07 05 81 03 40 00 01 07 05 01 03 40 00 01 09 04   01 00 02 03 00 00 00 09 21 00 02 00 01 22 5e 00 07 05 82 03 08 00 01 07 05 02 03 08 00 01 09 04 02 00 02 03 00 00 00 09 21 00 02 00   01 22 04 02 07 05 83 03 3e 00 01 07 05 03 03 3e 00 01
-</code></pre>
+<p><strong>总结：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">09 02 29 00 01 01 00 a0 32 是配置描述符。
+09 04 00 00 02 03 00 00 00 是接口描述符。
+09 21 00 02 00 01 22 2e 00 是 HID 描述符。
+07 05 81 03 40 00 01 是 IN 端点描述符。
+07 05 01 03 40 00 01 是 OUT 端点描述符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="产品的配置描述符"><a href="#产品的配置描述符" class="headerlink" title="产品的配置描述符"></a>产品的配置描述符</h3><pre class="line-numbers language-none"><code class="language-none">IN 09 02 69 00 03 01 00 a0 32 09 04 00 00 02 03 00 00 00 09 21 00 02 00 01 22 c6 02 07 05 81 03 40 00 01 07 05 01 03 40 00 01 09 04   01 00 02 03 00 00 00 09 21 00 02 00 01 22 5e 00 07 05 82 03 08 00 01 07 05 02 03 08 00 01 09 04 02 00 02 03 00 00 00 09 21 00 02 00   01 22 04 02 07 05 83 03 3e 00 01 07 05 03 03 3e 00 01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">Configuration Descriptor (9字节)
   |- Interface 0 Descriptor (9字节)
   |   |- HID Descriptor (9字节)
@@ -4495,34 +4495,31 @@ a0：属性（总线供电，远程唤醒）
 <p>   Application Collection包含有共同用途的项目或执行单一功能的项目。例如键盘的开机描述符将键盘的按键与LED指示灯数据集合成一个Application Collection。所有的报表必须在一个Application Collection内。</p>
 <p>   Physical Collection包含在一个单一几何点上的数据项目，可以将每个位置的数据集合成一个 Physical Collection。在设备报告多个传感器的位置的时候，使用Physical Collection指明不同的数据来自不同的传感器。</p>
 <p>   Logical Collection形成一个数据结构，包含由 Collection所连结的不同类型的项目。例如数据缓冲区的内容以及缓冲区内字节数目的计数。</p>
-<pre><code>1.  COLLCTION(Physical) A1 00
+<pre class="line-numbers language-none"><code class="language-none">1.  COLLCTION(Physical) A1 00
 2.  COLLCTION(Application) A1 01
 3.  COLLCTION(Logical) A1 02
 4.  COLLCTION(Vendoer Defined.) A1 xx
 
 End Collection是Collection条目的结束标志：
-END_COLLECTION C0
-</code></pre>
+END_COLLECTION C0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="全局项目（Global-Item）"><a href="#全局项目（Global-Item）" class="headerlink" title="全局项目（Global Item）"></a>全局项目（Global Item）</h3><p>全局项目主要用来选择用途页(Usage Page)，定义数据域的长度(Report Count)、数量（Report Size）、报告ID(ReportId)等。</p>
 <p>全局项目描述对后续的所有项目有效，除非遇到有新的全局项目。</p>
 <p>常见的全局项目有：</p>
-<pre><code>Usage Page(用途页)
+<pre class="line-numbers language-none"><code class="language-none">Usage Page(用途页)
 Logical Minimum(逻辑最小值)
 Logical Maxinum(逻辑最大值)
 Physical Minimum（物理最小值）
 Physical Maximum（物理最大值）
 Report Size：数据域大小,表示每个数据域有多少位
 Report Count:数据域有多少个数据域。
-ReportId:报告ID
-</code></pre>
+ReportId:报告ID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="局部项目（local-Item）"><a href="#局部项目（local-Item）" class="headerlink" title="局部项目（local Item）"></a>局部项目（local Item）</h3><p>局部项目用于定义数据的控制特性，如该数据域的用途，用途的最大值，用途的最小值等。</p>
 <p>局部项目只在局部有效，遇到一个主条目后，它的失效。</p>
-<p> 常见的局部数据项目有：</p>
-<pre><code>Usage :用途
+<p>常见的局部数据项目有：</p>
+<pre class="line-numbers language-none"><code class="language-none">Usage :用途
 Usage Minmum:用途的最小值
-Usage Maxmum:用途的最大值。
-</code></pre>
-<p>   <strong>产品HID报表描述符</strong></p>
+Usage Maxmum:用途的最大值。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>产品HID报表描述符</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">05 0d 09 04 a1 01 85 32 75 08 95 01 81 03 09 54 15 00 26 80 00 81 02 09 22 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 a1 02 09 42 15 00 25 01 75 01 95 01 81 02 09 32 81 02 09 47 81 02 95 05 81 03 09 51 75 08 95 01 25 7f 81 02 05 01 75 10 55 0e 65 11 15 00 35 00 09 30 26 ff 7f 46 14 4b 81 02 09 31 26 ff 7f 46 e4 2a 81 02 05 0d 09 48 26 14 4b 46 14 4b 81 02 09 49 26 e4 2a 46 e4 2a 81 02 09 30 55 00 65 00 15 00 26 ff 0f 81 02 09 3f 55 0f 65 14 15 00 27 00 00 01 00 35 00 47 a0 8c 00 00 81 02 c0 75 08 95 05 81 01 05 0d 85 07 09 55 15 00 26 80 00 b1 02 c0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-none"><code class="language-none">05 01 09 02  a1 01 09 01  a1 00 85 01  05 09 19 01  29 03 15 00  25 01 95 03  75 01 81 02  95 01 75 05 81 03 05 01  09 30 09 31  15 00 26 ff  7f 35 00 46  ff 7f 75 10  95 02 81 02  05 0d 09 33  15 00 26 ff 00 35 00 46  ff 00 75 08  95 01 81 02  05 01 09 38  15 81 25 7f  35 81 45 7f  95 01 81 06  c0 c0  
