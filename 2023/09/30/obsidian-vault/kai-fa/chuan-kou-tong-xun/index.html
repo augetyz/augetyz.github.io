@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="串口通讯, Sparkle.now">
-    <meta name="description" content="串口通讯串口通讯 (Serial Communication) 是一种设备间非常常用的串行通讯方式，它简单便捷，并且大部分电子设备都支持该通讯方式，在调试设备时经常使用该通讯方式输出调试信息。
+    <meta name="description" content="
+串口通讯串口通讯 (Serial Communication) 是一种设备间非常常用的串行通讯方式，它简单便捷，并且大部分电子设备都支持该通讯方式，在调试设备时经常使用该通讯方式输出调试信息。
 串口协议物理层：TTL电平：
-逻辑1：2.4V">
+逻辑1：2.4">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -492,14 +493,15 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778044589.png" alt="引入"></h2><h1 id="串口通讯"><a href="#串口通讯" class="headerlink" title="串口通讯"></a>串口通讯</h1><p>串口通讯 (Serial Communication) 是一种设备间非常常用的串行通讯方式，它简单便捷，并且大部分电子设备都支持该通讯方式，在调试设备时经常使用该通讯方式输出调试信息。</p>
+                                <hr>
+<h1 id="串口通讯"><a href="#串口通讯" class="headerlink" title="串口通讯"></a>串口通讯</h1><p>串口通讯 (Serial Communication) 是一种设备间非常常用的串行通讯方式，它简单便捷，并且大部分电子设备都支持该通讯方式，在调试设备时经常使用该通讯方式输出调试信息。</p>
 <p>串口协议物理层：<br>TTL电平：</p>
 <p>逻辑1：2.4V ~ 5V<br>逻辑0： 0   ~ 0.5V</p>
 <p>RS232电平：</p>
 <p>逻辑1：-15V ~ -3V<br>逻辑0： +3  ~ +15V</p>
 <p>串口协议协议层：</p>
 <p>串口通讯的数据包由发送设备通过自身的 TXD 接口传输到接收设备的 RXD 接口。在串口通讯的协议层中，规定了数据包的内容，它由启始位、主体数据、校验位以及停止位组成，通讯双方<br>的数据包格式要约定一致才能正常收发数据。<br>本节主要讲解的是串口异步通讯，异步通讯中由于没有时钟信号 ，所以两个通讯设备之间需要约定好波特率，即每个码元的长度，以便对信号进行解码，下图为串口数据包的基本组成，其中用虚线分开的每一格就是代表一个码元。常见的波特率为9600，115200 等。</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778084226.png" alt="串口数据包"></h2><p>STM32 芯片具有多个 USART 外设用于串口通讯，它是 Universal Synchronous Asynchronous Receiver<br>and Transmitter 的缩写，即通用同步异步收发器可以灵活地与外部设备进行全双工数据交换。有别于 USART，它还有具有 UART 外设 (Universal Asynchronous Receiver and Transmitter)，它是在USART 基础上裁剪掉了同步通信功能，只有异步通信。简单区分同步和异步就是看通信时需不<br>需要对外提供时钟输出，我们平时用的串口通信基本都是 UART。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778084226.png" alt="串口数据包"></h2><p>STM32 芯片具有多个 USART 外设用于串口通讯，它是 Universal Synchronous Asynchronous Receiver<br>and Transmitter 的缩写，即通用同步异步收发器可以灵活地与外部设备进行全双工数据交换。有别于 USART，它还有具有 UART 外设 (Universal Asynchronous Receiver and Transmitter)，它是在USART 基础上裁剪掉了同步通信功能，只有异步通信。简单区分同步和异步就是看通信时需不<br>需要对外提供时钟输出，我们平时用的串口通信基本都是 UART。</p>
 <h3 id="功能引脚"><a href="#功能引脚" class="headerlink" title="功能引脚"></a>功能引脚</h3><p>TX -&gt;   发送数据输出引脚。</p>
 <p>RX -&gt;   接收数据输入引脚。</p>
 <p>nRTS -&gt; 请求以发送 (Request To Send)， n 表示低电平有效。如果使能 RTS 流控制，当 USART 接收器准备好接收新数据时就会将 nRTS 变成低电平；当接收寄存器已满时， nRTS 将被设置为高电平。该引脚只适用于硬件流控制。</p>
