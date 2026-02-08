@@ -5129,7 +5129,406 @@ systemctl start fan-control<span aria-hidden="true" class="line-numbers-rows"><s
 <h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><p>用的ddnsto，免费，无需多言。</p>
 <p>在官网控制台注册，获取Tokens，<a href="https://web.ddnsto.com/app/#/home">官网</a></p>
 <p>命令行运行，绑定Token，在官网就能看到设备在线了，免费的，每七天登陆一下续杯即可。<br><code>sh -c "$(curl -sSL http://fw.koolcenter.com/binary/ddnsto/linux/install_ddnsto_linux.sh)"</code></p>
-<h1 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h1><h2 id="自用图床搭建"><a href="#自用图床搭建" class="headerlink" title="自用图床搭建"></a>自用图床搭建</h2><p>这里主要是用的RustFS，兼容S3协议，用nginx反代，用内网透传映射端口，实现图床功能。</p>
+<h1 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h1><p>在AppStore中添加更多软件源：</p>
+<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/915032c75a9e4654165793f70d36cc62.png" alt="image"></p>
+<h2 id="自用图床搭建"><a href="#自用图床搭建" class="headerlink" title="自用图床搭建"></a>自用图床搭建</h2><p>这里主要是用的RustFS，兼容S3协议，用nginx反代，用内网透传映射端口，实现图床功能。</p>
+<ul>
+<li><p>在AppStore中搜索RustFS，如果添加了bigbear的第三方软件源，是可以搜索到的，点击安装。</p>
+</li>
+<li><p>打开设置，修改网络端口和WebUI的端口，这个Docker有俩端口要设置，一个是访问存储的端口，我这里设置为9000，一个是Console控制台，也就是WebUI的，我这里设置为9001，然后还需要设置下面的环境变量的值，才能通过网络访问。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/329600ce235ae3db69479a38bd77f8d9.png" alt="image"></p>
+</li>
+<li><p>在设置界面，还有俩环境变量的值，RUSTFS_ACCESS_KEY和RUSTFS_SECRET_KEY，可以理解为这个就是登陆的用户名和密码，也是管理员，打开WebUI，使用这俩值登录。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/6d9492023107525a3d6022fe369e3c0b.png" alt="image"></p>
+</li>
+<li><p>创建存储桶<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/52470e8d143846e10d4519173d3257d2.png" alt="image"></p>
+</li>
+<li><p>编辑存储桶访问策略为公有<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/a84c95fa0ed34a6a5794b0ee4ced9875.png" alt="image"></p>
+</li>
+<li><p>可以在存储桶中上传一张图片，然后访问地址是<code>http://IP:9000/test/image.png</code>，注意这里端口是另一个，不是WebUI的端口，后续可以通过Nginx做代理，然后用DDNSTO内网透传绑定代理的端口，实现远程访问。</p>
+</li>
+<li><p>该存储桶，有两种上传图片的方式，查看官方文档，有很详细的操作教程：<br>1. 使用API上传和下载资源，我没有使用这种方式，我用这个RustFS，就是奔着S3协议兼容来的。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/5002842d9b1479c716193bbb411462e8.png" alt="image"></p>
+<ol start="2">
+<li>使用S3协议上传和下载，这里根据你使用的场景，有多种工具可以支持，我这里使用Obsidian的插件<code>S3 Image Uploader</code>，可以支持内网透传后的EndPoint，支持度很高，好用。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/85ec28ecb5984e72f74137bfb18084e5.png" alt="image"><br>另外，官方还提供了很多其他S3协议的Demo，也可以说是SDK，我这里测试使用Python+Boto3实现了基本的上传功能，局域网内通过内网IP上传很轻松，没有问题，使用内网透传的域名的话，就会出现SDK上传成功，返回URL正常，但通过<code>curl -I 图片链接</code> 测试就是404，而且存储桶内上传是失败的，没有图片，这个概率很大，十次大概有8次，使用内网就没事。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/801c78ffb108f461714b40e5db8c194c.png" alt="image"></li>
+</ol>
+</li>
+<li><p>使用python + Boto3实现的图片上传功能，S3协议需要的访问信息，在config.yaml中定义。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#!/usr/bin/env python3</span>
+<span class="token triple-quoted-string string">"""
+S3图片上传脚本
+读取config.yaml中的S3配置，上传本地图片到S3服务器，返回图片链接。
+模块化设计，可单独测试运行，也可被其他脚本调用。
+"""</span>
+
+<span class="token keyword">import</span> yaml
+<span class="token keyword">import</span> boto3
+<span class="token keyword">from</span> botocore<span class="token punctuation">.</span>client <span class="token keyword">import</span> Config
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> mimetypes
+<span class="token keyword">import</span> argparse
+<span class="token keyword">from</span> pathlib <span class="token keyword">import</span> Path
+<span class="token keyword">from</span> typing <span class="token keyword">import</span> Optional<span class="token punctuation">,</span> Dict<span class="token punctuation">,</span> Any
+<span class="token keyword">import</span> logging
+<span class="token keyword">import</span> time
+
+logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level<span class="token operator">=</span>logging<span class="token punctuation">.</span>WARNING<span class="token punctuation">)</span>
+logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">S3Uploader</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""S3上传器类，封装boto3操作"""</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config_path<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"config.yaml"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        初始化S3上传器，从配置文件加载配置
+
+        :param config_path: 配置文件路径，默认为config.yaml
+        """</span>
+        self<span class="token punctuation">.</span>config <span class="token operator">=</span> self<span class="token punctuation">.</span>load_config<span class="token punctuation">(</span>config_path<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>s3_client <span class="token operator">=</span> self<span class="token punctuation">.</span>create_s3_client<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">load_config</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config_path<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Dict<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Any<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        加载YAML配置文件
+
+        :param config_path: 配置文件路径
+        :return: 配置字典
+        """</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>config_path<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+                config <span class="token operator">=</span> yaml<span class="token punctuation">.</span>safe_load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+        <span class="token keyword">except</span> FileNotFoundError<span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"配置文件 </span><span class="token interpolation"><span class="token punctuation">{</span>config_path<span class="token punctuation">}</span></span><span class="token string"> 不存在"</span></span><span class="token punctuation">)</span>
+            sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> yaml<span class="token punctuation">.</span>YAMLError <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"配置文件解析错误: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+            sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 提取S3配置部分</span>
+        s3_config <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'s3'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        required_keys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'endpoint'</span><span class="token punctuation">,</span> <span class="token string">'access_key'</span><span class="token punctuation">,</span> <span class="token string">'secret_key'</span><span class="token punctuation">,</span> <span class="token string">'bucket'</span><span class="token punctuation">]</span>
+        missing <span class="token operator">=</span> <span class="token punctuation">[</span>k <span class="token keyword">for</span> k <span class="token keyword">in</span> required_keys <span class="token keyword">if</span> k <span class="token keyword">not</span> <span class="token keyword">in</span> s3_config<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> missing<span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"配置文件中缺少必要的S3配置项: </span><span class="token interpolation"><span class="token punctuation">{</span>missing<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+            sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 处理前缀（可选）</span>
+        s3_config<span class="token punctuation">[</span><span class="token string">'prefix'</span><span class="token punctuation">]</span> <span class="token operator">=</span> s3_config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'prefix'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+        <span class="token comment"># 区域（可选）</span>
+        s3_config<span class="token punctuation">[</span><span class="token string">'region'</span><span class="token punctuation">]</span> <span class="token operator">=</span> s3_config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'region'</span><span class="token punctuation">,</span> <span class="token string">'auto'</span><span class="token punctuation">)</span>
+        <span class="token comment"># 路径样式（可选，默认为True，除非端点是Amazon AWS）</span>
+        s3_config<span class="token punctuation">[</span><span class="token string">'force_path_style'</span><span class="token punctuation">]</span> <span class="token operator">=</span> s3_config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'force_path_style'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+        <span class="token comment"># 自定义图片URL路径（可选）</span>
+        s3_config<span class="token punctuation">[</span><span class="token string">'image_url_path'</span><span class="token punctuation">]</span> <span class="token operator">=</span> s3_config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'image_url_path'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> s3_config
+
+    <span class="token keyword">def</span> <span class="token function">create_s3_client</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        创建S3客户端，支持自定义端点
+        """</span>
+        endpoint <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'endpoint'</span><span class="token punctuation">]</span>
+        access_key <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'access_key'</span><span class="token punctuation">]</span>
+        secret_key <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'secret_key'</span><span class="token punctuation">]</span>
+        region <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'region'</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 判断是否使用路径样式：优先使用配置，否则根据端点推断</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'force_path_style'</span><span class="token punctuation">)</span> <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            force_path_style <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'force_path_style'</span><span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 如果端点包含.amazonaws.com，则使用虚拟主机样式，否则使用路径样式</span>
+            force_path_style <span class="token operator">=</span> <span class="token keyword">not</span> <span class="token punctuation">(</span><span class="token string">'amazonaws.com'</span> <span class="token keyword">in</span> endpoint<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 配置boto3使用自定义端点</span>
+        session <span class="token operator">=</span> boto3<span class="token punctuation">.</span>session<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        s3_client <span class="token operator">=</span> session<span class="token punctuation">.</span>client<span class="token punctuation">(</span>
+            <span class="token string">'s3'</span><span class="token punctuation">,</span>
+            endpoint_url<span class="token operator">=</span>endpoint<span class="token punctuation">,</span>
+            aws_access_key_id<span class="token operator">=</span>access_key<span class="token punctuation">,</span>
+            aws_secret_access_key<span class="token operator">=</span>secret_key<span class="token punctuation">,</span>
+            region_name<span class="token operator">=</span>region<span class="token punctuation">,</span>
+            config<span class="token operator">=</span>Config<span class="token punctuation">(</span>
+                signature_version<span class="token operator">=</span><span class="token string">'s3v4'</span><span class="token punctuation">,</span>
+                s3<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'addressing_style'</span><span class="token punctuation">:</span> <span class="token string">'path'</span> <span class="token keyword">if</span> force_path_style <span class="token keyword">else</span> <span class="token string">'auto'</span><span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+        <span class="token keyword">return</span> s3_client
+
+    <span class="token keyword">def</span> <span class="token function">upload_image</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        local_path<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span>
+        target_dir<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        custom_filename<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        上传本地图片到S3，返回可访问的URL
+
+        :param local_path: 本地图片文件路径
+        :param target_dir: 目标目录（在S3存储桶中的路径），默认为空
+        :param custom_filename: 自定义文件名，如果为None则使用本地文件名
+        :return: 图片的公开访问URL
+        """</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>local_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> FileNotFoundError<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"文件不存在: </span><span class="token interpolation"><span class="token punctuation">{</span>local_path<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 确定S3对象键</span>
+        <span class="token keyword">if</span> custom_filename<span class="token punctuation">:</span>
+            filename <span class="token operator">=</span> custom_filename
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            filename <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>local_path<span class="token punctuation">)</span>
+
+        <span class="token comment"># 拼接前缀和目标目录</span>
+        prefix <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'prefix'</span><span class="token punctuation">]</span>
+        target_dir <span class="token operator">=</span> target_dir<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> prefix <span class="token keyword">and</span> target_dir<span class="token punctuation">:</span>
+            object_key <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>prefix<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>target_dir<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>filename<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+        <span class="token keyword">elif</span> prefix<span class="token punctuation">:</span>
+            object_key <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>prefix<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>filename<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+        <span class="token keyword">elif</span> target_dir<span class="token punctuation">:</span>
+            object_key <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>target_dir<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>filename<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            object_key <span class="token operator">=</span> filename
+
+        <span class="token comment"># 猜测内容类型</span>
+        content_type<span class="token punctuation">,</span> _ <span class="token operator">=</span> mimetypes<span class="token punctuation">.</span>guess_type<span class="token punctuation">(</span>local_path<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> content_type <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            content_type <span class="token operator">=</span> <span class="token string">'application/octet-stream'</span>
+
+        bucket <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'bucket'</span><span class="token punctuation">]</span>
+
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"上传 </span><span class="token interpolation"><span class="token punctuation">{</span>local_path<span class="token punctuation">}</span></span><span class="token string"> 到 </span><span class="token interpolation"><span class="token punctuation">{</span>bucket<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>object_key<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 整体重试配置：上传 + 验证</span>
+        max_total_retries <span class="token operator">=</span> <span class="token number">3</span>
+        verify_retry_count <span class="token operator">=</span> <span class="token number">3</span>
+        verify_retry_delay <span class="token operator">=</span> <span class="token number">5</span>  <span class="token comment"># 秒</span>
+        
+        <span class="token keyword">for</span> total_attempt <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> max_total_retries <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 尝试上传</span>
+            <span class="token keyword">try</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>s3_client<span class="token punctuation">.</span>upload_file<span class="token punctuation">(</span>
+                    local_path<span class="token punctuation">,</span>
+                    bucket<span class="token punctuation">,</span>
+                    object_key<span class="token punctuation">,</span>
+                    ExtraArgs<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'ContentType'</span><span class="token punctuation">:</span> content_type<span class="token punctuation">}</span>
+                <span class="token punctuation">)</span>
+            <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+                logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"上传失败，第</span><span class="token interpolation"><span class="token punctuation">{</span>total_attempt<span class="token punctuation">}</span></span><span class="token string">次尝试: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> total_attempt <span class="token operator">&lt;</span> max_total_retries<span class="token punctuation">:</span>
+                    wait_time <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">**</span> total_attempt
+                    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"等待 </span><span class="token interpolation"><span class="token punctuation">{</span>wait_time<span class="token punctuation">}</span></span><span class="token string"> 秒后重试上传..."</span></span><span class="token punctuation">)</span>
+                    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>wait_time<span class="token punctuation">)</span>
+                    <span class="token keyword">continue</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"上传失败，已达到最大重试次数"</span></span><span class="token punctuation">)</span>
+                    <span class="token keyword">raise</span>
+            
+            <span class="token comment"># 上传成功，尝试验证</span>
+            verified <span class="token operator">=</span> <span class="token boolean">False</span>
+            <span class="token keyword">for</span> verify_attempt <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> verify_retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">try</span><span class="token punctuation">:</span>
+                    self<span class="token punctuation">.</span>s3_client<span class="token punctuation">.</span>head_object<span class="token punctuation">(</span>Bucket<span class="token operator">=</span>bucket<span class="token punctuation">,</span> Key<span class="token operator">=</span>object_key<span class="token punctuation">)</span>
+                    verified <span class="token operator">=</span> <span class="token boolean">True</span>
+                    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"验证成功（第</span><span class="token interpolation"><span class="token punctuation">{</span>verify_attempt<span class="token punctuation">}</span></span><span class="token string">次尝试）"</span></span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span>
+                <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+                    logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"验证失败，第</span><span class="token interpolation"><span class="token punctuation">{</span>verify_attempt<span class="token punctuation">}</span></span><span class="token string">次尝试: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+                    <span class="token keyword">if</span> verify_attempt <span class="token operator">&lt;</span> verify_retry_count<span class="token punctuation">:</span>
+                        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"等待 </span><span class="token interpolation"><span class="token punctuation">{</span>verify_retry_delay<span class="token punctuation">}</span></span><span class="token string"> 秒后重试验证..."</span></span><span class="token punctuation">)</span>
+                        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>verify_retry_delay<span class="token punctuation">)</span>
+                    <span class="token keyword">else</span><span class="token punctuation">:</span>
+                        logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"验证失败，已达到最大重试次数，可能对象尚未立即可用"</span></span><span class="token punctuation">)</span>
+                        <span class="token comment"># 继续，可能仍可生成URL</span>
+                        <span class="token keyword">break</span>
+            
+            <span class="token keyword">if</span> verified<span class="token punctuation">:</span>
+                logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"上传并验证成功"</span></span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># 验证失败，可能是上传不完整，重试上传</span>
+                logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"验证未通过，将重试上传（第</span><span class="token interpolation"><span class="token punctuation">{</span>total_attempt<span class="token punctuation">}</span></span><span class="token string">次）"</span></span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> total_attempt <span class="token operator">&lt;</span> max_total_retries<span class="token punctuation">:</span>
+                    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+                    <span class="token keyword">continue</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"已达到最大重试次数，但仍未通过验证，但可能已上传成功，继续生成URL"</span></span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span>
+        
+        <span class="token comment"># 构建访问URL（假设为公开可访问）</span>
+        image_url_path <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'image_url_path'</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> image_url_path<span class="token punctuation">:</span>
+            <span class="token comment"># 使用自定义图片URL路径</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> image_url_path<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                image_url_path <span class="token operator">+=</span> <span class="token string">'/'</span>
+            url <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>image_url_path<span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">{</span>object_key<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 根据路径样式决定URL格式</span>
+            force_path_style <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'force_path_style'</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> force_path_style <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                <span class="token comment"># 根据端点推断</span>
+                force_path_style <span class="token operator">=</span> <span class="token keyword">not</span> <span class="token punctuation">(</span><span class="token string">'amazonaws.com'</span> <span class="token keyword">in</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'endpoint'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            endpoint <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'endpoint'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>rstrip<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> force_path_style<span class="token punctuation">:</span>
+                <span class="token comment"># 路径样式：endpoint/bucket/object_key</span>
+                url <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>endpoint<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>bucket<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>object_key<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># 虚拟主机样式：bucket.endpoint/object_key</span>
+                <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> urlparse<span class="token punctuation">,</span> urlunparse
+                parsed <span class="token operator">=</span> urlparse<span class="token punctuation">(</span>endpoint<span class="token punctuation">)</span>
+                <span class="token comment"># 将 bucket 插入到主机名前</span>
+                new_netloc <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>bucket<span class="token punctuation">}</span></span><span class="token string">.</span><span class="token interpolation"><span class="token punctuation">{</span>parsed<span class="token punctuation">.</span>netloc<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+                new_parsed <span class="token operator">=</span> parsed<span class="token punctuation">.</span>_replace<span class="token punctuation">(</span>netloc<span class="token operator">=</span>new_netloc<span class="token punctuation">)</span>
+                base_url <span class="token operator">=</span> urlunparse<span class="token punctuation">(</span>new_parsed<span class="token punctuation">)</span>
+                url <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>base_url<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>object_key<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"上传成功，URL: </span><span class="token interpolation"><span class="token punctuation">{</span>url<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> url
+
+    <span class="token keyword">def</span> <span class="token function">list_buckets</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""列出所有存储桶，用于测试连接"""</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            response <span class="token operator">=</span> self<span class="token punctuation">.</span>s3_client<span class="token punctuation">.</span>list_buckets<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            buckets <span class="token operator">=</span> <span class="token punctuation">[</span>b<span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> b <span class="token keyword">in</span> response<span class="token punctuation">[</span><span class="token string">'Buckets'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"可用存储桶: </span><span class="token interpolation"><span class="token punctuation">{</span>buckets<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> buckets
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"列出存储桶失败: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""命令行入口点"""</span>
+    parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">'上传本地图片到S3服务器'</span><span class="token punctuation">)</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'本地图片文件路径'</span><span class="token punctuation">)</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-d'</span><span class="token punctuation">,</span> <span class="token string">'--directory'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'S3目标目录（可选）'</span><span class="token punctuation">)</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'--config'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'config.yaml'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'配置文件路径（默认为config.yaml）'</span><span class="token punctuation">)</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-o'</span><span class="token punctuation">,</span> <span class="token string">'--output'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'自定义文件名（可选）'</span><span class="token punctuation">)</span>
+    args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    uploader <span class="token operator">=</span> S3Uploader<span class="token punctuation">(</span>args<span class="token punctuation">.</span>config<span class="token punctuation">)</span>
+    <span class="token comment"># 可选：测试连接</span>
+    <span class="token comment"># uploader.list_buckets()</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        url <span class="token operator">=</span> uploader<span class="token punctuation">.</span>upload_image<span class="token punctuation">(</span>args<span class="token punctuation">.</span>image<span class="token punctuation">,</span> args<span class="token punctuation">.</span>directory<span class="token punctuation">,</span> args<span class="token punctuation">.</span>output<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"上传过程中出错: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>       <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>到这里，图床的基本功能就已经实现了，已经可以在内网环境中使用了，但如果要给Blog或其他外网环境下使用的话，还需要实现内网透传和Nginx代理</p>
+</li>
+<li><p>在AppStore中下载Nginx代理，实际上也可以在命令行终端下载，不需要使用WebUI的话。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 更新软件源</span>
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+
+<span class="token comment"># 安装 Nginx</span>
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> nginx
+
+<span class="token comment"># 备份原始配置文件</span>
+<span class="token function">sudo</span> <span class="token function">cp</span> /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+
+<span class="token comment"># 将当前目录下的 nginx.conf 导入到系统目录</span>
+<span class="token function">sudo</span> <span class="token function">cp</span> nginx.conf /etc/nginx/nginx.conf
+
+<span class="token comment"># 检查 Nginx 配置语法</span>
+<span class="token function">sudo</span> nginx <span class="token parameter variable">-t</span>
+
+<span class="token comment"># 启动 Nginx</span>
+<span class="token function">sudo</span> systemctl start nginx
+
+<span class="token comment"># 重新加载配置（配置正确后执行）</span>
+<span class="token function">sudo</span> systemctl reload nginx
+
+<span class="token comment"># 设置开机自启</span>
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> nginx
+
+<span class="token comment"># 查看运行状态</span>
+<span class="token function">sudo</span> systemctl status nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>我这里用的Nginx.conf配置，是抄RustFS官方文档的，要多看文档<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/7bcae3c378aa2496b67ae4f25f94d717.png" alt="image"></p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">load_module</span> /usr/lib/nginx/modules/ngx_stream_module.so</span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">worker_processes</span> auto</span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span> <span class="token number">1024</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">accept_mutex</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">include</span>       mime.types</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">default_type</span>  application/octet-stream</span><span class="token punctuation">;</span>
+    <span class="token comment"># ---------- upstream 定义 ----------</span>
+    <span class="token directive"><span class="token keyword">upstream</span> rustfs</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">least_conn</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:9000</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token directive"><span class="token keyword">upstream</span> rustfs-console</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">least_conn</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:9001</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment"># ---------- RustFS 代理 ----------</span>
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">9004</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">listen</span>       [::]:9004</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  YOUR_DOMAIN</span><span class="token punctuation">;</span>
+        <span class="token comment"># 防盗链：只允许指定域名访问</span>
+        <span class="token directive"><span class="token keyword">valid_referers</span> none blocked sparkle-now.cn *.sparkle-now.cn</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$invalid_referer</span>)</span> <span class="token punctuation">{</span>
+                <span class="token directive"><span class="token keyword">return</span> <span class="token number">403</span></span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment"># 允许上传大文件</span>
+            <span class="token directive"><span class="token keyword">client_max_body_size</span> <span class="token number">0</span></span><span class="token punctuation">;</span>
+            <span class="token comment"># 禁用缓冲</span>
+            <span class="token directive"><span class="token keyword">proxy_buffering</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_request_buffering</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$http_host</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-Proto <span class="token variable">$scheme</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_connect_timeout</span> <span class="token number">300</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_http_version</span> 1.1</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">""</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">chunked_transfer_encoding</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+            <span class="token comment"># WebSocket 支持</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Upgrade <span class="token variable">$http_upgrade</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">"upgrade"</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://rustfs</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment"># ---------- RustFS 控制台代理 ----------</span>
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">9005</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">listen</span>       [::]:9005</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  YOUR_DOMAIN</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token comment"># 建议控制台加访问限制（IP 或 HTTP Auth），这里简单示例允许全部内网访问</span>
+            <span class="token directive"><span class="token keyword">allow</span> 127.0.0.1</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">allow</span> 192.168.0.0/16</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">client_max_body_size</span> <span class="token number">0</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_buffering</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_request_buffering</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$http_host</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-Proto <span class="token variable">$scheme</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_connect_timeout</span> <span class="token number">300</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_http_version</span> 1.1</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">""</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">chunked_transfer_encoding</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Upgrade <span class="token variable">$http_upgrade</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">"upgrade"</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://rustfs-console</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>然后使用内网透传绑定Nginx代理后的端口即可</p>
+</li>
+</ul>
+<h2 id="其他插件"><a href="#其他插件" class="headerlink" title="其他插件"></a>其他插件</h2><p>其他这些插件，都是娱乐用，AppStore有不少有意思的插件，可以部署着玩玩，后续有其他功能部署，也会在这里更新使用过程。</p>
 <hr>
 <p>下班……</p>
 ]]></content>
