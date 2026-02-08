@@ -5914,6 +5914,59 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
 <p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/916706b224ed059c03319c86d27aecdd.png" alt="image"></p>
 <p>硬汉哥的一图横扫ICache和DCache</p>
 <p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/33e13c9bbcba6a6d50581b71c0aafd48.png" alt="image"></p>
+<h2 id="6-DWT内核计数器-计算时间"><a href="#6-DWT内核计数器-计算时间" class="headerlink" title="6.DWT内核计数器 计算时间"></a>6.DWT内核计数器 计算时间</h2><p><strong>初始化DWT时钟</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 初始化DWT计数器</span>
+<span class="token keyword">void</span> <span class="token function">DWT_Init</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">void</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    CoreDebug<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">DEMCR</span> <span class="token operator">|=</span> CoreDebug_DEMCR_TRCENA_Msk<span class="token punctuation">;</span>  <span class="token comment">// 使能DWT外设</span>
+    <span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CYCCNT</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                                <span class="token comment">// 清零周期计数器</span>
+    <span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CTRL</span> <span class="token operator">|=</span> DWT_CTRL_CYCCNTENA_Msk<span class="token punctuation">;</span>            <span class="token comment">// 使能CYCCNT寄存器</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>使用</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Time_use<span class="token operator">=</span><span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CYCCNT</span><span class="token punctuation">;</span>
+<span class="token comment">/***Your Code***/</span>
+Time_use<span class="token operator">=</span><span class="token punctuation">(</span><span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CYCCNT</span><span class="token operator">-</span>Time_use<span class="token punctuation">)</span><span class="token operator">/</span>SystemCoreClock<span class="token operator">*</span><span class="token number">1000000</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7-STM32使用-Cordic-计算浮点三角函数"><a href="#7-STM32使用-Cordic-计算浮点三角函数" class="headerlink" title="7.STM32使用 Cordic 计算浮点三角函数"></a>7.STM32使用 Cordic 计算浮点三角函数</h2><p><strong>介绍</strong></p>
+<ul>
+<li>CORDIC的英文全称为Coordinate Rotation Digital Computer，即坐标转换数字计算机，通过不断旋转坐标最终接近达到计算结果</li>
+<li>这是“移位相加”的操作去计算各种函数的经典计算应用</li>
+<li>特点是开销小，计算快，广泛应用于各种计算领域</li>
+<li>能够提高实时计算三角函数、开平方等计算的速度</li>
+<li>和查表法对比，还是查表法快</li>
+</ul>
+<p><strong>使用</strong></p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">/* Define PI */
+#define PI 3.1415926536f
+/* Define Q31 */
+#define Q31 0x80000000
+/* Define Q31 to float unit in RADIAN = Q31/PI */
+#define RADIAN_Q31_f 683565275.6f
+
+/**
+ * @brief Calculate sin/cos value in float unit
+ * @param angle in (-π,π), sin/cos value out
+ * @retval None
+ */
+void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
+{
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_CORDICEN;  // Enable CORDIC Clock
+	/* Q31,two write, two read, sine calculate, 6 precision */
+	CORDIC-&gt;CSR = 0x00180061;
+	/* Write data into WDATA */
+	CORDIC-&gt;WDATA = (int32_t )(angle * RADIAN_Q31_f);
+	/* Modulus is m=1 */
+	CORDIC-&gt;WDATA = 0x7FFFFFFF;
+	/* Get sin value in float */
+	*sin = ((int32_t)CORDIC-&gt;RDATA)*1.0f/Q31;
+	/* Get cos value in float */
+	*cos = ((int32_t)CORDIC-&gt;RDATA)*1.0f/Q31;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>大佬测试的计算速度，测试平台应该是STM32G431</p>
+<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/4f900775cdd60db32ddb6ce7a71db5d9.png" alt="image"></p>
+<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/a5292d9b464b3cd23d8631ee2a289757.png" alt="image"></p>
 ]]></content>
       <categories>
         <category>嵌入式</category>
@@ -6761,6 +6814,110 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
       </categories>
       <tags>
         <tag>比赛</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将 OpenCV 处理后的视频通过http转发</title>
+    <url>/2026/02/02/obsidian-vault/kai-fa/jiang-opencv-chu-li-hou-de-shi-pin-tong-guo-http-zhuan-fa/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="将-OpenCV-处理后的视频通过http转发"><a href="#将-OpenCV-处理后的视频通过http转发" class="headerlink" title="将 OpenCV 处理后的视频通过http转发"></a>将 OpenCV 处理后的视频通过http转发</h1><p>打开终端并运行以下命令以更新系统并安装OpenCV及其依赖项：</p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">sudo apt update
+sudo apt upgrade
+sudo apt install python3-opencv python3-picamera<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果你还需要使用Flask或其他框架进行视频流传输，可以安装Flask：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> python3-flask<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> Response
+<span class="token keyword">import</span> cv2
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token comment"># 初始化摄像头</span>
+camera <span class="token operator">=</span> cv2<span class="token punctuation">.</span>VideoCapture<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># 如果使用树莓派摄像头模块，可以用0</span>
+
+<span class="token keyword">def</span> <span class="token function">generate_frames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        success<span class="token punctuation">,</span> frame <span class="token operator">=</span> camera<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 读取摄像头帧</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> success<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 对图像进行处理，例如转换为灰度图</span>
+            gray <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+            ret<span class="token punctuation">,</span> <span class="token builtin">buffer</span> <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imencode<span class="token punctuation">(</span><span class="token string">'.jpg'</span><span class="token punctuation">,</span> gray<span class="token punctuation">)</span>
+            frame <span class="token operator">=</span> <span class="token builtin">buffer</span><span class="token punctuation">.</span>tobytes<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> <span class="token punctuation">(</span><span class="token string">b'--frame\r\n'</span>
+                   <span class="token string">b'Content-Type: image/jpeg\r\n\r\n'</span> <span class="token operator">+</span> frame <span class="token operator">+</span> <span class="token string">b'\r\n'</span><span class="token punctuation">)</span>  <span class="token comment"># 返回图片帧</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/video_feed'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">video_feed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Response<span class="token punctuation">(</span>generate_frames<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    mimetype<span class="token operator">=</span><span class="token string">'multipart/x-mixed-replace; boundary=frame'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>打开浏览器，在地址栏中输入树莓派的IP地址和端口，例如：</p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">http://&lt;树莓派的IP&gt;:5000/video_feed<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>opencv</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将 OpenCV 处理后的视频通过http转发</title>
+    <url>/2026/02/02/obsidian-vault/kai-fa/jiang-opencv-chu-li-hou-de-shi-pin-tong-guo-http-zhuan-fa-1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="将-OpenCV-处理后的视频通过http转发"><a href="#将-OpenCV-处理后的视频通过http转发" class="headerlink" title="将 OpenCV 处理后的视频通过http转发"></a>将 OpenCV 处理后的视频通过http转发</h1><p>打开终端并运行以下命令以更新系统并安装OpenCV及其依赖项：</p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">sudo apt update
+sudo apt upgrade
+sudo apt install python3-opencv python3-picamera<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果你还需要使用Flask或其他框架进行视频流传输，可以安装Flask：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> python3-flask<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> Response
+<span class="token keyword">import</span> cv2
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token comment"># 初始化摄像头</span>
+camera <span class="token operator">=</span> cv2<span class="token punctuation">.</span>VideoCapture<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># 如果使用树莓派摄像头模块，可以用0</span>
+
+<span class="token keyword">def</span> <span class="token function">generate_frames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        success<span class="token punctuation">,</span> frame <span class="token operator">=</span> camera<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 读取摄像头帧</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> success<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 对图像进行处理，例如转换为灰度图</span>
+            gray <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+            ret<span class="token punctuation">,</span> <span class="token builtin">buffer</span> <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imencode<span class="token punctuation">(</span><span class="token string">'.jpg'</span><span class="token punctuation">,</span> gray<span class="token punctuation">)</span>
+            frame <span class="token operator">=</span> <span class="token builtin">buffer</span><span class="token punctuation">.</span>tobytes<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> <span class="token punctuation">(</span><span class="token string">b'--frame\r\n'</span>
+                   <span class="token string">b'Content-Type: image/jpeg\r\n\r\n'</span> <span class="token operator">+</span> frame <span class="token operator">+</span> <span class="token string">b'\r\n'</span><span class="token punctuation">)</span>  <span class="token comment"># 返回图片帧</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/video_feed'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">video_feed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Response<span class="token punctuation">(</span>generate_frames<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    mimetype<span class="token operator">=</span><span class="token string">'multipart/x-mixed-replace; boundary=frame'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>打开浏览器，在地址栏中输入树莓派的IP地址和端口，例如：</p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">http://&lt;树莓派的IP&gt;:5000/video_feed<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>opencv</tag>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>

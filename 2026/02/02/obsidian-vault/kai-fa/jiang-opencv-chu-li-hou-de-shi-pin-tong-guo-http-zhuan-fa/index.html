@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="嵌入式软件优化记录, Sparkle.now">
-    <meta name="description" content="记录嵌入式开发过程中一些小技巧和坑，包括内核、编译器、内存等相关的零碎的知识点，记录下来，方便开发时查找和提醒，提高工程效率和代码运行速度。">
+    <meta name="keywords" content="将 OpenCV 处理后的视频通过http转发, Sparkle.now">
+    <meta name="description" content="方便在机器人上使用opencv时通过网络调试图像，这里使用Flask通过http转发camera的视频流，可以在局域网实时显示opencv处理后的图像，方便调试，后续可以在网页上添加html元素，实现参数调试等功能">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>嵌入式软件优化记录 | Sparkle.now</title>
+    <title>将 OpenCV 处理后的视频通过http转发 | Sparkle.now</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -371,12 +371,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/嵌入式软件优化/f20fa6df8d5eae9382df593bd82aecf6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/将-OpenCV-处理后的视频通过http转发/561024ebaf8ddac4c8010375059f3451.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">嵌入式软件优化记录</h1>
+                    <h1 class="description center-align post-title">将 OpenCV 处理后的视频通过http转发</h1>
                 </div>
             </div>
         </div>
@@ -400,9 +400,15 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BC%98%E5%8C%96/">
+                                <a href="/tags/opencv/">
                                     <span class="chip bg-color">
-                                        优化
+                                        opencv
+                                    </span>
+                                </a>
+                                
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">
+                                        python
                                     </span>
                                 </a>
                                 
@@ -414,8 +420,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                                 
                         </div>
@@ -427,7 +433,7 @@
                 
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                            2026-02-06
+                            2026-02-02
                     </div>
                     
 
@@ -441,14 +447,14 @@
                                 
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                                            1.3k
+                                            250
                                     </div>
                                     
 
                                         
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                                                    5
+                                                    1
                                                         分
                                             </div>
                                             
@@ -472,134 +478,46 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="嵌入式软件优化"><a href="#嵌入式软件优化" class="headerlink" title="嵌入式软件优化"></a>嵌入式软件优化</h1><h2 id="1、ARMCC编译器定义函数在指定flash块"><a href="#1、ARMCC编译器定义函数在指定flash块" class="headerlink" title="1、ARMCC编译器定义函数在指定flash块"></a>1、ARMCC编译器定义函数在指定flash块</h2><ul>
-<li>指定函数放置在指定Flash地址，对于具有不同访问速度Falsh的MCU，可以提高核心代码的运行速度，对于内存资源较丰富的MCU，可以将需要快速执行的代码，拷贝到RAM中运行，降低取指令带来的效率影响。<br>  <img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/f5e36903272ec6cd3d006c33b7fb6eb6.png" alt="image"></li>
-</ul>
-<h2 id="2、在main函数设置中断向量指针"><a href="#2、在main函数设置中断向量指针" class="headerlink" title="2、在main函数设置中断向量指针"></a>2、在main函数设置中断向量指针</h2><ul>
-<li>ARM核心单片机一般是在cmsis库里定义中断向量指针，如果程序不在默认起始地址，就需要修改MCU中断向量地址变量，这里可以在main()的前端修改，避免在原库代码中修改，影响移植性，然后保证在修改前不会发生中断即可。<br>  <img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/54c7abc1c19bf4691cc4233f1114da34.png" alt="image"></li>
-</ul>
-<h2 id="3、keil链接脚本设置-AT32F403A"><a href="#3、keil链接脚本设置-AT32F403A" class="headerlink" title="3、keil链接脚本设置 AT32F403A"></a>3、keil链接脚本设置 AT32F403A</h2><ul>
-<li>AT32F403ACGT7 MCU的.sct文件示例，该MCU存在一块128KB的全速Flash，可以让内核零等待访问取指令，这里在sct文件中将这块内存定义为快速区域，将重要数据和代码放到快速区，提高效率。</li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">;</span> <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
-<span class="token punctuation">;</span> <span class="token operator">**</span><span class="token operator">*</span> Scatter<span class="token operator">-</span>Loading Description File generated by uVision <span class="token operator">**</span><span class="token operator">*</span>
-<span class="token punctuation">;</span> <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+                                <h1 id="将-OpenCV-处理后的视频通过http转发"><a href="#将-OpenCV-处理后的视频通过http转发" class="headerlink" title="将 OpenCV 处理后的视频通过http转发"></a>将 OpenCV 处理后的视频通过http转发</h1><p>打开终端并运行以下命令以更新系统并安装OpenCV及其依赖项：</p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">sudo apt update
+sudo apt upgrade
+sudo apt install python3-opencv python3-picamera<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token constant">LR_IROM1</span> <span class="token number">0x08001000</span> <span class="token number">0x0004F000</span>  <span class="token punctuation">{</span>    <span class="token punctuation">;</span> load region size_region
-  
-  <span class="token punctuation">;</span>快速代码区域
-  <span class="token constant">ER_IROM1</span> <span class="token number">0x08001000</span> <span class="token number">0x0001F000</span>  <span class="token punctuation">{</span>  <span class="token punctuation">;</span> load address <span class="token operator">=</span> execution address
-   <span class="token operator">*</span><span class="token punctuation">.</span><span class="token function">o</span> <span class="token punctuation">(</span><span class="token constant">RESET</span><span class="token punctuation">,</span> <span class="token operator">+</span>First<span class="token punctuation">)</span>
-   <span class="token operator">*</span><span class="token punctuation">(</span>InRoot$$Sections<span class="token punctuation">)</span>
-   startup_at32f403acgt7<span class="token punctuation">.</span>o
-   memseta<span class="token punctuation">.</span>o
-   arm_copy_q7<span class="token punctuation">.</span>o
-   arm_fill_q7<span class="token punctuation">.</span>o
-   main<span class="token punctuation">.</span>o
-   AlgInfraredVector<span class="token punctuation">.</span>o
-   AlgIRRays<span class="token punctuation">.</span>o
-   AlgApiMath<span class="token punctuation">.</span>o
-   AlgKalmanFilter<span class="token punctuation">.</span>o
-   AlgKMeans<span class="token punctuation">.</span>o
-   AlgMatchPoints<span class="token punctuation">.</span>o
-   AlgMatrixCal<span class="token punctuation">.</span>o
-   AlgSmoothness<span class="token punctuation">.</span>o
-   AlgTouchPoints<span class="token punctuation">.</span>o
-   <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">.</span>code<span class="token punctuation">.</span>fast<span class="token punctuation">)</span>    <span class="token punctuation">;</span> #pragma arm section code <span class="token operator">=</span><span class="token string">".code.fast"</span>
-   <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">.</span>code<span class="token punctuation">.</span>zwflash<span class="token punctuation">,</span> <span class="token operator">+</span>Last<span class="token punctuation">)</span> 
-  <span class="token punctuation">}</span>
- 
-  <span class="token punctuation">;</span>慢速代码区域 强制pad到128K以后
-  <span class="token constant">ER_IROM2</span> <span class="token number">0x08020000</span> <span class="token constant">FIXED</span>  <span class="token punctuation">{</span>  <span class="token punctuation">;</span> load address <span class="token operator">=</span> execution address
-   <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>code<span class="token punctuation">.</span>slow<span class="token punctuation">)</span>   <span class="token punctuation">;</span> #pragma arm section code <span class="token operator">=</span><span class="token string">".code.slow"</span>
-   <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>constdata<span class="token punctuation">)</span>
-   <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>conststring<span class="token punctuation">)</span>
-   <span class="token punctuation">.</span><span class="token constant">ANY</span> <span class="token punctuation">(</span><span class="token operator">+</span><span class="token constant">RO</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token constant">RW_IRAM1</span> <span class="token number">0x20000000</span> <span class="token number">0x00034000</span>  <span class="token punctuation">{</span>  <span class="token punctuation">;</span> <span class="token constant">RW</span> data 最大208k<span class="token punctuation">,</span> 预留16K给stack
-   <span class="token punctuation">.</span><span class="token constant">ANY</span> <span class="token punctuation">(</span><span class="token operator">+</span><span class="token constant">RW</span> <span class="token operator">+</span><span class="token constant">ZI</span><span class="token punctuation">)</span>
-   <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>shared<span class="token punctuation">,</span> <span class="token operator">+</span>Last<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token punctuation">;</span>强制设置<span class="token constant">STACK</span>栈顶到<span class="token constant">SRAM</span>最大 避免浪费<span class="token constant">SRAM</span>
-  <span class="token constant">RW_STACK</span> <span class="token number">0x20034000</span> <span class="token constant">UNINIT</span> <span class="token number">0x00004000</span>  <span class="token punctuation">{</span>  <span class="token punctuation">;</span> <span class="token constant">STACK</span> 16k
-   startup_at32f403acgt7<span class="token punctuation">.</span><span class="token function">o</span> <span class="token punctuation">(</span><span class="token constant">STACK</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-  
-<span class="token punctuation">;</span>  <span class="token constant">RW_HEAP</span> <span class="token number">0x20034000</span> <span class="token constant">UNINIT</span> <span class="token number">0x00000000</span>  <span class="token punctuation">{</span>  <span class="token punctuation">;</span> <span class="token constant">HEAP</span> 0k
-<span class="token punctuation">;</span>   startup_at32f403acgt7<span class="token punctuation">.</span><span class="token function">o</span> <span class="token punctuation">(</span><span class="token constant">HEAP</span><span class="token punctuation">)</span>
-<span class="token punctuation">;</span>  <span class="token punctuation">}</span>
-  <span class="token constant">ER_IROM3</span> <span class="token number">0x08040000</span> <span class="token constant">FIXED</span>  <span class="token punctuation">{</span>  <span class="token punctuation">;</span> load address <span class="token operator">=</span> execution address
-    <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>code<span class="token punctuation">.</span>ext<span class="token punctuation">)</span>
-    <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>rodata<span class="token punctuation">.</span>ext<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果你还需要使用Flask或其他框架进行视频流传输，可以安装Flask：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> python3-flask<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="4-指定函数在快速响应flash区域，并以O1编译"><a href="#4-指定函数在快速响应flash区域，并以O1编译" class="headerlink" title="4.指定函数在快速响应flash区域，并以O1编译"></a>4.指定函数在快速响应flash区域，并以O1编译</h2><ul>
-<li>部分代码对时序要求很高，几十纳秒级别，不同的优化等级会影响指令的先后运行，为了避免优化带来时序调试和运行的影响，这里将相关代码指定编译等级编译。<br>  <img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/9d7a15119515462ecf5f466d31330153.png" alt="image"></li>
-</ul>
-<h2 id="5-带有Cache的MCU开发注意"><a href="#5-带有Cache的MCU开发注意" class="headerlink" title="5.带有Cache的MCU开发注意"></a>5.带有Cache的MCU开发注意</h2><p>带有Cache的MCU，及带有高速缓存，往往是因为内核主频过高，而内存和Flash速度较低，CPU内核在这种情况下运行会受到瓶颈，降低效率，所以厂商在内核附近部署了两块较小尺容量的全速内存，即缓存，在运行时Cache会对即将访问的地址进行预存取，然后内核访问相关地址时，如果已经被缓存，即命中，则会从缓存中存取数据，达到全速访问的效果，这种预存取的效率很高，基本可以全命中。</p>
-<p>在M7内核或相似较高频率内核的MCU开发上，Cache会带来很多开发上看似玄学的问题：数据不一致，写数据与读数据不一致，外设运行动作异常，DMA出飞机等等，核心原因是，CPU从Cache缓存读写的数据，与实际地址上的数据因为各种未同步原因，出现不一致问题，在开启Cache的情况下，对一块地址的访问，可能会有CPU的直接访问，Cache的预存取访问，DMA的访问，如果代码上没有做好同步与配置，会导致出各种玄学飞机，所以，有Cache的MCU，出玄学问题时，一定要关掉Cache调试！</p>
-<p>Cache的配置，往往MCU厂商已经做好了相关内容，可以直接结合需求，配置配置就可以，一定要对内存做好规划，哪些用，哪些给DMA，哪些给外设（USB、以太网FIFO）。</p>
-<p><strong>STM32H7示例</strong> </p>
-<p>Cortex-M7 MPU与Cache配置</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/916706b224ed059c03319c86d27aecdd.png" alt="image"></p>
-<p>硬汉哥的一图横扫ICache和DCache</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/33e13c9bbcba6a6d50581b71c0aafd48.png" alt="image"></p>
-<h2 id="6-DWT内核计数器-计算时间"><a href="#6-DWT内核计数器-计算时间" class="headerlink" title="6.DWT内核计数器 计算时间"></a>6.DWT内核计数器 计算时间</h2><p><strong>初始化DWT时钟</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 初始化DWT计数器</span>
-<span class="token keyword">void</span> <span class="token function">DWT_Init</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">void</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    CoreDebug<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">DEMCR</span> <span class="token operator">|=</span> CoreDebug_DEMCR_TRCENA_Msk<span class="token punctuation">;</span>  <span class="token comment">// 使能DWT外设</span>
-    <span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CYCCNT</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                                <span class="token comment">// 清零周期计数器</span>
-    <span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CTRL</span> <span class="token operator">|=</span> DWT_CTRL_CYCCNTENA_Msk<span class="token punctuation">;</span>            <span class="token comment">// 使能CYCCNT寄存器</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> Response
+<span class="token keyword">import</span> cv2
 
-<p><strong>使用</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Time_use<span class="token operator">=</span><span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CYCCNT</span><span class="token punctuation">;</span>
-<span class="token comment">/***Your Code***/</span>
-Time_use<span class="token operator">=</span><span class="token punctuation">(</span><span class="token constant">DWT</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token constant">CYCCNT</span><span class="token operator">-</span>Time_use<span class="token punctuation">)</span><span class="token operator">/</span>SystemCoreClock<span class="token operator">*</span><span class="token number">1000000</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
 
-<h2 id="7-STM32使用-Cordic-计算浮点三角函数"><a href="#7-STM32使用-Cordic-计算浮点三角函数" class="headerlink" title="7.STM32使用 Cordic 计算浮点三角函数"></a>7.STM32使用 Cordic 计算浮点三角函数</h2><p><strong>介绍</strong></p>
-<ul>
-<li>CORDIC的英文全称为Coordinate Rotation Digital Computer，即坐标转换数字计算机，通过不断旋转坐标最终接近达到计算结果</li>
-<li>这是“移位相加”的操作去计算各种函数的经典计算应用</li>
-<li>特点是开销小，计算快，广泛应用于各种计算领域</li>
-<li>能够提高实时计算三角函数、开平方等计算的速度</li>
-<li>和查表法对比，还是查表法快</li>
-</ul>
-<p><strong>使用</strong></p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">/* Define PI */
-#define PI 3.1415926536f
-/* Define Q31 */
-#define Q31 0x80000000
-/* Define Q31 to float unit in RADIAN = Q31/PI */
-#define RADIAN_Q31_f 683565275.6f
+<span class="token comment"># 初始化摄像头</span>
+camera <span class="token operator">=</span> cv2<span class="token punctuation">.</span>VideoCapture<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># 如果使用树莓派摄像头模块，可以用0</span>
 
-/**
- * @brief Calculate sin/cos value in float unit
- * @param angle in (-π,π), sin/cos value out
- * @retval None
- */
-void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
-{
-    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_CORDICEN;  // Enable CORDIC Clock
-	/* Q31,two write, two read, sine calculate, 6 precision */
-	CORDIC-&gt;CSR = 0x00180061;
-	/* Write data into WDATA */
-	CORDIC-&gt;WDATA = (int32_t )(angle * RADIAN_Q31_f);
-	/* Modulus is m=1 */
-	CORDIC-&gt;WDATA = 0x7FFFFFFF;
-	/* Get sin value in float */
-	*sin = ((int32_t)CORDIC-&gt;RDATA)*1.0f/Q31;
-	/* Get cos value in float */
-	*cos = ((int32_t)CORDIC-&gt;RDATA)*1.0f/Q31;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">def</span> <span class="token function">generate_frames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        success<span class="token punctuation">,</span> frame <span class="token operator">=</span> camera<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 读取摄像头帧</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> success<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 对图像进行处理，例如转换为灰度图</span>
+            gray <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+            ret<span class="token punctuation">,</span> <span class="token builtin">buffer</span> <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imencode<span class="token punctuation">(</span><span class="token string">'.jpg'</span><span class="token punctuation">,</span> gray<span class="token punctuation">)</span>
+            frame <span class="token operator">=</span> <span class="token builtin">buffer</span><span class="token punctuation">.</span>tobytes<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> <span class="token punctuation">(</span><span class="token string">b'--frame\r\n'</span>
+                   <span class="token string">b'Content-Type: image/jpeg\r\n\r\n'</span> <span class="token operator">+</span> frame <span class="token operator">+</span> <span class="token string">b'\r\n'</span><span class="token punctuation">)</span>  <span class="token comment"># 返回图片帧</span>
 
-<p>大佬测试的计算速度，测试平台应该是STM32G431</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/4f900775cdd60db32ddb6ce7a71db5d9.png" alt="image"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/a5292d9b464b3cd23d8631ee2a289757.png" alt="image"></p>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/video_feed'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">video_feed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Response<span class="token punctuation">(</span>generate_frames<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    mimetype<span class="token operator">=</span><span class="token string">'multipart/x-mixed-replace; boundary=frame'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>打开浏览器，在地址栏中输入树莓派的IP地址和端口，例如：</p>
+<pre class="line-numbers language-other" data-language="other"><code class="language-other">http://&lt;树莓派的IP&gt;:5000/video_feed<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                                     
                             </div>
@@ -626,7 +544,7 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sparkle-now.cn/2026/02/06/obsidian-vault/kai-fa/qian-ru-shi-ruan-jian-you-hua/">https://sparkle-now.cn/2026/02/06/obsidian-vault/kai-fa/qian-ru-shi-ruan-jian-you-hua/</a>
+                    <a href="https://sparkle-now.cn/2026/02/02/obsidian-vault/kai-fa/jiang-opencv-chu-li-hou-de-shi-pin-tong-guo-http-zhuan-fa/">https://sparkle-now.cn/2026/02/02/obsidian-vault/kai-fa/jiang-opencv-chu-li-hou-de-shi-pin-tong-guo-http-zhuan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -664,9 +582,15 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/%E4%BC%98%E5%8C%96/">
+                                                    <a href="/tags/opencv/">
                                                         <span class="chip bg-color">
-                                                            优化
+                                                            opencv
+                                                        </span>
+                                                    </a>
+                                                    
+                                                    <a href="/tags/python/">
+                                                        <span class="chip bg-color">
+                                                            python
                                                         </span>
                                                     </a>
                                                     
@@ -1084,30 +1008,30 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/02/08/obsidian-vault/kai-fa/shi-yong-rk3588-da-jian-ge-ren-qing-nas-ji-lu/">
+                <a href="/2026/02/06/obsidian-vault/kai-fa/qian-ru-shi-ruan-jian-you-hua/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/使用RK3588搭建个人轻NAS记录/5f63c7ef88c897481f6793200d59eea0.jpg" class="responsive-img" alt="使用RK3588搭建个人轻NAS记录">
+                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/嵌入式软件优化/f20fa6df8d5eae9382df593bd82aecf6.jpg" class="responsive-img" alt="嵌入式软件优化记录">
                         
-                        <span class="card-title">使用RK3588搭建个人轻NAS记录</span>
+                        <span class="card-title">嵌入式软件优化记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录使用RADXA ROCK5B+搭建个人服务器的过程和相关软件，主要是RK3588+Debian12+CasaOS+各种Docker容器，简单快捷，够自己用目前。
+                            记录嵌入式开发过程中一些小技巧和坑，包括内核、编译器、内存等相关的零碎的知识点，记录下来，方便开发时查找和提醒，提高工程效率和代码运行速度。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-06
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
+                                    嵌入式
                                 </a>
                             
                             
@@ -1117,12 +1041,8 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RK-SOC/">
-                        <span class="chip bg-color">RK-SOC</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                        <span class="chip bg-color">服务器</span>
+                    <a href="/tags/%E4%BC%98%E5%8C%96/">
+                        <span class="chip bg-color">优化</span>
                     </a>
                     
                 </div>
@@ -1136,7 +1056,7 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/02/02/obsidian-vault/kai-fa/jiang-opencv-chu-li-hou-de-shi-pin-tong-guo-http-zhuan-fa/">
+                <a href="/2026/02/02/obsidian-vault/kai-fa/jiang-opencv-chu-li-hou-de-shi-pin-tong-guo-http-zhuan-fa-1/">
                     <div class="card-image">
                         
                         <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/将-OpenCV-处理后的视频通过http转发/561024ebaf8ddac4c8010375059f3451.jpg" class="responsive-img" alt="将 OpenCV 处理后的视频通过http转发">
@@ -1147,7 +1067,7 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            方便在机器人上使用opencv时通过网络调试图像，这里使用Flask通过http转发camera的视频流，可以在局域网实时显示opencv处理后的图像，方便调试，后续可以在网页上添加html元素，实现参数调试等功能
+                            
                         
                     </div>
                     <div class="publish-info">
