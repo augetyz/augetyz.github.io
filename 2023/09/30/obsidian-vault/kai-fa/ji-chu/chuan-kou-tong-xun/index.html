@@ -455,7 +455,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-07
+                                    2026-02-11
                             </div>
                             
 
@@ -501,7 +501,7 @@
 <p>逻辑1：-15V ~ -3V<br>逻辑0： +3  ~ +15V</p>
 <p>串口协议协议层：</p>
 <p>串口通讯的数据包由发送设备通过自身的 TXD 接口传输到接收设备的 RXD 接口。在串口通讯的协议层中，规定了数据包的内容，它由启始位、主体数据、校验位以及停止位组成，通讯双方<br>的数据包格式要约定一致才能正常收发数据。<br>本节主要讲解的是串口异步通讯，异步通讯中由于没有时钟信号 ，所以两个通讯设备之间需要约定好波特率，即每个码元的长度，以便对信号进行解码，下图为串口数据包的基本组成，其中用虚线分开的每一格就是代表一个码元。常见的波特率为9600，115200 等。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778084226.png" alt="串口数据包"></h2><p>STM32 芯片具有多个 USART 外设用于串口通讯，它是 Universal Synchronous Asynchronous Receiver<br>and Transmitter 的缩写，即通用同步异步收发器可以灵活地与外部设备进行全双工数据交换。有别于 USART，它还有具有 UART 外设 (Universal Asynchronous Receiver and Transmitter)，它是在USART 基础上裁剪掉了同步通信功能，只有异步通信。简单区分同步和异步就是看通信时需不<br>需要对外提供时钟输出，我们平时用的串口通信基本都是 UART。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://rootfs.sparkle-now.cn/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778084226.png" alt="串口数据包"></h2><p>STM32 芯片具有多个 USART 外设用于串口通讯，它是 Universal Synchronous Asynchronous Receiver<br>and Transmitter 的缩写，即通用同步异步收发器可以灵活地与外部设备进行全双工数据交换。有别于 USART，它还有具有 UART 外设 (Universal Asynchronous Receiver and Transmitter)，它是在USART 基础上裁剪掉了同步通信功能，只有异步通信。简单区分同步和异步就是看通信时需不<br>需要对外提供时钟输出，我们平时用的串口通信基本都是 UART。</p>
 <h3 id="功能引脚"><a href="#功能引脚" class="headerlink" title="功能引脚"></a>功能引脚</h3><p>TX -&gt;   发送数据输出引脚。</p>
 <p>RX -&gt;   接收数据输入引脚。</p>
 <p>nRTS -&gt; 请求以发送 (Request To Send)， n 表示低电平有效。如果使能 RTS 流控制，当 USART 接收器准备好接收新数据时就会将 nRTS 变成低电平；当接收寄存器已满时， nRTS 将被设置为高电平。该引脚只适用于硬件流控制。</p>
@@ -512,7 +512,7 @@
 <p> USART_DR 实际是包含了两个寄存器，一个专门用于发送的可写 TDR，一个专门用于接收的可读 RDR。当进行发送操作时，往 USART_DR写入数据会自动存储在 TDR 内；当进行读取操作时，向 USART_DR 读取数据会自动提取 RDR数据。</p>
 <p>TDR 和 RDR 都是介于系统总线和移位寄存器之间。串行通信是一个位一个位传输的，发送时把TDR 内容转移到发送移位寄存器，然后把移位寄存器数据每一位发送出去，接收时把接收到的<br>每一位顺序保存在接收移位寄存器内然后才转移到 RDR。</p>
 <h3 id="中断控制"><a href="#中断控制" class="headerlink" title="中断控制"></a>中断控制</h3><p>USART 有多个中断请求，可以根据相应标志位判断当前状态。</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778122019.png" alt="串口中断"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778122019.png" alt="串口中断"></p>
 <p>下面为USART2的初始化，波特率配置为115200，8字长，无校验，1停止位</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">USART2_Config</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
@@ -606,7 +606,7 @@
 <p>首先浏览WT1-IMU的通讯协议文档，从中可知：</p>
 <pre><code>1.单帧的数据格式
 </code></pre>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778287562.png" alt="B-IMU数据帧格式"><br>    2.数据的发送格式<br>    一次发送三帧数据，由二级帧头TYPE区分（我习惯称之为功能字），最终得到的有效数据为9个short类型的数据。</p>
+<p><img src="https://rootfs.sparkle-now.cn/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778287562.png" alt="B-IMU数据帧格式"><br>    2.数据的发送格式<br>    一次发送三帧数据，由二级帧头TYPE区分（我习惯称之为功能字），最终得到的有效数据为9个short类型的数据。</p>
 <p>理清通讯协议之后，开始进行串口接收部分的代码编写。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//IMU数据结构体</span>
 <span class="token keyword">typedef</span> <span class="token keyword">struct</span>
@@ -732,7 +732,7 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
 <p>至此，对WT1-IMU的数据接收已经完成，接下来可以在main.c中将IMU的数据输出到上位机，以此检验串口数据帧的接收。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用串口通过数据帧进行多数据的交互在实际应用中相当常见。串口数据帧的结构相对简单，易于实现和解析，可自行设置数据长度以适应不同数据长度的需求，适用性广泛。</p>
 <hr>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778157853.png" alt="串口总结"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/B_%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/1696778157853.png" alt="串口总结"></p>
 
                                     
                             </div>
@@ -1235,12 +1235,12 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/09/30/obsidian-vault/kai-fa/chuan-kou-tong-xun/">
+                <a href="/2023/10/01/obsidian-vault/kai-fa/ji-chu/an-zhuang-ji-huo-keil5/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778044589.png" class="responsive-img" alt="串口通讯">
+                        <img src="https://rootfs.sparkle-now.cn/images/安装激活keil5/1700828541984.png" class="responsive-img" alt="安装激活keil5">
                         
-                        <span class="card-title">串口通讯</span>
+                        <span class="card-title">安装激活keil5</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1251,7 +1251,7 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-30
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-01
                         </span>
                         <span class="publish-author">
                             
@@ -1272,16 +1272,12 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
                         <span class="chip bg-color">STM32</span>
                     </a>
                     
-                    <a href="/tags/F401/">
-                        <span class="chip bg-color">F401</span>
+                    <a href="/tags/KEIL5/">
+                        <span class="chip bg-color">KEIL5</span>
                     </a>
                     
-                    <a href="/tags/%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/">
-                        <span class="chip bg-color">串口通讯</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%8F%E8%AE%AE%E5%B8%A7/">
-                        <span class="chip bg-color">协议帧</span>
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
                     </a>
                     
                 </div>
@@ -1295,7 +1291,7 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/09/29/obsidian-vault/kai-fa/mcu-chao-pin/">
+                <a href="/2023/09/29/obsidian-vault/kai-fa/ji-chu/mcu-chao-pin/">
                     <div class="card-image">
                         
                         <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776023223.png" class="responsive-img" alt="一键超频">

@@ -456,7 +456,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-07
+                                    2026-02-11
                             </div>
                             
 
@@ -494,7 +494,7 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/A_%E8%B6%85%E9%A2%91/1696776023223.png" alt="引入.png"></p>
+                                <p><img src="https://rootfs.sparkle-now.cn/images/A_%E8%B6%85%E9%A2%91/1696776023223.png" alt="引入.png"></p>
 <h1 id="一键超频"><a href="#一键超频" class="headerlink" title="一键超频"></a>一键超频</h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a>实现目的</h2><p>单片机超频的主要目的是提高处理器的工作速度，以获得更高的性能和处理能力。超频可以使单片机在特定的应用场景下执行更多的指令，加快数据处理和运行速度，从而提升整体系统性能。</p>
 <p>芯片超频能做什么：</p>
 <ol>
@@ -505,7 +505,7 @@
 </ol>
 <p>在获取更高的运算速度的同时，超频也会引入更高的功耗和温度，有可能导致稳定性问题。因此，在进行超频操作时，不建议将芯片主频过分提高，同时需要谨慎注意系统的工作环境和散热条件，以确保系统的安全和可靠性。</p>
 <h2 id="时钟树"><a href="#时钟树" class="headerlink" title="时钟树"></a>时钟树</h2><hr>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/A_%E8%B6%85%E9%A2%91/1696776057961.png" alt="时钟树"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/A_%E8%B6%85%E9%A2%91/1696776057961.png" alt="时钟树"></p>
 <p>上图为STM32F401的时钟树，本节主要分析芯片总线的时钟逻辑。</p>
 <h3 id="时钟输入"><a href="#时钟输入" class="headerlink" title="时钟输入"></a>时钟输入</h3><p>HSE时钟，即高速的外部时钟。</p>
 <p>来源：有源晶振（ 1-50M）、无源晶振（ 4-26M）</p>
@@ -532,8 +532,8 @@
 </ol>
 <p>APB1 总线时钟 PCLK1 由 HCLK 经过低速 APB 预分频器得到，分频因子可以是:[1,2,4， 8， 16]。 PCLK1 属于低速的总线时钟，片上低速的外设挂载到这条总线上，</p>
 <hr>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/A_%E8%B6%85%E9%A2%91/1696776074841.png" alt="CubeMX配置的时钟"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/A_%E8%B6%85%E9%A2%91/1696776093984.png" alt="源码中时钟配置的默认参数"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/A_%E8%B6%85%E9%A2%91/1696776074841.png" alt="CubeMX配置的时钟"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/A_%E8%B6%85%E9%A2%91/1696776093984.png" alt="源码中时钟配置的默认参数"></p>
 <p>至此，已经完成对片上总线时钟的输入输出的溯源，下面进行相应代码的编写。</p>
 <hr>
 <p>Tips:</p>
@@ -599,7 +599,7 @@
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>超频实际上是提高芯片总线主频，获取更高的运算速率，超频会对阻塞式延时函数的延时时间造成一定影响（原定延时1s实际延时不足1s），具体效果可以通过LED灯闪烁的快慢体现。</p>
 <hr>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/A_%E8%B6%85%E9%A2%91/1696776119362.png" alt="完结撒花"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/A_%E8%B6%85%E9%A2%91/1696776119362.png" alt="完结撒花"></p>
 
                                     
                             </div>
@@ -1102,12 +1102,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/09/29/obsidian-vault/kai-fa/mcu-chao-pin/">
+                <a href="/2023/09/30/obsidian-vault/kai-fa/ji-chu/chuan-kou-tong-xun/">
                     <div class="card-image">
                         
-                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776023223.png" class="responsive-img" alt="一键超频">
+                        <img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778044589.png" class="responsive-img" alt="串口通讯">
                         
-                        <span class="card-title">一键超频</span>
+                        <span class="card-title">串口通讯</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1118,7 +1118,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-30
                         </span>
                         <span class="publish-author">
                             
@@ -1143,12 +1143,12 @@
                         <span class="chip bg-color">F401</span>
                     </a>
                     
-                    <a href="/tags/%E6%97%B6%E9%92%9F%E6%A0%91/">
-                        <span class="chip bg-color">时钟树</span>
+                    <a href="/tags/%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/">
+                        <span class="chip bg-color">串口通讯</span>
                     </a>
                     
-                    <a href="/tags/%E4%B8%80%E9%94%AE%E8%B6%85%E9%A2%91/">
-                        <span class="chip bg-color">一键超频</span>
+                    <a href="/tags/%E5%8D%8F%E8%AE%AE%E5%B8%A7/">
+                        <span class="chip bg-color">协议帧</span>
                     </a>
                     
                 </div>
@@ -1165,7 +1165,7 @@
                 <a href="/2023/09/10/obsidian-vault/kai-fa/rk3588s-rock5a-kai-ji-wan-shua/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/RK3588s-rock5A开机玩耍/1750581629432.png" class="responsive-img" alt="RK3588S-Rock5A开机玩耍记录">
+                        <img src="https://rootfs.sparkle-now.cn/images/RK3588s-rock5A开机玩耍/1750581629432.png" class="responsive-img" alt="RK3588S-Rock5A开机玩耍记录">
                         
                         <span class="card-title">RK3588S-Rock5A开机玩耍记录</span>
                     </div>

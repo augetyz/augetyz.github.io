@@ -371,7 +371,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/在clion平台使用openocd工具向STM32H7外置flash下载代码并调试/1721578058652.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://rootfs.sparkle-now.cn/images/在clion平台使用openocd工具向STM32H7外置flash下载代码并调试/1721578058652.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -452,7 +452,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-07
+                                    2026-02-11
                             </div>
                             
 
@@ -491,14 +491,14 @@
                         <div class="card-content article-card-content">
                             <div id="articleContent">
                                 <h1 id="使用clion向STM32H7外置flash下载代码"><a href="#使用clion向STM32H7外置flash下载代码" class="headerlink" title="使用clion向STM32H7外置flash下载代码"></a>使用clion向STM32H7外置flash下载代码</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>根据安福莱的STM32H7教程，H7单片机的QSPI外设是直接连到芯片内核上的，地址是0X90000000；QSPI外设可以设置为内存映射模式，由此执行代码，达到扩展stm32flash的效果，一般移植lvgl都需要外扩flash。</strong></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605742489.png" alt="STM3H7单片机矩阵架构"><br>相关操作在keil5上比较简单，配置点东西就行；可以参考安福莱教程。</p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605742489.png" alt="STM3H7单片机矩阵架构"><br>相关操作在keil5上比较简单，配置点东西就行；可以参考安福莱教程。</p>
 <p>这里要介绍的是在linux环境下没有keil5 IDE的情况下，如何使用clion+openocd实现</p>
 <ul>
 <li>将大体积代码下载到外置flash并执行</li>
 <li>对外置flash执行的代码进行仿真</li>
 </ul>
 <h2 id="代码配置"><a href="#代码配置" class="headerlink" title="代码配置"></a>代码配置</h2><h3 id="修改系统配置文件"><a href="#修改系统配置文件" class="headerlink" title="修改系统配置文件"></a>修改系统配置文件</h3><p>STM32的代码都是有起始地址的，每一句代码，编译为相关机器码执行时，都有对应地址的；对于一般情况的代码，起始地址都是0X8000000；</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605792831.png" alt="工程FLASH配置文件"><br>该文件中详细的配置了单片机所使用的flash大小，ram大小，地址等信息。</p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605792831.png" alt="工程FLASH配置文件"><br>该文件中详细的配置了单片机所使用的flash大小，ram大小，地址等信息。</p>
 <p>由于采用外置flash启动，我们需要将flash地址配置为QSPI地址，并修改LENGTH为我们的flash芯片大小。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">MEMORY
 <span class="token punctuation">{</span>
@@ -512,7 +512,7 @@
 
 <h3 id="修改系统初始化函数"><a href="#修改系统初始化函数" class="headerlink" title="修改系统初始化函数"></a>修改系统初始化函数</h3><p>STM32单片机启动时会先执行汇编启动文件，先定义中断向量表，再执行复位，设置栈顶指针，再执行系统初始化函数，再跳转main函数。</p>
 <p>其中系统初始化函数中需要修改SCB-&gt;VTOR的值。<br>==SCB-&gt;VTOR为Cortex内核的中断向量表的基地址，一般为程序执行的初始地址。 #12AA9C==<br>关于该变量理解，<a target="_blank" rel="noopener" href="https://dgvy.gitee.io/2021/STM32%E4%B8%ADSCB-VTOR%E7%9A%84%E7%90%86%E8%A7%A3/">参考链接</a></p>
-<p>这里需要修改为我们程序启动的地址0X90000000。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605816210.png" alt="SCB->VTOR地址修改"></p>
+<p>这里需要修改为我们程序启动的地址0X90000000。<br><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605816210.png" alt="SCB->VTOR地址修改"></p>
 <h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>点击编译，即可制作一个运行在外部flash的代码，下载到外置flash中，引导运行即可。</p>
 <p>那么现在出现两个问题：</p>
 <ul>
@@ -530,11 +530,11 @@
 <p>先解决下载问题。</p>
 <p>我们知道，STM32下载代码时会先执行一个配置程序，该程序运行在RAM中，会初始化部分关于下载代码的外设。</p>
 <p>使用keil5时，我们会使用一个.flm文件下载代码，该文件就是下载引导程序，其制作流程安福莱里讲的有。</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605834906.png" alt="反客的keil5下载教程"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605834906.png" alt="反客的keil5下载教程"></p>
 <p>同样，在正常下载的时候也会有一个keil5官方提供的.flm文件，这些文件就储存在官方目录里。</p>
 <p>对于CubeMX而言，也有相应的文件，</p>
 <p>所以，我们使用的openocd工具也是有的，在我们的工程目录里，有一些配置文件，都具有各自相应的功能。</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605850131.png" alt="clion工程目录"><br>在stm32h750b-disco.cfg文件中，初始化了芯片时钟，和部分必要的下载外设；</p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605850131.png" alt="clion工程目录"><br>在stm32h750b-disco.cfg文件中，初始化了芯片时钟，和部分必要的下载外设；</p>
 <p>在19行、23行：跳转到了其他配置文件中，执行具体的操作</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># enable stmqspi</span>
 <span class="token keyword">if</span> <span class="token punctuation">{</span><span class="token operator">!</span><span class="token punctuation">[</span>info exists QUADSPI<span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
@@ -642,7 +642,7 @@ $_CHIPNAME.cpu0 configure -event reset-init {
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/109903301">硬汉嵌入式的bootloader教程</a></p>
 <p>我的是修改的反客科技的bootloader代码，将其QSPI外设的引脚改成我的板子的就可以用了。是之前用keil5写的，也可以自己用cubemx生成一个，添加应用代码即可。比较简单。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/augetyz/stm32/tree/master/H750XBH6%E4%B8%8B%E8%BD%BD%E7%AE%97%E6%B3%95">适配ART-Pi的下载算法和bootloader</a></p>
-<p>另外，从外置flash引导的代码，受flash限制，运行速度并不快，不如芯片内部的flash，对此，我们参考安福莱教程，使用MPU配置外置flash内存，用Cache预存取指令，提高代码运行速度。相关配置：<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605878766.png" alt="Cubemx配置"></p>
+<p>另外，从外置flash引导的代码，受flash限制，运行速度并不快，不如芯片内部的flash，对此，我们参考安福莱教程，使用MPU配置外置flash内存，用Cache预存取指令，提高代码运行速度。相关配置：<br><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605878766.png" alt="Cubemx配置"></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">MPU_Region_InitTypeDef MPU_InitStruct <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token comment">/* Disables the MPU */</span>
@@ -673,7 +673,7 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/124649487?spm=1001.2014.3001.5506">硬汉哥的实战教程，超级好用</a></p>
 <h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p>在clion使用openocd仿真的话，为了查看各个寄存器的值，需要添加寄存器配置文件，一般keil5安装目录里有，我把我的上传到Github上了，欢迎下载。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/augetyz/STM32_svd_file">SVD文件</a></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605892344.png" alt="仿真视图"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E5%9C%A8clion%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8openocd%E5%B7%A5%E5%85%B7%E5%90%91STM32H7%E5%A4%96%E7%BD%AEflash%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%B0%83%E8%AF%95/1721605892344.png" alt="仿真视图"></p>
 <p>欢迎访问<a href="https://sparkle-now.cn/">我的博客</a>
     </p>
 
@@ -1181,7 +1181,7 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                 <a href="/2023/09/10/obsidian-vault/kai-fa/rk3588s-rock5a-kai-ji-wan-shua/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/RK3588s-rock5A开机玩耍/1750581629432.png" class="responsive-img" alt="RK3588S-Rock5A开机玩耍记录">
+                        <img src="https://rootfs.sparkle-now.cn/images/RK3588s-rock5A开机玩耍/1750581629432.png" class="responsive-img" alt="RK3588S-Rock5A开机玩耍记录">
                         
                         <span class="card-title">RK3588S-Rock5A开机玩耍记录</span>
                     </div>
@@ -1233,7 +1233,7 @@ MPU_InitStruct<span class="token punctuation">.</span>IsBufferable <span class="
                 <a href="/2023/07/15/obsidian-vault/kai-fa/stm32f4-qu-dong-usb-shi-xian-xu-ni-chuan-kou/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/STM32F4驱动USB实现虚拟串口/Background%2Fmount.jpg" class="responsive-img" alt="STM32F4驱动USB实现虚拟串口">
+                        <img src="https://rootfs.sparkle-now.cn/images/STM32F4驱动USB实现虚拟串口/Background%2Fmount.jpg" class="responsive-img" alt="STM32F4驱动USB实现虚拟串口">
                         
                         <span class="card-title">STM32F4驱动USB实现虚拟串口</span>
                     </div>

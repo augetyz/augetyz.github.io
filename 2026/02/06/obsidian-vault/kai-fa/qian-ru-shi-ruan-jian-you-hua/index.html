@@ -371,7 +371,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/嵌入式软件优化/f20fa6df8d5eae9382df593bd82aecf6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://rootfs.sparkle-now.cn/images/嵌入式软件优化/f20fa6df8d5eae9382df593bd82aecf6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -434,7 +434,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-08
+                                    2026-02-11
                             </div>
                             
 
@@ -473,10 +473,10 @@
                         <div class="card-content article-card-content">
                             <div id="articleContent">
                                 <h1 id="嵌入式软件优化"><a href="#嵌入式软件优化" class="headerlink" title="嵌入式软件优化"></a>嵌入式软件优化</h1><h2 id="1、ARMCC编译器定义函数在指定flash块"><a href="#1、ARMCC编译器定义函数在指定flash块" class="headerlink" title="1、ARMCC编译器定义函数在指定flash块"></a>1、ARMCC编译器定义函数在指定flash块</h2><ul>
-<li>指定函数放置在指定Flash地址，对于具有不同访问速度Falsh的MCU，可以提高核心代码的运行速度，对于内存资源较丰富的MCU，可以将需要快速执行的代码，拷贝到RAM中运行，降低取指令带来的效率影响。<br>  <img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/f5e36903272ec6cd3d006c33b7fb6eb6.png" alt="image"></li>
+<li>指定函数放置在指定Flash地址，对于具有不同访问速度Falsh的MCU，可以提高核心代码的运行速度，对于内存资源较丰富的MCU，可以将需要快速执行的代码，拷贝到RAM中运行，降低取指令带来的效率影响。<br>  <img src="https://rootfs.sparkle-now.cn/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/f5e36903272ec6cd3d006c33b7fb6eb6.png" alt="image"></li>
 </ul>
 <h2 id="2、在main函数设置中断向量指针"><a href="#2、在main函数设置中断向量指针" class="headerlink" title="2、在main函数设置中断向量指针"></a>2、在main函数设置中断向量指针</h2><ul>
-<li>ARM核心单片机一般是在cmsis库里定义中断向量指针，如果程序不在默认起始地址，就需要修改MCU中断向量地址变量，这里可以在main()的前端修改，避免在原库代码中修改，影响移植性，然后保证在修改前不会发生中断即可。<br>  <img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/54c7abc1c19bf4691cc4233f1114da34.png" alt="image"></li>
+<li>ARM核心单片机一般是在cmsis库里定义中断向量指针，如果程序不在默认起始地址，就需要修改MCU中断向量地址变量，这里可以在main()的前端修改，避免在原库代码中修改，影响移植性，然后保证在修改前不会发生中断即可。<br>  <img src="https://rootfs.sparkle-now.cn/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/54c7abc1c19bf4691cc4233f1114da34.png" alt="image"></li>
 </ul>
 <h2 id="3、keil链接脚本设置-AT32F403A"><a href="#3、keil链接脚本设置-AT32F403A" class="headerlink" title="3、keil链接脚本设置 AT32F403A"></a>3、keil链接脚本设置 AT32F403A</h2><ul>
 <li>AT32F403ACGT7 MCU的.sct文件示例，该MCU存在一块128KB的全速Flash，可以让内核零等待访问取指令，这里在sct文件中将这块内存定义为快速区域，将重要数据和代码放到快速区，提高效率。</li>
@@ -537,16 +537,16 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="4-指定函数在快速响应flash区域，并以O1编译"><a href="#4-指定函数在快速响应flash区域，并以O1编译" class="headerlink" title="4.指定函数在快速响应flash区域，并以O1编译"></a>4.指定函数在快速响应flash区域，并以O1编译</h2><ul>
-<li>部分代码对时序要求很高，几十纳秒级别，不同的优化等级会影响指令的先后运行，为了避免优化带来时序调试和运行的影响，这里将相关代码指定编译等级编译。<br>  <img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/9d7a15119515462ecf5f466d31330153.png" alt="image"></li>
+<li>部分代码对时序要求很高，几十纳秒级别，不同的优化等级会影响指令的先后运行，为了避免优化带来时序调试和运行的影响，这里将相关代码指定编译等级编译。<br>  <img src="https://rootfs.sparkle-now.cn/images/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/9d7a15119515462ecf5f466d31330153.png" alt="image"></li>
 </ul>
 <h2 id="5-带有Cache的MCU开发注意"><a href="#5-带有Cache的MCU开发注意" class="headerlink" title="5.带有Cache的MCU开发注意"></a>5.带有Cache的MCU开发注意</h2><p>带有Cache的MCU，及带有高速缓存，往往是因为内核主频过高，而内存和Flash速度较低，CPU内核在这种情况下运行会受到瓶颈，降低效率，所以厂商在内核附近部署了两块较小尺容量的全速内存，即缓存，在运行时Cache会对即将访问的地址进行预存取，然后内核访问相关地址时，如果已经被缓存，即命中，则会从缓存中存取数据，达到全速访问的效果，这种预存取的效率很高，基本可以全命中。</p>
 <p>在M7内核或相似较高频率内核的MCU开发上，Cache会带来很多开发上看似玄学的问题：数据不一致，写数据与读数据不一致，外设运行动作异常，DMA出飞机等等，核心原因是，CPU从Cache缓存读写的数据，与实际地址上的数据因为各种未同步原因，出现不一致问题，在开启Cache的情况下，对一块地址的访问，可能会有CPU的直接访问，Cache的预存取访问，DMA的访问，如果代码上没有做好同步与配置，会导致出各种玄学飞机，所以，有Cache的MCU，出玄学问题时，一定要关掉Cache调试！</p>
 <p>Cache的配置，往往MCU厂商已经做好了相关内容，可以直接结合需求，配置配置就可以，一定要对内存做好规划，哪些用，哪些给DMA，哪些给外设（USB、以太网FIFO）。</p>
 <p><strong>STM32H7示例</strong> </p>
 <p>Cortex-M7 MPU与Cache配置</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/916706b224ed059c03319c86d27aecdd.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/916706b224ed059c03319c86d27aecdd.png" alt="image"></p>
 <p>硬汉哥的一图横扫ICache和DCache</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/33e13c9bbcba6a6d50581b71c0aafd48.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/33e13c9bbcba6a6d50581b71c0aafd48.png" alt="image"></p>
 <h2 id="6-DWT内核计数器-计算时间"><a href="#6-DWT内核计数器-计算时间" class="headerlink" title="6.DWT内核计数器 计算时间"></a>6.DWT内核计数器 计算时间</h2><p><strong>初始化DWT时钟</strong></p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 初始化DWT计数器</span>
 <span class="token keyword">void</span> <span class="token function">DWT_Init</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">void</span></span><span class="token punctuation">)</span>
@@ -598,8 +598,8 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>大佬测试的计算速度，测试平台应该是STM32G431</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/4f900775cdd60db32ddb6ce7a71db5d9.png" alt="image"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/a5292d9b464b3cd23d8631ee2a289757.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/4f900775cdd60db32ddb6ce7a71db5d9.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/a5292d9b464b3cd23d8631ee2a289757.png" alt="image"></p>
 
                                     
                             </div>
@@ -1084,30 +1084,30 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/02/08/obsidian-vault/kai-fa/shi-yong-rk3588-da-jian-ge-ren-qing-nas-ji-lu/">
+                <a href="/2026/02/07/obsidian-vault/kai-fa/ji-chu/i2c-jiao-cheng/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/使用RK3588搭建个人轻NAS记录/5f63c7ef88c897481f6793200d59eea0.jpg" class="responsive-img" alt="使用RK3588搭建个人轻NAS记录">
+                        <img src="https://rootfs.sparkle-now.cn/images/I2C教程/Background%2Fmount.jpg" class="responsive-img" alt="STM32 I2C教程">
                         
-                        <span class="card-title">使用RK3588搭建个人轻NAS记录</span>
+                        <span class="card-title">STM32 I2C教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录使用RADXA ROCK5B+搭建个人服务器的过程和相关软件，主要是RK3588+Debian12+CasaOS+各种Docker容器，简单快捷，够自己用目前。
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
+                                    嵌入式
                                 </a>
                             
                             
@@ -1117,12 +1117,16 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RK-SOC/">
-                        <span class="chip bg-color">RK-SOC</span>
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                        <span class="chip bg-color">服务器</span>
+                    <a href="/tags/%E6%A0%87%E5%87%86%E5%BA%93/">
+                        <span class="chip bg-color">标准库</span>
+                    </a>
+                    
+                    <a href="/tags/I2C/">
+                        <span class="chip bg-color">I2C</span>
                     </a>
                     
                 </div>
@@ -1139,7 +1143,7 @@ void Calculate_Float_Sin_Cos(float angle,float *sin, float *cos)
                 <a href="/2025/05/30/obsidian-vault/lia-bao/he-xiao-bao-zai-qing-dao/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/和小宝在青岛/1750580577935.jpg" class="responsive-img" alt="和小宝在青岛">
+                        <img src="https://rootfs.sparkle-now.cn/images/和小宝在青岛/1750580577935.jpg" class="responsive-img" alt="和小宝在青岛">
                         
                         <span class="card-title">和小宝在青岛</span>
                     </div>

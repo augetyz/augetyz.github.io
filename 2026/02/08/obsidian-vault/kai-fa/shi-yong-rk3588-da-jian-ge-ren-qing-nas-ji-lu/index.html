@@ -371,7 +371,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/使用RK3588搭建个人轻NAS记录/5f63c7ef88c897481f6793200d59eea0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://rootfs.sparkle-now.cn/images/使用RK3588搭建个人轻NAS记录/5f63c7ef88c897481f6793200d59eea0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -440,7 +440,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-08
+                                    2026-02-11
                             </div>
                             
 
@@ -479,9 +479,9 @@
                         <div class="card-content article-card-content">
                             <div id="articleContent">
                                 <h1 id="1-硬件平台"><a href="#1-硬件平台" class="headerlink" title="1.硬件平台"></a>1.硬件平台</h1><p>这里使用radxa的<a target="_blank" rel="noopener" href="https://docs.radxa.com/rock5/rock5b">ROCK5B+</a>作为服务器本地，内存8GB，七百多购入，焊了一颗64GB的闪迪的EMMC，这个板子有俩2280的M.2接口，我装了旧笔记本的硬盘，两根共1TB。风扇用的淘宝<a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?id=834333835082&amp;mi_id=0000EK3PoATo6OtRF9kr5b49Xr7yybhDO7lf7IV6E-eiD0o&amp;spm=tbpc.boughtlist.suborder_itempic.d834333835082.97732e8dc1h3FE">零度JM科技</a>的风扇，好用。</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/84ab5ae355cd1cb4b413c15b52cf6011.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/84ab5ae355cd1cb4b413c15b52cf6011.png" alt="image"></p>
 <p>这个板子的外壳，我用的官方的，但是官方的外壳不好用，整个就是一个铁棺材，不透风，上面那点透风口和风扇风向不匹配，不散热，跑图片整理识别的时候，CPU吃满，散热压不住，一直70°，建议还是用开源的3D打印的，散热好些。而且官方这个外壳，内存卡插进去就拔不出来了（尽管我不用），然后MIPI接口全堵住（尽管我不用），电源口的Type-C和DP接口的Type-C容易搞混，槽点满满。</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/c37bafe2f11ffdea508a7df8998a8485.png" alt="拉跨玩意"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/c37bafe2f11ffdea508a7df8998a8485.png" alt="拉跨玩意"></p>
 <h1 id="2-系统部署"><a href="#2-系统部署" class="headerlink" title="2.系统部署"></a>2.系统部署</h1><h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><ul>
 <li>下载官方的Debian12镜像文件，通过balenaEtcher下载到SD卡，从SD卡中启动，然后使用dd命令将系统拷贝到EMMC或者NVME中</li>
 <li>下载官方的Debian12镜像文件，通过Type-C连接到PC，使用瑞芯微的官方工具，线刷系统到EMMC中，并烧录SPI Flash，直接到位。</li>
@@ -532,32 +532,32 @@ systemctl start fan-control<span aria-hidden="true" class="line-numbers-rows"><s
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="安装CasaOS"><a href="#安装CasaOS" class="headerlink" title="安装CasaOS"></a>安装CasaOS</h2><p>命令行执行<br><code>wget -qO- https://get.casaos.io | sudo bash</code><br>安装完成：<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/1c07fe669b729b583a692dc6e9e3d7fe.png" alt="image"></p>
+<h2 id="安装CasaOS"><a href="#安装CasaOS" class="headerlink" title="安装CasaOS"></a>安装CasaOS</h2><p>命令行执行<br><code>wget -qO- https://get.casaos.io | sudo bash</code><br>安装完成：<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/1c07fe669b729b583a692dc6e9e3d7fe.png" alt="image"></p>
 <p>直接浏览器访问板卡IP地址即可进入控制台，然后注册用户输入密码即可。</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/aab23ae2c90bd9e093f6c06b42c239b3.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/aab23ae2c90bd9e093f6c06b42c239b3.png" alt="image"></p>
 <p>我这里已经安装了很多Docker软件，刚进入游戏应该只有App Store和Files。</p>
 <h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><p>用的ddnsto，免费，无需多言。</p>
 <p>在官网控制台注册，获取Tokens，<a target="_blank" rel="noopener" href="https://web.ddnsto.com/app/#/home">官网</a></p>
 <p>命令行运行，绑定Token，在官网就能看到设备在线了，免费的，每七天登陆一下续杯即可。<br><code>sh -c "$(curl -sSL http://fw.koolcenter.com/binary/ddnsto/linux/install_ddnsto_linux.sh)"</code></p>
 <h1 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h1><p>在AppStore中添加更多软件源：</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/915032c75a9e4654165793f70d36cc62.png" alt="image"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/915032c75a9e4654165793f70d36cc62.png" alt="image"></p>
 <h2 id="自用图床搭建"><a href="#自用图床搭建" class="headerlink" title="自用图床搭建"></a>自用图床搭建</h2><p>这里主要是用的RustFS，兼容S3协议，用nginx反代，用内网透传映射端口，实现图床功能。</p>
 <ul>
 <li><p>在AppStore中搜索RustFS，如果添加了bigbear的第三方软件源，是可以搜索到的，点击安装。</p>
 </li>
-<li><p>打开设置，修改网络端口和WebUI的端口，这个Docker有俩端口要设置，一个是访问存储的端口，我这里设置为9000，一个是Console控制台，也就是WebUI的，我这里设置为9001，然后还需要设置下面的环境变量的值，才能通过网络访问。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/329600ce235ae3db69479a38bd77f8d9.png" alt="image"></p>
+<li><p>打开设置，修改网络端口和WebUI的端口，这个Docker有俩端口要设置，一个是访问存储的端口，我这里设置为9000，一个是Console控制台，也就是WebUI的，我这里设置为9001，然后还需要设置下面的环境变量的值，才能通过网络访问。<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/329600ce235ae3db69479a38bd77f8d9.png" alt="image"></p>
 </li>
-<li><p>在设置界面，还有俩环境变量的值，RUSTFS_ACCESS_KEY和RUSTFS_SECRET_KEY，可以理解为这个就是登陆的用户名和密码，也是管理员，打开WebUI，使用这俩值登录。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/6d9492023107525a3d6022fe369e3c0b.png" alt="image"></p>
+<li><p>在设置界面，还有俩环境变量的值，RUSTFS_ACCESS_KEY和RUSTFS_SECRET_KEY，可以理解为这个就是登陆的用户名和密码，也是管理员，打开WebUI，使用这俩值登录。<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/6d9492023107525a3d6022fe369e3c0b.png" alt="image"></p>
 </li>
-<li><p>创建存储桶<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/52470e8d143846e10d4519173d3257d2.png" alt="image"></p>
+<li><p>创建存储桶<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/52470e8d143846e10d4519173d3257d2.png" alt="image"></p>
 </li>
-<li><p>编辑存储桶访问策略为公有<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/a84c95fa0ed34a6a5794b0ee4ced9875.png" alt="image"></p>
+<li><p>编辑存储桶访问策略为公有<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/a84c95fa0ed34a6a5794b0ee4ced9875.png" alt="image"></p>
 </li>
 <li><p>可以在存储桶中上传一张图片，然后访问地址是<code>http://IP:9000/test/image.png</code>，注意这里端口是另一个，不是WebUI的端口，后续可以通过Nginx做代理，然后用DDNSTO内网透传绑定代理的端口，实现远程访问。</p>
 </li>
-<li><p>该存储桶，有两种上传图片的方式，查看官方文档，有很详细的操作教程：<br>1. 使用API上传和下载资源，我没有使用这种方式，我用这个RustFS，就是奔着S3协议兼容来的。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/5002842d9b1479c716193bbb411462e8.png" alt="image"></p>
+<li><p>该存储桶，有两种上传图片的方式，查看官方文档，有很详细的操作教程：<br>1. 使用API上传和下载资源，我没有使用这种方式，我用这个RustFS，就是奔着S3协议兼容来的。<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/5002842d9b1479c716193bbb411462e8.png" alt="image"></p>
 <ol start="2">
-<li>使用S3协议上传和下载，这里根据你使用的场景，有多种工具可以支持，我这里使用Obsidian的插件<code>S3 Image Uploader</code>，可以支持内网透传后的EndPoint，支持度很高，好用。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/85ec28ecb5984e72f74137bfb18084e5.png" alt="image"><br>另外，官方还提供了很多其他S3协议的Demo，也可以说是SDK，我这里测试使用Python+Boto3实现了基本的上传功能，局域网内通过内网IP上传很轻松，没有问题，使用内网透传的域名的话，就会出现SDK上传成功，返回URL正常，但通过<code>curl -I 图片链接</code> 测试就是404，而且存储桶内上传是失败的，没有图片，这个概率很大，十次大概有8次，使用内网就没事。<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/801c78ffb108f461714b40e5db8c194c.png" alt="image"></li>
+<li>使用S3协议上传和下载，这里根据你使用的场景，有多种工具可以支持，我这里使用Obsidian的插件<code>S3 Image Uploader</code>，可以支持内网透传后的EndPoint，支持度很高，好用。<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/85ec28ecb5984e72f74137bfb18084e5.png" alt="image"><br>另外，官方还提供了很多其他S3协议的Demo，也可以说是SDK，我这里测试使用Python+Boto3实现了基本的上传功能，局域网内通过内网IP上传很轻松，没有问题，使用内网透传的域名的话，就会出现SDK上传成功，返回URL正常，但通过<code>curl -I 图片链接</code> 测试就是404，而且存储桶内上传是失败的，没有图片，这个概率很大，十次大概有8次，使用内网就没事。<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/801c78ffb108f461714b40e5db8c194c.png" alt="image"></li>
 </ol>
 </li>
 <li><p>使用python + Boto3实现的图片上传功能，S3协议需要的访问信息，在config.yaml中定义。</p>
@@ -855,7 +855,7 @@ logger <span class="token operator">=</span> logging<span class="token punctuati
 
 <span class="token comment"># 查看运行状态</span>
 <span class="token function">sudo</span> systemctl status nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>我这里用的Nginx.conf配置，是抄RustFS官方文档的，要多看文档<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/7bcae3c378aa2496b67ae4f25f94d717.png" alt="image"></p>
+<li><p>我这里用的Nginx.conf配置，是抄RustFS官方文档的，要多看文档<br><img src="https://rootfs.sparkle-now.cn/images/%E4%BD%BF%E7%94%A8RK3588%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%BD%BBNAS%E8%AE%B0%E5%BD%95/7bcae3c378aa2496b67ae4f25f94d717.png" alt="image"></p>
 <pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">load_module</span> /usr/lib/nginx/modules/ngx_stream_module.so</span><span class="token punctuation">;</span>
 
 <span class="token directive"><span class="token keyword">worker_processes</span> auto</span><span class="token punctuation">;</span>
@@ -1435,7 +1435,7 @@ logger <span class="token operator">=</span> logging<span class="token punctuati
                 <a href="/2026/02/08/obsidian-vault/kai-fa/shi-yong-rk3588-da-jian-ge-ren-qing-nas-ji-lu/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/使用RK3588搭建个人轻NAS记录/5f63c7ef88c897481f6793200d59eea0.jpg" class="responsive-img" alt="使用RK3588搭建个人轻NAS记录">
+                        <img src="https://rootfs.sparkle-now.cn/images/使用RK3588搭建个人轻NAS记录/5f63c7ef88c897481f6793200d59eea0.jpg" class="responsive-img" alt="使用RK3588搭建个人轻NAS记录">
                         
                         <span class="card-title">使用RK3588搭建个人轻NAS记录</span>
                     </div>
@@ -1485,23 +1485,23 @@ logger <span class="token operator">=</span> logging<span class="token punctuati
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/02/06/obsidian-vault/kai-fa/qian-ru-shi-ruan-jian-you-hua/">
+                <a href="/2026/02/07/obsidian-vault/kai-fa/ji-chu/i2c-jiao-cheng/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/嵌入式软件优化/f20fa6df8d5eae9382df593bd82aecf6.jpg" class="responsive-img" alt="嵌入式软件优化记录">
+                        <img src="https://rootfs.sparkle-now.cn/images/I2C教程/Background%2Fmount.jpg" class="responsive-img" alt="STM32 I2C教程">
                         
-                        <span class="card-title">嵌入式软件优化记录</span>
+                        <span class="card-title">STM32 I2C教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录嵌入式开发过程中一些小技巧和坑，包括内核、编译器、内存等相关的零碎的知识点，记录下来，方便开发时查找和提醒，提高工程效率和代码运行速度。
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-07
                             </span>
                         <span class="publish-author">
                             
@@ -1518,8 +1518,16 @@ logger <span class="token operator">=</span> logging<span class="token punctuati
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BC%98%E5%8C%96/">
-                        <span class="chip bg-color">优化</span>
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%87%E5%87%86%E5%BA%93/">
+                        <span class="chip bg-color">标准库</span>
+                    </a>
+                    
+                    <a href="/tags/I2C/">
+                        <span class="chip bg-color">I2C</span>
                     </a>
                     
                 </div>

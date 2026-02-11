@@ -371,7 +371,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/直流电源稳压板设计/b3cce13947063448c4f792078b745e34.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://rootfs.sparkle-now.cn/images/直流电源稳压板设计/b3cce13947063448c4f792078b745e34.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -440,7 +440,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-08
+                                    2026-02-11
                             </div>
                             
 
@@ -479,8 +479,8 @@
                         <div class="card-content article-card-content">
                             <div id="articleContent">
                                 <h1 id="一种多路直流电源稳压板设计"><a href="#一种多路直流电源稳压板设计" class="headerlink" title="一种多路直流电源稳压板设计"></a>一种多路直流电源稳压板设计</h1><p>设计制作机器人时,我们都需要一个可靠稳定的供电系统,根据机器人内部多个元件的电源需求,设计了一个满足一般竞赛机器人使用的直流稳压电源板.因为主要考虑供电目标是树莓派、RK3588、jeston等机器人主控元件，需要有5V5A的电源供电能力，所以采用了TPS54531直流稳压芯片，7<del>28V输入，0</del>5A输出，通过调节反馈电阻，能够供出稳定的5V5A输出。另外为了更好地使用电源板，添加了总电源PMOS开关，每个输出都有PMOS电源开关，NMOS防反接。</p>
-<h2 id="TPS54531直流稳压设计"><a href="#TPS54531直流稳压设计" class="headerlink" title="TPS54531直流稳压设计"></a>TPS54531直流稳压设计</h2><p>TPS54531介绍(主要是便宜)<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733282233234.png" alt="芯片参数"></p>
-<p>在TI的电源设计工具上直接导出的设计图<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733282171088.png" alt="原理图"></p>
+<h2 id="TPS54531直流稳压设计"><a href="#TPS54531直流稳压设计" class="headerlink" title="TPS54531直流稳压设计"></a>TPS54531直流稳压设计</h2><p>TPS54531介绍(主要是便宜)<br><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733282233234.png" alt="芯片参数"></p>
+<p>在TI的电源设计工具上直接导出的设计图<br><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733282171088.png" alt="原理图"></p>
 <p><strong>TPS54531的电压输入还是比较窄的，有特殊需求的话，电压很可能来到40V，TI还有一款类似的芯片TPS54560，宽电压输入，最高60V，也是5A输出</strong></p>
 <h2 id="PMOS开关"><a href="#PMOS开关" class="headerlink" title="PMOS开关"></a>PMOS开关</h2><p>在电路设计中，结合小机械开关和PMOS来控制电路的通断，可以实现机械控制与电子开关的优点结合。这种设计的目的通常是为了利用机械开关提供简单的输入控制，同时借助PMOS实现对更大电流或电压的控制，减少机械开关的电流负载和磨损，提高整体可靠性和寿命。</p>
 <p><strong>设计原理</strong></p>
@@ -489,7 +489,7 @@
 <li>PMOS根据栅极信号控制主电路的通断。</li>
 <li>机械开关只需要处理极小的控制电流，PMOS负责处理主电路的高电流。</li>
 </ul>
-<p>我画的，献丑啦<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733283166831.png" alt="PMOS开关"></p>
+<p>我画的，献丑啦<br><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733283166831.png" alt="PMOS开关"></p>
 <h2 id="NMOS防反接"><a href="#NMOS防反接" class="headerlink" title="NMOS防反接"></a>NMOS防反接</h2><p>使用MOS管作为防反接而不是二极管<br>MOS管作为防反接保护，具有低压降、高效率、低发热、支持高电流的优点，非常适合对功耗敏感或需要高可靠性的电子设备。而二极管方案因简单易用，适合小功率和低成本的应用场合。根据具体需求选择合适的方案。</p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
 <li><ol>
@@ -548,12 +548,12 @@
 </ol>
 </li>
 </ul>
-<h3 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733283299818.png" alt="原理图"></p>
-<h2 id="PCB与实物"><a href="#PCB与实物" class="headerlink" title="PCB与实物"></a>PCB与实物</h2><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284154550.png" alt="多路输出"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284174588.png" alt="USB供电型"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284233171.png" alt="三维图"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284286966.jpg" alt="实物（徐逸凡焊的）"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284364766.jpg" alt="实物（我焊的）"></p>
+<h3 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h3><p><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733283299818.png" alt="原理图"></p>
+<h2 id="PCB与实物"><a href="#PCB与实物" class="headerlink" title="PCB与实物"></a>PCB与实物</h2><p><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284154550.png" alt="多路输出"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284174588.png" alt="USB供电型"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284233171.png" alt="三维图"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284286966.jpg" alt="实物（徐逸凡焊的）"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%BA%90%E7%A8%B3%E5%8E%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1/1733284364766.jpg" alt="实物（我焊的）"></p>
 
                                     
                             </div>
@@ -1047,7 +1047,7 @@
                 <a href="/2024/12/16/obsidian-vault/kai-fa/zi-ding-yi-printf-ge-shi-hua-shu-chu/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/自定义printf格式化输出/8ff863decdf521f6dc64371d6e74576c.jpg" class="responsive-img" alt="自定义printf格式化输出">
+                        <img src="https://rootfs.sparkle-now.cn/images/自定义printf格式化输出/8ff863decdf521f6dc64371d6e74576c.jpg" class="responsive-img" alt="自定义printf格式化输出">
                         
                         <span class="card-title">自定义printf格式化输出</span>
                     </div>
@@ -1095,7 +1095,7 @@
                 <a href="/2024/10/09/obsidian-vault/kai-fa/opencv-shi-jue-shi-bie-yu-flask-zhuan-fa-shi-xian-ju-yu-wang-diao-shi/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/OpenCV视觉识别与flask转发实现局域网调试/8bd3cdfa045fed4df9d21584d1b89fe3.jpg" class="responsive-img" alt="OpenCV视觉识别与flask转发实现局域网调试">
+                        <img src="https://rootfs.sparkle-now.cn/images/OpenCV视觉识别与flask转发实现局域网调试/8bd3cdfa045fed4df9d21584d1b89fe3.jpg" class="responsive-img" alt="OpenCV视觉识别与flask转发实现局域网调试">
                         
                         <span class="card-title">OpenCV视觉识别与flask转发实现局域网调试</span>
                     </div>

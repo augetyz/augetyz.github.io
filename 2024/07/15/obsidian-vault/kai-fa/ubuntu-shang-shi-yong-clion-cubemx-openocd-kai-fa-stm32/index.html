@@ -371,7 +371,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/Ubuntu上使用CLion-cubemx-openocd开发STM32/1721409750494.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://rootfs.sparkle-now.cn/images/Ubuntu上使用CLion-cubemx-openocd开发STM32/1721409750494.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -446,7 +446,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-07
+                                    2026-02-11
                             </div>
                             
 
@@ -502,7 +502,7 @@
 <li>安装完成后，可以在软件目录里找到 Clion，向桌面添加即可，或者使用软链接到桌面，也可以自行创建.desktop 文件，输入相关内容。</li>
 </ul>
 <h2 id="下载-CubeMX"><a href="#下载-CubeMX" class="headerlink" title="下载 CubeMX"></a>下载 CubeMX</h2><p><a target="_blank" rel="noopener" href="https://www.st.com/zh/development-tools/stm32cubemx.html">官网链接</a></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/UCRVdt.png" alt="选择下载"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/UCRVdt.png" alt="选择下载"></p>
 <ul>
 <li>下载后解压，执行解压目录下的可执行文件，选择默认安装位置即可</li>
 <li>添加桌面快捷方式：这个我在软件目录里没有找到，就在桌面创建了个 CubeMX.desktop 文件，用于快捷访问 CubeMX。</li>
@@ -519,7 +519,7 @@
 <span class="token assign-left variable">Categories</span><span class="token operator">=</span>Development<span class="token punctuation">;</span>IDE<span class="token punctuation">;</span>
 <span class="token assign-left variable">Comment</span><span class="token operator">=</span>STM32CubeMX<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/CUBb8Q.jpg"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/CUBb8Q.jpg"></p>
 <h2 id="下载-openocd"><a href="#下载-openocd" class="headerlink" title="下载 openocd"></a>下载 openocd</h2><h3 id="apt-直接安装"><a href="#apt-直接安装" class="headerlink" title="apt 直接安装"></a>apt 直接安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openocd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#github下载</span>
@@ -541,43 +541,43 @@ For bug reports, <span class="token builtin class-name">read</span>
 openocd: invalid option -- <span class="token string">'e'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="安装-stlink-驱动"><a href="#安装-stlink-驱动" class="headerlink" title="安装 stlink 驱动"></a>安装 stlink 驱动</h2><p><a target="_blank" rel="noopener" href="https://github.com/stlink-org/stlink/releases">下载链接</a></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/JkxfEc.jpg" alt="选择下载"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/JkxfEc.jpg" alt="选择下载"></p>
 <p>下载后安装 deb 包</p>
 <h2 id="安装-arm-编译器"><a href="#安装-arm-编译器" class="headerlink" title="安装 arm 编译器"></a>安装 arm 编译器</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gcc-arm-none-eabi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="配置-clion"><a href="#配置-clion" class="headerlink" title="配置 clion"></a>配置 clion</h2><ul>
 <li>打开设置&gt;构建、执行、部署&gt;嵌入式开发</li>
 </ul>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/hbycIt.jpg" alt="打开设置"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/hbycIt.jpg" alt="打开设置"></p>
 <ul>
 <li><p>配置相关工具路径，点击测试。</p>
 </li>
-<li><p>新建项目，注意项目命名<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/ZVKpkn.jpg" alt="新建嵌入式项目"></p>
+<li><p>新建项目，注意项目命名<br><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/ZVKpkn.jpg" alt="新建嵌入式项目"></p>
 </li>
 <li><p>会自动运行 CubeMX 并且配置出一个 F030 的工程。</p>
 </li>
 </ul>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/v6BBaS.jpg" alt="自动配置"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/v6BBaS.jpg" alt="自动配置"></p>
 <ul>
-<li>这里 clion 会自动将目标型号芯片的配置文件复制到工程里 选择 复制到项目并使用<br><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/VJ9fEW.jpg" alt="选择复制到项目并使用"></li>
+<li>这里 clion 会自动将目标型号芯片的配置文件复制到工程里 选择 复制到项目并使用<br><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/VJ9fEW.jpg" alt="选择复制到项目并使用"></li>
 <li>我们选择点击工程目录里的.ioc 文件，选择 通过 STM3CubeMX 打开</li>
 <li>打开后修改相关内容即可</li>
 <li>注意最后工程名字，并配置为 STM32CubeIDE</li>
 </ul>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/XVrhjo.jpg" alt="生成工程配置"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/XVrhjo.jpg" alt="生成工程配置"></p>
 <ul>
 <li>生成文件后，更新工程，在左边目录里进入用户代码。</li>
 <li>点击右上角编译，点击运行下载，点击调试进行调试</li>
 </ul>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/87cqLB.jpg" alt="相关内容"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/87cqLB.jpg" alt="相关内容"></p>
 <p>其他具体操作可以自行尝试，包括汉化插件、主题、添加自定义文件夹等等。</p>
 <h2 id="相关小操作"><a href="#相关小操作" class="headerlink" title="相关小操作"></a>相关小操作</h2><p>官方提供的配置文件里有些小问题</p>
 <ul>
 <li><p>openocd 下载的代码不能自动复位，需要手动复位，这里修改.cfg 的 21 行</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/LLMSya.jpg" alt="复位操作"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/LLMSya.jpg" alt="复位操作"></p>
 </li>
 <li><p>添加自定义文件，直接在目录里添加即可，添加相关依赖时，选择默认即可</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/T8VHXK.jpg" alt="添加文件"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8CLion-cubemx-openocd%E5%BC%80%E5%8F%91STM32/T8VHXK.jpg" alt="添加文件"></p>
 </li>
 <li><p>不要选择添加到目标，否则编译会报错，创建后，更新cmake然后编译即可。</p>
 </li>
@@ -1133,7 +1133,7 @@ openocd: invalid option -- <span class="token string">'e'</span><span aria-hidde
                 <a href="/2024/07/15/obsidian-vault/kai-fa/bi-sai-ji-lu/gong-chuang-sai-zong-jie-yu-gai-jin/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/工创赛总结与改进/17197660798456.jpg" class="responsive-img" alt="工创赛总结与改进">
+                        <img src="https://rootfs.sparkle-now.cn/images/工创赛总结与改进/17197660798456.jpg" class="responsive-img" alt="工创赛总结与改进">
                         
                         <span class="card-title">工创赛总结与改进</span>
                     </div>

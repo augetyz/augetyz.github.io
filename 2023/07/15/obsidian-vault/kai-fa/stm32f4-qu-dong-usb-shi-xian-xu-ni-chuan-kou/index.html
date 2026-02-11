@@ -371,7 +371,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://sparkle-rustfs.gd.ddnsto.com:443/images/STM32F4驱动USB实现虚拟串口/Background%2Fmount.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://rootfs.sparkle-now.cn/images/STM32F4驱动USB实现虚拟串口/Background%2Fmount.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -452,7 +452,7 @@
                         
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    2026-02-07
+                                    2026-02-11
                             </div>
                             
 
@@ -495,16 +495,16 @@
 <p>最终实现了单片机同上位机进行串口通讯，并编写了类似于HAL库串口通讯的USB串口通信操作函数，包括数据发送，printf发送，堵塞接收，中断接收等函数</p>
 <p>注意，此方案单片机作为USB从机，同上位机（主机）通讯，不能够使用USB同使用了USB串口的其他设备通讯，因为他们也是从机。</p>
 <h2 id="cubemx初始化"><a href="#cubemx初始化" class="headerlink" title="cubemx初始化"></a>cubemx初始化</h2><p>STM32F407VET6+CubeMx+MDK5</p>
-<h3 id="系统时钟初始化"><a href="#系统时钟初始化" class="headerlink" title="系统时钟初始化"></a>系统时钟初始化</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F1.%E5%A4%96%E9%83%A8%E9%AB%98%E9%80%9F%E6%97%B6%E9%92%9F%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="外部高速时钟初始化"></p>
-<h3 id="修改debug方式"><a href="#修改debug方式" class="headerlink" title="修改debug方式"></a>修改debug方式</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F2.%E8%B0%83%E8%AF%95%E6%96%B9%E5%BC%8F%E9%85%8D%E7%BD%AE.jpg" alt="调试方式修改"></p>
-<h3 id="GPIO配置"><a href="#GPIO配置" class="headerlink" title="GPIO配置"></a>GPIO配置</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F3.%E6%8C%89%E9%94%AE%20led%E9%85%8D%E7%BD%AE.jpg" alt="按键led配置"></p>
-<h3 id="USB外设初始化"><a href="#USB外设初始化" class="headerlink" title="USB外设初始化"></a>USB外设初始化</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F4.%E5%85%A8%E9%80%9FUSB%E5%A4%96%E8%AE%BE%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="全速USB外设初始化"></p>
+<h3 id="系统时钟初始化"><a href="#系统时钟初始化" class="headerlink" title="系统时钟初始化"></a>系统时钟初始化</h3><p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F1.%E5%A4%96%E9%83%A8%E9%AB%98%E9%80%9F%E6%97%B6%E9%92%9F%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="外部高速时钟初始化"></p>
+<h3 id="修改debug方式"><a href="#修改debug方式" class="headerlink" title="修改debug方式"></a>修改debug方式</h3><p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F2.%E8%B0%83%E8%AF%95%E6%96%B9%E5%BC%8F%E9%85%8D%E7%BD%AE.jpg" alt="调试方式修改"></p>
+<h3 id="GPIO配置"><a href="#GPIO配置" class="headerlink" title="GPIO配置"></a>GPIO配置</h3><p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F3.%E6%8C%89%E9%94%AE%20led%E9%85%8D%E7%BD%AE.jpg" alt="按键led配置"></p>
+<h3 id="USB外设初始化"><a href="#USB外设初始化" class="headerlink" title="USB外设初始化"></a>USB外设初始化</h3><p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F4.%E5%85%A8%E9%80%9FUSB%E5%A4%96%E8%AE%BE%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="全速USB外设初始化"></p>
 <p>啥都不用改，把中断打开记得</p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F5.%E4%B8%AD%E6%96%AD%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="中断配置"></p>
-<h3 id="工程配置"><a href="#工程配置" class="headerlink" title="工程配置"></a>工程配置</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F6.%E6%97%B6%E9%92%9F%E4%BF%AE%E6%94%B9.jpg" alt="修改时钟"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F7.%E5%B7%A5%E7%A8%8B%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="配置工程"></p>
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F8.%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.jpg" alt="目录修改"></p>
-<h3 id="keil5修改"><a href="#keil5修改" class="headerlink" title="keil5修改"></a>keil5修改</h3><p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F9.keil%E9%85%8D%E7%BD%AE.jpg" alt="勾选Micolib"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F5.%E4%B8%AD%E6%96%AD%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="中断配置"></p>
+<h3 id="工程配置"><a href="#工程配置" class="headerlink" title="工程配置"></a>工程配置</h3><p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F6.%E6%97%B6%E9%92%9F%E4%BF%AE%E6%94%B9.jpg" alt="修改时钟"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F7.%E5%B7%A5%E7%A8%8B%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="配置工程"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F8.%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.jpg" alt="目录修改"></p>
+<h3 id="keil5修改"><a href="#keil5修改" class="headerlink" title="keil5修改"></a>keil5修改</h3><p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F9.keil%E9%85%8D%E7%BD%AE.jpg" alt="勾选Micolib"></p>
 <p><strong>初始化完成</strong></p>
 <h2 id="实现HAL库uart通讯功能"><a href="#实现HAL库uart通讯功能" class="headerlink" title="实现HAL库uart通讯功能"></a>实现HAL库uart通讯功能</h2><p><strong>简单使用系统函数 <code>uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)</code>进行通讯</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -518,7 +518,7 @@
       <span class="token function">HAL_Delay</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://sparkle-rustfs.gd.ddnsto.com/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F10.%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95%E5%8A%A9%E6%89%8B%E6%88%AA%E5%9B%BE.jpg" alt="效果"></p>
+<p><img src="https://rootfs.sparkle-now.cn/images/STM32F4%E9%A9%B1%E5%8A%A8USB%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3/USB%E8%99%9A%E6%8B%9F%E4%B8%B2%E5%8F%A3%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%2F10.%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95%E5%8A%A9%E6%89%8B%E6%88%AA%E5%9B%BE.jpg" alt="效果"></p>
 <h3 id="设计USB-CDC-printf格式化输出函数"><a href="#设计USB-CDC-printf格式化输出函数" class="headerlink" title="设计USB_CDC_printf格式化输出函数"></a><strong>设计USB_CDC_printf格式化输出函数</strong></h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
   * @brief  USB虚拟串口格式化输出printf实现
   * @param  格式化输入
@@ -1286,7 +1286,7 @@
                 <a href="/2023/08/20/obsidian-vault/kai-fa/zai-clion-ping-tai-shi-yong-openocd-gong-ju-xiang-stm32h7-wai-zhi-flash-xia-zai-dai-ma-bing-diao-shi/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/在clion平台使用openocd工具向STM32H7外置flash下载代码并调试/1721578058652.png" class="responsive-img" alt="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试">
+                        <img src="https://rootfs.sparkle-now.cn/images/在clion平台使用openocd工具向STM32H7外置flash下载代码并调试/1721578058652.png" class="responsive-img" alt="在clion平台使用openocd工具向STM32H7外置flash下载代码并调试">
                         
                         <span class="card-title">在clion平台使用openocd工具向STM32H7外置flash下载代码并调试</span>
                     </div>
@@ -1346,7 +1346,7 @@
                 <a href="/2023/05/01/obsidian-vault/lia-bao/he-xiao-bao-ye-can/">
                     <div class="card-image">
                         
-                        <img src="https://sparkle-rustfs.gd.ddnsto.com:443/images/和小宝野餐/1723775518234.png" class="responsive-img" alt="和小宝去野餐">
+                        <img src="https://rootfs.sparkle-now.cn/images/和小宝野餐/1723775518234.png" class="responsive-img" alt="和小宝去野餐">
                         
                         <span class="card-title">和小宝去野餐</span>
                     </div>
